@@ -19,8 +19,15 @@
         </whitelist>
     </filter>
     <php>
+        <env name="APP_KEY" value="base64:HUmcZPE2aDyqwp4f5C6w1AOkjHSXf5LZKBMUDp8VBA8"/>
         <env name="APP_ENV" value="testing"/>
-        <env name="CACHE_DRIVER" value="array"/>
-        <env name="QUEUE_CONNECTION" value="sync"/>
+        <env name="CACHE_DRIVER" value="file"/>
+        <env name="QUEUE_DRIVER" value="sync"/>
+        <env name="DB_DATABASE" value="database/database.sqlite"/>
+        <env name="DB_CONNECTION" value="sqlite"/>
+        <env name="DB_PREFIX" value=""/>
+        <env name="LOG_CHANNEL" value="single"/>
+
+        <env name="API_DEBUG" value="false"/>
     </php>
 </phpunit>

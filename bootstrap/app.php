@@ -1,5 +1,6 @@
 <?php
 
+
 require_once __DIR__ . '/../vendor/autoload.php';
 
 try {
@@ -22,10 +23,26 @@ try {
 $app = new Laravel\Lumen\Application(
     dirname(__DIR__)
 );
+//$app['Dingo\Api\Auth\Auth']->extend('oauth', function ($app) {
+//    return new Dingo\Api\Auth\Provider\JWT($app['Tymon\JWTAuth\JWTAuth']);
+//});
+//$app['Dingo\Api\Http\RateLimit\Handler']->extend(function ($app) {
+//    return new Dingo\Api\Http\RateLimit\Throttle\Authenticated;
+//});
 
-// $app->withFacades();
+$app->withFacades();
 
-// $app->withEloquent();
+$app->withEloquent();
+
+$app->configure('access');
+$app->configure('auth');
+$app->configure('api');
+$app->configure('hashids');
+$app->configure('permission');
+$app->configure('repository');
+$app->configure('settings');
+
+$app->alias('cache', 'Illuminate\Cache\CacheManager');
 
 /*
 |--------------------------------------------------------------------------
@@ -63,9 +80,13 @@ $app->singleton(
 //     App\Http\Middleware\ExampleMiddleware::class
 // ]);
 
-// $app->routeMiddleware([
-//     'auth' => App\Http\Middleware\Authenticate::class,
-// ]);
+$app->routeMiddleware([
+    'auth' => App\Http\Middleware\Authenticate::class,
+    'permission' => Spatie\Permission\Middlewares\PermissionMiddleware::class,
+    'role' => Spatie\Permission\Middlewares\RoleMiddleware::class,
+    'throttle' => Illuminate\Routing\Middleware\ThrottleRequests::class,
+    'check-accept-header' => App\Http\Middleware\CheckAcceptHeaderMiddleware::class,
+]);
 
 /*
 |--------------------------------------------------------------------------
@@ -78,10 +99,31 @@ $app->singleton(
 |
 */
 
-// $app->register(App\Providers\AppServiceProvider::class);
-// $app->register(App\Providers\AuthServiceProvider::class);
-// $app->register(App\Providers\EventServiceProvider::class);
 
+$app->register(App\Providers\AppServiceProvider::class);
+$app->register(Laravel\Passport\PassportServiceProvider::class);
+$app->register(Dusterio\LumenPassport\PassportServiceProvider::class);
+$app->register(Prettus\Repository\Providers\RepositoryServiceProvider::class);
+$app->register(Spatie\Permission\PermissionServiceProvider::class);
+$app->register(Vinkla\Hashids\HashidsServiceProvider::class);
+$app->register(Dingo\Api\Provider\LumenServiceProvider::class);
+
+$app[Dingo\Api\Exception\Handler::class]
+    ->register(function (Prettus\Validator\Exceptions\ValidatorException $exception) {
+        throw new Dingo\Api\Exception\ValidationHttpException($exception->getMessageBag(), $exception);
+    });
+$app[Dingo\Api\Exception\Handler::class]
+    ->register(function (Illuminate\Database\Eloquent\ModelNotFoundException $exception) {
+        throw new Symfony\Component\HttpKernel\Exception\NotFoundHttpException($exception->getMessage(), $exception);
+    });
+
+if (class_exists('Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider')) {
+    $app->register('Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider');
+}
+if (class_exists('Mpociot\ApiDoc\ApiDocGeneratorServiceProvider')) {
+    $app->configure('apidoc');
+    $app->register('Mpociot\ApiDoc\ApiDocGeneratorServiceProvider');
+}
 /*
 |--------------------------------------------------------------------------
 | Load The Application Routes
