@@ -33,13 +33,13 @@ A template made from [Lumen 5.7.*](https://lumen.laravel.com/), authenticated wi
 
 ## Built With
 
-* [laravel/lumen-framework:5.7.*](https://github.com/laravel/lumen-framework) - The stunningly fast micro-framework by Laravel
-* [laravel/passport](https://github.com/laravel/passport) - OAuth2 server and API authentication, fix installed by [dusterio/lumen-passport](https://github.com/dusterio/lumen-passport)
-* [andersao/l5-repository](https://github.com/andersao/l5-repository) - Repositories to abstract the database layer
-* [thephpleague/fractal](https://github.com/thephpleague/fractal) - Output complex, flexible, AJAX/RESTful data structures, extended by [andersao/l5-repository](https://github.com/andersao/l5-repository)
-* [spatie/laravel-permission](https://github.com/spatie/laravel-permission) - Associate users with roles and permissions
-* [barryvdh/laravel-cors](https://github.com/barryvdh/laravel-cors) - Adds CORS (Cross-Origin Resource Sharing) headers support in your Laravel application
-* [mpociot/laravel-apidoc-generator](https://github.com/mpociot/laravel-apidoc-generator) - Laravel API Documentation Generator
+* [laravel/lumen-framework:5.7.*](https://github.com/laravel/lumen-framework) - The stunningly fast micro-framework by Laravel.
+* [dingo/api](https://github.com/dingo/api) - A RESTful API package for the Laravel and Lumen frameworks.
+* [laravel/passport](https://github.com/laravel/passport) - OAuth2 server and API authentication, fix installed by [dusterio/lumen-passport](https://github.com/dusterio/lumen-passport).
+* [andersao/l5-repository](https://github.com/andersao/l5-repository) - Repositories to abstract the database layer.
+* [thephpleague/fractal](https://github.com/thephpleague/fractal) - Output complex, flexible, AJAX/RESTful data structures, extended by [andersao/l5-repository](https://github.com/andersao/l5-repository).
+* [spatie/laravel-permission](https://github.com/spatie/laravel-permission) - Associate users with roles and permissions.
+* [mpociot/laravel-apidoc-generator](https://github.com/mpociot/laravel-apidoc-generator) - Laravel API Documentation Generator.
 
 
 See also the list of [contributors](https://github.com/lloricode/lumen-dingo-boilerplate/graphs/contributors) who participated in this project.
