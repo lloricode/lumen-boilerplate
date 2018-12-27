@@ -124,9 +124,7 @@ class RoleController extends Controller
      */
     public function destroy(Request $request)
     {
-        if ($this->roleRepository->delete($this->decodeId($request))) {
-            return response('', 204);
-        }
-        abort(500, 'Failed to delete role.');
+        $this->roleRepository->delete($this->decodeId($request));
+        return response('', 204);
     }
 }

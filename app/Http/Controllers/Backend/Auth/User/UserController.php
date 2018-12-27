@@ -124,9 +124,7 @@ class UserController extends Controller
             abort(422, 'You cannot delete your self.');
         }
 
-        if ($this->userRepository->delete($id)) {
-            return response('', 204);
-        }
-        abort(500, 'Failed to delete user.');
+        $this->userRepository->delete($id);
+        return response('', 204);
     }
 }
