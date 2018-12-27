@@ -73,7 +73,7 @@ abstract class TestCase extends BaseTestCase
         foreach ($parameters as $parameter => $value) {
             $uri = str_replace('{' . $parameter . '}', $value, $uri);
         }
-
+        echo '[' . $uri . "]\n";
         return $uri;
 //        return app('Dingo\Api\Routing\UrlGenerator')->version('v1')->route($name, $parameters);
     }
