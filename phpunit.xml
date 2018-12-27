@@ -28,6 +28,7 @@
         <env name="DB_PREFIX" value=""/>
         <env name="LOG_CHANNEL" value="single"/>
 
+        <env name="API_DOMAIN" value="http://localhost"/>
         <env name="API_DEBUG" value="false"/>
     </php>
 </phpunit>
