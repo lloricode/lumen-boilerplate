@@ -8,7 +8,6 @@ use Laravel\Lumen\Testing\TestCase as BaseTestCase;
 abstract class TestCase extends BaseTestCase
 {
     use UsesDatabase;
-    protected $baseUrl = 'http://127.0.0.1';
 
     public function setUp()
     {
