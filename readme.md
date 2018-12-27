@@ -1,4 +1,4 @@
-# [Lumen 5.7 Boilerplate](https://github.com/lloricode/lumen-dingo-boilerplate)
+# [Lumen 5.7 Dingo Boilerplate](https://github.com/lloricode/lumen-dingo-boilerplate)
 still developing
 
 [![Build Status](https://travis-ci.org/lloricode/lumen-dingo-boilerplate.svg?branch=master)](https://travis-ci.org/lloricode/lumen-dingo-boilerplate)
