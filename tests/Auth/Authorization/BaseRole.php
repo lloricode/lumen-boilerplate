@@ -37,7 +37,19 @@ abstract class BaseRole extends TestCase
             ]) . "?include=$relation", $this->addHeaders());
         $this->assertResponseOk();
 
-        $this->{$assert}([
+        $this->seeJsonApiRelation($modelRelation, $relation, $assert);
+    }
+
+    /**
+     * @param \Illuminate\Database\Eloquent\Model $modelRelation
+     * @param string                              $relation
+     * @param string                              $assert
+     *
+     * @return mixed
+     */
+    protected function seeJsonApiRelation(Model $modelRelation, string $relation, string $assert = 'seeJson')
+    {
+        return $this->{$assert}([
             'relationships' => [
                 $relation => [
                     'data' => [
