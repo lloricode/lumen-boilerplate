@@ -14,19 +14,5 @@ use Prettus\Repository\Traits\CacheableRepository;
 
 abstract class BaseRepository extends BaseRepo implements CacheableInterface
 {
-    use CacheableRepository {
-        serializeCriteria as protected serializeCriteriaOverride;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function serializeCriteria()
-    {
-        /**
-         * this will remove if pull request merge.
-         * https://github.com/andersao/l5-repository/pull/581
-         */
-        return $this->serializeCriteriaOverride() . serialize($this->presenter);
-    }
+    use CacheableRepository;
 }

@@ -10,8 +10,8 @@ namespace App\Http\Controllers\Backend\Auth\User;
 
 use App\Criterion\Eloquent\OnlyTrashedCriteria;
 use App\Http\Controllers\Controller;
-use App\Presenters\Auth\UserPresenter;
 use App\Repositories\Auth\User\UserRepository;
+use App\Transformers\Auth\UserTransformer;
 use Illuminate\Http\Request;
 
 /**
@@ -46,8 +46,8 @@ class UserDeleteController extends Controller
      */
     public function restore(Request $request)
     {
-        $this->userRepository->setPresenter(UserPresenter::class);
-        return $this->userRepository->restore($this->decodeId($request));
+        $user = $this->userRepository->restore($this->decodeId($request));
+        return $this->response->item($user, new UserTransformer, ['key' => 'users']);
     }
 
     /**
@@ -61,8 +61,8 @@ class UserDeleteController extends Controller
     public function deleted()
     {
         $this->userRepository->pushCriteria(new OnlyTrashedCriteria);
-        $this->userRepository->setPresenter(UserPresenter::class);
-        return $this->userRepository->paginate();
+        return $this->response->paginator($this->userRepository->model()::paginate(), new UserTransformer(),
+            ['key' => 'users']);
     }
 
     /**
@@ -77,6 +77,6 @@ class UserDeleteController extends Controller
     public function purge(Request $request)
     {
         $this->userRepository->forceDelete($this->decodeId($request));
-        return response('', 204);
+        return $this->response->noContent();
     }
 }

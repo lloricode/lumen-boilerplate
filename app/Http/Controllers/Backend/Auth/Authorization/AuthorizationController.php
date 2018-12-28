@@ -9,10 +9,10 @@
 namespace App\Http\Controllers\Backend\Auth\Authorization;
 
 use App\Http\Controllers\Controller;
-use App\Presenters\Auth\RolePresenter;
-use App\Presenters\Auth\UserPresenter;
 use App\Repositories\Auth\Role\RoleRepository;
 use App\Repositories\Auth\User\UserRepository;
+use App\Transformers\Auth\RoleTransformer;
+use App\Transformers\Auth\UserTransformer;
 use Illuminate\Http\Request;
 
 /**
@@ -50,8 +50,7 @@ class AuthorizationController extends Controller
 
         $this->userRepository->assignRole($userId, $this->decodeHash($request->role_id));
 
-        $this->userRepository->setPresenter(UserPresenter::class);
-        return $this->userRepository->find($userId);
+        return $this->response->item($this->userRepository->find($userId), new UserTransformer, ['key' => 'users']);
     }
 
     /**
@@ -72,9 +71,8 @@ class AuthorizationController extends Controller
 
         $this->userRepository->removeRole($userId, $this->decodeHash($request->role_id));
 
-        $this->userRepository->setPresenter(UserPresenter::class);
-        return $this->userRepository->find($userId);
-
+        $user = $this->userRepository->find($userId);
+        return $this->response->item($user, new UserTransformer, ['key' => 'users']);
     }
 
     /**
@@ -95,9 +93,7 @@ class AuthorizationController extends Controller
 
         $this->userRepository->givePermissionTo($userId, $this->decodeHash($request->permission_id));
 
-        $this->userRepository->setPresenter(UserPresenter::class);
-        return $this->userRepository->find($userId);
-
+        return $this->response->item($this->userRepository->find($userId), new UserTransformer, ['key' => 'users']);
     }
 
     /**
@@ -118,8 +114,7 @@ class AuthorizationController extends Controller
 
         $this->userRepository->revokePermissionTo($userId, $this->decodeHash($request->permission_id));
 
-        $this->userRepository->setPresenter(UserPresenter::class);
-        return $this->userRepository->find($userId);
+        return $this->response->item($this->userRepository->find($userId), new UserTransformer, ['key' => 'users']);
 
     }
 
@@ -141,8 +136,7 @@ class AuthorizationController extends Controller
 
         $this->roleRepository->givePermissionTo($roleId, $this->decodeHash($request->permission_id));
 
-        $this->roleRepository->setPresenter(RolePresenter::class);
-        return $this->roleRepository->find($roleId);
+        return $this->response->item($this->roleRepository->find($roleId), new RoleTransformer, ['key' => 'roles']);
     }
 
     /**
@@ -163,7 +157,6 @@ class AuthorizationController extends Controller
 
         $this->roleRepository->revokePermissionTo($roleId, $this->decodeHash($request->permission_id));
 
-        $this->roleRepository->setPresenter(RolePresenter::class);
-        return $this->roleRepository->find($roleId);
+        return $this->response->item($this->roleRepository->find($roleId), new RoleTransformer, ['key' => 'roles']);
     }
 }

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Backend\Auth\User;
 
 use App\Http\Controllers\Controller;
-use App\Presenters\Auth\UserPresenter;
 use App\Repositories\Auth\User\UserRepository;
+use App\Transformers\Auth\UserTransformer;
 use Illuminate\Http\Request;
 use Prettus\Repository\Criteria\RequestCriteria;
 
@@ -44,8 +44,9 @@ class UserController extends Controller
     public function index(Request $request)
     {
         $this->userRepository->pushCriteria(new RequestCriteria($request));
-        $this->userRepository->setPresenter(UserPresenter::class);
-        return $this->userRepository->paginate();
+
+        return $this->response->paginator($this->userRepository->model()::paginate(), new UserTransformer,
+            ['key' => 'users']);
     }
 
     /**
@@ -59,8 +60,8 @@ class UserController extends Controller
      */
     public function show(Request $request)
     {
-        $this->userRepository->setPresenter(UserPresenter::class);
-        return $this->userRepository->find($this->decodeId($request));
+        $user = $this->userRepository->find($this->decodeId($request));
+        return $this->response->item($user, new UserTransformer, ['key' => 'users']);
     }
 
     /**
@@ -79,8 +80,10 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $this->userRepository->setPresenter(UserPresenter::class);
-        return response($this->userRepository->create($request->all()), 201);
+//        $this->userRepository->setPresenter(UserPresenter::class);
+        return $this->response->item($this->userRepository->create($request->all()), new UserTransformer,
+            ['key' => 'users'])
+            ->statusCode(201);
     }
 
     /**
@@ -99,13 +102,14 @@ class UserController extends Controller
      */
     public function update(Request $request)
     {
-        $this->userRepository->setPresenter(UserPresenter::class);
-        return $this->userRepository->update($request->only([
+//        $this->userRepository->setPresenter(UserPresenter::class);
+        $user = $this->userRepository->update($request->only([
             'first_name',
             'last_name',
             'email',
             'password',
         ]), $this->decodeId($request));
+        return $this->response->item($user, new UserTransformer, ['key' => 'users']);
     }
 
     /**
@@ -125,6 +129,6 @@ class UserController extends Controller
         }
 
         $this->userRepository->delete($id);
-        return response('', 204);
+        return $this->response->noContent();
     }
 }

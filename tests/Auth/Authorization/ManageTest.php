@@ -45,7 +45,7 @@ class ManageTest extends BaseRole
         $user = factory(User::class)->create();
         $role = $this->createRole();
         $user->assignRole($role);
-//dd(json_decode( $this->response->getContent()));
+
         $this->showModelWithRelation('backend.users.show', $user, $role, 'roles');
 
         $this->post($this->route('backend.authorizations.revoke-role-from-user') . '?include=roles', [

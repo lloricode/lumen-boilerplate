@@ -63,10 +63,14 @@ class UserRepository extends BaseRepository
     /**
      * @param     $id
      * @param int $roleId
+     *
+     * @return mixed
      */
     public function assignRole($id, int $roleId)
     {
-        event(new RepositoryEntityUpdated($this, $this->find($id)->assignRole($roleId)));
+        $user = $this->find($id);
+        event(new RepositoryEntityUpdated($this, $user->assignRole($roleId)));
+        return $user;
     }
 
     /**

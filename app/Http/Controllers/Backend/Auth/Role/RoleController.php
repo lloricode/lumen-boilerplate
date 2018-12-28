@@ -9,8 +9,8 @@
 namespace App\Http\Controllers\Backend\Auth\Role;
 
 use App\Http\Controllers\Controller;
-use App\Presenters\Auth\RolePresenter;
 use App\Repositories\Auth\Role\RoleRepository;
+use App\Transformers\Auth\RoleTransformer;
 use Illuminate\Http\Request;
 use Prettus\Repository\Criteria\RequestCriteria;
 
@@ -50,8 +50,8 @@ class RoleController extends Controller
     public function index(Request $request)
     {
         $this->roleRepository->pushCriteria(new RequestCriteria($request));
-        $this->roleRepository->setPresenter(RolePresenter::class);
-        return $this->roleRepository->paginate();
+        return $this->response->paginator($this->roleRepository->model()::paginate(), new RoleTransformer,
+            ['key' => 'roles']);
     }
 
     /**
@@ -67,10 +67,10 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        $this->roleRepository->setPresenter(RolePresenter::class);
-        return response($this->roleRepository->create([
+        $role = $this->roleRepository->create([
             'name' => $request->name,
-        ]), 201);
+        ]);
+        return $this->response->item($role, new RoleTransformer, ['key' => 'roles'])->statusCode(201);
     }
 
     /**
@@ -84,8 +84,8 @@ class RoleController extends Controller
      */
     public function show(Request $request)
     {
-        return $this->roleRepository->setPresenter(RolePresenter::class)
-            ->find($this->decodeId($request));
+        $role = $this->roleRepository->find($this->decodeId($request));
+        return $this->response->item($role, new RoleTransformer, ['key' => 'roles']);
     }
 
     /**
@@ -104,11 +104,11 @@ class RoleController extends Controller
      */
     public function update(Request $request)
     {
-        $this->roleRepository->setPresenter(RolePresenter::class);
 
-        return $this->roleRepository->update([
+        $role = $this->roleRepository->update([
             'name' => $request->input('name'),
         ], $this->decodeId($request));
+        return $this->response->item($role, new RoleTransformer, ['key' => 'roles']);
     }
 
     /**
@@ -125,6 +125,6 @@ class RoleController extends Controller
     public function destroy(Request $request)
     {
         $this->roleRepository->delete($this->decodeId($request));
-        return response('', 204);
+        return $this->response->noContent();
     }
 }

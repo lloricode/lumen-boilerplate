@@ -11,3 +11,4 @@ coverage.xml
 coverage.clover
 /coverage
 /public/docs/*
+phpunit.txt

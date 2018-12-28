@@ -117,6 +117,18 @@ $app[Dingo\Api\Exception\Handler::class]
         throw new Symfony\Component\HttpKernel\Exception\NotFoundHttpException($exception->getMessage(), $exception);
     });
 
+$app->bind(League\Fractal\Manager::class, function ($app) {
+    $serializer = new League\Fractal\Serializer\JsonApiSerializer();
+    $fractal = new League\Fractal\Manager;
+    $fractal->setSerializer($serializer);
+    return $fractal;
+});
+
+$app->bind(Dingo\Api\Transformer\Adapter\Fractal::class, function ($app) {
+    $fractal = $app->make(League\Fractal\Manager::class);
+    return new Dingo\Api\Transformer\Adapter\Fractal($fractal);
+});
+
 if (class_exists('Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider')) {
     $app->register('Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider');
 }

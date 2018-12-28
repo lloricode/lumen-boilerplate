@@ -39,6 +39,17 @@ abstract class TestCase extends BaseTestCase
         return require __DIR__ . '/../bootstrap/app.php';
     }
 
+//    public function seeJson(array $data = null, $negate = false)
+//    {
+//        print_r([
+//            'negate'=>$negate,
+//            'currentUri' => $this->currentUri,
+//            'expected' => $data,
+//            'actual' => json_decode($this->response->getContent())
+//        ]);
+//        return parent::seeJson($data, $negate);
+//    }
+
     protected function route($name, array $parameters = []/*, $secure = null*/)
     {
         $urls = [

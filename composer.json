@@ -63,6 +63,9 @@
     ],
     "coverage-txt": [
       "./vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover"
+    ],
+    "test": [
+      "./vendor/bin/phpunit --verbose > phpunit.txt -d memory_limit=2048M"
     ]
   },
   "config": {

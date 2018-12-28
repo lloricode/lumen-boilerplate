@@ -9,8 +9,8 @@
 namespace App\Http\Controllers\Backend\Auth\Permission;
 
 use App\Http\Controllers\Controller;
-use App\Presenters\Auth\PermissionPresenter;
 use App\Repositories\Auth\Permission\PermissionRepository;
+use App\Transformers\Auth\PermissionTransformer;
 use Illuminate\Http\Request;
 use Prettus\Repository\Criteria\RequestCriteria;
 
@@ -47,8 +47,8 @@ class PermissionController extends Controller
     public function index(Request $request)
     {
         $this->permissionRepository->pushCriteria(new RequestCriteria($request));
-        $this->permissionRepository->setPresenter(PermissionPresenter::class);
-        return $this->permissionRepository->paginate();
+        return $this->response->paginator($this->permissionRepository->model()::paginate(), new PermissionTransformer,
+            ['key' => 'permissions']);
     }
 
     /**
@@ -62,8 +62,8 @@ class PermissionController extends Controller
      */
     public function show(Request $request)
     {
-        $this->permissionRepository->setPresenter(PermissionPresenter::class);
-        return $this->permissionRepository->find($this->decodeId($request));
+        $p = $this->permissionRepository->find($this->decodeId($request));
+        return $this->response->item($p, new PermissionTransformer, ['key' => 'permissions']);
     }
 
 }
