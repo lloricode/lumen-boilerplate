@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Prettus\Repository\Helpers\CacheKeys;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,5 +15,6 @@ class DatabaseSeeder extends Seeder
         $this->call('AuthSeeder');
 
         app('cache')->flush();
+        @unlink(CacheKeys::getFileKeys());
     }
 }
