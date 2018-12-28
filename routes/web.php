@@ -13,23 +13,24 @@
 
 $api = app('Dingo\Api\Routing\Router');
 
+$api->version('v1', [
+    'namespace' => 'App\Http\Controllers',
+], function ($api) {
 
-$api->version('v1', ['namespace' => 'App\Http\Controllers'], function ($api) {
-
-//    $api->get('/', function () use ($api) {
-//        return [
-//            'name' => config('app.name'),
-////            'version' => $api->version(),
-//            'branch' => 'dev-master',
-//        ];
-//    });
+    $api->get('/', function () use ($api) {
+        return [
+            'name' => config('app.name'),
+//            'version' => $api->version(),
+            'branch' => 'dev-master',
+        ];
+    });
 
     $api->group([
         'middleware' => [
+//            'api.throttle',
             'check-accept-header',
             'auth',
             'serializer:json_api',
-//            'throttle',
         ],
     ], function () use ($api) {
 
