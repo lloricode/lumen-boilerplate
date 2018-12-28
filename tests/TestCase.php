@@ -4,6 +4,7 @@ namespace Tests;
 
 use App\Models\Auth\User\User;
 use Laravel\Lumen\Testing\TestCase as BaseTestCase;
+use Laravel\Passport\Passport;
 
 abstract class TestCase extends BaseTestCase
 {
@@ -87,6 +88,7 @@ abstract class TestCase extends BaseTestCase
     {
         $headers += [
             'Accept' => 'application/json',
+            'Authorization' => 'Bearer xxxxx',
 //            'Api-Version' => 'v1',
         ];
 
@@ -102,7 +104,8 @@ abstract class TestCase extends BaseTestCase
         } else {
             $user = User::role(config("access.role_names.$roleName"))->first();
         }
-        $this->actingAs($user);
+        Passport::actingAs($user);
+//        $this->actingAs($user);
 
         return $user;
     }

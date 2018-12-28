@@ -29,7 +29,7 @@ $api->version('v1', [
         'middleware' => [
 //            'api.throttle',
             'check-accept-header',
-            'auth',
+            'api.auth',
             'serializer:json_api',
         ],
     ], function () use ($api) {
