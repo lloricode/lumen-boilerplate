@@ -28,6 +28,7 @@ $api->version('v1', ['namespace' => 'App\Http\Controllers'], function ($api) {
         'middleware' => [
             'check-accept-header',
             'auth',
+            'serializer:json_api',
 //            'throttle',
         ],
     ], function () use ($api) {
