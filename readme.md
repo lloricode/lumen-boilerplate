@@ -21,7 +21,7 @@ A template made from [Lumen 5.7.*](https://lumen.laravel.com/), authenticated wi
 
 ### Available Endpoints
 
-- to generate documentation run `php artisan api:docs`, then visit `http://lumen-dingo-boilerplate.test/docs` on browser.
+- to generate documentation run `php artisan api:docs`.
 
 ## Running the tests
 - you can view integration [here](https://travis-ci.org/lloricode/lumen-dingo-boilerplate)

@@ -65,6 +65,9 @@
     ],
     "test": [
       "./vendor/bin/phpunit --verbose > phpunit.txt -d memory_limit=2048M"
+    ],
+    "docs": [
+      "@php artisan api:docs --output-file endpoint-docs.md --ansi"
     ]
   },
   "config": {
