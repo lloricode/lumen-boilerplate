@@ -13,7 +13,7 @@ use App\Repositories\Auth\Role\RoleRepository;
 use App\Repositories\Auth\User\UserRepository;
 use App\Transformers\Auth\RoleTransformer;
 use App\Transformers\Auth\UserTransformer;
-use Illuminate\Http\Request;
+use Dingo\Api\Http\Request;
 
 /**
  * Class AuthorizationController
@@ -50,16 +50,15 @@ class AuthorizationController extends Controller
 
         $this->userRepository->assignRole($userId, $this->decodeHash($request->role_id));
 
-        return $this->response->item($this->userRepository->find($userId), new UserTransformer, ['key' => 'users']);
+        return $this->item($this->userRepository->find($userId), new UserTransformer, ['key' => 'users']);
     }
 
     /**
      * Revoke role form user.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param \Dingo\Api\Http\Request $request
      *
      * @return mixed
-     * @throws \Exception
      * @authenticated
      * @bodyParam    role_id string required Role hashed id. Example: Xyo35kNbmqvjJP9zn9aKeGL6Wz1MBwlA
      * @bodyParam    user_id string required User hashed id. Example: Xyo35kNbmqvjJP9zn9aKeGL6Wz1MBwlA
@@ -72,16 +71,15 @@ class AuthorizationController extends Controller
         $this->userRepository->removeRole($userId, $this->decodeHash($request->role_id));
 
         $user = $this->userRepository->find($userId);
-        return $this->response->item($user, new UserTransformer, ['key' => 'users']);
+        return $this->item($user, new UserTransformer, ['key' => 'users']);
     }
 
     /**
      * Assign permission to user.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param \Dingo\Api\Http\Request $request
      *
      * @return mixed
-     * @throws \Exception
      * @authenticated
      * @bodyParam    permission_id string required Permission hashed id. Example: Xyo35kNbmqvjJP9zn9aKeGL6Wz1MBwlA
      * @bodyParam    user_id string required User hashed id. Example: Xyo35kNbmqvjJP9zn9aKeGL6Wz1MBwlA
@@ -93,7 +91,7 @@ class AuthorizationController extends Controller
 
         $this->userRepository->givePermissionTo($userId, $this->decodeHash($request->permission_id));
 
-        return $this->response->item($this->userRepository->find($userId), new UserTransformer, ['key' => 'users']);
+        return $this->item($this->userRepository->find($userId), new UserTransformer, ['key' => 'users']);
     }
 
     /**
@@ -114,7 +112,7 @@ class AuthorizationController extends Controller
 
         $this->userRepository->revokePermissionTo($userId, $this->decodeHash($request->permission_id));
 
-        return $this->response->item($this->userRepository->find($userId), new UserTransformer, ['key' => 'users']);
+        return $this->item($this->userRepository->find($userId), new UserTransformer, ['key' => 'users']);
 
     }
 
@@ -136,7 +134,7 @@ class AuthorizationController extends Controller
 
         $this->roleRepository->givePermissionTo($roleId, $this->decodeHash($request->permission_id));
 
-        return $this->response->item($this->roleRepository->find($roleId), new RoleTransformer, ['key' => 'roles']);
+        return $this->item($this->roleRepository->find($roleId), new RoleTransformer, ['key' => 'roles']);
     }
 
     /**
@@ -157,6 +155,6 @@ class AuthorizationController extends Controller
 
         $this->roleRepository->revokePermissionTo($roleId, $this->decodeHash($request->permission_id));
 
-        return $this->response->item($this->roleRepository->find($roleId), new RoleTransformer, ['key' => 'roles']);
+        return $this->item($this->roleRepository->find($roleId), new RoleTransformer, ['key' => 'roles']);
     }
 }

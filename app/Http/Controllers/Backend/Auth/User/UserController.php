@@ -5,22 +5,27 @@ namespace App\Http\Controllers\Backend\Auth\User;
 use App\Http\Controllers\Controller;
 use App\Repositories\Auth\User\UserRepository;
 use App\Transformers\Auth\UserTransformer;
-use Illuminate\Http\Request;
+use Dingo\Api\Http\Request;
 use Prettus\Repository\Criteria\RequestCriteria;
 
 /**
- * Class UserController
+ * User resource representation.
  *
  * @package App\Http\Controllers\Backend\Auth\User
- * @group   User Management
+ * @Resource("User Management", uri="/auth/users")
  */
 class UserController extends Controller
 {
     protected $userRepository;
 
+    /**
+     * UserController constructor.
+     *
+     * @param \App\Repositories\Auth\User\UserRepository $userRepository
+     */
     public function __construct(UserRepository $userRepository)
     {
-        $permissions = app($userRepository->model())::PERMISSIONS;
+        $permissions = $userRepository->resolveModel()::PERMISSIONS;
 
         $this->middleware('permission:' . $permissions['index'], ['only' => 'index']);
         $this->middleware('permission:' . $permissions['create'], ['only' => 'store']);
@@ -32,73 +37,72 @@ class UserController extends Controller
     }
 
     /**
-     * Get all users.
+     * Get all users
      *
-     * @param \Illuminate\Http\Request $request
+     * @param \Dingo\Api\Http\Request $request
      *
-     * @return mixed
+     * @return \Dingo\Api\Http\Response
      * @throws \Prettus\Repository\Exceptions\RepositoryException
-     * @authenticated
-     * @responseFile responses/auth/users.get.json
+     * @Get("/")
+     * @Versions({"v1"})
+     * @Request({})
      */
     public function index(Request $request)
     {
         $this->userRepository->pushCriteria(new RequestCriteria($request));
-
-        return $this->response->paginator($this->userRepository->model()::paginate(), new UserTransformer,
-            ['key' => 'users']);
+        return $this->paginator(
+            $this->userRepository->resolveModel()::paginate(),
+            new UserTransformer,
+            ['key' => 'users']
+        );
     }
 
     /**
-     * Show user.
+     * Show user
      *
-     * @param \Illuminate\Http\Request $request
+     * @param \Dingo\Api\Http\Request $request
      *
-     * @return mixed
-     * @authenticated
-     * @responseFile responses/auth/user.get.json
+     * @return \Dingo\Api\Http\Response
      */
     public function show(Request $request)
     {
         $user = $this->userRepository->find($this->decodeId($request));
-        return $this->response->item($user, new UserTransformer, ['key' => 'users']);
+        return $this->item($user, new UserTransformer, ['key' => 'users']);
     }
 
     /**
-     * Store user.
+     * Store user
      *
-     * @param \Illuminate\Http\Request $request
+     * @param \Dingo\Api\Http\Request $request
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Dingo\Api\Http\Response
      * @throws \Prettus\Validator\Exceptions\ValidatorException
-     * @authenticated
-     * @bodyParam    first_name string required First name. Example: Lloric
-     * @bodyParam    last_name string required Last name. Example: Garcia
-     * @bodyParam    email string required A valid email and unique. Example: lloricode@gmail.com
-     * @bodyParam    password string required Password Example: secret
-     * @responseFile 201 responses/auth/user.get.json
+     * @Post("/")
+     * @Versions({"v1"})
+     * @Request({
+     *     "first_name": "Lloric",
+     *     "last_name": "Garcia",
+     *     "email": "lloricode@gmail.com",
+     *     "password": "secret"
+     * }, headers={"Content-Type": "application/x-www-form-urlencoded"})
      */
     public function store(Request $request)
     {
-//        $this->userRepository->setPresenter(UserPresenter::class);
-        return $this->response->item($this->userRepository->create($request->all()), new UserTransformer,
-            ['key' => 'users'])
+        return $this->item(
+            $this->userRepository->create($request->all()),
+            new UserTransformer,
+            ['key' => 'users']
+        )
             ->statusCode(201);
     }
 
     /**
      * Update user.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param \Dingo\Api\Http\Request $request
      *
-     * @return mixed
+     * @return \Dingo\Api\Http\Response
      * @throws \Prettus\Validator\Exceptions\ValidatorException
-     * @authenticated
-     * @bodyParam    first_name string First name. Example: Lloric
-     * @bodyParam    last_name string Last name. Example: Garcia
-     * @bodyParam    email string A valid email and unique. Example: lloricode@gmail.com
-     * @bodyParam    password string Password Example: secret
-     * @responseFile responses/auth/user.get.json
      */
     public function update(Request $request)
     {
@@ -109,17 +113,15 @@ class UserController extends Controller
             'email',
             'password',
         ]), $this->decodeId($request));
-        return $this->response->item($user, new UserTransformer, ['key' => 'users']);
+        return $this->item($user, new UserTransformer, ['key' => 'users']);
     }
 
     /**
      * Destroy user.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param \Dingo\Api\Http\Request $request
      *
-     * @return \Illuminate\Http\JsonResponse
-     * @authenticated
-     * @responseFile 204 responses/no-content.get.json
+     * @return \Dingo\Api\Http\Response
      */
     public function destroy(Request $request)
     {
@@ -129,6 +131,6 @@ class UserController extends Controller
         }
 
         $this->userRepository->delete($id);
-        return $this->response->noContent();
+        return $this->noContent();
     }
 }

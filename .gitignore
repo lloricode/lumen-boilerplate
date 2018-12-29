@@ -10,5 +10,4 @@ _ide_helper_models.php
 coverage.xml
 coverage.clover
 /coverage
-/public/docs/*
 phpunit.txt

@@ -17,7 +17,7 @@ class BasicResourceSuccessTest extends TestCase
     /**
      * @test
      */
-    public function createUser()
+    public function storeUser()
     {
         $this->loggedInAs();
 

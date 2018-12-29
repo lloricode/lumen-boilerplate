@@ -23,12 +23,9 @@ class UserAccessController extends Controller
      * Get current authenticated user.
      *
      * @return mixed
-     * @throws \Exception
-     * @authenticated
-     * @responseFile responses/auth/user.get.json
      */
     public function profile()
     {
-        return $this->item(app('auth')->user(), new UserTransformer, ['key' => 'users']);
+        return $this->item($this->user(), new UserTransformer, ['key' => 'users']);
     }
 }

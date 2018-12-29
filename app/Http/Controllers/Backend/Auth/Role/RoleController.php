@@ -11,7 +11,7 @@ namespace App\Http\Controllers\Backend\Auth\Role;
 use App\Http\Controllers\Controller;
 use App\Repositories\Auth\Role\RoleRepository;
 use App\Transformers\Auth\RoleTransformer;
-use Illuminate\Http\Request;
+use Dingo\Api\Http\Request;
 use Prettus\Repository\Criteria\RequestCriteria;
 
 /**
@@ -26,7 +26,7 @@ class RoleController extends Controller
 
     public function __construct(RoleRepository $roleRepository)
     {
-        $permissions = app($roleRepository->model())::PERMISSIONS;
+        $permissions = $roleRepository->resolveModel()::PERMISSIONS;
 
         $this->middleware('permission:' . $permissions['index'], ['only' => 'index']);
         $this->middleware('permission:' . $permissions['create'], ['only' => 'store']);
@@ -50,7 +50,7 @@ class RoleController extends Controller
     public function index(Request $request)
     {
         $this->roleRepository->pushCriteria(new RequestCriteria($request));
-        return $this->response->paginator($this->roleRepository->model()::paginate(), new RoleTransformer,
+        return $this->paginator($this->roleRepository->resolveModel()::paginate(), new RoleTransformer,
             ['key' => 'roles']);
     }
 
@@ -70,7 +70,7 @@ class RoleController extends Controller
         $role = $this->roleRepository->create([
             'name' => $request->name,
         ]);
-        return $this->response->item($role, new RoleTransformer, ['key' => 'roles'])->statusCode(201);
+        return $this->item($role, new RoleTransformer, ['key' => 'roles'])->statusCode(201);
     }
 
     /**
@@ -85,7 +85,7 @@ class RoleController extends Controller
     public function show(Request $request)
     {
         $role = $this->roleRepository->find($this->decodeId($request));
-        return $this->response->item($role, new RoleTransformer, ['key' => 'roles']);
+        return $this->item($role, new RoleTransformer, ['key' => 'roles']);
     }
 
     /**
@@ -108,7 +108,7 @@ class RoleController extends Controller
         $role = $this->roleRepository->update([
             'name' => $request->input('name'),
         ], $this->decodeId($request));
-        return $this->response->item($role, new RoleTransformer, ['key' => 'roles']);
+        return $this->item($role, new RoleTransformer, ['key' => 'roles']);
     }
 
     /**
@@ -125,6 +125,6 @@ class RoleController extends Controller
     public function destroy(Request $request)
     {
         $this->roleRepository->delete($this->decodeId($request));
-        return $this->response->noContent();
+        return $this->noContent();
     }
 }

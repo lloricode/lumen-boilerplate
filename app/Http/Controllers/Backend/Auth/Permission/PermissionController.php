@@ -11,7 +11,7 @@ namespace App\Http\Controllers\Backend\Auth\Permission;
 use App\Http\Controllers\Controller;
 use App\Repositories\Auth\Permission\PermissionRepository;
 use App\Transformers\Auth\PermissionTransformer;
-use Illuminate\Http\Request;
+use Dingo\Api\Http\Request;
 use Prettus\Repository\Criteria\RequestCriteria;
 
 /**
@@ -26,7 +26,7 @@ class PermissionController extends Controller
 
     public function __construct(PermissionRepository $permissionRepository)
     {
-        $permissions = app($permissionRepository->model())::PERMISSIONS;
+        $permissions = $permissionRepository->resolveModel()::PERMISSIONS;
 
         $this->middleware('permission:' . $permissions['index'], ['only' => 'index']);
         $this->middleware('permission:' . $permissions['show'], ['only' => 'show']);
@@ -47,7 +47,7 @@ class PermissionController extends Controller
     public function index(Request $request)
     {
         $this->permissionRepository->pushCriteria(new RequestCriteria($request));
-        return $this->response->paginator($this->permissionRepository->model()::paginate(), new PermissionTransformer,
+        return $this->paginator($this->permissionRepository->resolveModel()::paginate(), new PermissionTransformer,
             ['key' => 'permissions']);
     }
 
@@ -63,7 +63,7 @@ class PermissionController extends Controller
     public function show(Request $request)
     {
         $p = $this->permissionRepository->find($this->decodeId($request));
-        return $this->response->item($p, new PermissionTransformer, ['key' => 'permissions']);
+        return $this->item($p, new PermissionTransformer, ['key' => 'permissions']);
     }
 
 }

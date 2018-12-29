@@ -121,10 +121,7 @@ $app[Dingo\Api\Exception\Handler::class]
 if (class_exists('Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider')) {
     $app->register('Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider');
 }
-if (class_exists('Mpociot\ApiDoc\ApiDocGeneratorServiceProvider')) {
-    $app->configure('apidoc');
-    $app->register('Mpociot\ApiDoc\ApiDocGeneratorServiceProvider');
-}
+
 /*
 |--------------------------------------------------------------------------
 | Load The Application Routes

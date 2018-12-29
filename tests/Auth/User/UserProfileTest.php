@@ -25,8 +25,7 @@ class UserProfileTest extends TestCase
     public function getProfile($roleName, $status)
     {
         if (!empty($roleName)) {
-            $this->loggedInAs($roleName);
-            $user = collect(app('auth')->user())->only([
+            $userData = collect($this->loggedInAs($roleName))->only([
                 'first_name',
                 'last_name',
                 'email',
@@ -35,7 +34,7 @@ class UserProfileTest extends TestCase
         $this->get($this->route('backend.users.profile'), $this->addHeaders());
 
         if (!empty($roleName)) {
-            $this->seeJson($user);
+            $this->seeJson($userData);
         }
         $this->assertResponseStatus($status);
     }

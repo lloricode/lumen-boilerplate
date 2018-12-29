@@ -24,7 +24,6 @@
     "fzaninotto/faker": "~1.4",
     "league/flysystem": "^1.0",
     "mockery/mockery": "~1.0",
-    "mpociot/laravel-apidoc-generator": "^3.2",
     "phpunit/phpunit": "~7.0"
   },
   "autoload": {
@@ -47,8 +46,7 @@
     ],
     "fresh": [
       "@php artisan migrate:fresh --seed --ansi",
-      "@php artisan passport:install --force --ansi",
-      "@php artisan apidoc:generate --ansi"
+      "@php artisan passport:install --force --ansi"
     ],
     "clear-all": [
       "@php artisan cache:clear --ansi",

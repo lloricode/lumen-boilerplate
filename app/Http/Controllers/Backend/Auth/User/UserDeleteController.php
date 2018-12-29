@@ -12,7 +12,7 @@ use App\Criterion\Eloquent\OnlyTrashedCriteria;
 use App\Http\Controllers\Controller;
 use App\Repositories\Auth\User\UserRepository;
 use App\Transformers\Auth\UserTransformer;
-use Illuminate\Http\Request;
+use Dingo\Api\Http\Request;
 
 /**
  * Class UserDeleteController
@@ -26,7 +26,7 @@ class UserDeleteController extends Controller
 
     public function __construct(UserRepository $userRepository)
     {
-        $permissions = app($userRepository->model())::PERMISSIONS;
+        $permissions = $userRepository->resolveModel()::PERMISSIONS;
 
         $this->middleware('permission:' . $permissions['deleted list'], ['only' => 'deleted']);
         $this->middleware('permission:' . $permissions['restore'], ['only' => 'restore']);
@@ -47,7 +47,7 @@ class UserDeleteController extends Controller
     public function restore(Request $request)
     {
         $user = $this->userRepository->restore($this->decodeId($request));
-        return $this->response->item($user, new UserTransformer, ['key' => 'users']);
+        return $this->item($user, new UserTransformer, ['key' => 'users']);
     }
 
     /**
@@ -61,7 +61,7 @@ class UserDeleteController extends Controller
     public function deleted()
     {
         $this->userRepository->pushCriteria(new OnlyTrashedCriteria);
-        return $this->response->paginator($this->userRepository->model()::paginate(), new UserTransformer(),
+        return $this->paginator($this->userRepository->resolveModel()::paginate(), new UserTransformer(),
             ['key' => 'users']);
     }
 
@@ -77,6 +77,6 @@ class UserDeleteController extends Controller
     public function purge(Request $request)
     {
         $this->userRepository->forceDelete($this->decodeId($request));
-        return $this->response->noContent();
+        return $this->noContent();
     }
 }

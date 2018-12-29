@@ -33,12 +33,12 @@ class ManageTest extends BaseRole
             'role_id' => $role->getHashedId(),
             'user_id' => $user->getHashedId(),
         ], $this->addHeaders());
+        $this->assertResponseOk();
 
         // temporary
         // https://github.com/dingo/api/issues/1609
         $this->seeJsonApiRelation($role, 'roles');
 
-        $this->assertResponseOk();
 
         // TODO: check data after
 //        $this->showModelWithRelation('backend.users.show', $user, $role, 'roles');
@@ -53,15 +53,16 @@ class ManageTest extends BaseRole
         $role = $this->createRole();
         $user->assignRole($role);
 
-        $this->showModelWithRelation('backend.users.show', $user, $role, 'roles');
+//        $this->showModelWithRelation('backend.users.show', $user, $role, 'roles');
 
         $this->post($this->route('backend.authorizations.revoke-role-from-user') . '?include=roles', [
             'role_id' => $role->getHashedId(),
             'user_id' => $user->getHashedId(),
         ], $this->addHeaders());
-
         $this->assertResponseOk();
-        $this->showModelWithRelation('backend.users.show', $user, $role, 'roles', 'dontSeeJson');
+
+        $this->seeJsonApiRelation($role, 'roles', 'dontSeeJson');
+//        $this->showModelWithRelation('backend.users.show', $user, $role, 'roles', 'dontSeeJson');
     }
 
     /**
@@ -79,12 +80,12 @@ class ManageTest extends BaseRole
             'permission_id' => $permission->getHashedId(),
             'user_id' => $user->getHashedId(),
         ], $this->addHeaders());
+        $this->assertResponseOk();
 
         // temporary
         // https://github.com/dingo/api/issues/1609
         $this->seeJsonApiRelation($permission, 'permissions');
 
-        $this->assertResponseOk();
 
         // TODO: check data after
 //        $this->showModelWithRelation('backend.users.show', $user, $permission, 'permissions');
@@ -100,15 +101,16 @@ class ManageTest extends BaseRole
         $permission = $this->createPermission();
         $user->givePermissionTo($permission);
 
-        $this->showModelWithRelation('backend.users.show', $user, $permission, 'permissions');
+//        $this->showModelWithRelation('backend.users.show', $user, $permission, 'permissions');
 
         $this->post($this->route('backend.authorizations.revoke-permission-from-user') . '?include=permissions', [
             'permission_id' => $permission->getHashedId(),
             'user_id' => $user->getHashedId(),
         ], $this->addHeaders());
-
         $this->assertResponseOk();
-        $this->showModelWithRelation('backend.users.show', $user, $permission, 'permissions', 'dontSeeJson');
+
+        $this->seeJsonApiRelation($permission, 'permissions', 'dontSeeJson');
+//        $this->showModelWithRelation('backend.users.show', $user, $permission, 'permissions', 'dontSeeJson');
     }
 
     /**
@@ -126,12 +128,11 @@ class ManageTest extends BaseRole
             'permission_id' => $permission->getHashedId(),
             'role_id' => $role->getHashedId(),
         ], $this->addHeaders());
+        $this->assertResponseOk();
 
         // temporary
         // https://github.com/dingo/api/issues/1609
         $this->seeJsonApiRelation($permission, 'permissions');
-
-        $this->assertResponseOk();
 
         // TODO: check data after
 //        $this->showModelWithRelation('backend.roles.show', $role, $permission, 'permissions');
@@ -146,14 +147,16 @@ class ManageTest extends BaseRole
         $permission = $this->createPermission();
         $role->givePermissionTo($permission);
 
-        $this->showModelWithRelation('backend.roles.show', $role, $permission, 'permissions');
+//        $this->showModelWithRelation('backend.roles.show', $role, $permission, 'permissions');
 
         $this->post($this->route('backend.authorizations.revoke-permission-from-role') . '?include=permissions', [
             'permission_id' => $permission->getHashedId(),
             'role_id' => $role->getHashedId(),
         ], $this->addHeaders());
-
         $this->assertResponseOk();
-        $this->showModelWithRelation('backend.roles.show', $role, $permission, 'permissions', 'dontSeeJson');
+
+        $this->seeJsonApiRelation($permission, 'permissions', 'dontSeeJson');
+
+//        $this->showModelWithRelation('backend.roles.show', $role, $permission, 'permissions', 'dontSeeJson');
     }
 }
