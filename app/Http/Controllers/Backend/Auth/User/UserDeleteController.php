@@ -16,15 +16,19 @@ use Dingo\Api\Http\Request;
 use Prettus\Repository\Criteria\RequestCriteria;
 
 /**
- * Class UserDeleteController
+ * User deletes representation.
  *
- * @package App\Http\Controllers\Backend\Auth\User
- * @group   User Management
+ * @Resource("User Deletes", uri="/auth/users")
  */
 class UserDeleteController extends Controller
 {
     protected $userRepository;
 
+    /**
+     * UserDeleteController constructor.
+     *
+     * @param \App\Repositories\Auth\User\UserRepository $userRepository
+     */
     public function __construct(UserRepository $userRepository)
     {
         $permissions = $userRepository->resolveModel()::PERMISSIONS;
@@ -39,11 +43,20 @@ class UserDeleteController extends Controller
     /**
      * Restore user.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param \Dingo\Api\Http\Request $request
      *
      * @return mixed
-     * @authenticated
-     * @responseFile responses/auth/user.get.json
+     * @Put("/{id}/restore")
+     * @Versions({"v1"})
+     * @Response(200, body={"data":{"type":"users","id":"BX0gNpxGL2ymj8zgD9lqnrVZwQaMDkOY","attributes":
+     *     {"first_name":"System","last_name":"Root","email":"system@system.com",
+     *     "created_at":"29/12/201810:46:30AM","created_at_readable":"1hourago",
+     *     "created_at_tz":"29/12/201802:46:30AM","created_at_readable_tz":"1hourago",
+     *     "updated_at":"29/12/201810:46:30AM","updated_at_readable":"1hourago",
+     *     "updated_at_tz":"29/12/201802:46:30AM","updated_at_readable_tz":"1hourago"}}})
+     * @Parameters({
+     *      @Parameter("include", type="string", required=false, description="Include relationship", default=null)
+     * })
      */
     public function restore(Request $request)
     {
@@ -54,10 +67,28 @@ class UserDeleteController extends Controller
     /**
      * Get all deleted users.
      *
+     * @param \Dingo\Api\Http\Request $request
+     *
      * @return mixed
      * @throws \Prettus\Repository\Exceptions\RepositoryException
-     * @authenticated
-     * @responseFile responses/auth/users-deleted.get.json
+     * @Get("/deleted")
+     * @Versions({"v1"})
+     * @Response(200, body={"data":{{"type":"users","id":"X4WYnoOAkjKw0QzZoQ9Dx3RZyvmMl1Gr","attributes":
+     *     {"first_name":"Bettie","last_name":"Tremblay","email":"ferry.lelah@hotmail.com",
+     *     "created_at":"29/12/201810:46:35AM","created_at_readable":"33minutesago",
+     *     "created_at_tz":"29/12/201802:46:35AM","created_at_readable_tz":"33minutesago",
+     *     "updated_at":"29/12/201810:46:35AM","updated_at_readable":"33minutesago",
+     *     "updated_at_tz":"29/12/201802:46:35AM","updated_at_readable_tz":"33minutesago"}}},
+     *     "meta":{"pagination":{"total":53,"count":8,"per_page":15,"current_page":4,"total_pages":4}},
+     *     "links":{"self":"http://lumen-dingo-boilerplate.test/auth/users?page=4",
+     *     "first":"http://lumen-dingo-boilerplate.test/auth/users?page=1",
+     *     "prev":"http://lumen-dingo-boilerplate.test/auth/users?page=3",
+     *     "last":"http://lumen-dingo-boilerplate.test/auth/users?page=4"}})
+     * @Parameters({
+     *      @Parameter("page", type="integer", required=false, description="Pagination page", default=1),
+     *      @Parameter("search", type="string", required=false, description="Search item", default=null),
+     *      @Parameter("include", type="string", required=false, description="Include relationship", default=null)
+     * })
      */
     public function deleted(Request $request)
     {
@@ -70,11 +101,12 @@ class UserDeleteController extends Controller
     /**
      * Purge user.
      *
-     * @param Request $request
+     * @param \Dingo\Api\Http\Request $request
      *
-     * @return \Illuminate\Http\JsonResponse
-     * @authenticated
-     * @responseFile 204 responses/no-content.get.json
+     * @return mixed
+     * @Delete("/{id}/purge")
+     * @Versions({"v1"})
+     * @Response(204)
      */
     public function purge(Request $request)
     {

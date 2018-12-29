@@ -11,7 +11,6 @@ use Prettus\Repository\Criteria\RequestCriteria;
 /**
  * User resource representation.
  *
- * @package App\Http\Controllers\Backend\Auth\User
  * @Resource("User Management", uri="/auth/users")
  */
 class UserController extends Controller
@@ -37,7 +36,7 @@ class UserController extends Controller
     }
 
     /**
-     * Get all users
+     * Get all users.
      *
      * @param \Dingo\Api\Http\Request $request
      *
@@ -69,7 +68,7 @@ class UserController extends Controller
     }
 
     /**
-     * Show user
+     * Show user.
      *
      * @param \Dingo\Api\Http\Request $request
      *
@@ -82,6 +81,9 @@ class UserController extends Controller
      *     "created_at_tz":"29/12/201802:46:30AM","created_at_readable_tz":"1hourago",
      *     "updated_at":"29/12/201810:46:30AM","updated_at_readable":"1hourago",
      *     "updated_at_tz":"29/12/201802:46:30AM","updated_at_readable_tz":"1hourago"}}})
+     * @Parameters({
+     *      @Parameter("include", type="string", required=false, description="Include relationship", default=null)
+     * })
      */
     public function show(Request $request)
     {
@@ -90,7 +92,7 @@ class UserController extends Controller
     }
 
     /**
-     * Store user
+     * Store user.
      *
      * @param \Dingo\Api\Http\Request $request
      *
@@ -123,7 +125,7 @@ class UserController extends Controller
     }
 
     /**
-     * Update user
+     * Update user.
      *
      * @param \Dingo\Api\Http\Request $request
      *
@@ -143,6 +145,9 @@ class UserController extends Controller
      *     "created_at_tz":"29/12/201802:46:30AM","created_at_readable_tz":"1hourago",
      *     "updated_at":"29/12/201810:46:30AM","updated_at_readable":"1hourago",
      *     "updated_at_tz":"29/12/201802:46:30AM","updated_at_readable_tz":"1hourago"}}})
+     * @Parameters({
+     *      @Parameter("include", type="string", required=false, description="Include relationship", default=null)
+     * })
      */
     public function update(Request $request)
     {
@@ -160,7 +165,10 @@ class UserController extends Controller
      *
      * @param \Dingo\Api\Http\Request $request
      *
-     * @return \Dingo\Api\Http\Response
+     * @return mixed
+     * @Delete("/{id}")
+     * @Versions({"v1"})
+     * @Response(204,)
      */
     public function destroy(Request $request)
     {

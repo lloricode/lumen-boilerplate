@@ -12,10 +12,9 @@ use App\Http\Controllers\Controller;
 use App\Transformers\Auth\UserTransformer;
 
 /**
- * Class UserAccessController
+ * User access representation.
  *
- * @package App\Http\Controllers\Backend\Auth\User
- * @group   User Management
+ * @Resource("User Access", uri="/auth")
  */
 class UserAccessController extends Controller
 {
@@ -23,6 +22,17 @@ class UserAccessController extends Controller
      * Get current authenticated user.
      *
      * @return mixed
+     * @Get("/profile")
+     * @Versions({"v1"})
+     * @Response(200, body={"data":{"type":"users","id":"BX0gNpxGL2ymj8zgD9lqnrVZwQaMDkOY","attributes":
+     *     {"first_name":"System","last_name":"Root","email":"system@system.com",
+     *     "created_at":"29/12/201810:46:30AM","created_at_readable":"1hourago",
+     *     "created_at_tz":"29/12/201802:46:30AM","created_at_readable_tz":"1hourago",
+     *     "updated_at":"29/12/201810:46:30AM","updated_at_readable":"1hourago",
+     *     "updated_at_tz":"29/12/201802:46:30AM","updated_at_readable_tz":"1hourago"}}})
+     * @Parameters({
+     *      @Parameter("include", type="string", required=false, description="Include relationship", default=null)
+     * })
      */
     public function profile()
     {
