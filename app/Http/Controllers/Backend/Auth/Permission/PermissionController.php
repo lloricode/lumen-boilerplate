@@ -47,7 +47,7 @@ class PermissionController extends Controller
     public function index(Request $request)
     {
         $this->permissionRepository->pushCriteria(new RequestCriteria($request));
-        return $this->paginator($this->permissionRepository->resolveModel()::paginate(), new PermissionTransformer,
+        return $this->paginator($this->permissionRepository->paginate(), new PermissionTransformer,
             ['key' => 'permissions']);
     }
 

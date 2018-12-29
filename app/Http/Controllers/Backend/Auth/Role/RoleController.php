@@ -50,7 +50,7 @@ class RoleController extends Controller
     public function index(Request $request)
     {
         $this->roleRepository->pushCriteria(new RequestCriteria($request));
-        return $this->paginator($this->roleRepository->resolveModel()::paginate(), new RoleTransformer,
+        return $this->paginator($this->roleRepository->paginate(), new RoleTransformer,
             ['key' => 'roles']);
     }
 

@@ -47,7 +47,7 @@ class UserTransformer extends BaseTransformer
         ];
 
         $response = $this->filterData($response, [
-            'real_id' => $user->id,
+
         ]);
 
         return $this->addTimesHumanReadable($user, $response);

@@ -13,6 +13,7 @@ use App\Http\Controllers\Controller;
 use App\Repositories\Auth\User\UserRepository;
 use App\Transformers\Auth\UserTransformer;
 use Dingo\Api\Http\Request;
+use Prettus\Repository\Criteria\RequestCriteria;
 
 /**
  * Class UserDeleteController
@@ -58,10 +59,11 @@ class UserDeleteController extends Controller
      * @authenticated
      * @responseFile responses/auth/users-deleted.get.json
      */
-    public function deleted()
+    public function deleted(Request $request)
     {
         $this->userRepository->pushCriteria(new OnlyTrashedCriteria);
-        return $this->paginator($this->userRepository->resolveModel()::paginate(), new UserTransformer(),
+        $this->userRepository->pushCriteria(new RequestCriteria($request));
+        return $this->paginator($this->userRepository->paginate(), new UserTransformer(),
             ['key' => 'users']);
     }
 
