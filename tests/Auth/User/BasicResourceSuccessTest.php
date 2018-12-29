@@ -48,7 +48,7 @@ class BasicResourceSuccessTest extends TestCase
         unset($data['password']);
 
         $this->seeInDatabase((new User)->getTable(), array_merge($data, ['id' => $user->id]));
-        $this->seeJson(array_merge($data, ['real_id' => $user->id]));
+        $this->seeJson($data);
     }
 
     /**
