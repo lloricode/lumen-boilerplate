@@ -64,7 +64,7 @@ class UserController extends Controller
     public function index(Request $request)
     {
         $this->userRepository->pushCriteria(new RequestCriteria($request));
-        return $this->paginator($this->userRepository->paginate(), new UserTransformer, ['key' => 'users']);
+        return $this->response->paginator($this->userRepository->paginate(), new UserTransformer, ['key' => 'users']);
     }
 
     /**
@@ -88,7 +88,7 @@ class UserController extends Controller
     public function show(Request $request)
     {
         $user = $this->userRepository->find($this->decodeId($request));
-        return $this->item($user, new UserTransformer, ['key' => 'users']);
+        return $this->response->item($user, new UserTransformer, ['key' => 'users']);
     }
 
     /**
@@ -115,7 +115,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        return $this->item($this->userRepository->create($request->only([
+        return $this->response->item($this->userRepository->create($request->only([
             'first_name',
             'last_name',
             'email',
@@ -157,7 +157,7 @@ class UserController extends Controller
             'email',
             'password',
         ]), $this->decodeId($request));
-        return $this->item($user, new UserTransformer, ['key' => 'users']);
+        return $this->response->item($user, new UserTransformer, ['key' => 'users']);
     }
 
     /**
@@ -174,10 +174,10 @@ class UserController extends Controller
     {
         $id = $this->decodeId($request);
         if (app('auth')->id() == $id) {
-            $this->errorForbidden('You cannot delete your self.');
+            $this->response->errorForbidden('You cannot delete your self.');
         }
 
         $this->userRepository->delete($id);
-        return $this->noContent();
+        return $this->response->noContent();
     }
 }

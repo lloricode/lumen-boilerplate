@@ -36,6 +36,6 @@ class UserAccessController extends Controller
      */
     public function profile()
     {
-        return $this->item($this->user(), new UserTransformer, ['key' => 'users']);
+        return $this->response->item($this->user(), new UserTransformer, ['key' => 'users']);
     }
 }

@@ -61,7 +61,7 @@ class UserDeleteController extends Controller
     public function restore(Request $request)
     {
         $user = $this->userRepository->restore($this->decodeId($request));
-        return $this->item($user, new UserTransformer, ['key' => 'users']);
+        return $this->response->item($user, new UserTransformer, ['key' => 'users']);
     }
 
     /**
@@ -94,7 +94,7 @@ class UserDeleteController extends Controller
     {
         $this->userRepository->pushCriteria(new OnlyTrashedCriteria);
         $this->userRepository->pushCriteria(new RequestCriteria($request));
-        return $this->paginator($this->userRepository->paginate(), new UserTransformer(),
+        return $this->response->paginator($this->userRepository->paginate(), new UserTransformer(),
             ['key' => 'users']);
     }
 
@@ -111,6 +111,6 @@ class UserDeleteController extends Controller
     public function purge(Request $request)
     {
         $this->userRepository->forceDelete($this->decodeId($request));
-        return $this->noContent();
+        return $this->response->noContent();
     }
 }
