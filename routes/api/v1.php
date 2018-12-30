@@ -12,7 +12,7 @@
 */
 
 $api->version('v1', [
-    'namespace' => 'App\Http\Controllers',
+    'namespace' => 'App\Http\Controllers\V1',
 ], function ($api) {
 
     $api->get('/', function () {

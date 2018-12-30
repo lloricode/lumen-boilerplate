@@ -6,7 +6,7 @@
  * Time: 11:25 AM
  */
 
-namespace App\Http\Controllers\Backend\Auth\Permission;
+namespace App\Http\Controllers\V1\Backend\Auth\Permission;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\Auth\Permission\PermissionRepository;

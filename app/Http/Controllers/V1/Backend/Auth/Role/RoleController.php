@@ -6,7 +6,7 @@
  * Time: 11:25 AM
  */
 
-namespace App\Http\Controllers\Backend\Auth\Role;
+namespace App\Http\Controllers\V1\Backend\Auth\Role;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\Auth\Role\RoleRepository;

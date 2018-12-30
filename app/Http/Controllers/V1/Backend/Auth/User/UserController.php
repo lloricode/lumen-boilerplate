@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend\Auth\User;
+namespace App\Http\Controllers\V1\Backend\Auth\User;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\Auth\User\UserRepository;

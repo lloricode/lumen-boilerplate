@@ -6,7 +6,7 @@
  * Time: 4:08 PM
  */
 
-namespace App\Http\Controllers\Backend\Auth\User;
+namespace App\Http\Controllers\V1\Backend\Auth\User;
 
 use App\Criterion\Eloquent\OnlyTrashedCriteria;
 use App\Http\Controllers\Controller;
