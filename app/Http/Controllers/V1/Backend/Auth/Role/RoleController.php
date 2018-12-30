@@ -65,17 +65,6 @@ class RoleController extends Controller
     }
 
     /**
-     *
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return \Illuminate\Http\JsonResponse
-     * @throws \Prettus\Validator\Exceptions\ValidatorException
-     * @authenticated
-     * @bodyParam    name string required Role name. Example: test role name
-     * @responseFile 201 responses/auth/role.get.json
-     */
-
-    /**
      * Store role.
      *
      * @param \Dingo\Api\Http\Request $request
