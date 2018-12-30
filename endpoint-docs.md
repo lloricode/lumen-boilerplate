@@ -486,3 +486,236 @@ Permission resource representation.
                     }
                 }
             }
+
+# Authorization Management [/auth/authorizations]
+Authorization resource representation.
+
+## Assign role to user. [POST /auth/authorizations/assign-role-to-user]
+
+
++ Parameters
+    + include: (string, optional) - Include relationship
+
++ Request (application/json)
+    + Headers
+
+            Content-Type: application/x-www-form-urlencoded
+    + Body
+
+            {
+                "role_id": "Xyo35kNbmqvjJP9zn9aKeGL6Wz1MBwlA",
+                "user_id": "EK5BqP62N14zargZP97exZAMYpmQ0jGw"
+            }
+
++ Response 200 (application/json)
+    + Body
+
+            {
+                "data": {
+                    "type": "users",
+                    "id": "BX0gNpxGL2ymj8zgD9lqnrVZwQaMDkOY",
+                    "attributes": {
+                        "first_name": "System",
+                        "last_name": "Root",
+                        "email": "system@system.com",
+                        "created_at": "29/12/201810:46:30AM",
+                        "created_at_readable": "1hourago",
+                        "created_at_tz": "29/12/201802:46:30AM",
+                        "created_at_readable_tz": "1hourago",
+                        "updated_at": "29/12/201810:46:30AM",
+                        "updated_at_readable": "1hourago",
+                        "updated_at_tz": "29/12/201802:46:30AM",
+                        "updated_at_readable_tz": "1hourago"
+                    }
+                }
+            }
+
+## Revoke role form user. [POST /auth/authorizations/revoke-role-from-user]
+
+
++ Parameters
+    + include: (string, optional) - Include relationship
+
++ Request (application/json)
+    + Headers
+
+            Content-Type: application/x-www-form-urlencoded
+    + Body
+
+            {
+                "role_id": "Xyo35kNbmqvjJP9zn9aKeGL6Wz1MBwlA",
+                "user_id": "EK5BqP62N14zargZP97exZAMYpmQ0jGw"
+            }
+
++ Response 200 (application/json)
+    + Body
+
+            {
+                "data": {
+                    "type": "users",
+                    "id": "BX0gNpxGL2ymj8zgD9lqnrVZwQaMDkOY",
+                    "attributes": {
+                        "first_name": "System",
+                        "last_name": "Root",
+                        "email": "system@system.com",
+                        "created_at": "29/12/201810:46:30AM",
+                        "created_at_readable": "1hourago",
+                        "created_at_tz": "29/12/201802:46:30AM",
+                        "created_at_readable_tz": "1hourago",
+                        "updated_at": "29/12/201810:46:30AM",
+                        "updated_at_readable": "1hourago",
+                        "updated_at_tz": "29/12/201802:46:30AM",
+                        "updated_at_readable_tz": "1hourago"
+                    }
+                }
+            }
+
+## Assign permission to user. [POST /auth/authorizations/assign-permission-to-user]
+
+
++ Parameters
+    + include: (string, optional) - Include relationship
+
++ Request (application/json)
+    + Headers
+
+            Content-Type: application/x-www-form-urlencoded
+    + Body
+
+            {
+                "role_id": "Xyo35kNbmqvjJP9zn9aKeGL6Wz1MBwlA",
+                "permission_id": "EK5BqP62N14zargZP97exZAMYpmQ0jGw"
+            }
+
++ Response 200 (application/json)
+    + Body
+
+            {
+                "data": {
+                    "type": "users",
+                    "id": "BX0gNpxGL2ymj8zgD9lqnrVZwQaMDkOY",
+                    "attributes": {
+                        "first_name": "System",
+                        "last_name": "Root",
+                        "email": "system@system.com",
+                        "created_at": "29/12/201810:46:30AM",
+                        "created_at_readable": "1hourago",
+                        "created_at_tz": "29/12/201802:46:30AM",
+                        "created_at_readable_tz": "1hourago",
+                        "updated_at": "29/12/201810:46:30AM",
+                        "updated_at_readable": "1hourago",
+                        "updated_at_tz": "29/12/201802:46:30AM",
+                        "updated_at_readable_tz": "1hourago"
+                    }
+                }
+            }
+
+## Revoke permission from user. [POST /auth/authorizations/revoke-permission-from-user]
+
+
++ Parameters
+    + include: (string, optional) - Include relationship
+
++ Request (application/json)
+    + Headers
+
+            Content-Type: application/x-www-form-urlencoded
+    + Body
+
+            {
+                "role_id": "Xyo35kNbmqvjJP9zn9aKeGL6Wz1MBwlA",
+                "permission_id": "EK5BqP62N14zargZP97exZAMYpmQ0jGw"
+            }
+
++ Response 200 (application/json)
+    + Body
+
+            {
+                "data": {
+                    "type": "users",
+                    "id": "BX0gNpxGL2ymj8zgD9lqnrVZwQaMDkOY",
+                    "attributes": {
+                        "first_name": "System",
+                        "last_name": "Root",
+                        "email": "system@system.com",
+                        "created_at": "29/12/201810:46:30AM",
+                        "created_at_readable": "1hourago",
+                        "created_at_tz": "29/12/201802:46:30AM",
+                        "created_at_readable_tz": "1hourago",
+                        "updated_at": "29/12/201810:46:30AM",
+                        "updated_at_readable": "1hourago",
+                        "updated_at_tz": "29/12/201802:46:30AM",
+                        "updated_at_readable_tz": "1hourago"
+                    }
+                }
+            }
+
+## Attach permission to role. [POST /auth/authorizations/attach-permission-to-role]
+
+
++ Parameters
+    + include: (string, optional) - Include relationship
+
++ Request (application/json)
+    + Headers
+
+            Content-Type: application/x-www-form-urlencoded
+    + Body
+
+            {
+                "role_id": "Xyo35kNbmqvjJP9zn9aKeGL6Wz1MBwlA",
+                "permission_id": "EK5BqP62N14zargZP97exZAMYpmQ0jGw"
+            }
+
++ Response 200 (application/json)
+    + Body
+
+            {
+                "data": {
+                    "type": "roles",
+                    "id": "X0NDx2YlwZ8mep6og6AM3OqoP1nrkWJa",
+                    "attributes": {
+                        "name": "executive"
+                    },
+                    "relationships": {
+                        "permissions": {
+                            "data": []
+                        }
+                    }
+                }
+            }
+
+## Revoke permission from role. [POST /auth/authorizations/revoke-permission-from-role]
+/**
+
++ Parameters
+    + include: (string, optional) - Include relationship
+
++ Request (application/json)
+    + Headers
+
+            Content-Type: application/x-www-form-urlencoded
+    + Body
+
+            {
+                "role_id": "Xyo35kNbmqvjJP9zn9aKeGL6Wz1MBwlA",
+                "permission_id": "EK5BqP62N14zargZP97exZAMYpmQ0jGw"
+            }
+
++ Response 200 (application/json)
+    + Body
+
+            {
+                "data": {
+                    "type": "roles",
+                    "id": "X0NDx2YlwZ8mep6og6AM3OqoP1nrkWJa",
+                    "attributes": {
+                        "name": "executive"
+                    },
+                    "relationships": {
+                        "permissions": {
+                            "data": []
+                        }
+                    }
+                }
+            }

@@ -17,7 +17,7 @@ trait Hashable
      * @param \Illuminate\Http\Request $request
      * @param string                   $keyColumn
      *
-     * @return int
+     * @return mixed
      */
     public function decodeId(Request $request, string $keyColumn = 'id')
     {
@@ -26,9 +26,13 @@ trait Hashable
         return $this->decodeHash($request->route()[2][$keyColumn]);
     }
 
+    /**
+     * @param string $hash
+     *
+     * @return mixed
+     */
     public function decodeHash(string $hash)
     {
-
         $keyColumnValue = app('hashids')->decode($hash);
 
         if (empty($keyColumnValue)) {

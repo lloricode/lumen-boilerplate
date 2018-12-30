@@ -40,20 +40,30 @@ class AuthorizationController extends Controller
     /**
      * Assign role to user.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param \Dingo\Api\Http\Request $request
      *
-     * @return mixed
-     * @throws \Exception
-     * @authenticated
-     * @bodyParam    role_id string required Role hashed id. Example: Xyo35kNbmqvjJP9zn9aKeGL6Wz1MBwlA
-     * @bodyParam    user_id string required User hashed id. Example: Xyo35kNbmqvjJP9zn9aKeGL6Wz1MBwlA
-     * @responseFile responses/auth/user.get.json
+     * @return \Dingo\Api\Http\Response
+     * @Post("/assign-role-to-user")
+     * @Versions({"v1"})
+     * @Request({
+     *     "role_id": "Xyo35kNbmqvjJP9zn9aKeGL6Wz1MBwlA",
+     *     "user_id": "EK5BqP62N14zargZP97exZAMYpmQ0jGw"
+     * }, headers={"Content-Type": "application/x-www-form-urlencoded"})
+     * @Response(200, body={"data":{"type":"users","id":"BX0gNpxGL2ymj8zgD9lqnrVZwQaMDkOY","attributes":
+     *     {"first_name":"System","last_name":"Root","email":"system@system.com",
+     *     "created_at":"29/12/201810:46:30AM","created_at_readable":"1hourago",
+     *     "created_at_tz":"29/12/201802:46:30AM","created_at_readable_tz":"1hourago",
+     *     "updated_at":"29/12/201810:46:30AM","updated_at_readable":"1hourago",
+     *     "updated_at_tz":"29/12/201802:46:30AM","updated_at_readable_tz":"1hourago"}}})
+     * @Parameters({
+     *      @Parameter("include", type="string", required=false, description="Include relationship", default=null)
+     * })
      */
     public function assignRoleToUser(Request $request)
     {
-        $userId = $this->decodeHash($request->user_id);
+        $userId = $this->decodeHash($request->input('user_id'));
 
-        $this->userRepository->assignRole($userId, $this->decodeHash($request->role_id));
+        $this->userRepository->assignRole($userId, $this->decodeHash($request->input('role_id')));
 
         return $this->response->item($this->userRepository->find($userId), new UserTransformer, ['key' => 'users']);
     }
@@ -63,17 +73,28 @@ class AuthorizationController extends Controller
      *
      * @param \Dingo\Api\Http\Request $request
      *
-     * @return mixed
-     * @authenticated
-     * @bodyParam    role_id string required Role hashed id. Example: Xyo35kNbmqvjJP9zn9aKeGL6Wz1MBwlA
-     * @bodyParam    user_id string required User hashed id. Example: Xyo35kNbmqvjJP9zn9aKeGL6Wz1MBwlA
-     * @responseFile responses/auth/user.get.json
+     * @return \Dingo\Api\Http\Response
+     * @Post("/revoke-role-from-user")
+     * @Versions({"v1"})
+     * @Request({
+     *     "role_id": "Xyo35kNbmqvjJP9zn9aKeGL6Wz1MBwlA",
+     *     "user_id": "EK5BqP62N14zargZP97exZAMYpmQ0jGw"
+     * }, headers={"Content-Type": "application/x-www-form-urlencoded"})
+     * @Response(200, body={"data":{"type":"users","id":"BX0gNpxGL2ymj8zgD9lqnrVZwQaMDkOY","attributes":
+     *     {"first_name":"System","last_name":"Root","email":"system@system.com",
+     *     "created_at":"29/12/201810:46:30AM","created_at_readable":"1hourago",
+     *     "created_at_tz":"29/12/201802:46:30AM","created_at_readable_tz":"1hourago",
+     *     "updated_at":"29/12/201810:46:30AM","updated_at_readable":"1hourago",
+     *     "updated_at_tz":"29/12/201802:46:30AM","updated_at_readable_tz":"1hourago"}}})
+     * @Parameters({
+     *      @Parameter("include", type="string", required=false, description="Include relationship", default=null)
+     * })
      */
     public function revokeRoleFormUser(Request $request)
     {
-        $userId = $this->decodeHash($request->user_id);
+        $userId = $this->decodeHash($request->input('user_id'));
 
-        $this->userRepository->removeRole($userId, $this->decodeHash($request->role_id));
+        $this->userRepository->removeRole($userId, $this->decodeHash($request->input('role_id')));
 
         $user = $this->userRepository->find($userId);
         return $this->response->item($user, new UserTransformer, ['key' => 'users']);
@@ -84,17 +105,28 @@ class AuthorizationController extends Controller
      *
      * @param \Dingo\Api\Http\Request $request
      *
-     * @return mixed
-     * @authenticated
-     * @bodyParam    permission_id string required Permission hashed id. Example: Xyo35kNbmqvjJP9zn9aKeGL6Wz1MBwlA
-     * @bodyParam    user_id string required User hashed id. Example: Xyo35kNbmqvjJP9zn9aKeGL6Wz1MBwlA
-     * @responseFile responses/auth/user.get.json
+     * @return \Dingo\Api\Http\Response
+     * @Post("/assign-permission-to-user")
+     * @Versions({"v1"})
+     * @Request({
+     *     "role_id": "Xyo35kNbmqvjJP9zn9aKeGL6Wz1MBwlA",
+     *     "permission_id": "EK5BqP62N14zargZP97exZAMYpmQ0jGw"
+     * }, headers={"Content-Type": "application/x-www-form-urlencoded"})
+     * @Response(200, body={"data":{"type":"users","id":"BX0gNpxGL2ymj8zgD9lqnrVZwQaMDkOY","attributes":
+     *     {"first_name":"System","last_name":"Root","email":"system@system.com",
+     *     "created_at":"29/12/201810:46:30AM","created_at_readable":"1hourago",
+     *     "created_at_tz":"29/12/201802:46:30AM","created_at_readable_tz":"1hourago",
+     *     "updated_at":"29/12/201810:46:30AM","updated_at_readable":"1hourago",
+     *     "updated_at_tz":"29/12/201802:46:30AM","updated_at_readable_tz":"1hourago"}}})
+     * @Parameters({
+     *      @Parameter("include", type="string", required=false, description="Include relationship", default=null)
+     * })
      */
     public function assignPermissionToUser(Request $request)
     {
-        $userId = $this->decodeHash($request->user_id);
+        $userId = $this->decodeHash($request->input('user_id'));
 
-        $this->userRepository->givePermissionTo($userId, $this->decodeHash($request->permission_id));
+        $this->userRepository->givePermissionTo($userId, $this->decodeHash($request->input('permission_id')));
 
         return $this->response->item($this->userRepository->find($userId), new UserTransformer, ['key' => 'users']);
     }
@@ -102,20 +134,30 @@ class AuthorizationController extends Controller
     /**
      * Revoke permission from user.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param \Dingo\Api\Http\Request $request
      *
-     * @return mixed
-     * @throws \Exception
-     * @authenticated
-     * @bodyParam    permission_id string required Permission hashed id. Example: Xyo35kNbmqvjJP9zn9aKeGL6Wz1MBwlA
-     * @bodyParam    user_id string required User hashed id. Example: Xyo35kNbmqvjJP9zn9aKeGL6Wz1MBwlA
-     * @responseFile responses/auth/user.get.json
+     * @return \Dingo\Api\Http\Response
+     * @Post("/revoke-permission-from-user")
+     * @Versions({"v1"})
+     * @Request({
+     *     "role_id": "Xyo35kNbmqvjJP9zn9aKeGL6Wz1MBwlA",
+     *     "permission_id": "EK5BqP62N14zargZP97exZAMYpmQ0jGw"
+     * }, headers={"Content-Type": "application/x-www-form-urlencoded"})
+     * @Response(200, body={"data":{"type":"users","id":"BX0gNpxGL2ymj8zgD9lqnrVZwQaMDkOY","attributes":
+     *     {"first_name":"System","last_name":"Root","email":"system@system.com",
+     *     "created_at":"29/12/201810:46:30AM","created_at_readable":"1hourago",
+     *     "created_at_tz":"29/12/201802:46:30AM","created_at_readable_tz":"1hourago",
+     *     "updated_at":"29/12/201810:46:30AM","updated_at_readable":"1hourago",
+     *     "updated_at_tz":"29/12/201802:46:30AM","updated_at_readable_tz":"1hourago"}}})
+     * @Parameters({
+     *      @Parameter("include", type="string", required=false, description="Include relationship", default=null)
+     * })
      */
     public function revokePermissionFromUser(Request $request)
     {
-        $userId = $this->decodeHash($request->user_id);
+        $userId = $this->decodeHash($request->input('user_id'));
 
-        $this->userRepository->revokePermissionTo($userId, $this->decodeHash($request->permission_id));
+        $this->userRepository->revokePermissionTo($userId, $this->decodeHash($request->input('permission_id')));
 
         return $this->response->item($this->userRepository->find($userId), new UserTransformer, ['key' => 'users']);
 
@@ -124,20 +166,26 @@ class AuthorizationController extends Controller
     /**
      * Attach permission to role.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param \Dingo\Api\Http\Request $request
      *
-     * @return mixed
-     * @throws \Exception
-     * @authenticated
-     * @bodyParam    permission_id string required Permission hashed id. Example: Xyo35kNbmqvjJP9zn9aKeGL6Wz1MBwlA
-     * @bodyParam    role_id string required Role hashed id. Example: Xyo35kNbmqvjJP9zn9aKeGL6Wz1MBwlA
-     * @responseFile responses/auth/role.get.json
+     * @return \Dingo\Api\Http\Response
+     * @Post("/attach-permission-to-role")
+     * @Versions({"v1"})
+     * @Request({
+     *     "role_id": "Xyo35kNbmqvjJP9zn9aKeGL6Wz1MBwlA",
+     *     "permission_id": "EK5BqP62N14zargZP97exZAMYpmQ0jGw"
+     * }, headers={"Content-Type": "application/x-www-form-urlencoded"})
+     * @Response(200, body={"data":{"type":"roles","id":"X0NDx2YlwZ8mep6og6AM3OqoP1nrkWJa",
+     *     "attributes":{"name":"executive"},"relationships":{"permissions":{"data":{}}}}})
+     * @Parameters({
+     *      @Parameter("include", type="string", required=false, description="Include relationship", default=null)
+     * })
      */
     public function attachPermissionToRole(Request $request)
     {
-        $roleId = $this->decodeHash($request->role_id);
+        $roleId = $this->decodeHash($request->input('role_id'));
 
-        $this->roleRepository->givePermissionTo($roleId, $this->decodeHash($request->permission_id));
+        $this->roleRepository->givePermissionTo($roleId, $this->decodeHash($request->input('permission_id')));
 
         return $this->response->item($this->roleRepository->find($roleId), new RoleTransformer, ['key' => 'roles']);
     }
@@ -145,20 +193,27 @@ class AuthorizationController extends Controller
     /**
      * Revoke permission from role.
      *
-     * @param \Illuminate\Http\Request $request
+     * /**
+     * @param \Dingo\Api\Http\Request $request
      *
-     * @return mixed
-     * @throws \Exception
-     * @authenticated
-     * @bodyParam    permission_id string required Permission hashed id. Example: Xyo35kNbmqvjJP9zn9aKeGL6Wz1MBwlA
-     * @bodyParam    role_id string required Role hashed id. Example: Xyo35kNbmqvjJP9zn9aKeGL6Wz1MBwlA
-     * @responseFile responses/auth/role.get.json
+     * @return \Dingo\Api\Http\Response
+     * @Post("/revoke-permission-from-role")
+     * @Versions({"v1"})
+     * @Request({
+     *     "role_id": "Xyo35kNbmqvjJP9zn9aKeGL6Wz1MBwlA",
+     *     "permission_id": "EK5BqP62N14zargZP97exZAMYpmQ0jGw"
+     * }, headers={"Content-Type": "application/x-www-form-urlencoded"})
+     * @Response(200, body={"data":{"type":"roles","id":"X0NDx2YlwZ8mep6og6AM3OqoP1nrkWJa",
+     *     "attributes":{"name":"executive"},"relationships":{"permissions":{"data":{}}}}})
+     * @Parameters({
+     *      @Parameter("include", type="string", required=false, description="Include relationship", default=null)
+     * })
      */
     public function revokePermissionFromRole(Request $request)
     {
-        $roleId = $this->decodeHash($request->role_id);
+        $roleId = $this->decodeHash($request->input('role_id'));
 
-        $this->roleRepository->revokePermissionTo($roleId, $this->decodeHash($request->permission_id));
+        $this->roleRepository->revokePermissionTo($roleId, $this->decodeHash($request->input('permission_id')));
 
         return $this->response->item($this->roleRepository->find($roleId), new RoleTransformer, ['key' => 'roles']);
     }
