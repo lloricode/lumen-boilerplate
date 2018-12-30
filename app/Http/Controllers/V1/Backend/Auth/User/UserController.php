@@ -168,7 +168,7 @@ class UserController extends Controller
      * @return mixed
      * @Delete("/{id}")
      * @Versions({"v1"})
-     * @Response(204,)
+     * @Response(204)
      */
     public function destroy(Request $request)
     {

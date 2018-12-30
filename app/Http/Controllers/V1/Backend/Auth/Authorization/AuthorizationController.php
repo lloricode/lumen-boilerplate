@@ -16,10 +16,9 @@ use App\Transformers\Auth\UserTransformer;
 use Dingo\Api\Http\Request;
 
 /**
- * Class AuthorizationController
+ * Authorization resource representation.
  *
- * @package App\Http\Controllers\Backend\Auth\Authorization
- * @group   Authorization Management
+ * @Resource("Authorization Management", uri="/auth/authorizations")
  */
 class AuthorizationController extends Controller
 {

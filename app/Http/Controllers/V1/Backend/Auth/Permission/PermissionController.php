@@ -15,10 +15,9 @@ use Dingo\Api\Http\Request;
 use Prettus\Repository\Criteria\RequestCriteria;
 
 /**
- * Class PermissionController
+ * Permission resource representation.
  *
- * @package App\Http\Controllers\Backend\Auth\Permission
- * @group   Authorization
+ * @Resource("Role Management", uri="/auth/permissions")
  */
 class PermissionController extends Controller
 {

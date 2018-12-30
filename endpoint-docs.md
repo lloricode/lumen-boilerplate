@@ -286,3 +286,142 @@ User resource representation.
 
 
 + Response 204 (application/json)
+
+# Role Management [/auth/roles]
+Role resource representation.
+
+## Get all roles. [GET /auth/roles]
+
+
++ Parameters
+    + page: (integer, optional) - Pagination page
+        + Default: 1
+    + search: (string, optional) - Search item
+    + include: (string, optional) - Include relationship
+
++ Response 200 (application/json)
+    + Body
+
+            {
+                "data": [
+                    {
+                        "type": "roles",
+                        "id": "BX0gNpxGL2ymj8zgD9lqnrVZwQaMDkOY",
+                        "attributes": {
+                            "name": "system"
+                        }
+                    },
+                    {
+                        "type": "roles",
+                        "id": "X4WYnoOAkjKw0QzZQ6Dx3RZyvmMl1Grq",
+                        "attributes": {
+                            "name": "admin"
+                        }
+                    }
+                ],
+                "meta": {
+                    "pagination": {
+                        "total": 2,
+                        "count": 2,
+                        "per_page": 15,
+                        "current_page": 1,
+                        "total_pages": 1
+                    }
+                },
+                "links": {
+                    "self": "http:\/\/lumen-dingo-boilerplate.test\/auth\/roles?page=1",
+                    "first": "http:\/\/lumen-dingo-boilerplate.test\/auth\/roles?page=1",
+                    "last": "http:\/\/lumen-dingo-boilerplate.test\/auth\/roles?page=1"
+                }
+            }
+
+## Store role. [POST /auth/roles]
+
+
++ Request (application/json)
+    + Headers
+
+            Content-Type: application/x-www-form-urlencoded
+    + Body
+
+            {
+                "name": "executive"
+            }
+
++ Response 201 (application/json)
+    + Body
+
+            {
+                "data": {
+                    "type": "roles",
+                    "id": "X0NDx2YlwZ8mep6og6AM3OqoP1nrkWJa",
+                    "attributes": {
+                        "name": "executive"
+                    },
+                    "relationships": {
+                        "permissions": {
+                            "data": []
+                        }
+                    }
+                }
+            }
+
+## Show role. [GET /auth/roles/{id}]
+
+
++ Parameters
+    + include: (string, optional) - Include relationship
+
++ Response 200 (application/json)
+    + Body
+
+            {
+                "data": {
+                    "type": "roles",
+                    "id": "X0NDx2YlwZ8mep6og6AM3OqoP1nrkWJa",
+                    "attributes": {
+                        "name": "executive"
+                    },
+                    "relationships": {
+                        "permissions": {
+                            "data": []
+                        }
+                    }
+                }
+            }
+
+## Update role. [PUT /auth/roles/{id}]
+
+
++ Request (application/json)
+    + Headers
+
+            Content-Type: application/x-www-form-urlencoded
+    + Body
+
+            {
+                "name": "executive"
+            }
+
++ Response 200 (application/json)
+    + Body
+
+            {
+                "data": {
+                    "type": "roles",
+                    "id": "X0NDx2YlwZ8mep6og6AM3OqoP1nrkWJa",
+                    "attributes": {
+                        "name": "executive"
+                    },
+                    "relationships": {
+                        "permissions": {
+                            "data": []
+                        }
+                    }
+                }
+            }
+
+## Destroy role. [DELETE /auth/roles/{id}]
+
+
++ Response 204 (application/json)
