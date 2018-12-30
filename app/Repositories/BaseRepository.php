@@ -23,4 +23,26 @@ abstract class BaseRepository extends BaseRepo implements CacheableInterface
     {
         return app($this->model());
     }
+
+    /**
+     * @param null   $limit
+     * @param array  $columns
+     * @param string $method
+     *
+     * @return mixed
+     */
+    public function paginate($limit = null, $columns = ['*'], $method = "paginate")
+    {
+        if (is_null($limit)) {
+            $l = app('request')->get('limit');
+            $limit = $l >= 0 ? $l : null;
+
+            if (false && $limit == 0) {// TODO: config
+                return parent::all($columns);
+            }
+        }
+
+        // TODO: unit test
+        return parent::paginate($limit, $columns, $method);
+    }
 }

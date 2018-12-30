@@ -28,13 +28,12 @@ $app->withFacades();
 
 $app->withEloquent();
 
-$app->configure('access');
 $app->configure('auth');
 $app->configure('api');
 $app->configure('hashids');
 $app->configure('permission');
 $app->configure('repository');
-$app->configure('settings');
+$app->configure('setting');
 
 $app->alias('cache', Illuminate\Cache\CacheManager::class);
 

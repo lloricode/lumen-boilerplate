@@ -1,0 +1,17 @@
+{
+  "name": "Lumen 5.7 Dingo Boilerplate",
+  "description": "Lumen 5.7 Dingo Boilerplate API Blueprint Documentation",
+  "title": "Welcome to Lumen 5.7 Dingo Boilerplate",
+  "version": "1.0.0",
+  "url": "http://lumen-dingo-boilerplate.test",
+  "template": {
+    "withCompare": true,
+    "withGenerator": true
+  },
+  "header": {
+    "title": "General",
+    "filename": "public/docs/generated-markdown/header.md"
+  },
+  "order": [
+  ]
+}

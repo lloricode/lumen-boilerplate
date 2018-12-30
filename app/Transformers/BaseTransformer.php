@@ -23,7 +23,7 @@ abstract class BaseTransformer extends TransformerAbstract
     public function filterData(array $response, array $data, array $roleNames = null): array
     {
         if (app('auth')->user()->hasAnyRole(
-            is_null($roleNames) ? config('access.role_names.system') : $roleNames
+            is_null($roleNames) ? config('setting.role_names.system') : $roleNames
         )) {
             return array_merge($response, $data);
         }
@@ -49,7 +49,7 @@ abstract class BaseTransformer extends TransformerAbstract
             return $responseData;
         }
 
-        if (!$auth->user()->hasAnyRole(config('access.role_names'))) {
+        if (!$auth->user()->hasAnyRole(config('setting.role_names'))) {
             return $responseData;
         }
 
@@ -61,9 +61,9 @@ abstract class BaseTransformer extends TransformerAbstract
             $at = Carbon::parse($entity->{$column});
 
             return [
-                $column => $at->format(config('settings.formats.datetime_12')),
+                $column => $at->format(config('setting.formats.datetime_12')),
                 $column . '_readable' => $at->diffForHumans(),
-                $column . '_tz' => $at->timezone($timeZone)->format(config('settings.formats.datetime_12')),
+                $column . '_tz' => $at->timezone($timeZone)->format(config('setting.formats.datetime_12')),
                 $column . '_readable_tz' => $at->timezone($timeZone)->diffForHumans(),
             ];
         };

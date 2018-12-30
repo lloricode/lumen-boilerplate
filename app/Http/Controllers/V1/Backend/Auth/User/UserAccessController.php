@@ -19,20 +19,34 @@ use App\Transformers\Auth\UserTransformer;
 class UserAccessController extends Controller
 {
     /**
-     * Get current authenticated user.
+     * @api                {get} /auth/profile Get current authenticated user.
+     * @apiName            getAuthenticatedUser
+     * @apiGroup           User
+     * @apiVersion         1.0.0
      *
-     * @return mixed
-     * @Get("/profile")
-     * @Versions({"v1"})
-     * @Response(200, body={"data":{"type":"users","id":"BX0gNpxGL2ymj8zgD9lqnrVZwQaMDkOY","attributes":
-     *     {"first_name":"System","last_name":"Root","email":"system@system.com",
-     *     "created_at":"29/12/201810:46:30AM","created_at_readable":"1hourago",
-     *     "created_at_tz":"29/12/201802:46:30AM","created_at_readable_tz":"1hourago",
-     *     "updated_at":"29/12/201810:46:30AM","updated_at_readable":"1hourago",
-     *     "updated_at_tz":"29/12/201802:46:30AM","updated_at_readable_tz":"1hourago"}}})
-     * @Parameters({
-     *      @Parameter("include", type="string", required=false, description="Include relationship", default=null)
-     * })
+     * @apiSuccessExample  Success-Response:
+     *     HTTP/1.1 200 OK
+     *     {
+     *         "data": {
+     *             "type": "users",
+     *              "id": "BX0gNpxGL2ymj8zgD9lqnrVZwQaMDkOY",
+     *              "attributes": {
+     *                   "first_name": "System",
+     *                   "last_name": "Root",
+     *                   "email": "system@system.com",
+     *                   "created_at": "30/12/2018 04:22:50 PM",
+     *                   "created_at_readable": "10 hours ago",
+     *                   "created_at_tz": "30/12/2018 08:22:50 AM",
+     *                   "created_at_readable_tz": "10 hours ago",
+     *                   "updated_at": "30/12/2018 04:22:50 PM",
+     *                   "updated_at_readable": "10 hours ago",
+     *                   "updated_at_tz": "30/12/2018 08:22:50 AM",
+     *                   "updated_at_readable_tz": "10 hours ago"
+     *               }
+     *          }
+     *     }
+     *
+     * @return \Dingo\Api\Http\Response
      */
     public function profile()
     {

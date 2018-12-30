@@ -19,8 +19,8 @@ class AppServiceProvider extends ServiceProvider
         LumenPassport::routes($this->app->router, [
 //            'prefix' => 'v1/oauth',
         ]);
-        LumenPassport::tokensExpireIn(Carbon::now()->addDay());
-        Passport::refreshTokensExpireIn(Carbon::now()->addDays(2));
+        LumenPassport::tokensExpireIn(Carbon::now()->addMinutes(config('setting.api.token.access_token_expire')));
+        Passport::refreshTokensExpireIn(Carbon::now()->addMinutes(config('setting.api.token.refresh_token_expire')));
 
     }
 }

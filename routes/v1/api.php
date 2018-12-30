@@ -20,8 +20,8 @@ $api->group([
         'api.auth',
         'serializer:json_api',
     ],
-    'limit' => 30, // api.throttle max
-    'expires' => 1, // api.throttle minute
+    'limit' => config('setting.api.throttle.limit'), // api.throttle max
+    'expires' => config('setting.api.throttle.expires'), // api.throttle minute
 ], function () use ($api) {
 
     $api->group([

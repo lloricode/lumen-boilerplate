@@ -19,7 +19,7 @@ class RolesSeeder extends Seeder
         $viewBackend = $permissionModel::create([
             'name' => 'view backend',
         ]);
-        foreach (config('access.role_names') as $roleName) {
+        foreach (config('setting.role_names') as $roleName) {
             $roleModel::create([
                 'name' => $roleName,
             ])->givePermissionTo($viewBackend);
