@@ -45,4 +45,4 @@ See also the list of [contributors](https://github.com/lloricode/lumen-dingo-boi
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/lloricode/lumen-dingo-boilerplate/blob/master/LICENSE) file for details
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
