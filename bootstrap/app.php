@@ -23,12 +23,6 @@ try {
 $app = new Laravel\Lumen\Application(
     dirname(__DIR__)
 );
-//$app['Dingo\Api\Auth\Auth']->extend('oauth', function ($app) {
-//    return new Dingo\Api\Auth\Provider\JWT($app['Tymon\JWTAuth\JWTAuth']);
-//});
-//$app['Dingo\Api\Http\RateLimit\Handler']->extend(function ($app) {
-//    return new Dingo\Api\Http\RateLimit\Throttle\Authenticated;
-//});
 
 $app->withFacades();
 
@@ -42,7 +36,7 @@ $app->configure('permission');
 $app->configure('repository');
 $app->configure('settings');
 
-$app->alias('cache', 'Illuminate\Cache\CacheManager');
+$app->alias('cache', Illuminate\Cache\CacheManager::class);
 
 /*
 |--------------------------------------------------------------------------
@@ -86,7 +80,6 @@ $app->routeMiddleware([
     'permission' => Spatie\Permission\Middlewares\PermissionMiddleware::class,
     'role' => Spatie\Permission\Middlewares\RoleMiddleware::class,
     'throttle' => Illuminate\Routing\Middleware\ThrottleRequests::class,
-    'check-accept-header' => App\Http\Middleware\CheckAcceptHeaderMiddleware::class,
 ]);
 
 /*

@@ -15,9 +15,9 @@ $api->version('v1', [
     'namespace' => 'App\Http\Controllers',
 ], function ($api) {
 
-    $api->get('/v1', function () use ($api) {
+    $api->get('/', function () {
         return [
-            'name' => config('app.name') . ' (v1)',
+            'name' => config('app.name'),
             'branch' => 'dev-master',
         ];
     });
@@ -25,7 +25,6 @@ $api->version('v1', [
     $api->group([
         'middleware' => [
             'api.throttle',
-            'check-accept-header',
             'api.auth',
             'serializer:json_api',
         ],

@@ -32,7 +32,7 @@ return [
     |
     */
 
-    'subtype' => env('API_SUBTYPE', ''),
+    'subtype' => env('API_SUBTYPE', 'lumen.dingo.boilerplate'),
 
     /*
     |--------------------------------------------------------------------------
@@ -69,7 +69,7 @@ return [
     |
     */
 
-    'domain' => env('API_DOMAIN', null),
+    'domain' => env('API_DOMAIN', env('APP_URL', 'http://lumen-dingo-boilerplate.test')),
 
     /*
     |--------------------------------------------------------------------------
@@ -82,7 +82,7 @@ return [
     |
     */
 
-    'name' => env('API_NAME', null),
+    'name' => env('API_NAME', env('APP_NAME', 'Lumen 5.7 Dingo Boilerplate')),
 
     /*
     |--------------------------------------------------------------------------
@@ -109,7 +109,7 @@ return [
     |
     */
 
-    'strict' => env('API_STRICT', false),
+    'strict' => env('API_STRICT', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -122,7 +122,7 @@ return [
     |
     */
 
-    'debug' => env('API_DEBUG', false),
+    'debug' => env('API_DEBUG', env('APP_DEBUG', false)),
 
     /*
     |--------------------------------------------------------------------------
@@ -199,7 +199,6 @@ return [
     */
 
     'transformer' => env('API_TRANSFORMER', Dingo\Api\Transformer\Adapter\Fractal::class),
-//    'transformer' => env('API_TRANSFORMER', League\Fractal\Serializer\JsonApiSerializer::class),
 
     /*
     |--------------------------------------------------------------------------

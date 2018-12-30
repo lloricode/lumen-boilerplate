@@ -11,9 +11,3 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return [
-        'name' => config('app.name'),
-        'branch' => 'dev-master',
-    ];
-});

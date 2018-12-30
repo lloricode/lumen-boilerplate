@@ -17,7 +17,10 @@ class BaseUrlTest extends TestCase
      */
     public function base()
     {
-        $this->get('/');
+        $this->get('/', [
+            'Accept' => 'application/x.lumen.dingo.boilerplate.v1+json',
+        ]);
+        $this->assertResponseOk();
         $this->seeJson([
             'name' => config('app.name'),
             'branch' => 'dev-master',
@@ -27,13 +30,10 @@ class BaseUrlTest extends TestCase
     /**
      * @test
      */
-    public function baseV1()
+    public function baseNeedsHeader()
     {
-        $this->get('/v1');
-        $this->seeJson([
-            'name' => config('app.name') . ' (v1)',
-            'branch' => 'dev-master',
-        ]);
+        $this->get('/');
+        $this->assertResponseStatus(400);
     }
 
     /**

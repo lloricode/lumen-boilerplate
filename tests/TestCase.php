@@ -87,9 +87,8 @@ abstract class TestCase extends BaseTestCase
     protected function addHeaders(array $headers = [], bool $isServer = false)
     {
         $headers += [
-            'Accept' => 'application/json',
+            'Accept' => 'application/x.lumen.dingo.boilerplate.v1+json',
             'Authorization' => 'Bearer xxxxx',
-//            'Api-Version' => 'v1',
         ];
 
         return $isServer
