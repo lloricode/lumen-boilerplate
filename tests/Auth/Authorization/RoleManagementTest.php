@@ -140,7 +140,7 @@ class RoleManagementTest extends BaseRole
         ];
         $this->post($this->route('backend.roles.store'), $data, $this->addHeaders());
 
-        $this->assertResponseStatus(500); // TODO: fix status code to 422
+        $this->assertResponseStatus(422);
         $this->seeJson([
             'message' => "A role `$roleNameTest` already exists for guard `api`.",
         ]);

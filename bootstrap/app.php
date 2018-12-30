@@ -102,6 +102,10 @@ $app->register(Vinkla\Hashids\HashidsServiceProvider::class);
 $app->register(Dingo\Api\Provider\LumenServiceProvider::class);
 
 $app[Dingo\Api\Exception\Handler::class]
+    ->register(function (Spatie\Permission\Exceptions\RoleAlreadyExists $exception) {
+        abort(422, $exception->getMessage());
+    });
+$app[Dingo\Api\Exception\Handler::class]
     ->register(function (Prettus\Validator\Exceptions\ValidatorException $exception) {
         throw new Dingo\Api\Exception\ValidationHttpException($exception->getMessageBag(), $exception);
     });
