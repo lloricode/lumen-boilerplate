@@ -25,6 +25,12 @@ class AuthorizationController extends Controller
     protected $userRepository;
     protected $roleRepository;
 
+    /**
+     * AuthorizationController constructor.
+     *
+     * @param \App\Repositories\Auth\User\UserRepository $userRepository
+     * @param \App\Repositories\Auth\Role\RoleRepository $roleRepository
+     */
     public function __construct(UserRepository $userRepository, RoleRepository $roleRepository)
     {
         $this->userRepository = $userRepository;

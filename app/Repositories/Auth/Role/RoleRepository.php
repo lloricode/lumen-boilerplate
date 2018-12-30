@@ -16,6 +16,10 @@ use Spatie\Permission\Guard;
 
 class RoleRepository extends BaseRepository
 {
+    protected $fieldSearchable = [
+        'name' => 'like',
+    ];
+    
     /**
      * Specify Validator Rules
      *

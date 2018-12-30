@@ -12,6 +12,9 @@ use App\Repositories\BaseRepository;
 
 class PermissionRepository extends BaseRepository
 {
+    protected $fieldSearchable = [
+        'name' => 'like',
+    ];
 
     /**
      * Specify Model class name

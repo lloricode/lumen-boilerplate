@@ -425,3 +425,64 @@ Role resource representation.
 
 
 + Response 204 (application/json)
+
+# Permission Management [/auth/permissions]
+Permission resource representation.
+
+## Get all permissions. [GET /auth/permissions]
+
+
++ Parameters
+    + page: (integer, optional) - Pagination page
+        + Default: 1
+    + search: (string, optional) - Search item
+    + include: (string, optional) - Include relationship
+
++ Response 200 (application/json)
+    + Body
+
+            {
+                "data": [
+                    {
+                        "type": "permissions",
+                        "id": "BX0gNpxGL2ymj8zgD9lqnrVZwQaMDkOY",
+                        "attributes": {
+                            "name": "view backend"
+                        }
+                    }
+                ],
+                "meta": {
+                    "pagination": {
+                        "total": 16,
+                        "count": 1,
+                        "per_page": 1,
+                        "current_page": 1,
+                        "total_pages": 16
+                    }
+                },
+                "links": {
+                    "self": "http:\/\/lumen-dingo-boilerplate.test\/auth\/permissions?page=1",
+                    "first": "http:\/\/lumen-dingo-boilerplate.test\/auth\/permissions?page=1",
+                    "next": "http:\/\/lumen-dingo-boilerplate.test\/auth\/permissions?page=2",
+                    "last": "http:\/\/lumen-dingo-boilerplate.test\/auth\/permissions?page=16"
+                }
+            }
+
+## Show permission. [GET /auth/permissions/{id}]
+
+
++ Parameters
+    + include: (string, optional) - Include relationship
+
++ Response 200 (application/json)
+    + Body
+
+            {
+                "data": {
+                    "type": "permissions",
+                    "id": "BX0gNpxGL2ymj8zgD9lqnrVZwQaMDkOY",
+                    "attributes": {
+                        "name": "view backend"
+                    }
+                }
+            }

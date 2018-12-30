@@ -23,6 +23,11 @@ class RoleController extends Controller
 {
     protected $roleRepository;
 
+    /**
+     * RoleController constructor.
+     *
+     * @param \App\Repositories\Auth\Role\RoleRepository $roleRepository
+     */
     public function __construct(RoleRepository $roleRepository)
     {
         $permissions = $roleRepository->resolveModel()::PERMISSIONS;
