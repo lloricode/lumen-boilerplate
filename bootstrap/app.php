@@ -135,7 +135,10 @@ if (class_exists('Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider')) {
 
 $app->router->group([
     'namespace' => 'App\Http\Controllers',
-], function ($router) {
+], function ($router) use ($app) {
+    $api = $app[Dingo\Api\Routing\Router::class];
+
+    require __DIR__ . '/../routes/api/v1.php';
     require __DIR__ . '/../routes/web.php';
 });
 

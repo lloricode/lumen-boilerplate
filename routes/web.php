@@ -11,42 +11,10 @@
 |
 */
 
-$api = app('Dingo\Api\Routing\Router');
-
-$api->version('v1', [
-    'namespace' => 'App\Http\Controllers',
-], function ($api) {
-
-    $api->get('/', function () use ($api) {
-        return [
-            'name' => config('app.name'),
+$router->get('/', function () use ($router) {
+    return [
+        'name' => config('app.name'),
 //            'version' => $api->version(),
-            'branch' => 'dev-master',
-        ];
-    });
-
-    $api->group([
-        'middleware' => [
-//            'api.throttle',
-            'check-accept-header',
-            'api.auth',
-            'serializer:json_api',
-        ],
-    ], function () use ($api) {
-
-        $api->group([
-            'namespace' => 'Backend',
-            'as' => 'backend',
-        ], function () use ($api) {
-
-            $api->group([
-                'prefix' => 'auth',
-            ], function () use ($api) {
-                include 'backend/auth/user.php';
-                include 'backend/auth/role.php';
-                include 'backend/auth/permission.php';
-                include 'backend/auth/authorization.php';
-            });
-        });
-    });
+        'branch' => 'dev-master',
+    ];
 });
