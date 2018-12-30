@@ -18,18 +18,19 @@ $api->version('v1', [
     $api->get('/v1', function () use ($api) {
         return [
             'name' => config('app.name') . ' (v1)',
-//            'version' => $api->version(),
             'branch' => 'dev-master',
         ];
     });
 
     $api->group([
         'middleware' => [
-//            'api.throttle',
+            'api.throttle',
             'check-accept-header',
             'api.auth',
             'serializer:json_api',
         ],
+        'limit' => 30, // api.throttle max
+        'expires' => 1, // api.throttle minute
     ], function () use ($api) {
 
         $api->group([

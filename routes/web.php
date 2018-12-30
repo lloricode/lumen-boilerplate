@@ -14,7 +14,6 @@
 $router->get('/', function () use ($router) {
     return [
         'name' => config('app.name'),
-//            'version' => $api->version(),
         'branch' => 'dev-master',
     ];
 });
