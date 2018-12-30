@@ -55,7 +55,7 @@ class RoleManagementTest extends BaseRole
         $this->{$verbMethod}($this->route($routeName, [
             'id' => $this->getByRoleName('system')->getHashedId(),
         ]), [], $this->addHeaders());
-        $this->assertResponseStatus(422);
+        $this->assertResponseStatus(403);
         $this->seeJson([
             'message' => 'You cannot update/delete default role.',
         ]);

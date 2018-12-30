@@ -87,7 +87,7 @@ class RoleRepository extends BaseRepository
     {
         $role = $this->find($id);
         if (in_array($role->name, config('access.role_names'))) {
-            abort(422, 'You cannot update/delete default role.');
+            abort(403, 'You cannot update/delete default role.');
         }
         return $role;
     }

@@ -174,7 +174,7 @@ class UserController extends Controller
     {
         $id = $this->decodeId($request);
         if (app('auth')->id() == $id) {
-            abort(422, 'You cannot delete your self.');
+            $this->errorForbidden('You cannot delete your self.');
         }
 
         $this->userRepository->delete($id);

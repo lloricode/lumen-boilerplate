@@ -16,7 +16,7 @@ class BasicResourceFailedTest extends TestCase
 
         $this->delete($this->route('backend.users.destroy', ['id' => $user->getHashedId()]), [], $this->addHeaders());
 
-        $this->assertResponseStatus(422);
+        $this->assertResponseStatus(403);
         $this->seeJson([
             'message' => 'You cannot delete your self.',
         ]);
