@@ -51,6 +51,7 @@
     "clear-all": [
       "@php artisan cache:clear --ansi",
       "@php artisan permission:cache-reset --ansi",
+      "@php -r \"!file_exists('storage/framework/cache/repository-cache-keys.json') || unlink('storage/framework/cache/repository-cache-keys.json');\"",
       "composer dump-autoload --no-interaction --ansi --optimize"
     ],
     "ide-helper": [
