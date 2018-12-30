@@ -117,6 +117,22 @@ if (class_exists('Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider')) {
 
 /*
 |--------------------------------------------------------------------------
+| Dingo Routes
+|--------------------------------------------------------------------------
+|
+*/
+
+$api = $app[Dingo\Api\Routing\Router::class];
+
+// Version 1
+$api->version('v1', [
+    'namespace' => 'App\Http\Controllers\V1',
+], function ($api) {
+    require __DIR__ . '/../routes/v1/api.php';
+});
+
+/*
+|--------------------------------------------------------------------------
 | Load The Application Routes
 |--------------------------------------------------------------------------
 |
@@ -129,9 +145,6 @@ if (class_exists('Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider')) {
 $app->router->group([
     'namespace' => 'App\Http\Controllers',
 ], function ($router) use ($app) {
-    $api = $app[Dingo\Api\Routing\Router::class];
-
-    require __DIR__ . '/../routes/api/v1.php';
     require __DIR__ . '/../routes/web.php';
 });
 
