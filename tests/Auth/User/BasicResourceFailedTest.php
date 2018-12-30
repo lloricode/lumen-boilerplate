@@ -40,7 +40,7 @@ class BasicResourceFailedTest extends TestCase
         $id = substr($hashedId, 0, strlen($hashedId) - 1);
 
         $this->get($this->route('backend.users.show', ['id' => $id]), $this->addHeaders());
-        $this->assertResponseStatus(404);
+        $this->assertResponseStatus(400);
         $this->seeJson([
             'message' =>
 //                $environment == 'production'

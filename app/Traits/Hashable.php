@@ -9,7 +9,7 @@
 namespace App\Traits;
 
 use Illuminate\Http\Request;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 trait Hashable
 {
@@ -36,7 +36,7 @@ trait Hashable
         $keyColumnValue = app('hashids')->decode($hash);
 
         if (empty($keyColumnValue)) {
-            throw new NotFoundHttpException('Invalid hashed id.');
+            throw new BadRequestHttpException('Invalid hashed id.');
         }
 
         return $keyColumnValue[0];
