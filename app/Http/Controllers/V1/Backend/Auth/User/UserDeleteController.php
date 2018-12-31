@@ -41,7 +41,7 @@ class UserDeleteController extends Controller
     }
 
     /**
-     * @api                {put} /auth/user/{id}/restore Restore user
+     * @api                {put} /auth/users/{id}/restore Restore user
      * @apiName            restore-user
      * @apiGroup           UserDelete
      * @apiVersion         1.0.0
@@ -59,7 +59,7 @@ class UserDeleteController extends Controller
     }
 
     /**
-     * @api                {get} /auth/user/deleted Get all deleted users
+     * @api                {get} /auth/users/deleted Get all deleted users
      * @apiName            get-all-deleted-users
      * @apiGroup           UserDelete
      * @apiVersion         1.0.0
@@ -80,7 +80,7 @@ class UserDeleteController extends Controller
     }
 
     /**
-     * @api                {delete} /auth/user/{id} Purge user
+     * @api                {delete} /auth/users/{id} Purge user
      * @apiName            purge-user
      * @apiGroup           UserDelete
      * @apiVersion         1.0.0

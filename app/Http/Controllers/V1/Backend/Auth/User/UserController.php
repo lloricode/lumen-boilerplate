@@ -36,7 +36,7 @@ class UserController extends Controller
     }
 
     /**
-     * @api                {get} /auth/user Get all users
+     * @api                {get} /auth/users Get all users
      * @apiName            get-all-users
      * @apiGroup           User
      * @apiVersion         1.0.0
@@ -55,7 +55,7 @@ class UserController extends Controller
     }
 
     /**
-     * @api                {get} /auth/user/{id} Show user
+     * @api                {get} /auth/users/{id} Show user
      * @apiName            show-user
      * @apiGroup           User
      * @apiVersion         1.0.0
@@ -73,7 +73,7 @@ class UserController extends Controller
     }
 
     /**
-     * @api                {post} /auth/user/ Store user
+     * @api                {post} /auth/users Store user
      * @apiName            store-user
      * @apiGroup           User
      * @apiVersion         1.0.0
@@ -101,7 +101,7 @@ class UserController extends Controller
     }
 
     /**
-     * @api                {put} /auth/user/ Update user
+     * @api                {put} /auth/users/ Update user
      * @apiName            update-user
      * @apiGroup           User
      * @apiVersion         1.0.0
@@ -130,7 +130,7 @@ class UserController extends Controller
 
 
     /**
-     * @api                {delete} /auth/user/{id} Destroy user
+     * @api                {delete} /auth/users/{id} Destroy user
      * @apiName            destroy-user
      * @apiGroup           User
      * @apiVersion         1.0.0

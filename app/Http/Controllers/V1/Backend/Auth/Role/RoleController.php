@@ -15,9 +15,9 @@ use Dingo\Api\Http\Request;
 use Prettus\Repository\Criteria\RequestCriteria;
 
 /**
- * Role resource representation.
+ * Class RoleController
  *
- * @Resource("Role Management", uri="/auth/roles")
+ * @package App\Http\Controllers\V1\Backend\Auth\Role
  */
 class RoleController extends Controller
 {
@@ -42,25 +42,17 @@ class RoleController extends Controller
     }
 
     /**
-     * Get all roles.
+     * @api                {get} /auth/roles Get all roles
+     * @apiName            get-all-roles
+     * @apiGroup           Role
+     * @apiVersion         1.0.0
+     * @apiPermission      Authenticated User
+     * @apiUse             RolesResponse
      *
      * @param \Dingo\Api\Http\Request $request
      *
      * @return \Dingo\Api\Http\Response
      * @throws \Prettus\Repository\Exceptions\RepositoryException
-     * @Get("/")
-     * @Versions({"v1"})
-     * @Response(200, body={"data":{{"type":"roles","id":"BX0gNpxGL2ymj8zgD9lqnrVZwQaMDkOY",
-     *     "attributes":{"name":"system"}},{"type":"roles","id":"X4WYnoOAkjKw0QzZQ6Dx3RZyvmMl1Grq",
-     *     "attributes":{"name":"admin"}}},"meta":{"pagination":{"total":2,"count":2,"per_page":15,
-     *     "current_page":1,"total_pages":1}},"links":{"self":"http:\/\/lumen-dingo-boilerplate.test\/auth\/roles?page=1",
-     *     "first":"http:\/\/lumen-dingo-boilerplate.test\/auth\/roles?page=1",
-     *     "last":"http:\/\/lumen-dingo-boilerplate.test\/auth\/roles?page=1"}})
-     * @Parameters({
-     *      @Parameter("page", type="integer", required=false, description="Pagination page", default=1),
-     *      @Parameter("search", type="string", required=false, description="Search item", default=null),
-     *      @Parameter("include", type="string", required=false, description="Include relationship", default=null)
-     * })
      */
     public function index(Request $request)
     {
@@ -70,19 +62,18 @@ class RoleController extends Controller
     }
 
     /**
-     * Store role.
+     * @api                {post} /auth/roles Store role
+     * @apiName            store-role
+     * @apiGroup           Role
+     * @apiVersion         1.0.0
+     * @apiPermission      Authenticated User
+     * @apiUse             RoleCreatedResponse
+     * @apiParam {String} name (required)
      *
      * @param \Dingo\Api\Http\Request $request
      *
      * @return \Dingo\Api\Http\Response
      * @throws \Prettus\Validator\Exceptions\ValidatorException
-     * @Post("/")
-     * @Versions({"v1"})
-     * @Request({
-     *     "name": "executive"
-     * }, headers={"Content-Type": "application/x-www-form-urlencoded"})
-     * @Response(201, body={"data":{"type":"roles","id":"X0NDx2YlwZ8mep6og6AM3OqoP1nrkWJa",
-     *     "attributes":{"name":"executive"},"relationships":{"permissions":{"data":{}}}}})
      */
     public function store(Request $request)
     {
@@ -93,18 +84,16 @@ class RoleController extends Controller
     }
 
     /**
-     * Show role.
+     * @api                {post} /auth/roles/{id} Show role
+     * @apiName            show-role
+     * @apiGroup           Role
+     * @apiVersion         1.0.0
+     * @apiPermission      Authenticated User
+     * @apiUse             RoleResponse
      *
      * @param \Dingo\Api\Http\Request $request
      *
      * @return \Dingo\Api\Http\Response
-     * @Get("/{id}")
-     * @Versions({"v1"})
-     * @Response(200, body={"data":{"type":"roles","id":"X0NDx2YlwZ8mep6og6AM3OqoP1nrkWJa",
-     *     "attributes":{"name":"executive"},"relationships":{"permissions":{"data":{}}}}})
-     * @Parameters({
-     *      @Parameter("include", type="string", required=false, description="Include relationship", default=null)
-     * })
      */
     public function show(Request $request)
     {
@@ -113,20 +102,19 @@ class RoleController extends Controller
     }
 
     /**
-     * Update role.
+     * @api                {put} /auth/roles Update role
+     * @apiName            update-role
+     * @apiGroup           Role
+     * @apiVersion         1.0.0
+     * @apiPermission      Authenticated User
+     * @apiUse             RoleResponse
+     * @apiParam {String} name
      *
      * @param \Dingo\Api\Http\Request $request
      *
      * @return \Dingo\Api\Http\Response
      * @throws \Prettus\Repository\Exceptions\RepositoryException
      * @throws \Prettus\Validator\Exceptions\ValidatorException
-     * @Put("/{id}")
-     * @Versions({"v1"})
-     * @Request({
-     *     "name": "executive"
-     * }, headers={"Content-Type": "application/x-www-form-urlencoded"})
-     * @Response(200, body={"data":{"type":"roles","id":"X0NDx2YlwZ8mep6og6AM3OqoP1nrkWJa",
-     *     "attributes":{"name":"executive"},"relationships":{"permissions":{"data":{}}}}})
      */
     public function update(Request $request)
     {
@@ -137,13 +125,16 @@ class RoleController extends Controller
     }
 
     /**
-     * Destroy role.
+     * @api                {delete} /auth/roles/{id} Destroy role
+     * @apiName            destroy-role
+     * @apiGroup           Role
+     * @apiVersion         1.0.0
+     * @apiPermission      Authenticated User
+     * @apiUse             NoContentResponse
      *
      * @param \Dingo\Api\Http\Request $request
      *
      * @return \Dingo\Api\Http\Response
-     * @Delete("/{id}")
-     * @Response(204)
      */
     public function destroy(Request $request)
     {
