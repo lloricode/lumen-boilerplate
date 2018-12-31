@@ -20,7 +20,7 @@ A template made from [Lumen 5.7.*](https://lumen.laravel.com/), authenticated wi
 - how to login? see [laravel/passport](https://github.com/laravel/passport)
 
 ### Available Endpoints
-
+- run `npm install apidoc -g`
 - to generate documentation run `php artisan apidocs`, then visit `http://lumen-dingo-boilerplate.test/docs` to your browser. 
 
 ## Running the tests
