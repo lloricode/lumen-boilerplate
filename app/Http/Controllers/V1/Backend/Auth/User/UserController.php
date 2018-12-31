@@ -51,7 +51,7 @@ class UserController extends Controller
     public function index(Request $request)
     {
         $this->userRepository->pushCriteria(new RequestCriteria($request));
-        return $this->response->paginator($this->userRepository->paginate(), new UserTransformer, ['key' => 'users']);
+        return $this->paginatorOrCollection($this->userRepository->paginate(), new UserTransformer, ['key' => 'users']);
     }
 
     /**

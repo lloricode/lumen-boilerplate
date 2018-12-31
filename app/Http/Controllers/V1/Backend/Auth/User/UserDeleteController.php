@@ -75,7 +75,7 @@ class UserDeleteController extends Controller
     {
         $this->userRepository->pushCriteria(new OnlyTrashedCriteria);
         $this->userRepository->pushCriteria(new RequestCriteria($request));
-        return $this->response->paginator($this->userRepository->paginate(), new UserTransformer(),
+        return $this->paginatorOrCollection($this->userRepository->paginate(), new UserTransformer(),
             ['key' => 'users']);
     }
 

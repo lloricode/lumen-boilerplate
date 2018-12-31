@@ -14,7 +14,9 @@ use Prettus\Repository\Traits\CacheableRepository;
 
 abstract class BaseRepository extends BaseRepo implements CacheableInterface
 {
-    use CacheableRepository;
+    use CacheableRepository {
+        paginate as public paginateExtend;
+    }
 
     /**
      * @return \Laravel\Lumen\Application|mixed
@@ -33,16 +35,18 @@ abstract class BaseRepository extends BaseRepo implements CacheableInterface
      */
     public function paginate($limit = null, $columns = ['*'], $method = "paginate")
     {
-        if (is_null($limit)) {
-            $l = app('request')->get('limit');
-            $limit = $l >= 0 ? $l : null;
+        $repoPaginationConfig = config('setting.repository');
+        $requestLimit = (int)app('request')->get('limit');
 
-            if (false && $limit == 0) {// TODO: config
-                return parent::all($columns);
-            }
+        if (!is_null($requestLimit)) {
+            $limit = ($requestLimit >= 0 && $requestLimit <= $repoPaginationConfig['limit_pagination'])
+                ? $requestLimit : null;
         }
 
-        // TODO: unit test
-        return parent::paginate($limit, $columns, $method);
+        if ($requestLimit == '0' && $repoPaginationConfig['skip_pagination'] === true) {
+            return $this->all($columns);
+        }
+
+        return $this->paginateExtend($limit, $columns, $method);
     }
 }
