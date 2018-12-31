@@ -15,9 +15,9 @@ use Dingo\Api\Http\Request;
 use Prettus\Repository\Criteria\RequestCriteria;
 
 /**
- * Permission resource representation.
+ * Class PermissionController
  *
- * @Resource("Permission Management", uri="/auth/permissions")
+ * @package App\Http\Controllers\V1\Backend\Auth\Permission
  */
 class PermissionController extends Controller
 {
@@ -39,26 +39,17 @@ class PermissionController extends Controller
     }
 
     /**
-     * Get all permissions.
+     * @api                {get} /auth/permissions Get all permissions
+     * @apiName            get-all-permissions
+     * @apiGroup           Permission
+     * @apiVersion         1.0.0
+     * @apiPermission      Authenticated User
+     * @apiUse             PermissionsResponse
      *
      * @param \Dingo\Api\Http\Request $request
      *
      * @return \Dingo\Api\Http\Response
      * @throws \Prettus\Repository\Exceptions\RepositoryException
-     * @Get("/")
-     * @Versions({"v1"})
-     * @Response(200, body={"data":{{"type":"permissions","id":"BX0gNpxGL2ymj8zgD9lqnrVZwQaMDkOY",
-     *     "attributes":{"name":"view backend"}}},"meta":{"pagination":{"total":16,
-     *     "count":1,"per_page":1,"current_page":1,"total_pages":16}},
-     *     "links":{"self":"http:\/\/lumen-dingo-boilerplate.test\/auth\/permissions?page=1",
-     *     "first":"http:\/\/lumen-dingo-boilerplate.test\/auth\/permissions?page=1",
-     *     "next":"http:\/\/lumen-dingo-boilerplate.test\/auth\/permissions?page=2",
-     *     "last":"http:\/\/lumen-dingo-boilerplate.test\/auth\/permissions?page=16"}})
-     * @Parameters({
-     *      @Parameter("page", type="integer", required=false, description="Pagination page", default=1),
-     *      @Parameter("search", type="string", required=false, description="Search item", default=null),
-     *      @Parameter("include", type="string", required=false, description="Include relationship", default=null)
-     * })
      */
     public function index(Request $request)
     {
@@ -68,18 +59,16 @@ class PermissionController extends Controller
     }
 
     /**
-     * Show permission.
+     * @api                {get} /auth/permissions/{id} Show roles
+     * @apiName            show-roles
+     * @apiGroup           Permission
+     * @apiVersion         1.0.0
+     * @apiPermission      Authenticated User
+     * @apiUse             RoleResponse
      *
      * @param \Dingo\Api\Http\Request $request
      *
      * @return \Dingo\Api\Http\Response
-     * @Get("/{id}")
-     * @Versions({"v1"})
-     * @Response(200, body={"data":{"type":"permissions","id":"BX0gNpxGL2ymj8zgD9lqnrVZwQaMDkOY",
-     *     "attributes":{"name":"view backend"}}})
-     * @Parameters({
-     *      @Parameter("include", type="string", required=false, description="Include relationship", default=null)
-     * })
      */
     public function show(Request $request)
     {
