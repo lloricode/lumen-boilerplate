@@ -16,9 +16,9 @@ use App\Transformers\Auth\UserTransformer;
 use Dingo\Api\Http\Request;
 
 /**
- * Authorization resource representation.
+ * Class AuthorizationController
  *
- * @Resource("Authorization Management", uri="/auth/authorizations")
+ * @package App\Http\Controllers\V1\Backend\Auth\Authorization
  */
 class AuthorizationController extends Controller
 {
@@ -38,26 +38,18 @@ class AuthorizationController extends Controller
     }
 
     /**
-     * Assign role to user.
+     * @api                {post} /auth/authorizations/assign-role-to-user Assign role to user
+     * @apiName            assign-role-to-user
+     * @apiGroup           Authorization
+     * @apiVersion         1.0.0
+     * @apiPermission      Authenticated User
+     * @apiUse             UserResponse
+     * @apiParam {String} user_id User hashed id
+     * @apiParam {String} role_id Role hashed id
      *
      * @param \Dingo\Api\Http\Request $request
      *
      * @return \Dingo\Api\Http\Response
-     * @Post("/assign-role-to-user")
-     * @Versions({"v1"})
-     * @Request({
-     *     "role_id": "Xyo35kNbmqvjJP9zn9aKeGL6Wz1MBwlA",
-     *     "user_id": "EK5BqP62N14zargZP97exZAMYpmQ0jGw"
-     * }, headers={"Content-Type": "application/x-www-form-urlencoded"})
-     * @Response(200, body={"data":{"type":"users","id":"BX0gNpxGL2ymj8zgD9lqnrVZwQaMDkOY","attributes":
-     *     {"first_name":"System","last_name":"Root","email":"system@system.com",
-     *     "created_at":"29/12/201810:46:30AM","created_at_readable":"1hourago",
-     *     "created_at_tz":"29/12/201802:46:30AM","created_at_readable_tz":"1hourago",
-     *     "updated_at":"29/12/201810:46:30AM","updated_at_readable":"1hourago",
-     *     "updated_at_tz":"29/12/201802:46:30AM","updated_at_readable_tz":"1hourago"}}})
-     * @Parameters({
-     *      @Parameter("include", type="string", required=false, description="Include relationship", default=null)
-     * })
      */
     public function assignRoleToUser(Request $request)
     {
@@ -69,26 +61,18 @@ class AuthorizationController extends Controller
     }
 
     /**
-     * Revoke role form user.
+     * @api                {post} /auth/authorizations/revoke-role-from-user Revoke role form user
+     * @apiName            revoke-role-from-user
+     * @apiGroup           Authorization
+     * @apiVersion         1.0.0
+     * @apiPermission      Authenticated User
+     * @apiUse             UserResponse
+     * @apiParam {String} user_id User hashed id
+     * @apiParam {String} role_id Role hashed id
      *
      * @param \Dingo\Api\Http\Request $request
      *
      * @return \Dingo\Api\Http\Response
-     * @Post("/revoke-role-from-user")
-     * @Versions({"v1"})
-     * @Request({
-     *     "role_id": "Xyo35kNbmqvjJP9zn9aKeGL6Wz1MBwlA",
-     *     "user_id": "EK5BqP62N14zargZP97exZAMYpmQ0jGw"
-     * }, headers={"Content-Type": "application/x-www-form-urlencoded"})
-     * @Response(200, body={"data":{"type":"users","id":"BX0gNpxGL2ymj8zgD9lqnrVZwQaMDkOY","attributes":
-     *     {"first_name":"System","last_name":"Root","email":"system@system.com",
-     *     "created_at":"29/12/201810:46:30AM","created_at_readable":"1hourago",
-     *     "created_at_tz":"29/12/201802:46:30AM","created_at_readable_tz":"1hourago",
-     *     "updated_at":"29/12/201810:46:30AM","updated_at_readable":"1hourago",
-     *     "updated_at_tz":"29/12/201802:46:30AM","updated_at_readable_tz":"1hourago"}}})
-     * @Parameters({
-     *      @Parameter("include", type="string", required=false, description="Include relationship", default=null)
-     * })
      */
     public function revokeRoleFormUser(Request $request)
     {
@@ -101,26 +85,18 @@ class AuthorizationController extends Controller
     }
 
     /**
-     * Assign permission to user.
+     * @api                {post} /auth/authorizations/assign-permission-to-user Assign permission to user
+     * @apiName            assign-permission-to-user
+     * @apiGroup           Authorization
+     * @apiVersion         1.0.0
+     * @apiPermission      Authenticated User
+     * @apiUse             UserResponse
+     * @apiParam {String} user_id User hashed id
+     * @apiParam {String} permission_id Permission hashed id
      *
      * @param \Dingo\Api\Http\Request $request
      *
      * @return \Dingo\Api\Http\Response
-     * @Post("/assign-permission-to-user")
-     * @Versions({"v1"})
-     * @Request({
-     *     "role_id": "Xyo35kNbmqvjJP9zn9aKeGL6Wz1MBwlA",
-     *     "permission_id": "EK5BqP62N14zargZP97exZAMYpmQ0jGw"
-     * }, headers={"Content-Type": "application/x-www-form-urlencoded"})
-     * @Response(200, body={"data":{"type":"users","id":"BX0gNpxGL2ymj8zgD9lqnrVZwQaMDkOY","attributes":
-     *     {"first_name":"System","last_name":"Root","email":"system@system.com",
-     *     "created_at":"29/12/201810:46:30AM","created_at_readable":"1hourago",
-     *     "created_at_tz":"29/12/201802:46:30AM","created_at_readable_tz":"1hourago",
-     *     "updated_at":"29/12/201810:46:30AM","updated_at_readable":"1hourago",
-     *     "updated_at_tz":"29/12/201802:46:30AM","updated_at_readable_tz":"1hourago"}}})
-     * @Parameters({
-     *      @Parameter("include", type="string", required=false, description="Include relationship", default=null)
-     * })
      */
     public function assignPermissionToUser(Request $request)
     {
@@ -132,26 +108,18 @@ class AuthorizationController extends Controller
     }
 
     /**
-     * Revoke permission from user.
+     * @api                {post} /auth/authorizations/revoke-permission-from-user Revoke permission from user
+     * @apiName            revoke-permission-from-user
+     * @apiGroup           Authorization
+     * @apiVersion         1.0.0
+     * @apiPermission      Authenticated User
+     * @apiUse             UserResponse
+     * @apiParam {String} user_id User hashed id
+     * @apiParam {String} permission_id Permission hashed id
      *
      * @param \Dingo\Api\Http\Request $request
      *
      * @return \Dingo\Api\Http\Response
-     * @Post("/revoke-permission-from-user")
-     * @Versions({"v1"})
-     * @Request({
-     *     "role_id": "Xyo35kNbmqvjJP9zn9aKeGL6Wz1MBwlA",
-     *     "permission_id": "EK5BqP62N14zargZP97exZAMYpmQ0jGw"
-     * }, headers={"Content-Type": "application/x-www-form-urlencoded"})
-     * @Response(200, body={"data":{"type":"users","id":"BX0gNpxGL2ymj8zgD9lqnrVZwQaMDkOY","attributes":
-     *     {"first_name":"System","last_name":"Root","email":"system@system.com",
-     *     "created_at":"29/12/201810:46:30AM","created_at_readable":"1hourago",
-     *     "created_at_tz":"29/12/201802:46:30AM","created_at_readable_tz":"1hourago",
-     *     "updated_at":"29/12/201810:46:30AM","updated_at_readable":"1hourago",
-     *     "updated_at_tz":"29/12/201802:46:30AM","updated_at_readable_tz":"1hourago"}}})
-     * @Parameters({
-     *      @Parameter("include", type="string", required=false, description="Include relationship", default=null)
-     * })
      */
     public function revokePermissionFromUser(Request $request)
     {
@@ -164,22 +132,18 @@ class AuthorizationController extends Controller
     }
 
     /**
-     * Attach permission to role.
+     * @api                {post} /auth/authorizations/attach-permission-to-role Attach permission to role
+     * @apiName            attach-permission-to-role
+     * @apiGroup           Authorization
+     * @apiVersion         1.0.0
+     * @apiPermission      Authenticated User
+     * @apiUse             RoleResponse
+     * @apiParam {String} role_id Role hashed id
+     * @apiParam {String} permission_id Permission hashed id
      *
      * @param \Dingo\Api\Http\Request $request
      *
      * @return \Dingo\Api\Http\Response
-     * @Post("/attach-permission-to-role")
-     * @Versions({"v1"})
-     * @Request({
-     *     "role_id": "Xyo35kNbmqvjJP9zn9aKeGL6Wz1MBwlA",
-     *     "permission_id": "EK5BqP62N14zargZP97exZAMYpmQ0jGw"
-     * }, headers={"Content-Type": "application/x-www-form-urlencoded"})
-     * @Response(200, body={"data":{"type":"roles","id":"X0NDx2YlwZ8mep6og6AM3OqoP1nrkWJa",
-     *     "attributes":{"name":"executive"},"relationships":{"permissions":{"data":{}}}}})
-     * @Parameters({
-     *      @Parameter("include", type="string", required=false, description="Include relationship", default=null)
-     * })
      */
     public function attachPermissionToRole(Request $request)
     {
@@ -191,23 +155,18 @@ class AuthorizationController extends Controller
     }
 
     /**
-     * Revoke permission from role.
+     * @api                {post} /auth/authorizations/revoke-permission-from-role Revoke permission from role
+     * @apiName            revoke-permission-from-role
+     * @apiGroup           Authorization
+     * @apiVersion         1.0.0
+     * @apiPermission      Authenticated User
+     * @apiUse             RoleResponse
+     * @apiParam {String} role_id Role hashed id
+     * @apiParam {String} permission_id Permission hashed id
      *
-     * /**
      * @param \Dingo\Api\Http\Request $request
      *
      * @return \Dingo\Api\Http\Response
-     * @Post("/revoke-permission-from-role")
-     * @Versions({"v1"})
-     * @Request({
-     *     "role_id": "Xyo35kNbmqvjJP9zn9aKeGL6Wz1MBwlA",
-     *     "permission_id": "EK5BqP62N14zargZP97exZAMYpmQ0jGw"
-     * }, headers={"Content-Type": "application/x-www-form-urlencoded"})
-     * @Response(200, body={"data":{"type":"roles","id":"X0NDx2YlwZ8mep6og6AM3OqoP1nrkWJa",
-     *     "attributes":{"name":"executive"},"relationships":{"permissions":{"data":{}}}}})
-     * @Parameters({
-     *      @Parameter("include", type="string", required=false, description="Include relationship", default=null)
-     * })
      */
     public function revokePermissionFromRole(Request $request)
     {
