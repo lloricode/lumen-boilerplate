@@ -11,7 +11,6 @@
         "first_name": "Randall",
         "last_name": "Yost",
         "email": "freddie07@yahoo.com",
-        "real_id": 46,
         "created_at": "13/12/2018 08:24:30 PM",
         "created_at_readable": "9 minutes ago",
         "created_at_tz": "13/12/2018 12:24:30 PM",

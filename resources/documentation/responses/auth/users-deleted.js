@@ -11,7 +11,6 @@
         "first_name": "Brennan",
         "last_name": "Bernier",
         "email": "edyth.kuphal@hotmail.com",
-        "real_id": 10,
         "created_at": "23/12/2018 02:27:56 PM",
         "created_at_readable": "1 hour ago",
         "created_at_tz": "23/12/2018 06:27:56 AM",

@@ -10,7 +10,6 @@
       "first_name": "System",
       "last_name": "Root",
       "email": "system@system.com",
-      "real_id": 1,
       "created_at": "13/12/2018 08:24:25 PM",
       "created_at_readable": "13 minutes ago",
       "created_at_tz": "13/12/2018 12:24:25 PM",
