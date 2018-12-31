@@ -16,9 +16,9 @@ use Dingo\Api\Http\Request;
 use Prettus\Repository\Criteria\RequestCriteria;
 
 /**
- * User deletes representation.
+ * Class UserDeleteController
  *
- * @Resource("User Deletes", uri="/auth/users")
+ * @package App\Http\Controllers\V1\Backend\Auth\User
  */
 class UserDeleteController extends Controller
 {

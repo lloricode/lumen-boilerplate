@@ -9,9 +9,9 @@ use Dingo\Api\Http\Request;
 use Prettus\Repository\Criteria\RequestCriteria;
 
 /**
- * User resource representation.
+ * Class UserController
  *
- * @Resource("User Management", uri="/auth/users")
+ * @package App\Http\Controllers\V1\Backend\Auth\User
  */
 class UserController extends Controller
 {
@@ -36,30 +36,17 @@ class UserController extends Controller
     }
 
     /**
-     * Get all users.
+     * @api                {get} /auth/user Get all users
+     * @apiName            get-all-users
+     * @apiGroup           User
+     * @apiVersion         1.0.0
+     * @apiPermission      Authenticated User
+     * @apiUse             UsersResponse
      *
      * @param \Dingo\Api\Http\Request $request
      *
-     * @throws \Prettus\Repository\Exceptions\RepositoryException
      * @return \Dingo\Api\Http\Response
-     * @Get("/")
-     * @Versions({"v1"})
-     * @Response(200, body={"data":{{"type":"users","id":"X4WYnoOAkjKw0QzZoQ9Dx3RZyvmMl1Gr","attributes":
-     *     {"first_name":"Bettie","last_name":"Tremblay","email":"ferry.lelah@hotmail.com",
-     *     "created_at":"29/12/201810:46:35AM","created_at_readable":"33minutesago",
-     *     "created_at_tz":"29/12/201802:46:35AM","created_at_readable_tz":"33minutesago",
-     *     "updated_at":"29/12/201810:46:35AM","updated_at_readable":"33minutesago",
-     *     "updated_at_tz":"29/12/201802:46:35AM","updated_at_readable_tz":"33minutesago"}}},
-     *     "meta":{"pagination":{"total":53,"count":8,"per_page":15,"current_page":4,"total_pages":4}},
-     *     "links":{"self":"http://lumen-dingo-boilerplate.test/auth/users?page=4",
-     *     "first":"http://lumen-dingo-boilerplate.test/auth/users?page=1",
-     *     "prev":"http://lumen-dingo-boilerplate.test/auth/users?page=3",
-     *     "last":"http://lumen-dingo-boilerplate.test/auth/users?page=4"}})
-     * @Parameters({
-     *      @Parameter("page", type="integer", required=false, description="Pagination page", default=1),
-     *      @Parameter("search", type="string", required=false, description="Search item", default=null),
-     *      @Parameter("include", type="string", required=false, description="Include relationship", default=null)
-     * })
+     * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
     public function index(Request $request)
     {
@@ -68,22 +55,16 @@ class UserController extends Controller
     }
 
     /**
-     * Show user.
+     * @api                {get} /auth/user/{id} Show user
+     * @apiName            show-user
+     * @apiGroup           User
+     * @apiVersion         1.0.0
+     * @apiPermission      Authenticated User
+     * @apiUse             UserResponse
      *
      * @param \Dingo\Api\Http\Request $request
      *
-     * @return mixed
-     * @Get("/{id}")
-     * @Versions({"v1"})
-     * @Response(200, body={"data":{"type":"users","id":"BX0gNpxGL2ymj8zgD9lqnrVZwQaMDkOY","attributes":
-     *     {"first_name":"System","last_name":"Root","email":"system@system.com",
-     *     "created_at":"29/12/201810:46:30AM","created_at_readable":"1hourago",
-     *     "created_at_tz":"29/12/201802:46:30AM","created_at_readable_tz":"1hourago",
-     *     "updated_at":"29/12/201810:46:30AM","updated_at_readable":"1hourago",
-     *     "updated_at_tz":"29/12/201802:46:30AM","updated_at_readable_tz":"1hourago"}}})
-     * @Parameters({
-     *      @Parameter("include", type="string", required=false, description="Include relationship", default=null)
-     * })
+     * @return \Dingo\Api\Http\Response
      */
     public function show(Request $request)
     {
@@ -92,26 +73,21 @@ class UserController extends Controller
     }
 
     /**
-     * Store user.
+     * @api                {post} /auth/user/ Store user
+     * @apiName            store-user
+     * @apiGroup           User
+     * @apiVersion         1.0.0
+     * @apiPermission      Authenticated User
+     * @apiUse             UserCreatedResponse
+     * @apiParam {String} first_name (required)
+     * @apiParam {String} last_name (required)
+     * @apiParam {String} email (required)
+     * @apiParam {String} password (required)
      *
      * @param \Dingo\Api\Http\Request $request
      *
-     * @return mixed
+     * @return \Dingo\Api\Http\Response
      * @throws \Prettus\Validator\Exceptions\ValidatorException
-     * @Post("/")
-     * @Versions({"v1"})
-     * @Request({
-     *     "first_name": "Lloric",
-     *     "last_name": "Garcia",
-     *     "email": "lloricode@gmail.com",
-     *     "password": "secret"
-     * }, headers={"Content-Type": "application/x-www-form-urlencoded"})
-     * @Response(201, body={"data":{"type":"users","id":"BX0gNpxGL2ymj8zgD9lqnrVZwQaMDkOY","attributes":
-     *     {"first_name":"Lloric","last_name":"Garcia","email":"lloricode@gmail.com",
-     *     "created_at":"29/12/201810:46:30AM","created_at_readable":"1hourago",
-     *     "created_at_tz":"29/12/201802:46:30AM","created_at_readable_tz":"1hourago",
-     *     "updated_at":"29/12/201810:46:30AM","updated_at_readable":"1hourago",
-     *     "updated_at_tz":"29/12/201802:46:30AM","updated_at_readable_tz":"1hourago"}}})
      */
     public function store(Request $request)
     {
@@ -125,29 +101,21 @@ class UserController extends Controller
     }
 
     /**
-     * Update user.
+     * @api                {put} /auth/user/ Update user
+     * @apiName            update-user
+     * @apiGroup           User
+     * @apiVersion         1.0.0
+     * @apiPermission      Authenticated User
+     * @apiUse             UserResponse
+     * @apiParam {String} first_name
+     * @apiParam {String} last_name
+     * @apiParam {String} email
+     * @apiParam {String} password
      *
      * @param \Dingo\Api\Http\Request $request
      *
-     * @return mixed
+     * @return \Dingo\Api\Http\Response
      * @throws \Prettus\Validator\Exceptions\ValidatorException
-     * @Put("/{id}")
-     * @Versions({"v1"})
-     * @Request({
-     *     "first_name": "Lloric",
-     *     "last_name": "Garcia",
-     *     "email": "lloricode@gmail.com",
-     *     "password": "secret"
-     * }, headers={"Content-Type": "application/x-www-form-urlencoded"})
-     * @Response(200, body={"data":{"type":"users","id":"BX0gNpxGL2ymj8zgD9lqnrVZwQaMDkOY","attributes":
-     *     {"first_name":"Lloric","last_name":"Garcia","email":"lloricode@gmail.com",
-     *     "created_at":"29/12/201810:46:30AM","created_at_readable":"1hourago",
-     *     "created_at_tz":"29/12/201802:46:30AM","created_at_readable_tz":"1hourago",
-     *     "updated_at":"29/12/201810:46:30AM","updated_at_readable":"1hourago",
-     *     "updated_at_tz":"29/12/201802:46:30AM","updated_at_readable_tz":"1hourago"}}})
-     * @Parameters({
-     *      @Parameter("include", type="string", required=false, description="Include relationship", default=null)
-     * })
      */
     public function update(Request $request)
     {
@@ -160,15 +128,18 @@ class UserController extends Controller
         return $this->response->item($user, new UserTransformer, ['key' => 'users']);
     }
 
+
     /**
-     * Destroy user.
+     * @api                {delete} /auth/user/{id} Destroy user
+     * @apiName            destroy-user
+     * @apiGroup           User
+     * @apiVersion         1.0.0
+     * @apiPermission      Authenticated User
+     * @apiUse             NoContentResponse
      *
      * @param \Dingo\Api\Http\Request $request
      *
-     * @return mixed
-     * @Delete("/{id}")
-     * @Versions({"v1"})
-     * @Response(204)
+     * @return \Dingo\Api\Http\Response
      */
     public function destroy(Request $request)
     {

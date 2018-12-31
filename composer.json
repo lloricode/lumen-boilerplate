@@ -46,7 +46,8 @@
     ],
     "fresh": [
       "@php artisan migrate:fresh --seed --ansi",
-      "@php artisan passport:install --force --ansi"
+      "@php artisan passport:install --force --ansi",
+      "@php artisan apidocs --force --ansi"
     ],
     "clear-all": [
       "@php artisan cache:clear --ansi",

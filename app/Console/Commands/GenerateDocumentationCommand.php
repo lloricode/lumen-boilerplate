@@ -40,8 +40,8 @@ class GenerateDocumentationCommand extends Command
         $this->config = [
             'url' => 'docs',
             'output' => 'public/',
-            'documentFilePath' => base_path('documentation/'),
-            'headerTemplateContent' => file_get_contents(base_path('documentation/shared/header.template.md')),
+            'documentFilePath' => resource_path('documentation/'),
+            'headerTemplateContent' => file_get_contents(resource_path('documentation/shared/header.template.md')),
         ];
     }
 
@@ -92,14 +92,15 @@ class GenerateDocumentationCommand extends Command
     {
         $path = $this->config['output'] . $this->config['url'];
 
-        $input = 'app/Http/Controllers';
+        $inputs = '--input app/Http/Controllers';
+        $inputs .= ' --input resources/documentation/responses';
 
         $verbose = '';
         if ($this->option('vrbs') == true) {
             $verbose = ' --verbose';
         }
 
-        $command = "apidoc --config {$this->getJsonConfigurationPath()} --input $input --output $path{$verbose}";
+        $command = "apidoc --config {$this->getJsonConfigurationPath()} $inputs --output $path{$verbose}";
         $process = new Process($command);
         // execute the command
         $process->run();
