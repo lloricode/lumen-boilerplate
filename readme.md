@@ -38,6 +38,7 @@ A template made from [Lumen 5.7.*](https://lumen.laravel.com/), authenticated wi
 * [laravel/passport](https://github.com/laravel/passport) - OAuth2 server and API authentication, fix installed by [dusterio/lumen-passport](https://github.com/dusterio/lumen-passport).
 * [andersao/l5-repository](https://github.com/andersao/l5-repository) - Repositories to abstract the database layer.
 * [spatie/laravel-permission](https://github.com/spatie/laravel-permission) - Associate users with roles and permissions.
+* [apidoc/apidoc](https://github.com/apidoc/apidoc) - RESTful web API Documentation Generator.
 
 
 See also the list of [contributors](https://github.com/lloricode/lumen-dingo-boilerplate/graphs/contributors) who participated in this project.
