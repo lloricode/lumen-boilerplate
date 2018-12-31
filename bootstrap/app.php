@@ -100,6 +100,9 @@ $app->register(Spatie\Permission\PermissionServiceProvider::class);
 $app->register(Vinkla\Hashids\HashidsServiceProvider::class);
 $app->register(Dingo\Api\Provider\LumenServiceProvider::class);
 
+$app[Dingo\Api\Auth\Auth::class]->extend('passport', function ($app) {
+    return $app[App\Providers\GuardServiceProvider::class];
+});
 $app[Dingo\Api\Exception\Handler::class]
     ->register(function (Spatie\Permission\Exceptions\RoleAlreadyExists $exception) {
         abort(422, $exception->getMessage());
