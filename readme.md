@@ -22,6 +22,8 @@ A template made from [Lumen 5.7.*](https://lumen.laravel.com/), authenticated wi
 ### Available Endpoints
 - run `npm install apidoc -g`
 - to generate documentation run `php artisan apidocs`, then visit `http://lumen-dingo-boilerplate.test/docs` to your browser. 
+- ![screenshot from 2018-12-31 11-09-41](https://user-images.githubusercontent.com/8251344/50553955-a9accc80-0cec-11e9-8fbf-f41cc1e10286.png)
+![screenshot from 2018-12-31 11-09-56](https://user-images.githubusercontent.com/8251344/50553957-ab769000-0cec-11e9-8b81-e8359f4ef5b1.png)
 
 ## Running the tests
 - you can view integration [here](https://travis-ci.org/lloricode/lumen-dingo-boilerplate)
