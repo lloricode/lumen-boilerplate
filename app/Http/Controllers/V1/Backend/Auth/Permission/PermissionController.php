@@ -59,12 +59,12 @@ class PermissionController extends Controller
     }
 
     /**
-     * @api                {get} /auth/permissions/{id} Show roles
-     * @apiName            show-roles
+     * @api                {get} /auth/permissions/{id} Show permission
+     * @apiName            show-permission
      * @apiGroup           Permission
      * @apiVersion         1.0.0
      * @apiPermission      Authenticated User
-     * @apiUse             RoleResponse
+     * @apiUse             PermissionResponse
      *
      * @param \Dingo\Api\Http\Request $request
      *

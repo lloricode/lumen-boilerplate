@@ -3,15 +3,31 @@
  * @apiSuccessExample {json} Success-Response:
  HTTP/1.1 200 OK
  {
-  "data": {
-    "type": "roles",
-    "id": "vLWdlDGY41orj59M59VzxQbe8PBApNE0",
-    "attributes": {
-      "name": "test role name"
-    }
-  },
-  "meta": {
-    "include": []
-  }
+    "data": {
+        "type": "roles",
+        "id": "BX0gNpxGL2ymj8zgD9lqnrVZwQaMDkOY",
+        "attributes": {
+            "name": "system"
+        },
+        "relationships": {
+            "permissions": {
+                "data": [
+                    {
+                        "type": "permissions",
+                        "id": "BX0gNpxGL2ymj8zgD9lqnrVZwQaMDkOY"
+                    }
+                ]
+            }
+        }
+    },
+    "included": [
+        {
+            "type": "permissions",
+            "id": "BX0gNpxGL2ymj8zgD9lqnrVZwQaMDkOY",
+            "attributes": {
+                "name": "view backend"
+            }
+        }
+    ]
 }
  */
