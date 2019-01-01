@@ -15,10 +15,13 @@ use Symfony\Component\Process\Process;
 class GenerateDocumentationCommand extends Command
 {
     /**
+     *
+     */
+    protected const APIDOCS_FILENAME = 'apidoc.json';
+    /**
      * @var array
      */
     protected $config;
-
     /**
      * The console command name.
      *
@@ -43,6 +46,8 @@ class GenerateDocumentationCommand extends Command
             'documentFilePath' => resource_path('documentation/'),
             'headerTemplateContent' => file_get_contents(resource_path('documentation/shared/header.template.md')),
         ];
+
+
     }
 
     /**
@@ -59,6 +64,7 @@ class GenerateDocumentationCommand extends Command
         }
 
         $this->generateHeader($path, '/header.md');
+        $this->generateApiDocConfigJson($path . '/header.md');
         $this->generateAPIDocsTask();
 
         app('files')->deleteDirectory($path);
@@ -86,6 +92,27 @@ class GenerateDocumentationCommand extends Command
         file_put_contents(base_path($path . $fileName), $this->config['headerTemplateContent']);
     }
 
+    private function generateApiDocConfigJson($pathFile)
+    {
+        file_put_contents($this->config['documentFilePath'] . 'config/' . self::APIDOCS_FILENAME,
+            json_encode([
+                'name' => config('app.name'),
+                'description' => config('app.name') . ' API Blueprint Documentation',
+                'title' => config('app.name'),
+                'version' => '1.0.0',
+                'url' => config('app.url'),
+                'template' => [
+                    'withCompare' => true,
+                    'withGenerator' => true,
+                ],
+                'header' => [
+                    'title' => 'General',
+                    'filename' => $pathFile,
+                ],
+                'order' => [
+                ],
+            ]));
+    }
 
     private function generateAPIDocsTask()
     {
@@ -116,6 +143,6 @@ class GenerateDocumentationCommand extends Command
     private function getJsonConfigurationPath()
     {
         $template = str_replace(base_path(), '', $this->config['documentFilePath']);
-        return substr($template, 1, strlen($template) - 1);
+        return substr($template, 1, strlen($template) - 1) . '/config';
     }
 }
