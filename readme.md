@@ -12,8 +12,18 @@ API template made from [Lumen 5.7](https://lumen.laravel.com/) and exntended by 
 - prepare you environment in `.env`
 - lumen has no `php artisan key:generate`, so you can [google](https://google.com/search?q=how+to+add+APP_KEY+in+lumen) it to add value first.
 - run `composer fresh`, this will migrate and seed fake data to your database, and install laravel passport. see composer.json `scripts` index.
-- if you not familiar with  [laravel/passport](https://github.com/laravel/passport), you must see  [this](https://github.com/laravel/passport) first.
-- how to login? see [laravel/passport](https://github.com/laravel/passport)
+- ![](https://user-images.githubusercontent.com/8251344/50570069-01fbd100-0db6-11e9-9080-a65bfee70f1d.png)
+
+
+### Login using OAuth2 by [laravel/passport](https://github.com/laravel/passport)
+- run `php artisan passport:install`
+- ![](https://user-images.githubusercontent.com/8251344/50570034-fcea5200-0db4-11e9-8237-b3ae20c06a25.png)
+- in `Password grant` result, use the `Client ID` and `Client Secret` in submitting request body in `client_id` and `client_secret`
+.- ![](https://user-images.githubusercontent.com/8251344/50570031-d6c4b200-0db4-11e9-8cd0-bd3cb7d3de2a.png)
+- then dont forget to add `headers`'s `Accept` with value `application/x.lumen.dingo.boilerplate.v1+json`. (depend on you setup environtment) when `api strict` mode is `enabled`.
+- ![](https://user-images.githubusercontent.com/8251344/50570058-cfea6f00-0db5-11e9-96bb-94143f449145.png)
+
+
 
 ### Available Endpoints
 - run `npm install apidoc -g`
@@ -22,6 +32,7 @@ API template made from [Lumen 5.7](https://lumen.laravel.com/) and exntended by 
 ![screenshot from 2018-12-31 11-09-56](https://user-images.githubusercontent.com/8251344/50553957-ab769000-0cec-11e9-8b81-e8359f4ef5b1.png)
 
 ## Running the tests
+- ![](https://user-images.githubusercontent.com/8251344/50570082-4ab38a00-0db6-11e9-83c0-c379c09d14d8.png)
 - you can view integration [here](https://travis-ci.org/lloricode/lumen-dingo-boilerplate)
 - go to project directory.
 - run `vendor/bin/phpunit`, if you running this via [homestead](https://laravel.com/docs/5.7/homestead), you can run this through `ssh` via `phpunit` in current project directory.
