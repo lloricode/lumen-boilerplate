@@ -51,7 +51,7 @@ class GenerateDocumentationCommand extends Command
      */
     public function handle()
     {
-        $this->info('Generating API Blueprint Documentation ...' . "\n");
+        $this->info('Generating API Blueprint Documentation ...');
 
         $path = $this->config['output'] . $this->config['url'] . '/generated-markdown';
         if (!file_exists($path)) {
@@ -61,9 +61,8 @@ class GenerateDocumentationCommand extends Command
         $this->generateHeader($path, '/header.md');
         $this->generateAPIDocsTask();
 
-        $this->info('Done! visit url > ' . config('app.url') . '/' . $this->config['url']);
-
         app('files')->deleteDirectory($path);
+        $this->info("\n" . 'Done! visit url > ' . config('app.url') . '/' . $this->config['url']);
     }
 
     private function generateHeader($path, $fileName)
@@ -95,12 +94,14 @@ class GenerateDocumentationCommand extends Command
         $inputs = '--input app/Http/Controllers';
         $inputs .= ' --input resources/documentation/responses';
 
-        $verbose = '';
+        $verbose = ' --silent';
         if ($this->option('vrbs') == true) {
             $verbose = ' --verbose';
         }
 
         $command = "apidoc --config {$this->getJsonConfigurationPath()} $inputs --output $path{$verbose}";
+
+        $this->comment("Executing command: [$command]");
         $process = new Process($command);
         // execute the command
         $process->run();
@@ -109,8 +110,7 @@ class GenerateDocumentationCommand extends Command
             throw new ProcessFailedException($process);
         }
 
-        $this->info($command);
-        $this->info('Result: ' . $process->getOutput());
+//        $this->info('Result: ' . $process->getOutput());
     }
 
     private function getJsonConfigurationPath()
