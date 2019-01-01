@@ -1,15 +1,10 @@
 ![](https://user-images.githubusercontent.com/8251344/50554123-d6161800-0cef-11e9-9341-c9ccfe8d9599.png)
 
-
-
 [![Build Status](https://travis-ci.org/lloricode/lumen-dingo-boilerplate.svg?branch=master)](https://travis-ci.org/lloricode/lumen-dingo-boilerplate)
 
-A template made from [Lumen 5.7.*](https://lumen.laravel.com/), authenticated with [laravel/passport](https://github.com/laravel/passport)
-
-
+API template made from [Lumen 5.7](https://lumen.laravel.com/) and exntended by [dingo/api](https://github.com/dingo/api).
 
 ### Installing
-
 - after cloning/downloding this repo, first open to terminal then change directory to a project directory.
 - sample, in linux, `cd lumen-dingo-boilerplate`.
 - run `composer install` to install project dependencies.
@@ -35,7 +30,6 @@ A template made from [Lumen 5.7.*](https://lumen.laravel.com/), authenticated wi
 
 
 ## Built With
-
 * [laravel/lumen-framework:5.7.*](https://github.com/laravel/lumen-framework) - The stunningly fast micro-framework by Laravel.
 * [dingo/api](https://github.com/dingo/api) - A RESTful API package for the Laravel and Lumen frameworks.
 * [laravel/passport](https://github.com/laravel/passport) - OAuth2 server and API authentication, fix installed by [dusterio/lumen-passport](https://github.com/dusterio/lumen-passport).
