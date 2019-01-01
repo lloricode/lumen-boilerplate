@@ -35,6 +35,11 @@ abstract class BaseRepository extends BaseRepo implements CacheableInterface
      */
     public function paginate($limit = null, $columns = ['*'], $method = "paginate")
     {
+        // ignore all when limit already specify
+        if (!is_null($limit)) {
+            return $this->paginateExtend($limit, $columns, $method);
+        }
+
         $repoPaginationConfig = config('setting.repository');
         $requestLimit = app('request')->get('limit');
 
