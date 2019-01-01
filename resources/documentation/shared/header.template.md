@@ -1,10 +1,10 @@
 ## Headers
 
-| Header        | Value Sample                        | When to send it                                                              |
-|---------------|-------------------------------------|------------------------------------------------------------------------------|
-| Accept        | `{{accept-header}}`                  | Required when `api strick` is `true`.                                            |
-| Content-Type  | `application/x-www-form-urlencoded` | When passing data.                                              |
-| Authorization | `Bearer {access_token}`        | Requires on private resources.            |
+| Header        | Value Sample                        | When to send it                                           |
+|---------------|-------------------------------------|-----------------------------------------------------------|
+| Accept        | `{{accept-header}}`                 | Required when `API_STRICT` is `enabled`.                  |
+| Content-Type  | `application/x-www-form-urlencoded` | When passing data.                                        |
+| Authorization | `Bearer {access_token}`             | Requires on private resources.                            |
 
 ## Rate limiting
 
