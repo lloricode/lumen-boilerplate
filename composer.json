@@ -1,10 +1,12 @@
 {
-  "name": "laravel/lumen",
-  "description": "The Laravel Lumen Framework.",
+  "name": "lloricode/lumen-dingo-boilerplate",
+  "description": "The Lumen dingo boilerplate project.",
   "keywords": [
     "framework",
     "laravel",
-    "lumen"
+    "lumen",
+    "boilerplate",
+    "dingo"
   ],
   "license": "MIT",
   "type": "project",
