@@ -1,9 +1,15 @@
 <?php
 
 return [
-    'role_names' => [
-        'system' => 'system',
-        'admin' => 'admin',
+    'permission' => [
+        'role_names' => [
+            'system' => 'system',
+            'admin' => 'admin',
+        ],
+        'permission_names' => [
+            'view_backend' => 'view backend',
+            'manage_authorization' => 'manage authorization',
+        ],
     ],
 
     'api' => [

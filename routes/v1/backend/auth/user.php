@@ -4,13 +4,6 @@ $api->group([
     'as' => 'users',
 ], function () use ($api) {
 
-
-    // Access
-    $api->get('/profile', [
-        'as' => 'profile',
-        'uses' => 'UserAccessController@profile',
-    ]);
-
     $api->group([
         'prefix' => 'users',
     ], function () use ($api) {

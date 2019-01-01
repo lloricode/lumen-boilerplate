@@ -33,6 +33,8 @@ class AuthorizationController extends Controller
      */
     public function __construct(UserRepository $userRepository, RoleRepository $roleRepository)
     {
+        $this->middleware('permission:' . config('setting.permission.permission_names.manage_authorization'));
+
         $this->userRepository = $userRepository;
         $this->roleRepository = $roleRepository;
     }

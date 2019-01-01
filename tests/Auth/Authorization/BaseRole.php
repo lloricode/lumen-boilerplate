@@ -66,7 +66,7 @@ abstract class BaseRole extends TestCase
     protected function getByRoleName(string $accessRoleName = 'system'): Role
     {
         return app(config('permission.models.role'))
-            ->findByName(config("setting.role_names.$accessRoleName"));
+            ->findByName(config("setting.permission.role_names.$accessRoleName"));
     }
 
     protected function replaceRoleUri($uri, Role $role = null): string

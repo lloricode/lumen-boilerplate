@@ -90,7 +90,7 @@ class RoleRepository extends BaseRepository
     private function checkDefault($id)
     {
         $role = $this->find($id);
-        if (in_array($role->name, config('setting.role_names'))) {
+        if (in_array($role->name, config('setting.permission.role_names'))) {
             abort(403, 'You cannot update/delete default role.');
         }
         return $role;

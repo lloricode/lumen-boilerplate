@@ -6,7 +6,7 @@
  * Time: 4:52 PM
  */
 
-namespace App\Http\Controllers\V1\Backend\Auth\User;
+namespace App\Http\Controllers\V1\Frontend\User;
 
 use App\Http\Controllers\Controller;
 use App\Transformers\Auth\UserTransformer;
@@ -19,7 +19,7 @@ use App\Transformers\Auth\UserTransformer;
 class UserAccessController extends Controller
 {
     /**
-     * @api                {get} /auth/profile Get current authenticated user
+     * @api                {get} /profile Get current authenticated user
      * @apiName            get-authenticated-user
      * @apiGroup           UserAccess
      * @apiVersion         1.0.0

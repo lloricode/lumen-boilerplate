@@ -25,8 +25,15 @@ $api->group([
 ], function () use ($api) {
 
     $api->group([
+        'namespace' => 'Frontend',
+        'as' => 'frontend',
+    ], function () use ($api) {
+        include 'frontend/user/user.php';
+    });
+    $api->group([
         'namespace' => 'Backend',
         'as' => 'backend',
+        'middleware' => 'permission:' . config('setting.permission.permission_names.view_backend'),
     ], function () use ($api) {
 
         $api->group([

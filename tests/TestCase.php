@@ -43,7 +43,7 @@ abstract class TestCase extends BaseTestCase
     protected function route($name, array $parameters = []/*, $secure = null*/)
     {
         $urls = [
-            'backend.users.profile' => '/auth/profile',
+            'frontend.users.profile' => '/profile',
             'backend.users.deleted' => '/auth/users/deleted',
             'backend.users.restore' => '/auth/users/{id}/restore',
             'backend.users.purge' => '/auth/users/{id}/purge',
@@ -101,7 +101,7 @@ abstract class TestCase extends BaseTestCase
         if ($roleName == 'user') {
             $user = factory(User::class)->create();
         } else {
-            $user = User::role(config("setting.role_names.$roleName"))->first();
+            $user = User::role(config("setting.permission.role_names.$roleName"))->first();
         }
         Passport::actingAs($user);
 //        $this->actingAs($user);

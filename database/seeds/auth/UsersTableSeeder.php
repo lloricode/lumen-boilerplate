@@ -31,8 +31,8 @@ class UsersTableSeeder extends Seeder
             'password' => app('hash')->make('secret'),
         ]);
 
-        $system->assignRole(config('setting.role_names.system'));
-        $admin->assignRole(config('setting.role_names.admin'));
+        $system->assignRole(config('setting.permission.role_names.system'));
+        $admin->assignRole(config('setting.permission.role_names.admin'));
 
         factory(User::class, 50)->create();
 
