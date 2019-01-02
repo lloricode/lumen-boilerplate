@@ -5,6 +5,7 @@
 API template made from [Lumen 5.7](https://lumen.laravel.com/) and exntended by [dingo/api](https://github.com/dingo/api).
 
 ## Installing
+
 - after cloning/downloding this repo, first open to terminal then change directory to a project directory.
 - sample, in linux, `cd lumen-dingo-boilerplate`.
 - run `composer install` to install project dependencies.
@@ -16,6 +17,7 @@ API template made from [Lumen 5.7](https://lumen.laravel.com/) and exntended by 
 
 
 ## Login using OAuth2 by [laravel/passport](https://github.com/laravel/passport)
+
 - run `php artisan passport:install`
 - ![](https://user-images.githubusercontent.com/8251344/50570034-fcea5200-0db4-11e9-8237-b3ae20c06a25.png)
 - in `Password grant` result, use the `Client ID` and `Client Secret` in submitting request body in `client_id` and `client_secret`
@@ -23,15 +25,15 @@ API template made from [Lumen 5.7](https://lumen.laravel.com/) and exntended by 
 - then dont forget to add `headers`'s `Accept` with value `application/x.lumen.dingo.boilerplate.v1+json`. (depend on you setup environtment) when `api strict` mode is `enabled`.
 - ![](https://user-images.githubusercontent.com/8251344/50570058-cfea6f00-0db5-11e9-96bb-94143f449145.png)
 
-
-
 ## Available Endpoints
+
 - run `npm install apidoc -g`
 - to generate documentation run `php artisan apidocs`, then visit `http://lumen-dingo-boilerplate.test/docs` to your browser. 
 - ![screenshot from 2018-12-31 11-09-41](https://user-images.githubusercontent.com/8251344/50553955-a9accc80-0cec-11e9-8fbf-f41cc1e10286.png)
 ![screenshot from 2018-12-31 11-09-56](https://user-images.githubusercontent.com/8251344/50553957-ab769000-0cec-11e9-8b81-e8359f4ef5b1.png)
 
 ## Running the tests
+
 - ![](https://user-images.githubusercontent.com/8251344/50570082-4ab38a00-0db6-11e9-83c0-c379c09d14d8.png)
 - you can view integration [here](https://travis-ci.org/lloricode/lumen-dingo-boilerplate)
 - go to project directory.
@@ -41,6 +43,7 @@ API template made from [Lumen 5.7](https://lumen.laravel.com/) and exntended by 
 
 
 ## Built With
+
 * [laravel/lumen-framework:5.7.*](https://github.com/laravel/lumen-framework) - The stunningly fast micro-framework by Laravel.
 * [dingo/api](https://github.com/dingo/api) - A RESTful API package for the Laravel and Lumen frameworks.
 * [laravel/passport](https://github.com/laravel/passport) - OAuth2 server and API authentication, fix installed by [dusterio/lumen-passport](https://github.com/dusterio/lumen-passport).
@@ -48,14 +51,15 @@ API template made from [Lumen 5.7](https://lumen.laravel.com/) and exntended by 
 * [spatie/laravel-permission](https://github.com/spatie/laravel-permission) - Associate users with roles and permissions.
 * [apidoc/apidoc](https://github.com/apidoc/apidoc) - RESTful web API Documentation Generator.
 
-## Todo
-- [ ] Localization
-- [ ] Code Generator
-- [ ] Seeder for Test/Production separately
-- [ ] Manage seeder for permissions
-
 See also the list of [contributors](https://github.com/lloricode/lumen-dingo-boilerplate/graphs/contributors) who participated in this project.
 
 ## License
 
 This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
+
+## Todo
+
+- [ ] Localization
+- [ ] Code Generator
+- [ ] Seeder for Test/Production separately
+- [ ] Manage seeder for permissions
