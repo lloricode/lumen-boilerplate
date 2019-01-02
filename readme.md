@@ -59,6 +59,7 @@ This project is licensed under the [MIT License](https://opensource.org/licenses
 
 ## Todo
 
+- [ ] Documentation private route with permission
 - [ ] Localization
 - [ ] Code Generator
 - [ ] Seeder for Test/Production separately
