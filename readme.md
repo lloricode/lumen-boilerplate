@@ -48,6 +48,11 @@ API template made from [Lumen 5.7](https://lumen.laravel.com/) and exntended by 
 * [spatie/laravel-permission](https://github.com/spatie/laravel-permission) - Associate users with roles and permissions.
 * [apidoc/apidoc](https://github.com/apidoc/apidoc) - RESTful web API Documentation Generator.
 
+## Todo
+- [ ] Localization
+- [ ] Code Generator
+- [ ] Seeder for Test/Production separately
+- [ ] Manage seeder for permissions
 
 See also the list of [contributors](https://github.com/lloricode/lumen-dingo-boilerplate/graphs/contributors) who participated in this project.
 
