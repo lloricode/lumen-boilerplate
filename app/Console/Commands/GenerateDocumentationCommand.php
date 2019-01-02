@@ -143,6 +143,6 @@ class GenerateDocumentationCommand extends Command
     private function getJsonConfigurationPath()
     {
         $template = str_replace(base_path(), '', $this->config['documentFilePath']);
-        return substr($template, 1, strlen($template) - 1) . '/config';
+        return substr($template, 1, strlen($template) - 1) . 'config/';
     }
 }
