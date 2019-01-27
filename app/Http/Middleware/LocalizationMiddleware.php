@@ -31,6 +31,12 @@ class LocalizationMiddleware
     public function handle(Request $request, Closure $next)
     {
         $locale = $this->validateLanguage($this->getLocale($request));
+
+        if (is_null($locale)) {
+            // we have not found any language that is supported
+            abort(Response::HTTP_PRECONDITION_FAILED, 'Unsupported Language.');
+        }
+
         app('translator')->setLocale($locale);
 
         $response = $next($request);
@@ -80,9 +86,7 @@ class LocalizationMiddleware
                 $language_iterator[] = $base[0];
             }
         }
-
-        // we have not found any language that is supported
-        abort(Response::HTTP_PRECONDITION_FAILED, 'Unsupported Language.');
+        return null;
     }
 
     /**
