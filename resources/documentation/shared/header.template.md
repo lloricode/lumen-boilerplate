@@ -1,10 +1,11 @@
 ## Headers
 
-| Header        | Value Sample                        | When to send it                                           |
-|---------------|-------------------------------------|-----------------------------------------------------------|
-| Accept        | `{{accept-header}}`                 | Required when `API_STRICT` is `enabled`.                  |
-| Content-Type  | `application/x-www-form-urlencoded` | When passing data.                                        |
-| Authorization | `Bearer {access_token}`             | Requires on private resources.                            |
+| Header          | Value Sample                        | When to send it                                           |
+|-----------------|-------------------------------------|-----------------------------------------------------------|
+| Accept          | `{{accept-header}}`                 | Required when `API_STRICT` is `enabled`.                  |
+| Content-Type    | `application/x-www-form-urlencoded` | When passing data.                                        |
+| Authorization   | `Bearer {access_token}`             | Requires on private resources.                            |
+| Accept-Language |  `en`                               | Optional: default is `en`                                 | 
 
 ## Rate limiting
 
@@ -123,6 +124,7 @@ X-RateLimit-Limit →30
 X-RateLimit-Remaining →28
 X-RateLimit-Reset →1546198068
 ETag →"78aaf93274df670f01bb44dd059cd294989b7827"
+Content-Language →en
 ```
 
 ## **Query Parameters**
