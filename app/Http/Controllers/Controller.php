@@ -14,6 +14,14 @@ class Controller extends BaseController
     use Hashable;
     use Helpers;
 
+    /**
+     * @param               $paginatorOrCollection
+     * @param               $transformer
+     * @param array         $parameters
+     * @param \Closure|null $after
+     *
+     * @return mixed
+     */
     protected function paginatorOrCollection(
         $paginatorOrCollection,
         $transformer,
