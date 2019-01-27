@@ -22,7 +22,7 @@ class BaseUrlTest extends TestCase
         ]);
         $this->assertResponseOk();
         $this->seeJson([
-            'name' => config('app.name'),
+            'name' => 'Welcome to Lumen 5.7 Dingo Boilerplate',
             'branch' => 'dev-master',
         ]);
     }

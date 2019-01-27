@@ -32,6 +32,7 @@ $app->configure('api');
 $app->configure('auth');
 $app->configure('cors');
 $app->configure('hashids');
+$app->configure('localization');
 $app->configure('permission');
 $app->configure('repository');
 $app->configure('setting');
@@ -71,6 +72,7 @@ $app->singleton(
 */
 
 $app->middleware([
+    App\Http\Middleware\LocalizationMiddleware::class,
     Barryvdh\Cors\HandleCors::class,
 ]);
 

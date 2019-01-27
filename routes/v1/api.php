@@ -9,7 +9,7 @@
 
 $api->get('/', function () {
     return [
-        'name' => config('app.name'),
+        'name' => trans('messages.welcome'),
         'branch' => 'dev-master',
     ];
 });
