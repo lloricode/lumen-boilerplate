@@ -12,3 +12,4 @@ coverage.clover
 /coverage
 phpunit.txt
 public/docs/*
+composer.phar
