@@ -661,21 +661,21 @@
         },
         {
             "name": "graham-campbell/manager",
-            "version": "v4.1.0",
+          "version": "v4.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GrahamCampbell/Laravel-Manager.git",
-                "reference": "9aff87cb08fa57a1b471bd74d84317c2abfc0f6b"
+              "reference": "850e7ab0c63eb816a5ed17158df1cf78827919fb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GrahamCampbell/Laravel-Manager/zipball/9aff87cb08fa57a1b471bd74d84317c2abfc0f6b",
-                "reference": "9aff87cb08fa57a1b471bd74d84317c2abfc0f6b",
+              "url": "https://api.github.com/repos/GrahamCampbell/Laravel-Manager/zipball/850e7ab0c63eb816a5ed17158df1cf78827919fb",
+              "reference": "850e7ab0c63eb816a5ed17158df1cf78827919fb",
                 "shasum": ""
             },
             "require": {
-                "illuminate/contracts": "5.5.*|5.6.*|5.7.*",
-                "illuminate/support": "5.5.*|5.6.*|5.7.*",
+              "illuminate/contracts": "5.5.*|5.6.*|5.7.*|5.8.*",
+              "illuminate/support": "5.5.*|5.6.*|5.7.*|5.8.*",
                 "php": "^7.1.3"
             },
             "require-dev": {
@@ -687,7 +687,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.1-dev"
+                  "dev-master": "4.2-dev"
                 }
             },
             "autoload": {
@@ -717,7 +717,7 @@
                 "laravel",
                 "manager"
             ],
-            "time": "2018-08-23T10:42:08+00:00"
+          "time": "2019-01-29T14:38:38+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -970,7 +970,7 @@
         },
         {
             "name": "illuminate/auth",
-            "version": "v5.7.22",
+          "version": "v5.7.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/auth.git",
@@ -1021,7 +1021,7 @@
         },
         {
             "name": "illuminate/broadcasting",
-            "version": "v5.7.22",
+          "version": "v5.7.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/broadcasting.git",
@@ -1071,7 +1071,7 @@
         },
         {
             "name": "illuminate/bus",
-            "version": "v5.7.22",
+          "version": "v5.7.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/bus.git",
@@ -1116,7 +1116,7 @@
         },
         {
             "name": "illuminate/cache",
-            "version": "v5.7.22",
+          "version": "v5.7.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/cache.git",
@@ -1165,7 +1165,7 @@
         },
         {
             "name": "illuminate/config",
-            "version": "v5.7.22",
+          "version": "v5.7.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/config.git",
@@ -1209,7 +1209,7 @@
         },
         {
             "name": "illuminate/console",
-            "version": "v5.7.22",
+          "version": "v5.7.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/console.git",
@@ -1259,7 +1259,7 @@
         },
         {
             "name": "illuminate/container",
-            "version": "v5.7.22",
+          "version": "v5.7.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
@@ -1304,7 +1304,7 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v5.7.22",
+          "version": "v5.7.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -1348,7 +1348,7 @@
         },
         {
             "name": "illuminate/database",
-            "version": "v5.7.22",
+          "version": "v5.7.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/database.git",
@@ -1407,7 +1407,7 @@
         },
         {
             "name": "illuminate/encryption",
-            "version": "v5.7.22",
+          "version": "v5.7.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/encryption.git",
@@ -1453,7 +1453,7 @@
         },
         {
             "name": "illuminate/events",
-            "version": "v5.7.22",
+          "version": "v5.7.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/events.git",
@@ -1498,7 +1498,7 @@
         },
         {
             "name": "illuminate/filesystem",
-            "version": "v5.7.22",
+          "version": "v5.7.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/filesystem.git",
@@ -1550,7 +1550,7 @@
         },
         {
             "name": "illuminate/hashing",
-            "version": "v5.7.22",
+          "version": "v5.7.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/hashing.git",
@@ -1594,7 +1594,7 @@
         },
         {
             "name": "illuminate/http",
-            "version": "v5.7.22",
+          "version": "v5.7.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/http.git",
@@ -1640,7 +1640,7 @@
         },
         {
             "name": "illuminate/log",
-            "version": "v5.7.22",
+          "version": "v5.7.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/log.git",
@@ -1685,7 +1685,7 @@
         },
         {
             "name": "illuminate/pagination",
-            "version": "v5.7.22",
+          "version": "v5.7.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/pagination.git",
@@ -1729,7 +1729,7 @@
         },
         {
             "name": "illuminate/pipeline",
-            "version": "v5.7.22",
+          "version": "v5.7.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/pipeline.git",
@@ -1773,7 +1773,7 @@
         },
         {
             "name": "illuminate/queue",
-            "version": "v5.7.22",
+          "version": "v5.7.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/queue.git",
@@ -1831,7 +1831,7 @@
         },
         {
             "name": "illuminate/routing",
-            "version": "v5.7.22",
+          "version": "v5.7.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/routing.git",
@@ -1887,7 +1887,7 @@
         },
         {
             "name": "illuminate/session",
-            "version": "v5.7.22",
+          "version": "v5.7.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/session.git",
@@ -1937,7 +1937,7 @@
         },
         {
             "name": "illuminate/support",
-            "version": "v5.7.22",
+          "version": "v5.7.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
@@ -1996,7 +1996,7 @@
         },
         {
             "name": "illuminate/translation",
-            "version": "v5.7.22",
+          "version": "v5.7.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/translation.git",
@@ -2041,7 +2041,7 @@
         },
         {
             "name": "illuminate/validation",
-            "version": "v5.7.22",
+          "version": "v5.7.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/validation.git",
@@ -2091,7 +2091,7 @@
         },
         {
             "name": "illuminate/view",
-            "version": "v5.7.22",
+          "version": "v5.7.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/view.git",
@@ -3020,16 +3020,16 @@
         },
         {
             "name": "phpseclib/phpseclib",
-            "version": "2.0.13",
+          "version": "2.0.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpseclib/phpseclib.git",
-                "reference": "42603ce3f42a27f7e14e54feab95db7b680ad473"
+              "reference": "8ebfcadbf30524aeb75b2c446bc2519d5b321478"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/42603ce3f42a27f7e14e54feab95db7b680ad473",
-                "reference": "42603ce3f42a27f7e14e54feab95db7b680ad473",
+              "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/8ebfcadbf30524aeb75b2c446bc2519d5b321478",
+              "reference": "8ebfcadbf30524aeb75b2c446bc2519d5b321478",
                 "shasum": ""
             },
             "require": {
@@ -3108,7 +3108,7 @@
                 "x.509",
                 "x509"
             ],
-            "time": "2018-12-16T17:45:25+00:00"
+          "time": "2019-01-27T19:37:29+00:00"
         },
         {
             "name": "prettus/l5-repository",
@@ -3449,16 +3449,16 @@
         },
         {
             "name": "spatie/laravel-permission",
-            "version": "2.29.0",
+          "version": "2.30.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-permission.git",
-                "reference": "7f308806ca051fca42685e4a97a282139a6a7982"
+              "reference": "60744813f22535415b8a716fb9252ba063ba056c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/7f308806ca051fca42685e4a97a282139a6a7982",
-                "reference": "7f308806ca051fca42685e4a97a282139a6a7982",
+              "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/60744813f22535415b8a716fb9252ba063ba056c",
+              "reference": "60744813f22535415b8a716fb9252ba063ba056c",
                 "shasum": ""
             },
             "require": {
@@ -3510,7 +3510,7 @@
                 "security",
                 "spatie"
             ],
-            "time": "2018-12-16T00:49:22+00:00"
+          "time": "2019-01-28T23:50:25+00:00"
         },
         {
             "name": "symfony/console",
@@ -4543,20 +4543,21 @@
         },
         {
             "name": "vlucas/phpdotenv",
-            "version": "v2.5.2",
+          "version": "v2.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vlucas/phpdotenv.git",
-                "reference": "cfd5dc225767ca154853752abc93aeec040fcf36"
+              "reference": "2a7dcf7e3e02dc5e701004e51a6f304b713107d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/cfd5dc225767ca154853752abc93aeec040fcf36",
-                "reference": "cfd5dc225767ca154853752abc93aeec040fcf36",
+              "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/2a7dcf7e3e02dc5e701004e51a6f304b713107d5",
+              "reference": "2a7dcf7e3e02dc5e701004e51a6f304b713107d5",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.9"
+              "php": ">=5.3.9",
+              "symfony/polyfill-ctype": "^1.9"
             },
             "require-dev": {
                 "phpunit/phpunit": "^4.8.35 || ^5.0"
@@ -4564,7 +4565,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.5-dev"
+                  "dev-master": "2.6-dev"
                 }
             },
             "autoload": {
@@ -4589,7 +4590,7 @@
                 "env",
                 "environment"
             ],
-            "time": "2018-10-30T17:29:25+00:00"
+          "time": "2019-01-29T11:11:52+00:00"
         },
         {
             "name": "webmozart/assert",
@@ -4833,16 +4834,16 @@
         },
         {
             "name": "composer/ca-bundle",
-            "version": "1.1.3",
+          "version": "1.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/ca-bundle.git",
-                "reference": "8afa52cd417f4ec417b4bfe86b68106538a87660"
+              "reference": "558f321c52faeb4828c03e7dc0cfe39a09e09a2d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/8afa52cd417f4ec417b4bfe86b68106538a87660",
-                "reference": "8afa52cd417f4ec417b4bfe86b68106538a87660",
+              "url": "https://api.github.com/repos/composer/ca-bundle/zipball/558f321c52faeb4828c03e7dc0cfe39a09e09a2d",
+              "reference": "558f321c52faeb4828c03e7dc0cfe39a09e09a2d",
                 "shasum": ""
             },
             "require": {
@@ -4885,20 +4886,20 @@
                 "ssl",
                 "tls"
             ],
-            "time": "2018-10-18T06:09:13+00:00"
+          "time": "2019-01-28T09:30:10+00:00"
         },
         {
             "name": "composer/composer",
-            "version": "1.8.0",
+          "version": "1.8.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/composer.git",
-                "reference": "d8aef3af866b28786ce9b8647e52c42496436669"
+              "reference": "a6a3b44581398b7135c7baa0557b7c5b10808b47"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/composer/zipball/d8aef3af866b28786ce9b8647e52c42496436669",
-                "reference": "d8aef3af866b28786ce9b8647e52c42496436669",
+              "url": "https://api.github.com/repos/composer/composer/zipball/a6a3b44581398b7135c7baa0557b7c5b10808b47",
+              "reference": "a6a3b44581398b7135c7baa0557b7c5b10808b47",
                 "shasum": ""
             },
             "require": {
@@ -4965,7 +4966,7 @@
                 "dependency",
                 "package"
             ],
-            "time": "2018-12-03T09:31:16+00:00"
+          "time": "2019-01-30T07:31:34+00:00"
         },
         {
             "name": "composer/semver",
@@ -5092,16 +5093,16 @@
         },
         {
             "name": "composer/xdebug-handler",
-            "version": "1.3.1",
+          "version": "1.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/xdebug-handler.git",
-                "reference": "dc523135366eb68f22268d069ea7749486458562"
+              "reference": "d17708133b6c276d6e42ef887a877866b909d892"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/xdebug-handler/zipball/dc523135366eb68f22268d069ea7749486458562",
-                "reference": "dc523135366eb68f22268d069ea7749486458562",
+              "url": "https://api.github.com/repos/composer/xdebug-handler/zipball/d17708133b6c276d6e42ef887a877866b909d892",
+              "reference": "d17708133b6c276d6e42ef887a877866b909d892",
                 "shasum": ""
             },
             "require": {
@@ -5132,7 +5133,7 @@
                 "Xdebug",
                 "performance"
             ],
-            "time": "2018-11-29T10:59:02+00:00"
+          "time": "2019-01-28T20:25:53+00:00"
         },
         {
             "name": "doctrine/instantiator",
@@ -5354,16 +5355,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.49",
+          "version": "1.0.50",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "a63cc83d8a931b271be45148fa39ba7156782ffd"
+              "reference": "dab4e7624efa543a943be978008f439c333f2249"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/a63cc83d8a931b271be45148fa39ba7156782ffd",
-                "reference": "a63cc83d8a931b271be45148fa39ba7156782ffd",
+              "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/dab4e7624efa543a943be978008f439c333f2249",
+              "reference": "dab4e7624efa543a943be978008f439c333f2249",
                 "shasum": ""
             },
             "require": {
@@ -5434,7 +5435,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2018-11-23T23:41:29+00:00"
+          "time": "2019-02-01T08:50:36+00:00"
         },
         {
             "name": "mockery/mockery",
@@ -5968,16 +5969,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "7.5.2",
+          "version": "7.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "7c89093bd00f7d5ddf0ab81dee04f801416b4944"
+              "reference": "2cb759721e53bc05f56487f628c6b9fbb6c18746"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/7c89093bd00f7d5ddf0ab81dee04f801416b4944",
-                "reference": "7c89093bd00f7d5ddf0ab81dee04f801416b4944",
+              "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/2cb759721e53bc05f56487f628c6b9fbb6c18746",
+              "reference": "2cb759721e53bc05f56487f628c6b9fbb6c18746",
                 "shasum": ""
             },
             "require": {
@@ -6048,7 +6049,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2019-01-15T08:19:08+00:00"
+          "time": "2019-02-01T05:24:07+00:00"
         },
         {
             "name": "sebastian/code-unit-reverse-lookup",
@@ -6217,28 +6218,31 @@
         },
         {
             "name": "sebastian/environment",
-            "version": "4.0.1",
+          "version": "4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/environment.git",
-                "reference": "febd209a219cea7b56ad799b30ebbea34b71eb8f"
+              "reference": "6fda8ce1974b62b14935adc02a9ed38252eca656"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/febd209a219cea7b56ad799b30ebbea34b71eb8f",
-                "reference": "febd209a219cea7b56ad799b30ebbea34b71eb8f",
+              "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/6fda8ce1974b62b14935adc02a9ed38252eca656",
+              "reference": "6fda8ce1974b62b14935adc02a9ed38252eca656",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.1"
             },
             "require-dev": {
-                "phpunit/phpunit": "^7.4"
+              "phpunit/phpunit": "^7.5"
+            },
+          "suggest": {
+            "ext-posix": "*"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.0-dev"
+                  "dev-master": "4.1-dev"
                 }
             },
             "autoload": {
@@ -6263,7 +6267,7 @@
                 "environment",
                 "hhvm"
             ],
-            "time": "2018-11-25T09:31:21+00:00"
+          "time": "2019-02-01T05:27:49+00:00"
         },
         {
             "name": "sebastian/exporter",

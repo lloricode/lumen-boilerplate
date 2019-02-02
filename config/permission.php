@@ -82,6 +82,7 @@ return [
          * For example, this would be nice if your primary keys are all UUIDs. In
          * that case, name this `model_uuid`.
          */
+
         'model_morph_key' => 'model_id',
     ],
 
@@ -96,11 +97,11 @@ return [
     'cache' => [
 
         /*
-         * By default all permissions will be cached for 24 hours unless a permission or
-         * role is updated. Then the cache will be flushed immediately.
+         * By default all permissions are cached for 24 hours to speed up performance.
+         * When permissions or roles are updated the cache is flushed automatically.
          */
 
-        'expiration_time' => 60 * 24,
+        'expiration_time' => \DateInterval::createFromDateString('24 hours'),
 
         /*
          * The key to use when tagging and prefixing entries in the cache.
@@ -124,6 +125,7 @@ return [
          * role caching using any of the `store` drivers listed in the cache.php config
          * file. Using 'default' here means to use the `default` set in cache.php.
          */
+
         'store' => 'file',
     ],
 ];
