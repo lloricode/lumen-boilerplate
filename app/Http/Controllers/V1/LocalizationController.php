@@ -32,9 +32,8 @@ class LocalizationController extends Controller
     public function index()
     {
         $localizations = collect();
-        $supportedLocalizations = config('localization.supported_languages');
 
-        foreach ($supportedLocalizations as $key => $value) {
+        foreach (config('localization.supported_languages') as $key => $value) {
             // it is a simple key
             if (!is_array($value)) {
                 $localizations->push(new Localization($value));
