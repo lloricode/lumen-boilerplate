@@ -10,7 +10,7 @@ namespace App\Values;
 
 use App\Traits\Hashable;
 
-class Value
+abstract class Value
 {
     use Hashable;
 }
