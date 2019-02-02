@@ -8,10 +8,25 @@
 
 namespace Tests;
 
+use App\Models\Auth\User\User;
 use Laravel\Lumen\Testing\TestCase;
+use Laravel\Passport\Passport;
 
 class LocaleTest extends TestCase
 {
+    /**
+     * @test
+     */
+    public function getAll()
+    {
+        Passport::actingAs(factory(User::class)->create());
+        $this->get('localizations', [
+            'Accept' => 'application/x.lumen.dingo.boilerplate.v1+json',
+            'Authorization' => 'Bearer xxxxx',
+        ])
+            ->assertResponseOk();
+    }
+
     /**
      * @param string|null $locale
      *
