@@ -24,6 +24,8 @@ $api->group([
     'expires' => config('setting.api.throttle.expires'), // api.throttle minute
 ], function () use ($api) {
 
+    include 'localization.php';
+
     $api->group([
         'namespace' => 'Frontend',
         'as' => 'frontend',

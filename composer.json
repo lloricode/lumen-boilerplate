@@ -21,7 +21,8 @@
     "prettus/l5-repository": "^2.6",
     "spatie/laravel-permission": "^2.29",
     "vinkla/hashids": "^5.1",
-    "vlucas/phpdotenv": "~2.2"
+    "vlucas/phpdotenv": "~2.2",
+    "ext-intl": "*"
   },
   "require-dev": {
     "barryvdh/laravel-ide-helper": "^2.5",
