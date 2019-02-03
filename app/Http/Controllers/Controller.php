@@ -33,11 +33,9 @@ class Controller extends BaseController
             $method = 'paginator';
         } elseif ($paginatorOrCollection instanceof Collection) {
             $method = 'collection';
-        } else {
-            $this->response->errorInternal();
         }
 
-        return $this->{$method} ($paginatorOrCollection,
+        return $this->response->{$method}($paginatorOrCollection,
             $transformer,
             $parameters,
             $after
