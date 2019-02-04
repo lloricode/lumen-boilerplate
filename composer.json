@@ -73,6 +73,9 @@
     ],
     "phpunit": [
       "./vendor/bin/phpunit --verbose > phpunit.txt -d memory_limit=2048M"
+    ],
+    "db": [
+      "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\""
     ]
   },
   "config": {
