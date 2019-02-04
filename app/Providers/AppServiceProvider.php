@@ -4,8 +4,10 @@ namespace App\Providers;
 
 use Dusterio\LumenPassport\LumenPassport;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Passport\Passport;
+use PDO;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,6 +18,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        if (!(DB::connection()->getPdo()->getAttribute(PDO::ATTR_DRIVER_NAME) === 'mysql' &&
+            version_compare(DB::connection()->getPdo()->getAttribute(PDO::ATTR_SERVER_VERSION), '5.7.8', 'ge'))) {
+            Schema::defaultStringLength(191);
+        }
+
         LumenPassport::routes($this->app->router, [
 //            'prefix' => 'v1/oauth',
         ]);
