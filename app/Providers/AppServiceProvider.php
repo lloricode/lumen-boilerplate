@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Dusterio\LumenPassport\LumenPassport;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Passport\Passport;
