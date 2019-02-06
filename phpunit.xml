@@ -31,5 +31,6 @@
 
         <env name="API_DOMAIN" value="http://localhost"/>
         <env name="API_DEBUG" value="false"/>
+        <env name="API_STRICT" value="true"/>
     </php>
 </phpunit>
