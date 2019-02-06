@@ -39,7 +39,8 @@ composer fresh
 This will migrate tables, seed fake data to your database, and install [laravel passport](https://github.com/laravel/passport).
 
 See  `composer.json` > `scripts index`. 
-- ![](https://user-images.githubusercontent.com/8251344/50570069-01fbd100-0db6-11e9-9080-a65bfee70f1d.png)
+
+![](https://user-images.githubusercontent.com/8251344/50570069-01fbd100-0db6-11e9-9080-a65bfee70f1d.png)
 
 
 ## Login using OAuth2 by [laravel/passport](https://github.com/laravel/passport)
@@ -77,7 +78,8 @@ php artisan apidocs
 ```
 
 You can visit the generated API documentation in http://lumen-dingo-boilerplate.test/docs.
-- ![screenshot from 2018-12-31 11-09-41](https://user-images.githubusercontent.com/8251344/50553955-a9accc80-0cec-11e9-8fbf-f41cc1e10286.png)
+
+![screenshot from 2018-12-31 11-09-41](https://user-images.githubusercontent.com/8251344/50553955-a9accc80-0cec-11e9-8fbf-f41cc1e10286.png)
 ![screenshot from 2018-12-31 11-09-56](https://user-images.githubusercontent.com/8251344/50553957-ab769000-0cec-11e9-8b81-e8359f4ef5b1.png)
 
 ## PHPUnit
