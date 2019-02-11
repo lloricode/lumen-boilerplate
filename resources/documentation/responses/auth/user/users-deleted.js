@@ -48,6 +48,10 @@
         }
     ],
     "meta": {
+        "include": [
+            "roles",
+            "permissions"
+        ],
         "pagination": {
             "total": 2,
             "count": 2,

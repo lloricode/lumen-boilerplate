@@ -5,20 +5,26 @@
  {
     "data": {
         "type": "users",
-        "id": "BX0gNpxGL2ymj8zgD9lqnrVZwQaMDkOY",
+        "id": "ZedxW7aPXkpMwj9vx6N2yJGonQqmRlB5",
         "attributes": {
-            "first_name": "System",
-            "last_name": "Root",
-            "email": "system@system.com",
-            "created_at": "30/12/2018 04:22:50 PM",
-            "created_at_readable": "18 hours ago",
-            "created_at_tz": "30/12/2018 08:22:50 AM",
-            "created_at_readable_tz": "18 hours ago",
-            "updated_at": "30/12/2018 04:22:50 PM",
-            "updated_at_readable": "18 hours ago",
-            "updated_at_tz": "30/12/2018 08:22:50 AM",
-            "updated_at_readable_tz": "18 hours ago"
+            "first_name": "Arvilla",
+            "last_name": "Weissnat",
+            "email": "lexus.huel@yahoo.com",
+            "created_at": "11/02/2019 06:20:56 PM",
+            "created_at_readable": "15 minutes ago",
+            "created_at_tz": "11/02/2019 10:20:56 AM",
+            "created_at_readable_tz": "15 minutes ago",
+            "updated_at": "11/02/2019 06:20:56 PM",
+            "updated_at_readable": "15 minutes ago",
+            "updated_at_tz": "11/02/2019 10:20:56 AM",
+            "updated_at_readable_tz": "15 minutes ago"
         }
+    },
+    "meta": {
+        "include": [
+            "roles",
+            "permissions"
+        ]
     }
 }
  */

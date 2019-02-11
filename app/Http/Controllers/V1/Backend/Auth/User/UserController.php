@@ -16,6 +16,7 @@ use Prettus\Repository\Criteria\RequestCriteria;
 class UserController extends Controller
 {
     protected $userRepository;
+    protected $userTransformer;
 
     /**
      * UserController constructor.
@@ -33,6 +34,7 @@ class UserController extends Controller
         $this->middleware('permission:' . $permissions['destroy'], ['only' => 'destroy']);
 
         $this->userRepository = $userRepository;
+        $this->userTransformer = app(UserTransformer::class);
     }
 
     /**
@@ -51,7 +53,9 @@ class UserController extends Controller
     public function index(Request $request)
     {
         $this->userRepository->pushCriteria(new RequestCriteria($request));
-        return $this->paginatorOrCollection($this->userRepository->paginate(), new UserTransformer, ['key' => 'users']);
+        return $this->paginatorOrCollection($this->userRepository->paginate(), $this->userTransformer,
+            ['key' => 'users'])
+            ->addMeta('include', $this->userTransformer->getAvailableIncludes());
     }
 
     /**
@@ -69,7 +73,8 @@ class UserController extends Controller
     public function show(Request $request)
     {
         $user = $this->userRepository->find($this->decodeId($request));
-        return $this->response->item($user, new UserTransformer, ['key' => 'users']);
+        return $this->response->item($user, $this->userTransformer, ['key' => 'users'])
+            ->addMeta('include', $this->userTransformer->getAvailableIncludes());
     }
 
     /**
@@ -96,7 +101,8 @@ class UserController extends Controller
             'last_name',
             'email',
             'password',
-        ])), new UserTransformer, ['key' => 'users'])
+        ])), $this->userTransformer, ['key' => 'users'])
+            ->addMeta('include', $this->userTransformer->getAvailableIncludes())
             ->statusCode(201);
     }
 
@@ -125,7 +131,8 @@ class UserController extends Controller
             'email',
             'password',
         ]), $this->decodeId($request));
-        return $this->response->item($user, new UserTransformer, ['key' => 'users']);
+        return $this->response->item($user, $this->userTransformer, ['key' => 'users'])
+            ->addMeta('include', $this->userTransformer->getAvailableIncludes());
     }
 
 

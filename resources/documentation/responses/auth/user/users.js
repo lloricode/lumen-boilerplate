@@ -23,6 +23,10 @@
         }
     ],
     "meta": {
+        "include": [
+            "roles",
+            "permissions"
+        ],
         "pagination": {
             "total": 53,
             "count": 15,

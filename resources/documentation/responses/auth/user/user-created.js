@@ -5,20 +5,26 @@
  {
     "data": {
         "type": "users",
-        "id": "BX0gNpxGL2ymj8zgD9lqnrVZwQaMDkOY",
+        "id": "aWgkBOwmlyKNLDzME1zrZ70RnveVx1QA",
         "attributes": {
-            "first_name": "System",
-            "last_name": "Root",
-            "email": "system@system.com",
-            "created_at": "30/12/2018 04:22:50 PM",
-            "created_at_readable": "18 hours ago",
-            "created_at_tz": "30/12/2018 08:22:50 AM",
-            "created_at_readable_tz": "18 hours ago",
-            "updated_at": "30/12/2018 04:22:50 PM",
-            "updated_at_readable": "18 hours ago",
-            "updated_at_tz": "30/12/2018 08:22:50 AM",
-            "updated_at_readable_tz": "18 hours ago"
+            "first_name": "Lloric",
+            "last_name": "Garcia",
+            "email": "lloricode@gmail.com",
+            "created_at": "11/02/2019 06:37:51 PM",
+            "created_at_readable": "1 second ago",
+            "created_at_tz": "11/02/2019 10:37:51 AM",
+            "created_at_readable_tz": "1 second ago",
+            "updated_at": "11/02/2019 06:37:51 PM",
+            "updated_at_readable": "1 second ago",
+            "updated_at_tz": "11/02/2019 10:37:51 AM",
+            "updated_at_readable_tz": "1 second ago"
         }
+    },
+    "meta": {
+        "include": [
+            "roles",
+            "permissions"
+        ]
     }
 }
  */
