@@ -85,6 +85,7 @@ You can visit the generated API documentation in http://lumen-dingo-boilerplate.
 ## PHPUnit
 
 ![](https://user-images.githubusercontent.com/8251344/50570082-4ab38a00-0db6-11e9-83c0-c379c09d14d8.png)
+
 You can view integration [here](https://travis-ci.org/lloricode/lumen-dingo-boilerplate)
 
 In your project directory run this command:
