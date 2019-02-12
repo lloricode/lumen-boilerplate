@@ -42,4 +42,12 @@ class PermissionTransformer extends BaseTransformer
             'name' => $permission->name,
         ];
     }
+
+    /**
+     * @return string
+     */
+    public function getResourceKey(): string
+    {
+        return 'permissions';
+    }
 }

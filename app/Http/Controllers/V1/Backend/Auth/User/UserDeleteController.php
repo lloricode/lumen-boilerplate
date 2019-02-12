@@ -23,7 +23,6 @@ use Prettus\Repository\Criteria\RequestCriteria;
 class UserDeleteController extends Controller
 {
     protected $userRepository;
-    protected $userTransformer;
 
     /**
      * UserDeleteController constructor.
@@ -39,7 +38,6 @@ class UserDeleteController extends Controller
         $this->middleware('permission:' . $permissions['purge'], ['only' => 'purge']);
 
         $this->userRepository = $userRepository;
-        $this->userTransformer = app(UserTransformer::class);
     }
 
     /**
@@ -57,8 +55,7 @@ class UserDeleteController extends Controller
     public function restore(Request $request)
     {
         $user = $this->userRepository->restore($this->decodeId($request));
-        return $this->response->item($user, $this->userTransformer, ['key' => 'users'])
-            ->addMeta('include', $this->userTransformer->getAvailableIncludes());
+        return $this->item($user, new UserTransformer);
     }
 
     /**
@@ -78,9 +75,7 @@ class UserDeleteController extends Controller
     {
         $this->userRepository->pushCriteria(new OnlyTrashedCriteria);
         $this->userRepository->pushCriteria(new RequestCriteria($request));
-        return $this->paginatorOrCollection($this->userRepository->paginate(), $this->userTransformer,
-            ['key' => 'users'])
-            ->addMeta('include', $this->userTransformer->getAvailableIncludes());
+        return $this->paginatorOrCollection($this->userRepository->paginate(), new UserTransformer);
     }
 
     /**

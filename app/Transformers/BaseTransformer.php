@@ -13,6 +13,7 @@ use League\Fractal\TransformerAbstract;
 
 abstract class BaseTransformer extends TransformerAbstract
 {
+
     /**
      * @param array $response
      * @param array $data
@@ -90,5 +91,15 @@ abstract class BaseTransformer extends TransformerAbstract
         }
 
         return array_merge($responseData, $return);
+    }
+
+    /**
+     * @return string
+     */
+    abstract public function getResourceKey(): string;
+
+    protected function collection($data, $transformer, $resourceKey = null)
+    {
+        return parent::collection($data, $transformer, $resourceKey ?: $transformer->getResourceKey());
     }
 }

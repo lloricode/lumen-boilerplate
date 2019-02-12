@@ -16,7 +16,6 @@ use Prettus\Repository\Criteria\RequestCriteria;
 class UserController extends Controller
 {
     protected $userRepository;
-    protected $userTransformer;
 
     /**
      * UserController constructor.
@@ -34,7 +33,6 @@ class UserController extends Controller
         $this->middleware('permission:' . $permissions['destroy'], ['only' => 'destroy']);
 
         $this->userRepository = $userRepository;
-        $this->userTransformer = app(UserTransformer::class);
     }
 
     /**
@@ -53,9 +51,7 @@ class UserController extends Controller
     public function index(Request $request)
     {
         $this->userRepository->pushCriteria(new RequestCriteria($request));
-        return $this->paginatorOrCollection($this->userRepository->paginate(), $this->userTransformer,
-            ['key' => 'users'])
-            ->addMeta('include', $this->userTransformer->getAvailableIncludes());
+        return $this->paginatorOrCollection($this->userRepository->paginate(), new UserTransformer);
     }
 
     /**
@@ -73,8 +69,7 @@ class UserController extends Controller
     public function show(Request $request)
     {
         $user = $this->userRepository->find($this->decodeId($request));
-        return $this->response->item($user, $this->userTransformer, ['key' => 'users'])
-            ->addMeta('include', $this->userTransformer->getAvailableIncludes());
+        return $this->item($user, new UserTransformer);
     }
 
     /**
@@ -96,13 +91,12 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        return $this->response->item($this->userRepository->create($request->only([
+        return $this->item($this->userRepository->create($request->only([
             'first_name',
             'last_name',
             'email',
             'password',
-        ])), $this->userTransformer, ['key' => 'users'])
-            ->addMeta('include', $this->userTransformer->getAvailableIncludes())
+        ])), new UserTransformer)
             ->statusCode(201);
     }
 
@@ -131,8 +125,7 @@ class UserController extends Controller
             'email',
             'password',
         ]), $this->decodeId($request));
-        return $this->response->item($user, $this->userTransformer, ['key' => 'users'])
-            ->addMeta('include', $this->userTransformer->getAvailableIncludes());
+        return $this->item($user, new UserTransformer);
     }
 
 

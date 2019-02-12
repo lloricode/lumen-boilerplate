@@ -66,4 +66,12 @@ class LocalizationTransformer extends BaseTransformer
 
         return $response;
     }
+
+    /**
+     * @return string
+     */
+    public function getResourceKey(): string
+    {
+        return 'localizations';
+    }
 }

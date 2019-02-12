@@ -46,6 +46,14 @@ class RoleTransformer extends BaseTransformer
 
     public function includePermissions(Role $role)
     {
-        return $this->collection($role->permissions, new PermissionTransformer, 'permissions');
+        return $this->collection($role->permissions, new PermissionTransformer);
+    }
+
+    /**
+     * @return string
+     */
+    public function getResourceKey(): string
+    {
+        return 'roles';
     }
 }

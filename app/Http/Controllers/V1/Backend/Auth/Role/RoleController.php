@@ -57,8 +57,7 @@ class RoleController extends Controller
     public function index(Request $request)
     {
         $this->roleRepository->pushCriteria(new RequestCriteria($request));
-        return $this->paginatorOrCollection($this->roleRepository->paginate(), new RoleTransformer,
-            ['key' => 'roles']);
+        return $this->paginatorOrCollection($this->roleRepository->paginate(), new RoleTransformer);
     }
 
     /**
@@ -80,7 +79,7 @@ class RoleController extends Controller
         $role = $this->roleRepository->create([
             'name' => $request->input('name'),
         ]);
-        return $this->response->item($role, new RoleTransformer, ['key' => 'roles'])->statusCode(201);
+        return $this->item($role, new RoleTransformer)->statusCode(201);
     }
 
     /**
@@ -98,7 +97,7 @@ class RoleController extends Controller
     public function show(Request $request)
     {
         $role = $this->roleRepository->find($this->decodeId($request));
-        return $this->response->item($role, new RoleTransformer, ['key' => 'roles']);
+        return $this->item($role, new RoleTransformer);
     }
 
     /**
@@ -121,7 +120,7 @@ class RoleController extends Controller
         $role = $this->roleRepository->update([
             'name' => $request->input('name'),
         ], $this->decodeId($request));
-        return $this->response->item($role, new RoleTransformer, ['key' => 'roles']);
+        return $this->item($role, new RoleTransformer);
     }
 
     /**
