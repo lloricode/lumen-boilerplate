@@ -18,6 +18,15 @@ class GenerateDocumentationCommand extends Command
      *
      */
     protected const APIDOCS_FILENAME = 'apidoc.json';
+
+    /**
+     * @var array
+     */
+    protected $docInputs = [
+        'app/Http/Controllers',
+        'resources/documentation/responses',
+    ];
+
     /**
      * @var array
      */
@@ -118,8 +127,11 @@ class GenerateDocumentationCommand extends Command
     {
         $path = $this->config['output'] . $this->config['url'];
 
-        $inputs = '--input app/Http/Controllers';
-        $inputs .= ' --input resources/documentation/responses';
+        $inputs = '';
+
+        foreach ($this->docInputs as $input) {
+            $inputs .= ' --input ' . $input;
+        }
 
         $verbose = ' --silent';
         if ($this->option('vrbs') == true) {
