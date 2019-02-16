@@ -42,6 +42,6 @@ class LocalizationController extends Controller
             }
         }
 
-        return $this->response->collection($localizations, new LocalizationTransformer, ['key' => 'localizations']);
+        return $this->paginatorOrCollection($localizations, LocalizationTransformer::class);
     }
 }

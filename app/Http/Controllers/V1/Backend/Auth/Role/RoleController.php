@@ -27,10 +27,12 @@ class RoleController extends Controller
      * RoleController constructor.
      *
      * @param \App\Repositories\Auth\Role\RoleRepository $roleRepository
+     *
+     * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
     public function __construct(RoleRepository $roleRepository)
     {
-        $permissions = $roleRepository->resolveModel()::PERMISSIONS;
+        $permissions = $roleRepository->makeModel()::PERMISSIONS;
 
         $this->middleware('permission:' . $permissions['index'], ['only' => 'index']);
         $this->middleware('permission:' . $permissions['create'], ['only' => 'store']);

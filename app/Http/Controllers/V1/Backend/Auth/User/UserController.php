@@ -21,10 +21,12 @@ class UserController extends Controller
      * UserController constructor.
      *
      * @param \App\Repositories\Auth\User\UserRepository $userRepository
+     *
+     * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
     public function __construct(UserRepository $userRepository)
     {
-        $permissions = $userRepository->resolveModel()::PERMISSIONS;
+        $permissions = $userRepository->makeModel()::PERMISSIONS;
 
         $this->middleware('permission:' . $permissions['index'], ['only' => 'index']);
         $this->middleware('permission:' . $permissions['create'], ['only' => 'store']);

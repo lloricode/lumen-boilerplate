@@ -15,15 +15,7 @@ use Prettus\Repository\Traits\CacheableRepository;
 abstract class BaseRepository extends BaseRepo implements CacheableInterface
 {
     use CacheableRepository {
-        paginate as public paginateExtend;
-    }
-
-    /**
-     * @return \Laravel\Lumen\Application|mixed
-     */
-    public function resolveModel()
-    {
-        return app($this->model());
+        paginate as protected paginateExtend;
     }
 
     /**

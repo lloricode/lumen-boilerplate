@@ -9,6 +9,7 @@ use Dingo\Api\Http\Response;
 use Dingo\Api\Routing\Helpers;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Collection as SupportCollection;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 class Controller extends BaseController
@@ -17,23 +18,23 @@ class Controller extends BaseController
     use Helpers;
 
     /**
-     * @param                                   $paginatorOrCollection
-     * @param \App\Transformers\BaseTransformer $transformer
-     * @param array                             $parameters
-     * @param \Closure|null                     $after
+     * @param               $paginatorOrCollection
+     * @param               $transformer
+     * @param array         $parameters
+     * @param \Closure|null $after
      *
      * @return \Dingo\Api\Http\Response
      */
     protected function paginatorOrCollection(
         $paginatorOrCollection,
-        BaseTransformer $transformer,
+        $transformer,
         array $parameters = [],
         Closure $after = null
     ) {
         $method = '';
         if ($paginatorOrCollection instanceof Paginator) {
             $method = 'paginator';
-        } elseif ($paginatorOrCollection instanceof Collection) {
+        } elseif ($paginatorOrCollection instanceof Collection OR $paginatorOrCollection instanceof SupportCollection) {
             $method = 'collection';
         }
 

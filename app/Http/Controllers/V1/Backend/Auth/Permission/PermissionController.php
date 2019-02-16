@@ -27,10 +27,12 @@ class PermissionController extends Controller
      * PermissionController constructor.
      *
      * @param \App\Repositories\Auth\Permission\PermissionRepository $permissionRepository
+     *
+     * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
     public function __construct(PermissionRepository $permissionRepository)
     {
-        $permissions = $permissionRepository->resolveModel()::PERMISSIONS;
+        $permissions = $permissionRepository->makeModel()::PERMISSIONS;
 
         $this->middleware('permission:' . $permissions['index'], ['only' => 'index']);
         $this->middleware('permission:' . $permissions['show'], ['only' => 'show']);

@@ -8,11 +8,17 @@
 
 namespace App\Transformers;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 use League\Fractal\TransformerAbstract;
 
 abstract class BaseTransformer extends TransformerAbstract
 {
+
+    /**
+     * @return string
+     */
+    abstract public function getResourceKey(): string;
 
     /**
      * @param array $response
@@ -35,15 +41,19 @@ abstract class BaseTransformer extends TransformerAbstract
     /**
      * prepare human readable time with users timezone
      *
-     * @param       $entity
-     * @param       $responseData
-     * @param array $columns
-     * @param bool  $isIncludeDefault
+     * @param \Illuminate\Database\Eloquent\Model $entity
+     * @param                                     $responseData
+     * @param array                               $columns
+     * @param bool                                $isIncludeDefault
      *
      * @return array
      */
-    public function addTimesHumanReadable($entity, $responseData, array $columns = [], $isIncludeDefault = true): array
-    {
+    public function addTimesHumanReadable(
+        Model $entity,
+        $responseData,
+        array $columns = [],
+        $isIncludeDefault = true
+    ): array {
         $auth = app('auth');
 
         if (!$auth->check()) {
@@ -92,11 +102,6 @@ abstract class BaseTransformer extends TransformerAbstract
 
         return array_merge($responseData, $return);
     }
-
-    /**
-     * @return string
-     */
-    abstract public function getResourceKey(): string;
 
     protected function collection($data, $transformer, $resourceKey = null)
     {

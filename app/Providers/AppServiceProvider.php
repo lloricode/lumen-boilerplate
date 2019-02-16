@@ -2,13 +2,13 @@
 
 namespace App\Providers;
 
+use DB;
 use Dusterio\LumenPassport\LumenPassport;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Passport\Passport;
 use PDO;
+use Schema;
 
 class AppServiceProvider extends ServiceProvider
 {

@@ -28,10 +28,12 @@ class UserDeleteController extends Controller
      * UserDeleteController constructor.
      *
      * @param \App\Repositories\Auth\User\UserRepository $userRepository
+     *
+     * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
     public function __construct(UserRepository $userRepository)
     {
-        $permissions = $userRepository->resolveModel()::PERMISSIONS;
+        $permissions = $userRepository->makeModel()::PERMISSIONS;
 
         $this->middleware('permission:' . $permissions['deleted list'], ['only' => 'deleted']);
         $this->middleware('permission:' . $permissions['restore'], ['only' => 'restore']);
