@@ -57,11 +57,11 @@ class LocaleTest extends TestCase
             return;
         }
 
-        $message = 'Welcome to Lumen 5.7 Dingo Boilerplate';
+        $message = 'Welcome to Lumen Dingo Boilerplate';
         switch ($locale) {
             case'xxx,fr';
                 $locale = 'fr';
-                $message = 'Bienvenue chez Lumen 5.7 Dingo Boilerplate';
+                $message = 'Bienvenue chez Lumen Dingo Boilerplate';
                 break;
             default:
                 $locale = $locale ?: config('app.locale');
