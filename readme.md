@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/lloricode/lumen-dingo-boilerplate.svg?branch=master)](https://travis-ci.org/lloricode/lumen-dingo-boilerplate)
 
-API template made from [Lumen 5.7](https://lumen.laravel.com/) and extended by [dingo/api](https://github.com/dingo/api).
+API template made from [Lumen](https://lumen.laravel.com/) and extended by [dingo/api](https://github.com/dingo/api).
 
 ## Installation
 
@@ -102,7 +102,7 @@ vendor/bin/phpunit
 
 ## Built With
 
-* [laravel/lumen-framework:5.7.*](https://github.com/laravel/lumen-framework) - The stunningly fast micro-framework by Laravel.
+* [laravel/lumen-framework](https://github.com/laravel/lumen-framework) - The stunningly fast micro-framework by Laravel.
 * [dingo/api](https://github.com/dingo/api) - A RESTful API package for the Laravel and Lumen frameworks.
 * [laravel/passport](https://github.com/laravel/passport) - OAuth2 server and API authentication, fix installed by [dusterio/lumen-passport](https://github.com/dusterio/lumen-passport).
 * [andersao/l5-repository](https://github.com/andersao/l5-repository) - Repositories to abstract the database layer.
