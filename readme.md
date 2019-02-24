@@ -1,4 +1,4 @@
-![](https://user-images.githubusercontent.com/8251344/50554123-d6161800-0cef-11e9-9341-c9ccfe8d9599.png)
+![](https://user-images.githubusercontent.com/8251344/53293430-872bc100-380e-11e9-909b-0a88734a5433.png)
 
 [![Build Status](https://travis-ci.org/lloricode/lumen-dingo-boilerplate.svg?branch=master)](https://travis-ci.org/lloricode/lumen-dingo-boilerplate)
 
