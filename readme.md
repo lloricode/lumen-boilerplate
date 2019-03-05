@@ -123,3 +123,4 @@ This project is licensed under the [MIT License](https://opensource.org/licenses
 - [ ] Code Generator
 - [ ] Seeder for Test/Production separately
 - [ ] Manage seeder for permissions
+- [ ] Include Postman collection/Config/Preset
