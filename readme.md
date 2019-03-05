@@ -117,6 +117,7 @@ This project is licensed under the [MIT License](https://opensource.org/licenses
 
 ## Todo
 
+- [ ] Log viewer
 - [ ] Documentation private route with permission
 - [x] Localization
 - [ ] Code Generator
