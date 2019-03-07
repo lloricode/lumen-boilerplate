@@ -2,7 +2,11 @@
 
 [![Build Status](https://travis-ci.org/lloricode/lumen-dingo-boilerplate.svg?branch=master)](https://travis-ci.org/lloricode/lumen-dingo-boilerplate)
 
-API template made from [Lumen 5.7](https://lumen.laravel.com/) and extended by [dingo/api](https://github.com/dingo/api).
+API template made from [Lumen 5.8](https://lumen.laravel.com/) and extended by [dingo/api](https://github.com/dingo/api).
+
+## Lumen 5.7
+
+Download file from last commit in Lumen 5.7 [here](https://github.com/lloricode/lumen-dingo-boilerplate/tree/framework-5.7)
 
 ## Installation
 

@@ -12,7 +12,7 @@ use Tests\TestCase;
 
 class RepositoryTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $this->loggedInAs();
@@ -75,20 +75,20 @@ class RepositoryTest extends TestCase
         return [
             'default behavior' => [true, 100, 15, 20, 15],
             'default behavior with disable skip' => [false, 100, 15, 20, 15],
-            '.' => [true, 100, 15, 100, 50, 50],
-            '..' => [false, 100, 15, 20, 20, 100],
+            '.' => [true, 100, 15, 100, 50, '50'],
+            '..' => [false, 100, 15, 20, 20, '100'],
 
             // request limit non numeric
             'request limit non numeric default behavior' => [true, 100, 15, 20, 15, 'ccc'],
             'request limit non numeric default behavior with disable skip' => [false, 100, 15, 20, 15, 'ccc'],
 
             // zero
-            'zero request limit' => [true, 100, 15, 20, 20, 0],
-            'zero request limit with disable skip' => [false, 100, 15, 20, 15, 0],
+            'zero request limit' => [true, 100, 15, 20, 20, '0'],
+            'zero request limit with disable skip' => [false, 100, 15, 20, 15, '0'],
 
             // invalid request limit
-            'negative request limit' => [true, 100, 20, 100, 20, -1],
-            'exceed max request limit' => [true, 50, 20, 100, 20, 60],
+            'negative request limit' => [true, 100, 20, 100, 20, '-1'],
+            'exceed max request limit' => [true, 50, 20, 100, 20, '60'],
         ];
     }
 }

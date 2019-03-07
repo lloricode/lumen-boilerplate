@@ -10,7 +10,7 @@ abstract class TestCase extends BaseTestCase
 {
     use UsesDatabase;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->prepareDatabase();
         parent::setUp();

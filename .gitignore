@@ -13,3 +13,4 @@ coverage.clover
 phpunit.txt
 public/docs/*
 composer.phar
+.phpunit.result.cache
