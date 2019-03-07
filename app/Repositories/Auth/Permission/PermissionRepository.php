@@ -2,27 +2,20 @@
 /**
  * Created by PhpStorm.
  * User: Lloric Mayuga Garcia <lloricode@gmail.com>
- * Date: 12/23/18
- * Time: 5:54 PM
+ * Date: 3/7/19
+ * Time: 6:48 PM
  */
 
 namespace App\Repositories\Auth\Permission;
 
-use App\Repositories\BaseRepository;
+use App\Repositories\BaseRepositoryInterface;
 
-class PermissionRepository extends BaseRepository
+/**
+ * Interface PermissionRepository
+ *
+ * @package App\Repositories\Auth\Permission
+ */
+interface PermissionRepository extends BaseRepositoryInterface
 {
-    protected $fieldSearchable = [
-        'name' => 'like',
-    ];
 
-    /**
-     * Specify Model class name
-     *
-     * @return string
-     */
-    public function model()
-    {
-        return config('permission.models.permission');
-    }
 }

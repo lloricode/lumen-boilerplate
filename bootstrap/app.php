@@ -95,6 +95,7 @@ $app->routeMiddleware([
 
 
 $app->register(App\Providers\AppServiceProvider::class);
+$app->register(App\Providers\RepositoryServiceProvider::class);
 $app->register(Laravel\Passport\PassportServiceProvider::class);
 $app->register(Dusterio\LumenPassport\PassportServiceProvider::class);
 $app->register(Prettus\Repository\Providers\RepositoryServiceProvider::class);
