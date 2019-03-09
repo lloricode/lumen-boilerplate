@@ -53,6 +53,7 @@ class UserDeleteController extends Controller
      * @param \Dingo\Api\Http\Request $request
      *
      * @return \Dingo\Api\Http\Response
+     * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
     public function restore(Request $request)
     {
@@ -91,6 +92,7 @@ class UserDeleteController extends Controller
      * @param \Dingo\Api\Http\Request $request
      *
      * @return \Dingo\Api\Http\Response
+     * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
     public function purge(Request $request)
     {

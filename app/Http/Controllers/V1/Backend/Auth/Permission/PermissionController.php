@@ -73,6 +73,7 @@ class PermissionController extends Controller
      */
     public function show(Request $request)
     {
+        $this->permissionRepository->pushCriteria(new RequestCriteria($request));
         $p = $this->permissionRepository->find($this->decodeId($request));
         return $this->item($p, new PermissionTransformer);
     }

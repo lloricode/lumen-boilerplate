@@ -98,6 +98,7 @@ class RoleController extends Controller
      */
     public function show(Request $request)
     {
+        $this->roleRepository->pushCriteria(new RequestCriteria($request));
         $role = $this->roleRepository->find($this->decodeId($request));
         return $this->item($role, new RoleTransformer);
     }
