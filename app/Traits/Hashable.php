@@ -8,14 +8,14 @@
 
 namespace App\Traits;
 
-use Illuminate\Http\Request;
+use Dingo\Api\Contract\Http\Request;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 trait Hashable
 {
     /**
-     * @param \Illuminate\Http\Request $request
-     * @param string                   $keyColumn
+     * @param \Dingo\Api\Contract\Http\Request $request
+     * @param string                           $keyColumn
      *
      * @return mixed
      */
