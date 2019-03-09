@@ -10,6 +10,13 @@ namespace App\Repositories;
 
 use Prettus\Repository\Contracts\RepositoryInterface;
 
+/**
+ * Interface BaseRepositoryInterface
+ *
+ * @package App\Repositories
+ * @method pushCriteria(\Prettus\Repository\Contracts\CriteriaInterface $param)
+ * @method makeModel()
+ */
 interface BaseRepositoryInterface extends RepositoryInterface
 {
     /**

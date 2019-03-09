@@ -27,8 +27,6 @@ class PermissionController extends Controller
      * PermissionController constructor.
      *
      * @param \App\Repositories\Auth\Permission\PermissionRepository $permissionRepository
-     *
-     * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
     public function __construct(PermissionRepository $permissionRepository)
     {
@@ -51,7 +49,6 @@ class PermissionController extends Controller
      * @param \Dingo\Api\Http\Request $request
      *
      * @return \Dingo\Api\Http\Response
-     * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
     public function index(Request $request)
     {

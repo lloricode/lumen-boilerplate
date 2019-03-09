@@ -27,8 +27,6 @@ class RoleController extends Controller
      * RoleController constructor.
      *
      * @param \App\Repositories\Auth\Role\RoleRepository $roleRepository
-     *
-     * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
     public function __construct(RoleRepository $roleRepository)
     {
@@ -54,7 +52,6 @@ class RoleController extends Controller
      * @param \Dingo\Api\Http\Request $request
      *
      * @return \Dingo\Api\Http\Response
-     * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
     public function index(Request $request)
     {
@@ -74,7 +71,6 @@ class RoleController extends Controller
      * @param \Dingo\Api\Http\Request $request
      *
      * @return \Dingo\Api\Http\Response
-     * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
     public function store(Request $request)
     {

@@ -28,8 +28,6 @@ class UserDeleteController extends Controller
      * UserDeleteController constructor.
      *
      * @param \App\Repositories\Auth\User\UserRepository $userRepository
-     *
-     * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
     public function __construct(UserRepository $userRepository)
     {
@@ -72,7 +70,6 @@ class UserDeleteController extends Controller
      * @param \Dingo\Api\Http\Request $request
      *
      * @return \Dingo\Api\Http\Response
-     * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
     public function deleted(Request $request)
     {

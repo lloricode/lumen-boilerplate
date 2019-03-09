@@ -21,8 +21,6 @@ class UserController extends Controller
      * UserController constructor.
      *
      * @param \App\Repositories\Auth\User\UserRepository $userRepository
-     *
-     * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
     public function __construct(UserRepository $userRepository)
     {
@@ -48,7 +46,6 @@ class UserController extends Controller
      * @param \Dingo\Api\Http\Request $request
      *
      * @return \Dingo\Api\Http\Response
-     * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
     public function index(Request $request)
     {
@@ -89,7 +86,6 @@ class UserController extends Controller
      * @param \Dingo\Api\Http\Request $request
      *
      * @return \Dingo\Api\Http\Response
-     * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
     public function store(Request $request)
     {
@@ -117,7 +113,6 @@ class UserController extends Controller
      * @param \Dingo\Api\Http\Request $request
      *
      * @return \Dingo\Api\Http\Response
-     * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
     public function update(Request $request)
     {
