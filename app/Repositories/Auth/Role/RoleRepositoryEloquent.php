@@ -117,6 +117,11 @@ class RoleRepositoryEloquent extends BaseRepository implements RoleRepository
         return parent::delete($id);
     }
 
+    /**
+     * @param array $attributes
+     *
+     * @return mixed
+     */
     public function create(array $attributes)
     {
         $this->validate($attributes, ValidatorInterface::RULE_CREATE);
