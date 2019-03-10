@@ -19,13 +19,13 @@ trait Hashable
      */
     public function decodeHash(string $hash)
     {
-        $keyColumnValue = app('hashids')->decode($hash);
+        $decoded = app('hashids')->decode($hash);
 
-        if (empty($keyColumnValue)) {
+        if (empty($decoded)) {
             throw new BadRequestHttpException('Invalid hashed id.');
         }
 
-        return $keyColumnValue[0];
+        return $decoded[0];
     }
 
     /**
