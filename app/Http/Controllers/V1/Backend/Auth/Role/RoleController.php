@@ -89,13 +89,14 @@ class RoleController extends Controller
      * @apiUse             RoleResponse
      *
      * @param \Dingo\Api\Http\Request $request
+     * @param string                  $id
      *
      * @return \Dingo\Api\Http\Response
      */
-    public function show(Request $request)
+    public function show(Request $request, string $id)
     {
         $this->roleRepository->pushCriteria(new RequestCriteria($request));
-        $role = $this->roleRepository->find($this->decodeId($request));
+        $role = $this->roleRepository->find($this->decodeHash($id));
         return $this->item($role, new RoleTransformer);
     }
 
@@ -109,16 +110,17 @@ class RoleController extends Controller
      * @apiParam {String} name
      *
      * @param \Dingo\Api\Http\Request $request
+     * @param string                  $id
      *
      * @return \Dingo\Api\Http\Response
      * @throws \Prettus\Repository\Exceptions\RepositoryException
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function update(Request $request)
+    public function update(Request $request, string $id)
     {
         $role = $this->roleRepository->update([
             'name' => $request->input('name'),
-        ], $this->decodeId($request));
+        ], $this->decodeHash($id));
         return $this->item($role, new RoleTransformer);
     }
 
@@ -130,13 +132,13 @@ class RoleController extends Controller
      * @apiPermission      Authenticated User
      * @apiUse             NoContentResponse
      *
-     * @param \Dingo\Api\Http\Request $request
+     * @param string $id
      *
      * @return \Dingo\Api\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy(string $id)
     {
-        $this->roleRepository->delete($this->decodeId($request));
+        $this->roleRepository->delete($this->decodeHash($id));
         return $this->response->noContent();
     }
 }

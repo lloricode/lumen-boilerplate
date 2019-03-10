@@ -48,14 +48,14 @@ class UserDeleteController extends Controller
      * @apiPermission      Authenticated User
      * @apiUse             UserResponse
      *
-     * @param \Dingo\Api\Http\Request $request
+     * @param string $id
      *
      * @return \Dingo\Api\Http\Response
      * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
-    public function restore(Request $request)
+    public function restore(string $id)
     {
-        $user = $this->userRepository->restore($this->decodeId($request));
+        $user = $this->userRepository->restore($this->decodeHash($id));
         return $this->item($user, new UserTransformer);
     }
 
@@ -86,14 +86,14 @@ class UserDeleteController extends Controller
      * @apiPermission      Authenticated User
      * @apiUse             NoContentResponse
      *
-     * @param \Dingo\Api\Http\Request $request
+     * @param string $id
      *
      * @return \Dingo\Api\Http\Response
      * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
-    public function purge(Request $request)
+    public function purge(string $id)
     {
-        $this->userRepository->forceDelete($this->decodeId($request));
+        $this->userRepository->forceDelete($this->decodeHash($id));
         return $this->response->noContent();
     }
 }

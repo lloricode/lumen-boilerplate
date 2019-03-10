@@ -65,13 +65,14 @@ class PermissionController extends Controller
      * @apiUse             PermissionResponse
      *
      * @param \Dingo\Api\Http\Request $request
+     * @param string                  $id
      *
      * @return \Dingo\Api\Http\Response
      */
-    public function show(Request $request)
+    public function show(Request $request, string $id)
     {
         $this->permissionRepository->pushCriteria(new RequestCriteria($request));
-        $p = $this->permissionRepository->find($this->decodeId($request));
+        $p = $this->permissionRepository->find($this->decodeHash($id));
         return $this->item($p, new PermissionTransformer);
     }
 

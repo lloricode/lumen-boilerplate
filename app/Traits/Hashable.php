@@ -8,24 +8,10 @@
 
 namespace App\Traits;
 
-use Dingo\Api\Contract\Http\Request;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 trait Hashable
 {
-    /**
-     * @param \Dingo\Api\Contract\Http\Request $request
-     * @param string                           $keyColumn
-     *
-     * @return mixed
-     */
-    public function decodeId(Request $request, string $keyColumn = 'id')
-    {
-        // https://github.com/laravel/lumen-framework/issues/685#issuecomment-350376018
-        // https://github.com/laravel/lumen-framework/issues/685#issuecomment-443393222
-        return $this->decodeHash($request->route()[2][$keyColumn]);
-    }
-
     /**
      * @param string $hash
      *

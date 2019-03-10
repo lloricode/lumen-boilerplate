@@ -61,13 +61,13 @@ class UserController extends Controller
      * @apiPermission      Authenticated User
      * @apiUse             UserResponse
      *
-     * @param \Dingo\Api\Http\Request $request
+     * @param string $id
      *
      * @return \Dingo\Api\Http\Response
      */
-    public function show(Request $request)
+    public function show(string $id)
     {
-        $user = $this->userRepository->find($this->decodeId($request));
+        $user = $this->userRepository->find($this->decodeHash($id));
         return $this->item($user, new UserTransformer);
     }
 
@@ -111,17 +111,18 @@ class UserController extends Controller
      * @apiParam {String} password
      *
      * @param \Dingo\Api\Http\Request $request
+     * @param string                  $id
      *
      * @return \Dingo\Api\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, string $id)
     {
         $user = $this->userRepository->update($request->only([
             'first_name',
             'last_name',
             'email',
             'password',
-        ]), $this->decodeId($request));
+        ]), $this->decodeHash($id));
         return $this->item($user, new UserTransformer);
     }
 
@@ -134,13 +135,13 @@ class UserController extends Controller
      * @apiPermission      Authenticated User
      * @apiUse             NoContentResponse
      *
-     * @param \Dingo\Api\Http\Request $request
+     * @param string $id
      *
      * @return \Dingo\Api\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy(string $id)
     {
-        $id = $this->decodeId($request);
+        $id = $this->decodeHash($id);
         if (app('auth')->id() == $id) {
             $this->response->errorForbidden('You cannot delete your self.');
         }
