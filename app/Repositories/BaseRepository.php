@@ -9,6 +9,7 @@
 namespace App\Repositories;
 
 use App\Criterion\Eloquent\OnlyTrashedCriteria;
+use Illuminate\Support\Arr;
 use Prettus\Repository\Contracts\CacheableInterface;
 use Prettus\Repository\Eloquent\BaseRepository as BaseRepo;
 use Prettus\Repository\Events\RepositoryEntityUpdated;
@@ -101,5 +102,36 @@ abstract class BaseRepository extends BaseRepo implements CacheableInterface
         }
 
         return $this->paginateExtend($limit, $columns, $method);
+    }
+
+    /**
+     * @return array
+     * @throws \Prettus\Repository\Exceptions\RepositoryException
+     */
+    public function getFieldsSearchable()
+    {
+        $model = $this->makeModel();
+        $tableColumns = $model->getConnection()
+            ->getSchemaBuilder()
+            ->getColumnListing($model->getTable());
+
+        $fieldSearchable = array_map(function () {
+            return 'like';
+        }, array_flip($tableColumns));
+
+        Arr::forget($fieldSearchable, ['id', 'created_at', 'updated_at', 'deleted_at']);
+
+        return parent::getFieldsSearchable() + collect($fieldSearchable)
+                ->filter(function ($value, $key) {
+
+                    // polymorphic
+                    foreach (['_id', '_type'] as $exclude) {
+                        if ($exclude == substr($key, strlen($key) - strlen($exclude), strlen($key))) {
+                            return false;
+                        }
+                    }
+
+                    return true;
+                })->toArray();
     }
 }
