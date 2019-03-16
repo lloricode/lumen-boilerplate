@@ -14,7 +14,7 @@ return [
 
     'api' => [
         'throttle' => [
-            'expires' => 60,
+            'expires' => 1,
             'limit' => 30,
         ],
         'token' => [

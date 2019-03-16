@@ -21,7 +21,7 @@ $api->group([
         'serializer:json_api',
     ],
     'limit' => config('setting.api.throttle.limit'), // api.throttle max
-    'expires' => config('setting.api.throttle.expires'), // api.throttle minute
+    'expires' => config('setting.api.throttle.expires') * 60, // api.throttle minute
 ], function () use ($api) {
 
     include 'localization.php';
