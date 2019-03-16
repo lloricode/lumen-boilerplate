@@ -62,7 +62,7 @@ return [
          | Time of expiration cache
          |
          */
-        'minutes' => 30,
+        'minutes' => \DateInterval::createFromDateString('30 minutes'),
 
         /*
          |--------------------------------------------------------------------------
