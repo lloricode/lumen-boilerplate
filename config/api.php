@@ -82,7 +82,7 @@ return [
     |
     */
 
-    'name' => env('API_NAME', env('APP_NAME', 'Lumen 5.7 Dingo Boilerplate')),
+    'name' => env('API_NAME', env('APP_NAME', 'Lumen Dingo Boilerplate')),
 
     /*
     |--------------------------------------------------------------------------
