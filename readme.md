@@ -131,3 +131,4 @@ This project is licensed under the [MIT License](https://opensource.org/licenses
 - [ ] Include Postman collection/Config/Preset
 - [ ] Wiki
 - [ ] Firewall
+- [ ] Social login
