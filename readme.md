@@ -132,3 +132,5 @@ This project is licensed under the [MIT License](https://opensource.org/licenses
 - [ ] Wiki
 - [ ] Firewall
 - [ ] Social login
+
+## Soon web interface
