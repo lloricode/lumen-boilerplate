@@ -94,6 +94,14 @@ You can view integration [here](https://travis-ci.org/lloricode/lumen-dingo-boil
 
 In your project directory run this command:
 
+First run this command to create `database.sqlite` in database folder. this make testing database faster
+
+```base
+composer db
+```  
+
+Then run phpunit
+
 ```bash
 vendor/bin/phpunit
 ```
