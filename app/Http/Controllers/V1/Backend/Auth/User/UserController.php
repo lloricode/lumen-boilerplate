@@ -72,6 +72,10 @@ class UserController extends Controller
     }
 
     /**
+     * @param  \Dingo\Api\Http\Request  $request
+     *
+     * @return \Dingo\Api\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
      * @api                {post} /auth/users Store user
      * @apiName            store-user
      * @apiGroup           User
@@ -83,22 +87,28 @@ class UserController extends Controller
      * @apiParam {String} email (required)
      * @apiParam {String} password (required)
      *
-     * @param \Dingo\Api\Http\Request $request
-     *
-     * @return \Dingo\Api\Http\Response
      */
     public function store(Request $request)
     {
-        return $this->item($this->userRepository->create($request->only([
-            'first_name',
-            'last_name',
-            'email',
-            'password',
-        ])), new UserTransformer)
+        $attributes = $this->validate($request, [
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required',
+        ]);
+
+        $attributes['password'] = app('hash')->make($attributes['password']);
+
+        return $this->item($this->userRepository->create($attributes), new UserTransformer)
             ->statusCode(201);
     }
 
     /**
+     * @param  \Dingo\Api\Http\Request  $request
+     * @param  string  $id
+     *
+     * @return \Dingo\Api\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
      * @api                {put} /auth/users/ Update user
      * @apiName            update-user
      * @apiGroup           User
@@ -110,19 +120,19 @@ class UserController extends Controller
      * @apiParam {String} email
      * @apiParam {String} password
      *
-     * @param \Dingo\Api\Http\Request $request
-     * @param string                  $id
-     *
-     * @return \Dingo\Api\Http\Response
      */
     public function update(Request $request, string $id)
     {
-        $user = $this->userRepository->update($request->only([
-            'first_name',
-            'last_name',
-            'email',
-            'password',
-        ]), $this->decodeHash($id));
+        $attributes = $this->validate($request, [
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required',
+        ]);
+
+        $attributes['password'] = app('hash')->make($attributes['password']);
+
+        $user = $this->userRepository->update($attributes, $this->decodeHash($id));
         return $this->item($user, new UserTransformer);
     }
 

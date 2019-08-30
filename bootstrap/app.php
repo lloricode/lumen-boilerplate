@@ -71,7 +71,7 @@ $app->singleton(
 
 $app->middleware([
     App\Http\Middleware\LocalizationMiddleware::class,
-    Barryvdh\Cors\HandleCors::class,
+    Spatie\Cors\Cors::class,
 ]);
 
 $app->routeMiddleware([
@@ -99,7 +99,7 @@ $app->register(Dusterio\LumenPassport\PassportServiceProvider::class);
 $app->register(Prettus\Repository\Providers\RepositoryServiceProvider::class);
 $app->register(Spatie\Permission\PermissionServiceProvider::class);
 $app->register(Vinkla\Hashids\HashidsServiceProvider::class);
-$app->register(Barryvdh\Cors\ServiceProvider::class);
+$app->register(Spatie\Cors\CorsServiceProvider::class);
 $app->register(Dingo\Api\Provider\LumenServiceProvider::class);
 
 $app[Dingo\Api\Auth\Auth::class]->extend('passport', function ($app) {

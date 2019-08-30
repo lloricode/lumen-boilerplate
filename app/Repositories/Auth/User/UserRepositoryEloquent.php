@@ -11,7 +11,6 @@ namespace App\Repositories\Auth\User;
 use App\Models\Auth\User\User;
 use App\Repositories\BaseRepository;
 use Prettus\Repository\Events\RepositoryEntityUpdated;
-use Prettus\Validator\Contracts\ValidatorInterface;
 
 /**
  * Class UserRepositoryEloquent
@@ -28,25 +27,6 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
     ];
 
     /**
-     * Specify Validator Rules
-     *
-     * @var array
-     */
-    protected $rules = [
-        ValidatorInterface::RULE_CREATE => [
-            'first_name' => 'required|string',
-            'last_name' => 'required|string',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required',
-        ],
-        ValidatorInterface::RULE_UPDATE => [
-            'first_name' => 'string',
-            'last_name' => 'string',
-            'email' => 'email|unique:users,email',
-        ]
-    ];
-
-    /**
      * Specify Model class name
      *
      * @return string
@@ -56,20 +36,6 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
         return User::class;
     }
 
-    /**
-     * Save a new entity in repository
-     *
-     * @param array $attributes
-     *
-     * @return mixed
-     * @throws \Prettus\Validator\Exceptions\ValidatorException
-     */
-    public function create(array $attributes)
-    {
-        $attributes['password'] = app('hash')->make($attributes['password']);
-
-        return parent::create($attributes);
-    }
 
     /**
      * @param     $id
