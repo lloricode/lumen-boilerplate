@@ -4,13 +4,12 @@
 
 RESTful API template made from [Lumen 5.8](https://lumen.laravel.com/) and extended by [dingo/api](https://github.com/dingo/api).
 
-## Lumen 5.7
+## Old version of Lumen
 
-Download file from last commit in Lumen 5.7 [here](https://github.com/lloricode/lumen-dingo-boilerplate/tree/framework-5.7)
-
-## Lumen 5.8
-
-Download file from last commit in Lumen 5.8 [here](https://github.com/lloricode/lumen-dingo-boilerplate/tree/framework-5.8)
+| Lumen | 
+| ----- | 
+|[5.8](https://github.com/lloricode/lumen-dingo-boilerplate/tree/framework-5.8)|
+|[5.7](https://github.com/lloricode/lumen-dingo-boilerplate/tree/framework-5.7)|
 
 ## Installation
 
