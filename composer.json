@@ -22,7 +22,7 @@
     "prettus/l5-repository": "^2.6",
     "spatie/laravel-cors": "^1.5",
     "spatie/laravel-permission": "^3.0",
-    "vinkla/hashids": "^5.1",
+    "vinkla/hashids": "^6.0",
     "vlucas/phpdotenv": "^3.3"
   },
   "require-dev": {
