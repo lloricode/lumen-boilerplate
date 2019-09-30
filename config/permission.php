@@ -101,10 +101,10 @@ return [
          * When permissions or roles are updated the cache is flushed automatically.
          */
 
-        'expiration_time' => \DateInterval::createFromDateString('24 hours'),
+        'expiration_time' => DateInterval::createFromDateString('24 hours'),
 
         /*
-         * The key to use when tagging and prefixing entries in the cache.
+         * The cache key used to store all permissions.
          */
 
         'key' => 'spatie.permission.cache',
