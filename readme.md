@@ -8,6 +8,10 @@ RESTful API template made from [Lumen 5.8](https://lumen.laravel.com/) and exten
 
 Download file from last commit in Lumen 5.7 [here](https://github.com/lloricode/lumen-dingo-boilerplate/tree/framework-5.7)
 
+## Lumen 5.8
+
+Download file from last commit in Lumen 5.8 [here](https://github.com/lloricode/lumen-dingo-boilerplate/tree/framework-5.8)
+
 ## Installation
 
 ### 1. Download
