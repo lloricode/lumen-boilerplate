@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/lloricode/lumen-dingo-boilerplate.svg?branch=master)](https://travis-ci.org/lloricode/lumen-dingo-boilerplate)
 
-RESTful API template made from [Lumen 5.8](https://lumen.laravel.com/) and extended by [dingo/api](https://github.com/dingo/api).
+RESTful API template made from [Lumen 6](https://lumen.laravel.com/) and extended by [dingo/api](https://github.com/dingo/api).
 
 ## Old version of Lumen
 
