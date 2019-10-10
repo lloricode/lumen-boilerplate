@@ -17,7 +17,7 @@
     "ext-pdo": "*",
     "dingo/api": "v2.4.0-rc2",
     "dusterio/lumen-passport": "^0.2.10",
-    "laravel/lumen-framework": "^6.0",
+    "laravel/lumen-framework": "^6.0.1",
     "liyu/dingo-serializer-switch": "^0.3.0",
     "prettus/l5-repository": "^2.6",
     "rap2hpoutre/laravel-log-viewer": "^1.3",
