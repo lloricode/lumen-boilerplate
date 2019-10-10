@@ -126,6 +126,7 @@ vendor/bin/phpunit
 * [spatie/laravel-permission](https://github.com/spatie/laravel-permission) - Associate users with roles and permissions.
 * [vinkla/laravel-hashids](https://github.com/vinkla/laravel-hashids) - A Hashids bridge for Laravel.
 * [apidoc/apidoc](https://github.com/apidoc/apidoc) - RESTful web API Documentation Generator.
+* [rap2hpoutre/laravel-log-viewer](https://github.com/rap2hpoutre/laravel-log-viewer) - Laravel log viewer.
 
 See also the list of [contributors](https://github.com/lloricode/lumen-dingo-boilerplate/graphs/contributors) who participated in this project.
 
@@ -135,7 +136,7 @@ This project is licensed under the [MIT License](https://opensource.org/licenses
 
 ## Todo
 
-- [ ] Log viewer
+- [x] Log viewer
 - [ ] Documentation private route with permission
 - [x] Localization
 - [ ] Code Generator

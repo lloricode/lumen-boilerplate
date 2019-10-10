@@ -101,6 +101,7 @@ $app->register(Spatie\Permission\PermissionServiceProvider::class);
 $app->register(Vinkla\Hashids\HashidsServiceProvider::class);
 $app->register(Spatie\Cors\CorsServiceProvider::class);
 $app->register(Dingo\Api\Provider\LumenServiceProvider::class);
+$app->register(Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class);
 
 $app[Dingo\Api\Auth\Auth::class]->extend('passport', function ($app) {
     return $app[App\Providers\GuardServiceProvider::class];

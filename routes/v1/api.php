@@ -45,6 +45,7 @@ $api->group([
             include 'backend/auth/role.php';
             include 'backend/auth/permission.php';
             include 'backend/auth/authorization.php';
+            include 'backend/log.php';
         });
     });
 });
