@@ -63,7 +63,8 @@
     ],
     "ide-helper": [
       "@php artisan ide-helper:generate --ansi",
-      "@php artisan ide-helper:meta --ansi"
+      "@php artisan ide-helper:meta --ansi",
+      "@php artisan ide-helper:models --reset --write --ansi"
     ],
     "coverage": [
       "./vendor/bin/phpunit --coverage-html ./coverage"
