@@ -89,6 +89,8 @@ You can visit the generated API documentation in http://lumen-dingo-boilerplate.
 ![screenshot from 2018-12-31 11-09-41](https://user-images.githubusercontent.com/8251344/50553955-a9accc80-0cec-11e9-8fbf-f41cc1e10286.png)
 ![screenshot from 2018-12-31 11-09-56](https://user-images.githubusercontent.com/8251344/50553957-ab769000-0cec-11e9-8b81-e8359f4ef5b1.png)
 
+or here's the published postman [here](https://documenter.getpostman.com/view/4366674/SWEDzudy)
+
 ## PHPUnit
 
 ![](https://user-images.githubusercontent.com/8251344/50570082-4ab38a00-0db6-11e9-83c0-c379c09d14d8.png)
@@ -142,7 +144,7 @@ This project is licensed under the [MIT License](https://opensource.org/licenses
 - [ ] Code Generator
 - [ ] Seeder for Test/Production separately
 - [ ] Manage seeder for permissions
-- [ ] Include Postman collection/Config/Preset
+- [x] Include Postman collection/Config/Preset
 - [ ] Wiki
 - [ ] Firewall
 - [ ] Social login
