@@ -4,6 +4,8 @@
 
 RESTful API template made from [Lumen 6](https://lumen.laravel.com/) and extended by [dingo/api](https://github.com/dingo/api).
 
+Join to our [discord](https://discord.gg/9X3Y5pC)
+
 ## Old version of Lumen
 
 | Lumen | 
