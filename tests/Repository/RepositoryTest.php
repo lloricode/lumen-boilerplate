@@ -36,8 +36,7 @@ class RepositoryTest extends TestCase
         int $addRoleCount,
         int $expectedCount,
         string $queryParamLimit = null
-    )
-    {
+    ) {
         $queryParamLimit = is_null($queryParamLimit) ? '' : "?limit=$queryParamLimit";
 
         config(
@@ -61,7 +60,15 @@ class RepositoryTest extends TestCase
 
         $this->get($this->route('backend.roles.index').$queryParamLimit, $this->addHeaders());
 
-        $this->assertCount($expectedCount, ((array)json_decode($this->response->getContent()))['data']);
+        $content = ((array)json_decode($this->response->getContent()));
+
+        $isContentHasData = isset($content['data']);
+
+        $this->assertTrue($isContentHasData);
+
+        if ($isContentHasData) {
+            $this->assertCount($expectedCount, $content['data']);
+        }
     }
 
     /**
