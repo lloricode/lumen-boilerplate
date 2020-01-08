@@ -41,7 +41,7 @@ class RoleRepositoryEloquent extends BaseRepository implements RoleRepository
 
     /**
      * @param     $id
-     * @param int $permissionId
+     * @param  int  $permissionId
      */
     public function revokePermissionTo($id, int $permissionId)
     {
@@ -52,7 +52,7 @@ class RoleRepositoryEloquent extends BaseRepository implements RoleRepository
 
     /**
      * @param     $id
-     * @param int $permissionId
+     * @param  int  $permissionId
      */
     public function givePermissionTo($id, int $permissionId)
     {
@@ -60,7 +60,7 @@ class RoleRepositoryEloquent extends BaseRepository implements RoleRepository
     }
 
     /**
-     * @param array $attributes
+     * @param  array  $attributes
      * @param       $id
      *
      * @return mixed
@@ -118,7 +118,7 @@ class RoleRepositoryEloquent extends BaseRepository implements RoleRepository
     }
 
     /**
-     * @param array $attributes
+     * @param  array  $attributes
      *
      * @return mixed
      */

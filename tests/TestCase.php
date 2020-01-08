@@ -5,6 +5,7 @@ namespace Tests;
 use App\Models\Auth\User\User;
 use Laravel\Lumen\Testing\TestCase as BaseTestCase;
 use Laravel\Passport\Passport;
+use Spatie\Permission\PermissionRegistrar;
 
 abstract class TestCase extends BaseTestCase
 {
@@ -14,10 +15,12 @@ abstract class TestCase extends BaseTestCase
     {
         $this->prepareDatabase();
         parent::setUp();
-        $this->setUpDatabase(function () {
-            $this->artisan('db:seed');
-            $this->artisan('passport:install');
-        });
+        $this->setUpDatabase(
+            function () {
+                $this->artisan('db:seed');
+                $this->artisan('passport:install');
+            }
+        );
         app('cache')
             ->store(
                 config('permission.cache.store') != 'default'
@@ -26,7 +29,7 @@ abstract class TestCase extends BaseTestCase
             )
             ->forget(config('permission.cache.key'));
         app('cache')->flush();
-        $this->app->make(\Spatie\Permission\PermissionRegistrar::class)->registerPermissions();
+        $this->app->make(PermissionRegistrar::class)->registerPermissions();
         $this->beginDatabaseTransaction();
     }
 
@@ -37,7 +40,7 @@ abstract class TestCase extends BaseTestCase
      */
     public function createApplication()
     {
-        return require __DIR__ . '/../bootstrap/app.php';
+        return require __DIR__.'/../bootstrap/app.php';
     }
 
     protected function route($name, array $parameters = []/*, $secure = null*/)
@@ -72,15 +75,15 @@ abstract class TestCase extends BaseTestCase
         $uri = $urls[$name];
 
         foreach ($parameters as $parameter => $value) {
-            $uri = str_replace('{' . $parameter . '}', $value, $uri);
+            $uri = str_replace('{'.$parameter.'}', $value, $uri);
         }
         return $uri;
 //        return app('Dingo\Api\Routing\UrlGenerator')->version('v1')->route($name, $parameters);
     }
 
     /**
-     * @param array $headers
-     * @param bool  $isServer
+     * @param  array  $headers
+     * @param  bool  $isServer
      *
      * @return array
      */

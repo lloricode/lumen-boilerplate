@@ -26,19 +26,22 @@ class PermissionController extends Controller
     /**
      * PermissionController constructor.
      *
-     * @param \App\Repositories\Auth\Permission\PermissionRepository $permissionRepository
+     * @param  \App\Repositories\Auth\Permission\PermissionRepository  $permissionRepository
      */
     public function __construct(PermissionRepository $permissionRepository)
     {
         $permissions = $permissionRepository->makeModel()::PERMISSIONS;
 
-        $this->middleware('permission:' . $permissions['index'], ['only' => 'index']);
-        $this->middleware('permission:' . $permissions['show'], ['only' => 'show']);
+        $this->middleware('permission:'.$permissions['index'], ['only' => 'index']);
+        $this->middleware('permission:'.$permissions['show'], ['only' => 'show']);
 
         $this->permissionRepository = $permissionRepository;
     }
 
     /**
+     * @param  \Dingo\Api\Http\Request  $request
+     *
+     * @return \Dingo\Api\Http\Response
      * @api                {get} /auth/permissions Get all permissions
      * @apiName            get-all-permissions
      * @apiGroup           Permission
@@ -46,9 +49,6 @@ class PermissionController extends Controller
      * @apiPermission      Authenticated User
      * @apiUse             PermissionsResponse
      *
-     * @param \Dingo\Api\Http\Request $request
-     *
-     * @return \Dingo\Api\Http\Response
      */
     public function index(Request $request)
     {
@@ -57,6 +57,10 @@ class PermissionController extends Controller
     }
 
     /**
+     * @param  \Dingo\Api\Http\Request  $request
+     * @param  string  $id
+     *
+     * @return \Dingo\Api\Http\Response
      * @api                {get} /auth/permissions/{id} Show permission
      * @apiName            show-permission
      * @apiGroup           Permission
@@ -64,10 +68,6 @@ class PermissionController extends Controller
      * @apiPermission      Authenticated User
      * @apiUse             PermissionResponse
      *
-     * @param \Dingo\Api\Http\Request $request
-     * @param string                  $id
-     *
-     * @return \Dingo\Api\Http\Response
      */
     public function show(Request $request, string $id)
     {

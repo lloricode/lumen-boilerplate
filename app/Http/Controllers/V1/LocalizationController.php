@@ -20,6 +20,7 @@ use App\Values\Localizations\Localization;
 class LocalizationController extends Controller
 {
     /**
+     * @return \Dingo\Api\Http\Response
      * @api                {get} /localizations Get all localizations
      * @apiName            get-all-localizations
      * @apiGroup           Localization
@@ -27,7 +28,6 @@ class LocalizationController extends Controller
      * @apiPermission      Authenticated User
      * @apiUse             LocalizationsResponse
      *
-     * @return \Dingo\Api\Http\Response
      */
     public function index()
     {

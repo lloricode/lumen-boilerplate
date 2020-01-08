@@ -21,9 +21,9 @@ abstract class BaseTransformer extends TransformerAbstract
     abstract public function getResourceKey(): string;
 
     /**
-     * @param array $response
-     * @param array $data
-     * @param array $roleNames
+     * @param  array  $response
+     * @param  array  $data
+     * @param  array  $roleNames
      *
      * @return array
      */
@@ -41,10 +41,10 @@ abstract class BaseTransformer extends TransformerAbstract
     /**
      * prepare human readable time with users timezone
      *
-     * @param \Illuminate\Database\Eloquent\Model $entity
+     * @param  \Illuminate\Database\Eloquent\Model  $entity
      * @param                                     $responseData
-     * @param array                               $columns
-     * @param bool                                $isIncludeDefault
+     * @param  array  $columns
+     * @param  bool  $isIncludeDefault
      *
      * @return array
      */
@@ -67,15 +67,14 @@ abstract class BaseTransformer extends TransformerAbstract
         $timeZone = $auth->user()->timezone ?? config('app.timezone');
 
         $readable = function ($column) use ($entity, $timeZone) {
-
             // sometime column is not carbonated, i mean instance if Carbon/Carbon
             $at = Carbon::parse($entity->{$column});
 
             return [
                 $column => $at->format(config('setting.formats.datetime_12')),
-                $column . '_readable' => $at->diffForHumans(),
-                $column . '_tz' => $at->timezone($timeZone)->format(config('setting.formats.datetime_12')),
-                $column . '_readable_tz' => $at->timezone($timeZone)->diffForHumans(),
+                $column.'_readable' => $at->diffForHumans(),
+                $column.'_tz' => $at->timezone($timeZone)->format(config('setting.formats.datetime_12')),
+                $column.'_readable_tz' => $at->timezone($timeZone)->diffForHumans(),
             ];
         };
 
@@ -96,8 +95,10 @@ abstract class BaseTransformer extends TransformerAbstract
 
         $return = [];
         foreach ($toBeConvert as $column) {
-            $return = array_merge($return,
-                (!is_null($entity->{$column})) ? array_merge($return, $readable($column)) : []);
+            $return = array_merge(
+                $return,
+                (!is_null($entity->{$column})) ? array_merge($return, $readable($column)) : []
+            );
         }
 
         return array_merge($responseData, $return);

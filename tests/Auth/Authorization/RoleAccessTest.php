@@ -45,7 +45,7 @@ class RoleAccessTest extends BaseRole
             ];
         }
 
-        $this->call($method, '/auth/' . $uri, $param, [], [], $this->addHeaders([], true));
+        $this->call($method, '/auth/'.$uri, $param, [], [], $this->addHeaders([], true));
         $this->assertResponseStatus($statusCode);
     }
 

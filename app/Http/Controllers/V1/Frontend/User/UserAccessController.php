@@ -19,6 +19,7 @@ use App\Transformers\Auth\UserTransformer;
 class UserAccessController extends Controller
 {
     /**
+     * @return \Dingo\Api\Http\Response
      * @api                {get} /profile Get current authenticated user
      * @apiName            get-authenticated-user
      * @apiGroup           UserAccess
@@ -26,7 +27,6 @@ class UserAccessController extends Controller
      * @apiPermission      Authenticated User
      * @apiUse             UserResponse
      *
-     * @return \Dingo\Api\Http\Response
      */
     public function profile()
     {

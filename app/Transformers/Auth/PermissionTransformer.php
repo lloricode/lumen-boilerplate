@@ -31,7 +31,7 @@ class PermissionTransformer extends BaseTransformer
     /**
      * A Fractal transformer.
      *
-     * @param \App\Models\Auth\Permission\Permission $permission
+     * @param  \App\Models\Auth\Permission\Permission  $permission
      *
      * @return array
      */

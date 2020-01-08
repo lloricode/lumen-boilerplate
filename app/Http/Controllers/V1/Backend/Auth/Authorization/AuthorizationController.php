@@ -28,18 +28,21 @@ class AuthorizationController extends Controller
     /**
      * AuthorizationController constructor.
      *
-     * @param \App\Repositories\Auth\User\UserRepository $userRepository
-     * @param \App\Repositories\Auth\Role\RoleRepository $roleRepository
+     * @param  \App\Repositories\Auth\User\UserRepository  $userRepository
+     * @param  \App\Repositories\Auth\Role\RoleRepository  $roleRepository
      */
     public function __construct(UserRepository $userRepository, RoleRepository $roleRepository)
     {
-        $this->middleware('permission:' . config('setting.permission.permission_names.manage_authorization'));
+        $this->middleware('permission:'.config('setting.permission.permission_names.manage_authorization'));
 
         $this->userRepository = $userRepository;
         $this->roleRepository = $roleRepository;
     }
 
     /**
+     * @param  \Dingo\Api\Http\Request  $request
+     *
+     * @return \Dingo\Api\Http\Response
      * @api                {post} /auth/authorizations/assign-role-to-user Assign role to user
      * @apiName            assign-role-to-user
      * @apiGroup           Authorization
@@ -49,9 +52,6 @@ class AuthorizationController extends Controller
      * @apiParam {String} user_id User hashed id
      * @apiParam {String} role_id Role hashed id
      *
-     * @param \Dingo\Api\Http\Request $request
-     *
-     * @return \Dingo\Api\Http\Response
      */
     public function assignRoleToUser(Request $request)
     {
@@ -63,6 +63,9 @@ class AuthorizationController extends Controller
     }
 
     /**
+     * @param  \Dingo\Api\Http\Request  $request
+     *
+     * @return \Dingo\Api\Http\Response
      * @api                {post} /auth/authorizations/revoke-role-from-user Revoke role form user
      * @apiName            revoke-role-from-user
      * @apiGroup           Authorization
@@ -72,9 +75,6 @@ class AuthorizationController extends Controller
      * @apiParam {String} user_id User hashed id
      * @apiParam {String} role_id Role hashed id
      *
-     * @param \Dingo\Api\Http\Request $request
-     *
-     * @return \Dingo\Api\Http\Response
      */
     public function revokeRoleFormUser(Request $request)
     {
@@ -87,6 +87,9 @@ class AuthorizationController extends Controller
     }
 
     /**
+     * @param  \Dingo\Api\Http\Request  $request
+     *
+     * @return \Dingo\Api\Http\Response
      * @api                {post} /auth/authorizations/assign-permission-to-user Assign permission to user
      * @apiName            assign-permission-to-user
      * @apiGroup           Authorization
@@ -96,9 +99,6 @@ class AuthorizationController extends Controller
      * @apiParam {String} user_id User hashed id
      * @apiParam {String} permission_id Permission hashed id
      *
-     * @param \Dingo\Api\Http\Request $request
-     *
-     * @return \Dingo\Api\Http\Response
      */
     public function assignPermissionToUser(Request $request)
     {
@@ -110,6 +110,9 @@ class AuthorizationController extends Controller
     }
 
     /**
+     * @param  \Dingo\Api\Http\Request  $request
+     *
+     * @return \Dingo\Api\Http\Response
      * @api                {post} /auth/authorizations/revoke-permission-from-user Revoke permission from user
      * @apiName            revoke-permission-from-user
      * @apiGroup           Authorization
@@ -119,9 +122,6 @@ class AuthorizationController extends Controller
      * @apiParam {String} user_id User hashed id
      * @apiParam {String} permission_id Permission hashed id
      *
-     * @param \Dingo\Api\Http\Request $request
-     *
-     * @return \Dingo\Api\Http\Response
      */
     public function revokePermissionFromUser(Request $request)
     {
@@ -130,10 +130,12 @@ class AuthorizationController extends Controller
         $this->userRepository->revokePermissionTo($userId, $this->decodeHash($request->input('permission_id')));
 
         return $this->item($this->userRepository->find($userId), new UserTransformer);
-
     }
 
     /**
+     * @param  \Dingo\Api\Http\Request  $request
+     *
+     * @return \Dingo\Api\Http\Response
      * @api                {post} /auth/authorizations/attach-permission-to-role Attach permission to role
      * @apiName            attach-permission-to-role
      * @apiGroup           Authorization
@@ -143,9 +145,6 @@ class AuthorizationController extends Controller
      * @apiParam {String} role_id Role hashed id
      * @apiParam {String} permission_id Permission hashed id
      *
-     * @param \Dingo\Api\Http\Request $request
-     *
-     * @return \Dingo\Api\Http\Response
      */
     public function attachPermissionToRole(Request $request)
     {
@@ -157,6 +156,9 @@ class AuthorizationController extends Controller
     }
 
     /**
+     * @param  \Dingo\Api\Http\Request  $request
+     *
+     * @return \Dingo\Api\Http\Response
      * @api                {post} /auth/authorizations/revoke-permission-from-role Revoke permission from role
      * @apiName            revoke-permission-from-role
      * @apiGroup           Authorization
@@ -166,9 +168,6 @@ class AuthorizationController extends Controller
      * @apiParam {String} role_id Role hashed id
      * @apiParam {String} permission_id Permission hashed id
      *
-     * @param \Dingo\Api\Http\Request $request
-     *
-     * @return \Dingo\Api\Http\Response
      */
     public function revokePermissionFromRole(Request $request)
     {

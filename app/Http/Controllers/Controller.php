@@ -20,8 +20,8 @@ class Controller extends BaseController
     /**
      * @param               $paginatorOrCollection
      * @param               $transformer
-     * @param array         $parameters
-     * @param \Closure|null $after
+     * @param  array  $parameters
+     * @param  \Closure|null  $after
      *
      * @return \Dingo\Api\Http\Response
      */
@@ -30,7 +30,8 @@ class Controller extends BaseController
         $transformer,
         array $parameters = [],
         Closure $after = null
-    ) {
+    )
+    {
         $method = '';
         if ($paginatorOrCollection instanceof Paginator) {
             $method = 'paginator';
@@ -40,7 +41,8 @@ class Controller extends BaseController
 
         $parameters = $this->addResourceKey($transformer, $parameters);
 
-        $response = $this->{$method}($paginatorOrCollection,
+        $response = $this->{$method}(
+            $paginatorOrCollection,
             $transformer,
             $parameters,
             $after
@@ -74,11 +76,10 @@ class Controller extends BaseController
             $transformer = app($transformer);
         }
         return $transformer;
-
     }
 
     /**
-     * @param \Dingo\Api\Http\Response $response
+     * @param  \Dingo\Api\Http\Response  $response
      * @param                          $transformer
      *
      * @return \Dingo\Api\Http\Response
@@ -90,9 +91,9 @@ class Controller extends BaseController
 
     /**
      * @param                                   $item
-     * @param \App\Transformers\BaseTransformer $transformer
-     * @param array                             $parameters
-     * @param \Closure|null                     $after
+     * @param  \App\Transformers\BaseTransformer  $transformer
+     * @param  array  $parameters
+     * @param  \Closure|null  $after
      *
      * @return \Dingo\Api\Http\Response
      */

@@ -22,21 +22,31 @@ class UserValidationTest extends TestCase
 
         $uniqueEmail = 'my@email.com';
 
-        factory(User::class)->create([
-            'email' => $uniqueEmail,
-        ]);
+        factory(User::class)->create(
+            [
+                'email' => $uniqueEmail,
+            ]
+        );
 
-        $user = factory(User::class)->create([
-            'email' => 'xx' . $uniqueEmail,
-        ]);
+        $user = factory(User::class)->create(
+            [
+                'email' => 'xx'.$uniqueEmail,
+            ]
+        );
 
-        $this->put($this->route('backend.users.update', ['id' => $user->getHashedId()]), [
-            'email' => $uniqueEmail,
-        ], $this->addHeaders());
+        $this->put(
+            $this->route('backend.users.update', ['id' => $user->getHashedId()]),
+            [
+                'email' => $uniqueEmail,
+            ],
+            $this->addHeaders()
+        );
 
         $this->assertResponseStatus(422);
-        $this->seeJson([
-            'email' => ['The email has already been taken.'],
-        ]);
+        $this->seeJson(
+            [
+                'email' => ['The email has already been taken.'],
+            ]
+        );
     }
 }

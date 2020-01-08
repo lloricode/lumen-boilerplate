@@ -18,7 +18,7 @@ use App\Repositories\BaseRepositoryInterface;
 interface RoleRepository extends BaseRepositoryInterface
 {
     /**
-     * @param array $attributes
+     * @param  array  $attributes
      * @param       $id
      *
      * @return mixed
@@ -29,13 +29,13 @@ interface RoleRepository extends BaseRepositoryInterface
 
     /**
      * @param     $id
-     * @param int $permissionId
+     * @param  int  $permissionId
      */
     public function givePermissionTo($id, int $permissionId);
 
     /**
      * @param     $id
-     * @param int $permissionId
+     * @param  int  $permissionId
      */
     public function revokePermissionTo($id, int $permissionId);
 }

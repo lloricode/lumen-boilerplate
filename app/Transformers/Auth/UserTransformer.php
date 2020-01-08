@@ -33,7 +33,7 @@ class UserTransformer extends BaseTransformer
     /**
      * A Fractal transformer.
      *
-     * @param \App\Models\Auth\User\User $user
+     * @param  \App\Models\Auth\User\User  $user
      *
      * @return array
      */
@@ -46,9 +46,12 @@ class UserTransformer extends BaseTransformer
             'email' => $user->email,
         ];
 
-        $response = $this->filterData($response, [
+        $response = $this->filterData(
+            $response,
+            [
 
-        ]);
+            ]
+        );
 
         return $this->addTimesHumanReadable($user, $response);
     }

@@ -14,7 +14,7 @@ interface UserRepository extends BaseRepositoryInterface
 {
     /**
      * @param     $id
-     * @param int $roleId
+     * @param  int  $roleId
      *
      * @return mixed
      */
@@ -22,19 +22,19 @@ interface UserRepository extends BaseRepositoryInterface
 
     /**
      * @param     $id
-     * @param int $permissionId
+     * @param  int  $permissionId
      */
     public function givePermissionTo($id, int $permissionId);
 
     /**
      * @param     $id
-     * @param int $roleId
+     * @param  int  $roleId
      */
     public function removeRole($id, int $roleId);
 
     /**
      * @param     $id
-     * @param int $permissionId
+     * @param  int  $permissionId
      */
     public function revokePermissionTo($id, int $permissionId);
 }
