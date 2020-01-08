@@ -5,25 +5,39 @@ on: [push]
 jobs:
   laravel-tests:
     runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: true
+      matrix:
+        php: [7.2, 7.3, 7.4]
+        dependency-version: [prefer-lowest, prefer-stable]
+
     steps:
-    - uses: actions/checkout@v1
+      - uses: actions/checkout@v1
 
-    - name: Copy .env
-      run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+      - name: Copy .env
+        run: php -r "file_exists('.env') || copy('.env.example', '.env');"
 
-    - name: Install Dependencies
-      run: composer i --ansi --no-interaction --no-suggest --prefer-dist
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v1
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick
+          coverage: none
 
-    - name: Generate key
-      run: php artisan key:generate
+      - name: Install Dependencies
+        run: composer i --ansi --no-interaction --no-suggest --prefer-dist
 
-    - name: Create Database
-      run: |
-        mkdir -p database
+      - name: Generate key
+        run: php artisan key:generate
+
+      - name: Create Database
+        run: |
+          mkdir -p database
         touch database/database.sqlite
 
-    - name: Execute tests (Unit and Feature tests) via PHPUnit
-      env:
-        DB_CONNECTION: sqlite
-        DB_DATABASE: database/database.sqlite
-      run: vendor/bin/phpunit
+      - name: Execute tests (Unit and Feature tests) via PHPUnit
+        env:
+          DB_CONNECTION: sqlite
+          DB_DATABASE: database/database.sqlite
+        run: vendor/bin/phpunit
