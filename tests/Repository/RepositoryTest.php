@@ -19,12 +19,12 @@ class RepositoryTest extends TestCase
     }
 
     /**
-     * @param bool        $enableSkip
-     * @param int         $limitRequest
-     * @param int         $limitDefault
-     * @param int         $addRoleCount
-     * @param int         $expectedCount
-     * @param string|null $queryParamLimit
+     * @param  bool  $enableSkip
+     * @param  int  $limitRequest
+     * @param  int  $limitDefault
+     * @param  int  $addRoleCount
+     * @param  int  $expectedCount
+     * @param  string|null  $queryParamLimit
      *
      * @test
      * @dataProvider paginateDataProvider()
@@ -36,25 +36,30 @@ class RepositoryTest extends TestCase
         int $addRoleCount,
         int $expectedCount,
         string $queryParamLimit = null
-    ) {
+    )
+    {
         $queryParamLimit = is_null($queryParamLimit) ? '' : "?limit=$queryParamLimit";
 
-        config([
-            'setting.repository.skip_pagination' => $enableSkip,
-            'setting.repository.limit_pagination' => $limitRequest,
-            'repository.pagination.limit' => $limitDefault,
-        ]);
+        config(
+            [
+                'setting.repository.skip_pagination' => $enableSkip,
+                'setting.repository.limit_pagination' => $limitRequest,
+                'repository.pagination.limit' => $limitDefault,
+            ]
+        );
 
         $roleModel = app(config('permission.models.role'));
         $addRoleCount -= $roleModel::count();// exclude count seeded role
 
         foreach (range(1, $addRoleCount) as $i) {
-            $roleModel::create([
-                'name' => 'role test ' . $i,
-            ]);
+            $roleModel::create(
+                [
+                    'name' => 'role test '.$i,
+                ]
+            );
         }
 
-        $this->get($this->route('backend.roles.index') . $queryParamLimit, $this->addHeaders());
+        $this->get($this->route('backend.roles.index').$queryParamLimit, $this->addHeaders());
 
         $this->assertCount($expectedCount, ((array)json_decode($this->response->getContent()))['data']);
     }

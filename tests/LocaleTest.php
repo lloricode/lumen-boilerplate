@@ -20,15 +20,18 @@ class LocaleTest extends TestCase
     public function getAll()
     {
         Passport::actingAs(factory(User::class)->create());
-        $this->get('localizations', [
-            'Accept' => 'application/x.lumen.dingo.boilerplate.v1+json',
-            'Authorization' => 'Bearer xxxxx',
-        ])
+        $this->get(
+            'localizations',
+            [
+                'Accept' => 'application/x.lumen.dingo.boilerplate.v1+json',
+                'Authorization' => 'Bearer xxxxx',
+            ]
+        )
             ->assertResponseOk();
     }
 
     /**
-     * @param string|null $locale
+     * @param  string|null  $locale
      *
      * @test
      * @testWith ["en"]
@@ -50,10 +53,12 @@ class LocaleTest extends TestCase
 
         if ($locale == 'xxx') {
             $this->assertResponseStatus(412);
-            $this->seeJson([
-                'message' => 'Unsupported Language.',
-                'status_code' => 412,
-            ]);
+            $this->seeJson(
+                [
+                    'message' => 'Unsupported Language.',
+                    'status_code' => 412,
+                ]
+            );
             return;
         }
 
@@ -69,10 +74,12 @@ class LocaleTest extends TestCase
         }
         $this->assertResponseOk();
         $this->assertEquals(app('translator')->getLocale(), $locale);
-        $this->seeJson([
-            'message' => $message,
-            'branch' => 'dev-master',
-        ]);
+        $this->seeJson(
+            [
+                'message' => $message,
+                'branch' => 'dev-master',
+            ]
+        );
     }
 
     /**
@@ -84,6 +91,6 @@ class LocaleTest extends TestCase
      */
     public function createApplication()
     {
-        return require __DIR__ . '/../bootstrap/app.php';
+        return require __DIR__.'/../bootstrap/app.php';
     }
 }

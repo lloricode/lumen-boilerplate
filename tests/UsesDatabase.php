@@ -16,7 +16,7 @@ trait UsesDatabase
     protected static $migrated = false;
 
     /** @var string */
-    protected $database = __DIR__ . '/../database/database.sqlite';
+    protected $database = __DIR__.'/../database/database.sqlite';
 
     public function prepareDatabase($force = false)
     {
@@ -56,14 +56,16 @@ trait UsesDatabase
             $database->connection($name)->beginTransaction();
         }
 
-        $this->beforeApplicationDestroyed(function () use ($database) {
-            foreach ($this->connectionsToTransact() as $name) {
-                $connection = $database->connection($name);
+        $this->beforeApplicationDestroyed(
+            function () use ($database) {
+                foreach ($this->connectionsToTransact() as $name) {
+                    $connection = $database->connection($name);
 
-                $connection->rollBack();
-                $connection->disconnect();
+                    $connection->rollBack();
+                    $connection->disconnect();
+                }
             }
-        });
+        );
     }
 
     protected function connectionsToTransact()

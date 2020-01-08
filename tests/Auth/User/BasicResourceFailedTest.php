@@ -17,9 +17,11 @@ class BasicResourceFailedTest extends TestCase
         $this->delete($this->route('backend.users.destroy', ['id' => $user->getHashedId()]), [], $this->addHeaders());
 
         $this->assertResponseStatus(403);
-        $this->seeJson([
-            'message' => 'You cannot delete your self.',
-        ]);
+        $this->seeJson(
+            [
+                'message' => 'You cannot delete your self.',
+            ]
+        );
     }
 
     /**
@@ -41,13 +43,15 @@ class BasicResourceFailedTest extends TestCase
 
         $this->get($this->route('backend.users.show', ['id' => $id]), $this->addHeaders());
         $this->assertResponseStatus(400);
-        $this->seeJson([
-            'message' =>
+        $this->seeJson(
+            [
+                'message' =>
 //                $environment == 'production'
 //                ? Response::$statusTexts[Response::HTTP_NOT_FOUND]
 //                :
-                'Invalid hashed id.',
-        ]);
+                    'Invalid hashed id.',
+            ]
+        );
     }
 
     /**

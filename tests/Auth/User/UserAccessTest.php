@@ -36,7 +36,6 @@ class UserAccessTest extends TestCase
             $method === 'delete' && $uri === 'users/{id}') {
             // only uri
             $uri = $this->replaceUserUri($uri);
-
         } elseif ($method === 'put' && $uri === 'users/{id}/restore' ||
             $method === 'delete' && $uri === 'users/{id}/purge') {
             // only uri
@@ -47,7 +46,7 @@ class UserAccessTest extends TestCase
             $param = $this->userData();
         }
 
-        $this->call($method, '/auth/' . $uri, $param, [], [], $this->addHeaders([], true));
+        $this->call($method, '/auth/'.$uri, $param, [], [], $this->addHeaders([], true));
         $this->assertResponseStatus($statusCode);
     }
 

@@ -25,11 +25,13 @@ class UserProfileTest extends TestCase
     public function getProfile($roleName, $status)
     {
         if (!empty($roleName)) {
-            $userData = collect($this->loggedInAs($roleName))->only([
-                'first_name',
-                'last_name',
-                'email',
-            ])->toArray();
+            $userData = collect($this->loggedInAs($roleName))->only(
+                [
+                    'first_name',
+                    'last_name',
+                    'email',
+                ]
+            )->toArray();
         }
         $this->get($this->route('frontend.users.profile'), $this->addHeaders());
 

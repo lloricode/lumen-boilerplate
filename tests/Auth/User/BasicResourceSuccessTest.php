@@ -40,8 +40,11 @@ class BasicResourceSuccessTest extends TestCase
 
         $user = factory(User::class)->create();
 
-        $this->put($this->route('backend.users.update', ['id' => $user->getHashedId()]), $this->userData(),
-            $this->addHeaders());
+        $this->put(
+            $this->route('backend.users.update', ['id' => $user->getHashedId()]),
+            $this->userData(),
+            $this->addHeaders()
+        );
         $this->assertResponseOk();
 
         $data = $this->userData();
@@ -63,10 +66,13 @@ class BasicResourceSuccessTest extends TestCase
         $this->delete($this->route('backend.users.destroy', ['id' => $user->getHashedId()]), [], $this->addHeaders());
         $this->assertResponseStatus(204);
 
-        $this->notSeeInDatabase((new User)->getTable(), [
-            'id' => $user->id,
-            'deleted_at' => null,
-        ]);
+        $this->notSeeInDatabase(
+            (new User)->getTable(),
+            [
+                'id' => $user->id,
+                'deleted_at' => null,
+            ]
+        );
     }
 
     /**
@@ -77,9 +83,15 @@ class BasicResourceSuccessTest extends TestCase
         $this->loggedInAs();
         $user = factory(User::class)->create($this->userData());
 
-        $this->get($this->route('backend.users.show', [
-            'id' => $user->getHashedId(),
-        ]), $this->addHeaders());
+        $this->get(
+            $this->route(
+                'backend.users.show',
+                [
+                    'id' => $user->getHashedId(),
+                ]
+            ),
+            $this->addHeaders()
+        );
 
         $this->assertResponseOk();
         $data = $this->userData();

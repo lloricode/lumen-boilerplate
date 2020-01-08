@@ -30,7 +30,7 @@ class PermissionAccessTest extends BaseRole
             $uri = str_replace('{id}', $p->getHashedId(), $uri);
         }
 
-        $this->call($method, '/auth/' . $uri, [], [], [], $this->addHeaders([], true));
+        $this->call($method, '/auth/'.$uri, [], [], [], $this->addHeaders([], true));
         $this->assertResponseStatus($statusCode);
     }
 
