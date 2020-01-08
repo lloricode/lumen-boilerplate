@@ -6,14 +6,6 @@ jobs:
   laravel-tests:
     runs-on: ubuntu-latest
 
-    strategy:
-      fail-fast: true
-      matrix:
-        php: [7.2, 7.3, 7.4]
-        dependency-version: [prefer-lowest, prefer-stable]
-
-    name: P${{ matrix.php }} - ${{ matrix.dependency-version }}
-
     steps:
       - uses: actions/checkout@v1
 
@@ -23,7 +15,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v1
         with:
-          php-version: ${{ matrix.php }}
+          php-version: 7.2
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick
           coverage: none
 
@@ -37,3 +29,9 @@ jobs:
         run: |
           mkdir -p database
         touch database/database.sqlite
+
+      - name: Execute tests (Unit and Feature tests) via PHPUnit
+        env:
+          DB_CONNECTION: sqlite
+          DB_DATABASE: database/database.sqlite
+        run: vendor/bin/phpunit
