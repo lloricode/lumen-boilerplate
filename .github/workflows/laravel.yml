@@ -12,7 +12,7 @@ jobs:
         php: [7.2, 7.3, 7.4]
         dependency-version: [prefer-lowest, prefer-stable]
 
-    name: P${{ matrix.php }} - L${{ matrix.laravel }} - ${{ matrix.dependency-version }}
+    name: P${{ matrix.php }} - ${{ matrix.dependency-version }}
 
     steps:
       - uses: actions/checkout@v1
