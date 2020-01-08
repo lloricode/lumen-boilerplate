@@ -14,22 +14,28 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $system = factory(User::class)->create([
-            'first_name' => 'System',
-            'last_name' => 'Root',
-            'email' => 'system@system.com',
-            'password' => app('hash')->make('secret'),
-        ]);
+        $system = factory(User::class)->create(
+            [
+                'first_name' => 'System',
+                'last_name' => 'Root',
+                'email' => 'system@system.com',
+                'password' => app('hash')->make('secret'),
+            ]
+        );
 
-        $admin = factory(User::class)->create([
-            'email' => 'admin@admin.com',
-            'password' => app('hash')->make('secret'),
-        ]);
+        $admin = factory(User::class)->create(
+            [
+                'email' => 'admin@admin.com',
+                'password' => app('hash')->make('secret'),
+            ]
+        );
 
-        $user = factory(User::class)->create([
-            'email' => 'user@user.com',
-            'password' => app('hash')->make('secret'),
-        ]);
+        $user = factory(User::class)->create(
+            [
+                'email' => 'user@user.com',
+                'password' => app('hash')->make('secret'),
+            ]
+        );
 
         $system->assignRole(config('setting.permission.role_names.system'));
         $admin->assignRole(config('setting.permission.role_names.admin'));

@@ -8,13 +8,17 @@ trait SeederHelper
         $permissionModel = app(config('permission.models.permission'));
 
         foreach ($permissionNames as $permissionName) {
-            $permission = $permissionModel::create([
-                'name' => $permissionName,
-            ]);
+            $permission = $permissionModel::create(
+                [
+                    'name' => $permissionName,
+                ]
+            );
             $roleModel::findByName(config('setting.permission.role_names.system'))->givePermissionTo($permission);
             if ($isAddToAdminRole) {
                 if (!in_array($permissionName, $except)) {
-                    $roleModel::findByName(config('setting.permission.role_names.admin'))->givePermissionTo($permission);
+                    $roleModel::findByName(config('setting.permission.role_names.admin'))->givePermissionTo(
+                        $permission
+                    );
                 }
             }
         }
