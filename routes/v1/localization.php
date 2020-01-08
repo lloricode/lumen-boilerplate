@@ -1,5 +1,8 @@
 <?php
 
-$api->get('/localizations', [
-    'uses' => 'LocalizationController@index',
-]);
+$api->get(
+    '/localizations',
+    [
+        'uses' => 'LocalizationController@index',
+    ]
+);
