@@ -13,7 +13,7 @@ use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 trait Hashable
 {
     /**
-     * @param string $hash
+     * @param  string  $hash
      *
      * @return mixed
      */
@@ -29,7 +29,7 @@ trait Hashable
     }
 
     /**
-     * @param string $key
+     * @param  string  $key
      *
      * @return string
      */

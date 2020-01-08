@@ -39,7 +39,7 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
 
     /**
      * @param     $id
-     * @param int $roleId
+     * @param  int  $roleId
      *
      * @return mixed
      */
@@ -52,7 +52,7 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
 
     /**
      * @param     $id
-     * @param int $permissionId
+     * @param  int  $permissionId
      */
     public function givePermissionTo($id, int $permissionId)
     {
@@ -61,7 +61,7 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
 
     /**
      * @param     $id
-     * @param int $roleId
+     * @param  int  $roleId
      */
     public function removeRole($id, int $roleId)
     {
@@ -72,7 +72,7 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
 
     /**
      * @param     $id
-     * @param int $permissionId
+     * @param  int  $permissionId
      */
     public function revokePermissionTo($id, int $permissionId)
     {

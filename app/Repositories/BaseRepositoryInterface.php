@@ -8,14 +8,17 @@
 
 namespace App\Repositories;
 
+use Illuminate\Database\Eloquent\Model;
+use Prettus\Repository\Contracts\CriteriaInterface;
 use Prettus\Repository\Contracts\RepositoryInterface;
 
 /**
  * Interface BaseRepositoryInterface
  *
  * @package App\Repositories
- * @method \Prettus\Repository\Eloquent\BaseRepository pushCriteria(\Prettus\Repository\Contracts\CriteriaInterface $param)
- * @method \Illuminate\Database\Eloquent\Model makeModel()
+ * @method \Prettus\Repository\Eloquent\BaseRepository pushCriteria(CriteriaInterface
+ *     $param)
+ * @method Model makeModel()
  * @method model()
  */
 interface BaseRepositoryInterface extends RepositoryInterface
@@ -29,7 +32,7 @@ interface BaseRepositoryInterface extends RepositoryInterface
     public function restore($id);
 
     /**
-     * @param int $id
+     * @param  int  $id
      *
      * @return mixed
      * @throws \Prettus\Repository\Exceptions\RepositoryException

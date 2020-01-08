@@ -27,7 +27,7 @@ class LocalizationTransformer extends BaseTransformer
     ];
 
     /**
-     * @param Localization $entity
+     * @param  Localization  $entity
      *
      * @return array
      */
@@ -56,13 +56,19 @@ class LocalizationTransformer extends BaseTransformer
         }
 
         // now add the regions
-        $response = array_merge($response, [
-            'regions' => $regions,
-        ]);
+        $response = array_merge(
+            $response,
+            [
+                'regions' => $regions,
+            ]
+        );
 
-        $response = $this->filterData($response, [
+        $response = $this->filterData(
+            $response,
+            [
 
-        ]);
+            ]
+        );
 
         return $response;
     }

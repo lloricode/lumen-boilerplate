@@ -23,8 +23,8 @@ use Symfony\Component\HttpFoundation\Response;
 class LocalizationMiddleware
 {
     /**
-     * @param \Illuminate\Http\Request $request
-     * @param \Closure                 $next
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
      *
      * @return mixed
      */
@@ -117,7 +117,7 @@ class LocalizationMiddleware
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      *
      * @return string
      */

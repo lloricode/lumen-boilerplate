@@ -24,11 +24,13 @@ class AppServiceProvider extends ServiceProvider
             Schema::defaultStringLength(191);
         }
 
-        LumenPassport::routes($this->app->router, [
+        LumenPassport::routes(
+            $this->app->router,
+            [
 //            'prefix' => 'v1/oauth',
-        ]);
+            ]
+        );
         LumenPassport::tokensExpireIn(Carbon::now()->addMinutes(config('setting.api.token.access_token_expire')));
         Passport::refreshTokensExpireIn(Carbon::now()->addMinutes(config('setting.api.token.refresh_token_expire')));
-
     }
 }

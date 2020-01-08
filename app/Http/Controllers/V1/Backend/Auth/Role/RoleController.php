@@ -26,22 +26,25 @@ class RoleController extends Controller
     /**
      * RoleController constructor.
      *
-     * @param \App\Repositories\Auth\Role\RoleRepository $roleRepository
+     * @param  \App\Repositories\Auth\Role\RoleRepository  $roleRepository
      */
     public function __construct(RoleRepository $roleRepository)
     {
         $permissions = $roleRepository->makeModel()::PERMISSIONS;
 
-        $this->middleware('permission:' . $permissions['index'], ['only' => 'index']);
-        $this->middleware('permission:' . $permissions['create'], ['only' => 'store']);
-        $this->middleware('permission:' . $permissions['show'], ['only' => 'show']);
-        $this->middleware('permission:' . $permissions['update'], ['only' => 'update']);
-        $this->middleware('permission:' . $permissions['destroy'], ['only' => 'destroy']);
+        $this->middleware('permission:'.$permissions['index'], ['only' => 'index']);
+        $this->middleware('permission:'.$permissions['create'], ['only' => 'store']);
+        $this->middleware('permission:'.$permissions['show'], ['only' => 'show']);
+        $this->middleware('permission:'.$permissions['update'], ['only' => 'update']);
+        $this->middleware('permission:'.$permissions['destroy'], ['only' => 'destroy']);
 
         $this->roleRepository = $roleRepository;
     }
 
     /**
+     * @param  \Dingo\Api\Http\Request  $request
+     *
+     * @return \Dingo\Api\Http\Response
      * @api                {get} /auth/roles Get all roles
      * @apiName            get-all-roles
      * @apiGroup           Role
@@ -49,9 +52,6 @@ class RoleController extends Controller
      * @apiPermission      Authenticated User
      * @apiUse             RolesResponse
      *
-     * @param \Dingo\Api\Http\Request $request
-     *
-     * @return \Dingo\Api\Http\Response
      */
     public function index(Request $request)
     {
@@ -60,6 +60,9 @@ class RoleController extends Controller
     }
 
     /**
+     * @param  \Dingo\Api\Http\Request  $request
+     *
+     * @return \Dingo\Api\Http\Response
      * @api                {post} /auth/roles Store role
      * @apiName            store-role
      * @apiGroup           Role
@@ -68,19 +71,22 @@ class RoleController extends Controller
      * @apiUse             RoleCreatedResponse
      * @apiParam {String} name (required)
      *
-     * @param \Dingo\Api\Http\Request $request
-     *
-     * @return \Dingo\Api\Http\Response
      */
     public function store(Request $request)
     {
-        $role = $this->roleRepository->create([
-            'name' => $request->input('name'),
-        ]);
+        $role = $this->roleRepository->create(
+            [
+                'name' => $request->input('name'),
+            ]
+        );
         return $this->item($role, new RoleTransformer)->statusCode(201);
     }
 
     /**
+     * @param  \Dingo\Api\Http\Request  $request
+     * @param  string  $id
+     *
+     * @return \Dingo\Api\Http\Response
      * @api                {post} /auth/roles/{id} Show role
      * @apiName            show-role
      * @apiGroup           Role
@@ -88,10 +94,6 @@ class RoleController extends Controller
      * @apiPermission      Authenticated User
      * @apiUse             RoleResponse
      *
-     * @param \Dingo\Api\Http\Request $request
-     * @param string                  $id
-     *
-     * @return \Dingo\Api\Http\Response
      */
     public function show(Request $request, string $id)
     {
@@ -101,6 +103,12 @@ class RoleController extends Controller
     }
 
     /**
+     * @param  \Dingo\Api\Http\Request  $request
+     * @param  string  $id
+     *
+     * @return \Dingo\Api\Http\Response
+     * @throws \Prettus\Repository\Exceptions\RepositoryException
+     * @throws \Prettus\Validator\Exceptions\ValidatorException
      * @api                {put} /auth/roles Update role
      * @apiName            update-role
      * @apiGroup           Role
@@ -109,22 +117,22 @@ class RoleController extends Controller
      * @apiUse             RoleResponse
      * @apiParam {String} name
      *
-     * @param \Dingo\Api\Http\Request $request
-     * @param string                  $id
-     *
-     * @return \Dingo\Api\Http\Response
-     * @throws \Prettus\Repository\Exceptions\RepositoryException
-     * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
     public function update(Request $request, string $id)
     {
-        $role = $this->roleRepository->update([
-            'name' => $request->input('name'),
-        ], $this->decodeHash($id));
+        $role = $this->roleRepository->update(
+            [
+                'name' => $request->input('name'),
+            ],
+            $this->decodeHash($id)
+        );
         return $this->item($role, new RoleTransformer);
     }
 
     /**
+     * @param  string  $id
+     *
+     * @return \Dingo\Api\Http\Response
      * @api                {delete} /auth/roles/{id} Destroy role
      * @apiName            destroy-role
      * @apiGroup           Role
@@ -132,9 +140,6 @@ class RoleController extends Controller
      * @apiPermission      Authenticated User
      * @apiUse             NoContentResponse
      *
-     * @param string $id
-     *
-     * @return \Dingo\Api\Http\Response
      */
     public function destroy(string $id)
     {

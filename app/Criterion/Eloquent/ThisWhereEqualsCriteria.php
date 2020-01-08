@@ -27,7 +27,7 @@ class ThisWhereEqualsCriteria implements CriteriaInterface
      * Apply criteria in query repository
      *
      * @param                     $model
-     * @param RepositoryInterface $repository
+     * @param  RepositoryInterface  $repository
      *
      * @return mixed
      */

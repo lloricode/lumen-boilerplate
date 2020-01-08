@@ -32,7 +32,7 @@ class RoleTransformer extends BaseTransformer
     /**
      * A Fractal transformer.
      *
-     * @param \App\Models\Auth\Role\Role $role
+     * @param  \App\Models\Auth\Role\Role  $role
      *
      * @return array
      */

@@ -8,6 +8,12 @@
 
 namespace App\Providers;
 
+use App\Repositories\Auth\Permission\PermissionRepository;
+use App\Repositories\Auth\Permission\PermissionRepositoryEloquent;
+use App\Repositories\Auth\Role\RoleRepository;
+use App\Repositories\Auth\Role\RoleRepositoryEloquent;
+use App\Repositories\Auth\User\UserRepository;
+use App\Repositories\Auth\User\UserRepositoryEloquent;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -29,12 +35,18 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->app->bind(\App\Repositories\Auth\Permission\PermissionRepository::class,
-            \App\Repositories\Auth\Permission\PermissionRepositoryEloquent::class);
-        $this->app->bind(\App\Repositories\Auth\Role\RoleRepository::class,
-            \App\Repositories\Auth\Role\RoleRepositoryEloquent::class);
-        $this->app->bind(\App\Repositories\Auth\User\UserRepository::class,
-            \App\Repositories\Auth\User\UserRepositoryEloquent::class);
+        $this->app->bind(
+            PermissionRepository::class,
+            PermissionRepositoryEloquent::class
+        );
+        $this->app->bind(
+            RoleRepository::class,
+            RoleRepositoryEloquent::class
+        );
+        $this->app->bind(
+            UserRepository::class,
+            UserRepositoryEloquent::class
+        );
         //:end-bindings:
     }
 

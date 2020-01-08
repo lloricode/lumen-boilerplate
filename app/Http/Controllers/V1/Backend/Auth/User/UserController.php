@@ -20,22 +20,25 @@ class UserController extends Controller
     /**
      * UserController constructor.
      *
-     * @param \App\Repositories\Auth\User\UserRepository $userRepository
+     * @param  \App\Repositories\Auth\User\UserRepository  $userRepository
      */
     public function __construct(UserRepository $userRepository)
     {
         $permissions = $userRepository->makeModel()::PERMISSIONS;
 
-        $this->middleware('permission:' . $permissions['index'], ['only' => 'index']);
-        $this->middleware('permission:' . $permissions['create'], ['only' => 'store']);
-        $this->middleware('permission:' . $permissions['show'], ['only' => 'show']);
-        $this->middleware('permission:' . $permissions['update'], ['only' => 'update']);
-        $this->middleware('permission:' . $permissions['destroy'], ['only' => 'destroy']);
+        $this->middleware('permission:'.$permissions['index'], ['only' => 'index']);
+        $this->middleware('permission:'.$permissions['create'], ['only' => 'store']);
+        $this->middleware('permission:'.$permissions['show'], ['only' => 'show']);
+        $this->middleware('permission:'.$permissions['update'], ['only' => 'update']);
+        $this->middleware('permission:'.$permissions['destroy'], ['only' => 'destroy']);
 
         $this->userRepository = $userRepository;
     }
 
     /**
+     * @param  \Dingo\Api\Http\Request  $request
+     *
+     * @return \Dingo\Api\Http\Response
      * @api                {get} /auth/users Get all users
      * @apiName            get-all-users
      * @apiGroup           User
@@ -43,9 +46,6 @@ class UserController extends Controller
      * @apiPermission      Authenticated User
      * @apiUse             UsersResponse
      *
-     * @param \Dingo\Api\Http\Request $request
-     *
-     * @return \Dingo\Api\Http\Response
      */
     public function index(Request $request)
     {
@@ -54,6 +54,9 @@ class UserController extends Controller
     }
 
     /**
+     * @param  string  $id
+     *
+     * @return \Dingo\Api\Http\Response
      * @api                {get} /auth/users/{id} Show user
      * @apiName            show-user
      * @apiGroup           User
@@ -61,9 +64,6 @@ class UserController extends Controller
      * @apiPermission      Authenticated User
      * @apiUse             UserResponse
      *
-     * @param string $id
-     *
-     * @return \Dingo\Api\Http\Response
      */
     public function show(string $id)
     {
@@ -90,12 +90,15 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $attributes = $this->validate($request, [
-            'first_name' => 'required|string',
-            'last_name' => 'required|string',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required',
-        ]);
+        $attributes = $this->validate(
+            $request,
+            [
+                'first_name' => 'required|string',
+                'last_name' => 'required|string',
+                'email' => 'required|email|unique:users,email',
+                'password' => 'required',
+            ]
+        );
 
         $attributes['password'] = app('hash')->make($attributes['password']);
 
@@ -123,12 +126,15 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $attributes = $this->validate($request, [
-            'first_name' => 'required|string',
-            'last_name' => 'required|string',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required',
-        ]);
+        $attributes = $this->validate(
+            $request,
+            [
+                'first_name' => 'required|string',
+                'last_name' => 'required|string',
+                'email' => 'required|email|unique:users,email',
+                'password' => 'required',
+            ]
+        );
 
         $attributes['password'] = app('hash')->make($attributes['password']);
 
@@ -138,6 +144,9 @@ class UserController extends Controller
 
 
     /**
+     * @param  string  $id
+     *
+     * @return \Dingo\Api\Http\Response
      * @api                {delete} /auth/users/{id} Destroy user
      * @apiName            destroy-user
      * @apiGroup           User
@@ -145,9 +154,6 @@ class UserController extends Controller
      * @apiPermission      Authenticated User
      * @apiUse             NoContentResponse
      *
-     * @param string $id
-     *
-     * @return \Dingo\Api\Http\Response
      */
     public function destroy(string $id)
     {

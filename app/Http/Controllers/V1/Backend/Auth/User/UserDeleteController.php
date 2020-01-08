@@ -27,20 +27,24 @@ class UserDeleteController extends Controller
     /**
      * UserDeleteController constructor.
      *
-     * @param \App\Repositories\Auth\User\UserRepository $userRepository
+     * @param  \App\Repositories\Auth\User\UserRepository  $userRepository
      */
     public function __construct(UserRepository $userRepository)
     {
         $permissions = $userRepository->makeModel()::PERMISSIONS;
 
-        $this->middleware('permission:' . $permissions['deleted list'], ['only' => 'deleted']);
-        $this->middleware('permission:' . $permissions['restore'], ['only' => 'restore']);
-        $this->middleware('permission:' . $permissions['purge'], ['only' => 'purge']);
+        $this->middleware('permission:'.$permissions['deleted list'], ['only' => 'deleted']);
+        $this->middleware('permission:'.$permissions['restore'], ['only' => 'restore']);
+        $this->middleware('permission:'.$permissions['purge'], ['only' => 'purge']);
 
         $this->userRepository = $userRepository;
     }
 
     /**
+     * @param  string  $id
+     *
+     * @return \Dingo\Api\Http\Response
+     * @throws \Prettus\Repository\Exceptions\RepositoryException
      * @api                {put} /auth/users/{id}/restore Restore user
      * @apiName            restore-user
      * @apiGroup           UserDelete
@@ -48,10 +52,6 @@ class UserDeleteController extends Controller
      * @apiPermission      Authenticated User
      * @apiUse             UserResponse
      *
-     * @param string $id
-     *
-     * @return \Dingo\Api\Http\Response
-     * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
     public function restore(string $id)
     {
@@ -60,6 +60,9 @@ class UserDeleteController extends Controller
     }
 
     /**
+     * @param  \Dingo\Api\Http\Request  $request
+     *
+     * @return \Dingo\Api\Http\Response
      * @api                {get} /auth/users/deleted Get all deleted users
      * @apiName            get-all-deleted-users
      * @apiGroup           UserDelete
@@ -67,9 +70,6 @@ class UserDeleteController extends Controller
      * @apiPermission      Authenticated User
      * @apiUse             UsersDeletedResponse
      *
-     * @param \Dingo\Api\Http\Request $request
-     *
-     * @return \Dingo\Api\Http\Response
      */
     public function deleted(Request $request)
     {
@@ -79,6 +79,10 @@ class UserDeleteController extends Controller
     }
 
     /**
+     * @param  string  $id
+     *
+     * @return \Dingo\Api\Http\Response
+     * @throws \Prettus\Repository\Exceptions\RepositoryException
      * @api                {delete} /auth/users/{id} Purge user
      * @apiName            purge-user
      * @apiGroup           UserDelete
@@ -86,10 +90,6 @@ class UserDeleteController extends Controller
      * @apiPermission      Authenticated User
      * @apiUse             NoContentResponse
      *
-     * @param string $id
-     *
-     * @return \Dingo\Api\Http\Response
-     * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
     public function purge(string $id)
     {

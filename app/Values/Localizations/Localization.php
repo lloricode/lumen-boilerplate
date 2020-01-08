@@ -27,7 +27,7 @@ class Localization extends Value
      * Localization constructor.
      *
      * @param       $language
-     * @param array $regions
+     * @param  array  $regions
      */
     public function __construct($language, array $regions = [])
     {

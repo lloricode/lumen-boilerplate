@@ -55,8 +55,6 @@ class GenerateDocumentationCommand extends Command
             'documentFilePath' => resource_path('documentation/'),
             'headerTemplateContent' => file_get_contents(resource_path('documentation/shared/header.template.md')),
         ];
-
-
     }
 
     /**
@@ -67,17 +65,17 @@ class GenerateDocumentationCommand extends Command
     {
         $this->info('Generating API Blueprint Documentation ...');
 
-        $path = $this->config['output'] . $this->config['url'] . '/generated-markdown';
+        $path = $this->config['output'].$this->config['url'].'/generated-markdown';
         if (!file_exists($path)) {
             app('files')->makeDirectory($path, $mode = 0777, true, true);
         }
 
         $this->generateHeader($path, '/header.md');
-        $this->generateApiDocConfigJson($path . '/header.md');
+        $this->generateApiDocConfigJson($path.'/header.md');
         $this->generateAPIDocsTask();
 
         app('files')->deleteDirectory($path);
-        $this->info("\n" . 'Done! visit url > ' . config('app.url') . '/' . $this->config['url']);
+        $this->info("\n".'Done! visit url > '.config('app.url').'/'.$this->config['url']);
     }
 
     private function generateHeader($path, $fileName)
@@ -90,47 +88,53 @@ class GenerateDocumentationCommand extends Command
         $apiConfig = config('api');
 
         $replacer('{{api.domain.dev}}', config('app.url'));
-        $replacer('{{accept-header}}',
-            "application/{$apiConfig['standardsTree']}.{$apiConfig['subtype']}.{$apiConfig['version']}+json");
+        $replacer(
+            '{{accept-header}}',
+            "application/{$apiConfig['standardsTree']}.{$apiConfig['subtype']}.{$apiConfig['version']}+json"
+        );
         $replacer('{{rate-limit-expires}}', config('setting.api.throttle.expires'));
         $replacer('{{rate-limit-attempts}}', config('setting.api.throttle.limit'));
         $replacer('{{access-token-expires}}', config('setting.api.token.access_token_expire'));
         $replacer('{{refresh-token-expires}}', config('setting.api.token.refresh_token_expire'));
         $replacer('{{pagination-limit}}', config('repository.pagination.limit'));
 
-        file_put_contents(base_path($path . $fileName), $this->config['headerTemplateContent']);
+        file_put_contents(base_path($path.$fileName), $this->config['headerTemplateContent']);
     }
 
     private function generateApiDocConfigJson($pathFile)
     {
-        file_put_contents($this->config['documentFilePath'] . 'config/' . self::APIDOCS_FILENAME,
-            json_encode([
-                'name' => config('app.name'),
-                'description' => config('app.name') . ' API Blueprint Documentation',
-                'title' => config('app.name'),
-                'version' => '1.0.0',
-                'url' => config('app.url'),
-                'template' => [
-                    'withCompare' => true,
-                    'withGenerator' => true,
-                ],
-                'header' => [
-                    'title' => 'General',
-                    'filename' => $pathFile,
-                ],
-                'order' => [
-                ],
-            ]));
+        file_put_contents(
+            $this->config['documentFilePath'].'config/'.self::APIDOCS_FILENAME,
+            json_encode(
+                [
+                    'name' => config('app.name'),
+                    'description' => config('app.name').' API Blueprint Documentation',
+                    'title' => config('app.name'),
+                    'version' => '1.0.0',
+                    'url' => config('app.url'),
+                    'template' => [
+                        'withCompare' => true,
+                        'withGenerator' => true,
+                    ],
+                    'header' => [
+                        'title' => 'General',
+                        'filename' => $pathFile,
+                    ],
+                    'order' => [
+                    ],
+                ]
+            )
+        );
     }
 
     private function generateAPIDocsTask()
     {
-        $path = $this->config['output'] . $this->config['url'];
+        $path = $this->config['output'].$this->config['url'];
 
         $inputs = '';
 
         foreach ($this->docInputs as $input) {
-            $inputs .= ' --input ' . $input;
+            $inputs .= ' --input '.$input;
         }
 
         $verbose = ' --silent';
@@ -148,13 +152,12 @@ class GenerateDocumentationCommand extends Command
         if (!$process->isSuccessful()) {
             throw new ProcessFailedException($process);
         }
-
 //        $this->info('Result: ' . $process->getOutput());
     }
 
     private function getJsonConfigurationPath()
     {
         $template = str_replace(base_path(), '', $this->config['documentFilePath']);
-        return substr($template, 1, strlen($template) - 1) . 'config/';
+        return substr($template, 1, strlen($template) - 1).'config/';
     }
 }
