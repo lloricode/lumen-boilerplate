@@ -28,7 +28,7 @@ jobs:
           coverage: none
 
       - name: Install Dependencies
-        run: composer i --ansi --no-interaction --no-suggest --prefer-dist
+        run: composer u --${{ matrix.dependency-version }} --ansi --no-interaction --no-suggest --prefer-dist
 
       - name: Generate key
         run: php artisan key:generate
