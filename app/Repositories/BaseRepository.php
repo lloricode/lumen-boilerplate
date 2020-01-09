@@ -154,10 +154,12 @@ abstract class BaseRepository extends BaseRepo implements CacheableInterface
         } catch (Exception $e) {
             // We want to take care of the closure serialization errors,
             // other than that we will simply re-throw the exception.
-            if ($e->getMessage() !== "Serialization of 'Closure' is not allowed") {
-                throw $e;
-            } elseif (version_compare(phpversion(), '7.4', '>=') && $e->getMessage(
-                ) !== "Serialization of 'ReflectionProperty' is not allowed") {
+            if ($e->getMessage() !== "Serialization of 'Closure' is not allowed" ||
+                (
+                    version_compare(phpversion(), '7.4', '>=') &&
+                    $e->getMessage() !== "Serialization of 'ReflectionProperty' is not allowed"
+                )
+            ) {
                 throw $e;
             }
 
