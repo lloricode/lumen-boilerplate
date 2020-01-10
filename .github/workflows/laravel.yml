@@ -37,3 +37,9 @@ jobs:
 
       - name: Execute tests (Unit and Feature tests) via PHPUnit
         run: vendor/bin/phpunit
+
+      - name: Check logs
+        run: |
+          echo '--------------- Begin > lumen.log ---------------';
+          cat storage/logs/lumen.log
+          echo '--------------- End   > lumen.log ---------------';
