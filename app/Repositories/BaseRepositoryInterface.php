@@ -16,8 +16,7 @@ use Prettus\Repository\Contracts\RepositoryInterface;
  * Interface BaseRepositoryInterface
  *
  * @package App\Repositories
- * @method \Prettus\Repository\Eloquent\BaseRepository pushCriteria(CriteriaInterface
- *     $param)
+ * @method \Prettus\Repository\Eloquent\BaseRepository pushCriteria(CriteriaInterface $param)
  * @method Model makeModel()
  * @method model()
  */
