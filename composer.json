@@ -8,6 +8,16 @@
     "boilerplate",
     "dingo"
   ],
+  "support": {
+    "issues": "https://github.com/lloricode/lumen-dingo-boilerplate/issues",
+    "source": "https://github.com/lloricode/lumen-dingo-boilerplate"
+  },
+  "authors": [
+    {
+      "name": "Lloric Mayuga Garcia",
+      "email": "lloricode@gmail.com"
+    }
+  ],
   "license": "MIT",
   "type": "project",
   "require": {
