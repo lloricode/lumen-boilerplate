@@ -1,6 +1,6 @@
 ![](https://user-images.githubusercontent.com/8251344/53293430-872bc100-380e-11e9-909b-0a88734a5433.png)
 
-[![Build Status](https://travis-ci.org/lloricode/lumen-dingo-boilerplate.svg?branch=master)](https://travis-ci.org/lloricode/lumen-dingo-boilerplate)
+![](https://github.com/lloricode/lumen-dingo-boilerplate/workflows/Run%20Tests/badge.svg)
 
 RESTful API template made from [Lumen 6](https://lumen.laravel.com/) and extended by [dingo/api](https://github.com/dingo/api).
 
