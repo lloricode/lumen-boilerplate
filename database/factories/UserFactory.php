@@ -9,7 +9,7 @@ $factory->define(
             'first_name' => $faker->firstName,
             'last_name' => $faker->lastName,
             'email' => $faker->unique()->email,
-            'password' => app('hash')->make($faker->password),
+            'password' => app('hash')->make('secret'),
         ];
     }
 );
