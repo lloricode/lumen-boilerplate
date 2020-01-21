@@ -27,6 +27,7 @@
     "ext-pdo": "*",
     "dingo/api": "^2.4",
     "dusterio/lumen-passport": "^0.2.10",
+    "gmsantos/inspiring": "^3.0",
     "laravel/lumen-framework": "^6.0.3",
     "liyu/dingo-serializer-switch": "^0.3.0",
     "prettus/l5-repository": "^2.6",
@@ -63,27 +64,33 @@
     "fresh": [
       "@php artisan migrate:fresh --seed --ansi",
       "@php artisan passport:install --force --ansi",
-      "@php artisan apidocs --ansi"
+      "@php artisan apidocs --ansi",
+      "@php artisan inspire --ansi"
     ],
     "clear-all": [
       "@php artisan cache:clear --ansi",
       "@php artisan permission:cache-reset --ansi",
       "@php -r \"!file_exists('storage/framework/cache/repository-cache-keys.json') || unlink('storage/framework/cache/repository-cache-keys.json');\"",
-      "composer dump-autoload --no-interaction --ansi --optimize"
+      "composer dump-autoload --no-interaction --ansi --optimize",
+      "@php artisan inspire --ansi"
     ],
     "ide-helper": [
       "@php artisan ide-helper:generate --ansi",
       "@php artisan ide-helper:meta --ansi",
-      "@php artisan ide-helper:models --reset --write --ansi"
+      "@php artisan ide-helper:models --reset --write --ansi",
+      "@php artisan inspire --ansi"
     ],
     "coverage": [
-      "./vendor/bin/phpunit --coverage-html ./coverage"
+      "./vendor/bin/phpunit --coverage-html ./coverage",
+      "@php artisan inspire --ansi"
     ],
     "coverage-txt": [
-      "./vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover"
+      "./vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover",
+      "@php artisan inspire --ansi"
     ],
     "phpunit": [
-      "./vendor/bin/phpunit --verbose > phpunit.txt -d memory_limit=2048M"
+      "./vendor/bin/phpunit --verbose > phpunit.txt -d memory_limit=2048M",
+      "@php artisan inspire --ansi"
     ],
     "db": [
       "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\""

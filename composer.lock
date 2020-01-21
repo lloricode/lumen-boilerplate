@@ -1,20 +1,20 @@
 {
-    "_readme": [
-        "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
-        "This file is @generated automatically"
-    ],
-    "content-hash": "dc3a9977afce48069d33210916b0c250",
-    "packages": [
-        {
-            "name": "defuse/php-encryption",
-            "version": "v2.2.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/defuse/php-encryption.git",
-                "reference": "0f407c43b953d571421e0020ba92082ed5fb7620"
-            },
-            "dist": {
+  "_readme": [
+    "This file locks the dependencies of your project to a known state",
+    "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+    "This file is @generated automatically"
+  ],
+  "content-hash": "384732f0593bbc01ceadb403cb2c82f8",
+  "packages": [
+    {
+      "name": "defuse/php-encryption",
+      "version": "v2.2.1",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/defuse/php-encryption.git",
+        "reference": "0f407c43b953d571421e0020ba92082ed5fb7620"
+      },
+      "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/defuse/php-encryption/zipball/0f407c43b953d571421e0020ba92082ed5fb7620",
                 "reference": "0f407c43b953d571421e0020ba92082ed5fb7620",
@@ -607,26 +607,76 @@
                     "role": "Developer"
                 },
                 {
-                    "name": "Anant Narayanan",
-                    "email": "anant@php.net",
-                    "role": "Developer"
+                  "name": "Anant Narayanan",
+                  "email": "anant@php.net",
+                  "role": "Developer"
                 }
             ],
-            "description": "A simple library to encode and decode JSON Web Tokens (JWT) in PHP. Should conform to the current spec.",
-            "homepage": "https://github.com/firebase/php-jwt",
-            "time": "2017-06-27T22:17:23+00:00"
+          "description": "A simple library to encode and decode JSON Web Tokens (JWT) in PHP. Should conform to the current spec.",
+          "homepage": "https://github.com/firebase/php-jwt",
+          "time": "2017-06-27T22:17:23+00:00"
         },
+    {
+      "name": "gmsantos/inspiring",
+      "version": "v3.0.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/gmsantos/inspiring.git",
+        "reference": "f0985da87f7ae86a34662b372cb0090eb0bf0b7d"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/gmsantos/inspiring/zipball/f0985da87f7ae86a34662b372cb0090eb0bf0b7d",
+        "reference": "f0985da87f7ae86a34662b372cb0090eb0bf0b7d",
+        "shasum": ""
+      },
+      "require": {
+        "illuminate/support": "^6",
+        "php": "^7.2"
+      },
+      "require-dev": {
+        "phpunit/phpunit": "^8.5"
+      },
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-master": "3.0.x-dev"
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Gmsantos\\": "src/"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "GPL-2.0+"
+      ],
+      "authors": [
         {
-            "name": "graham-campbell/manager",
-            "version": "v4.4.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/GrahamCampbell/Laravel-Manager.git",
-                "reference": "cc229cb30dd3499973dacc17078addd1f6cf1d04"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/GrahamCampbell/Laravel-Manager/zipball/cc229cb30dd3499973dacc17078addd1f6cf1d04",
+          "name": "gmsantos",
+          "email": "gabriel.ms1@hotmail.com"
+        }
+      ],
+      "description": "Alternative inspiring quotes for Laravel 5+",
+      "keywords": [
+        "console",
+        "laravel",
+        "package"
+      ],
+      "time": "2020-01-13T21:32:24+00:00"
+    },
+    {
+      "name": "graham-campbell/manager",
+      "version": "v4.4.1",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/GrahamCampbell/Laravel-Manager.git",
+        "reference": "cc229cb30dd3499973dacc17078addd1f6cf1d04"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/GrahamCampbell/Laravel-Manager/zipball/cc229cb30dd3499973dacc17078addd1f6cf1d04",
                 "reference": "cc229cb30dd3499973dacc17078addd1f6cf1d04",
                 "shasum": ""
             },
