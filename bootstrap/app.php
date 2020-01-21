@@ -114,6 +114,14 @@ $app[Dingo\Api\Auth\Auth::class]->extend(
         return $app[App\Providers\GuardServiceProvider::class];
     }
 );
+
+$app[Dingo\Api\Exception\Handler::class]
+    ->register(
+        function (Illuminate\Auth\AuthenticationException $exception) {
+            abort(401, $exception->getMessage());
+        }
+    );
+
 $app[Dingo\Api\Exception\Handler::class]
     ->register(
         function (Spatie\Permission\Exceptions\RoleAlreadyExists $exception) {
