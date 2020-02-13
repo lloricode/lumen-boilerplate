@@ -149,7 +149,7 @@ This project is licensed under the [MIT License](https://opensource.org/licenses
 - [x] Include Postman collection/Config/Preset
 - [ ] Wiki
 - [ ] Firewall
-- [ ] Social login
+- [x] Social login
 - [ ] Data transfer objects (DTO) https://github.com/spatie/data-transfer-object
 
 ## Soon web interface

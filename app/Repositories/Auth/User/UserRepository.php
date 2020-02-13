@@ -8,6 +8,7 @@
 
 namespace App\Repositories\Auth\User;
 
+use App\Models\Auth\User\User;
 use App\Repositories\BaseRepositoryInterface;
 
 interface UserRepository extends BaseRepositoryInterface
@@ -37,4 +38,13 @@ interface UserRepository extends BaseRepositoryInterface
      * @param  int  $permissionId
      */
     public function revokePermissionTo($id, int $permissionId);
+
+    /**
+     * @param  \Laravel\Socialite\Two\User  $data
+     * @param  string  $provider
+     *
+     * @return \App\Models\Auth\User\User
+     * @throws \Prettus\Validator\Exceptions\ValidatorException
+     */
+    public function findOrCreateProvider(\Laravel\Socialite\Two\User $data, string $provider): User;
 }

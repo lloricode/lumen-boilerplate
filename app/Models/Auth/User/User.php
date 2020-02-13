@@ -2,6 +2,8 @@
 
 namespace App\Models\Auth\User;
 
+use App\Models\Auth\User\Traits\UserRegularFunction;
+use App\Models\Auth\User\Traits\UserRelationships;
 use App\Traits\Hashable;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
@@ -20,7 +22,7 @@ use Spatie\Permission\Traits\HasRoles;
  * @property string $first_name
  * @property string $last_name
  * @property string $email
- * @property string $password
+ * @property string|null $password
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
@@ -30,6 +32,8 @@ use Spatie\Permission\Traits\HasRoles;
  * @property-read int|null $permissions_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Auth\Role\Role[] $roles
  * @property-read int|null $roles_count
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Auth\User\SocialAccount[] $socialAccounts
+ * @property-read int|null $social_accounts_count
  * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Passport\Token[] $tokens
  * @property-read int|null $tokens_count
  * @method static bool|null forceDelete()
@@ -60,6 +64,8 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     use HasRoles;
     use SoftDeletes;
     use Hashable;
+    use UserRelationships;
+    use UserRegularFunction;
 
     /**
      * all permissions

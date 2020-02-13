@@ -33,6 +33,7 @@ $app->configure('hashids');
 $app->configure('localization');
 $app->configure('permission');
 $app->configure('repository');
+$app->configure('services');
 $app->configure('setting');
 
 $app->alias('cache', Illuminate\Cache\CacheManager::class);
@@ -100,6 +101,8 @@ $app->routeMiddleware(
 $app->register(App\Providers\AppServiceProvider::class);
 $app->register(App\Providers\RepositoryServiceProvider::class);
 $app->register(Laravel\Passport\PassportServiceProvider::class);
+$app->register(Coderello\SocialGrant\Providers\SocialGrantServiceProvider::class);
+$app->register(Laravel\Socialite\SocialiteServiceProvider::class);
 $app->register(Dusterio\LumenPassport\PassportServiceProvider::class);
 $app->register(Prettus\Repository\Providers\RepositoryServiceProvider::class);
 $app->register(Spatie\Permission\PermissionServiceProvider::class);
@@ -111,7 +114,7 @@ $app->register(Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::cla
 $app[Dingo\Api\Auth\Auth::class]->extend(
     'passport',
     function ($app) {
-        return $app[App\Providers\GuardServiceProvider::class];
+        return $app[App\Auth\GuardServiceProvider::class];
     }
 );
 

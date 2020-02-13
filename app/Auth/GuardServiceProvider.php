@@ -6,7 +6,7 @@
  * Time: 7:21 PM
  */
 
-namespace App\Providers;
+namespace App\Auth;
 
 use Dingo\Api\Auth\Provider\Authorization;
 use Dingo\Api\Routing\Route;
