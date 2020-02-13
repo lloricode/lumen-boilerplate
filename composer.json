@@ -77,6 +77,11 @@
     "ide-helper": [
       "@php artisan ide-helper:generate --ansi",
       "@php artisan ide-helper:meta --ansi",
+      "@php artisan inspire --ansi"
+    ],
+    "ide-helper-model": [
+      "@php artisan ide-helper:generate --ansi",
+      "@php artisan ide-helper:meta --ansi",
       "@php artisan ide-helper:models --reset --write --ansi",
       "@php artisan inspire --ansi"
     ],
