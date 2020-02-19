@@ -145,6 +145,18 @@ $app[Dingo\Api\Exception\Handler::class]
             );
         }
     );
+$app[Dingo\Api\Exception\Handler::class]
+    ->register(
+        function (PDOException $exception) use ($app) {
+            abort(
+                500,
+                $app->environment('production')
+                    ? 'server error'
+                    : $exception->getMessage()
+            );
+        }
+    );
+
 
 if (class_exists('Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider')) {
     $app->register('Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider');
