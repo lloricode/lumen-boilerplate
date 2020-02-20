@@ -150,6 +150,7 @@ This project is licensed under the [MIT License](https://opensource.org/licenses
 - [ ] Wiki
 - [ ] Firewall
 - [x] Social login
+- [ ] Back up
 - [ ] Data transfer objects (DTO) https://github.com/spatie/data-transfer-object
 
 ## Soon web interface
