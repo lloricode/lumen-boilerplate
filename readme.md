@@ -131,6 +131,7 @@ vendor/bin/phpunit
 * [vinkla/laravel-hashids](https://github.com/vinkla/laravel-hashids) - A Hashids bridge for Laravel.
 * [apidoc/apidoc](https://github.com/apidoc/apidoc) - RESTful web API Documentation Generator.
 * [rap2hpoutre/laravel-log-viewer](https://github.com/rap2hpoutre/laravel-log-viewer) - Laravel log viewer.
+* [coderello/laravel-passport-social-grant](https://github.com/coderello/laravel-passport-social-grant) - API authentication via social networks for your Laravel application.
 
 See also the list of [contributors](https://github.com/lloricode/lumen-dingo-boilerplate/graphs/contributors) who participated in this project.
 
