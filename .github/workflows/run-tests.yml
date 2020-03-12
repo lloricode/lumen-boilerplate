@@ -20,8 +20,8 @@ jobs:
       - name: Copy .env
         run: php -r "file_exists('.env') || copy('.env.testing', '.env');"
 
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v1
+      - name: Setup PHP Action
+        uses: shivammathur/setup-php@2.1.1
         with:
           php-version: ${{ matrix.php }}
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick
