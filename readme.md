@@ -1,6 +1,6 @@
 # DOTO remove dingo/api, see on [discord](https://discord.gg/9X3Y5pC)
 
-![](https://github.com/lloricode/lumen-dingo-boilerplate/workflows/Run%20Tests/badge.svg?branch=master)
+![](https://github.com/lloricode/lumen-boilerplate/workflows/Run%20Tests/badge.svg?branch=master)
 
 RESTful API template made from [Lumen 6](https://lumen.laravel.com/) and extended by [dingo/api](https://github.com/dingo/api).
 
@@ -10,8 +10,8 @@ Join to our [discord](https://discord.gg/9X3Y5pC)
 
 | Lumen | 
 | ----- | 
-|[5.8](https://github.com/lloricode/lumen-dingo-boilerplate/tree/framework-5.8)|
-|[5.7](https://github.com/lloricode/lumen-dingo-boilerplate/tree/framework-5.7)|
+|[5.8](https://github.com/lloricode/lumen-boilerplate/tree/framework-5.8)|
+|[5.7](https://github.com/lloricode/lumen-boilerplate/tree/framework-5.7)|
 
 ## Installation
 
@@ -36,7 +36,7 @@ echo substr(md5(rand()), 0, 32); # Generating 32 character string
 ```
 
 ### 4. Composer
-Lumen/Dingo boilerplate dependencies are managed through the [PHP Composer tool](https://getcomposer.org/). Install the depencencies by navigating into your project in terminal and typing this command:
+Lumen boilerplate dependencies are managed through the [PHP Composer tool](https://getcomposer.org/). Install the depencencies by navigating into your project in terminal and typing this command:
 ```bash
 composer install
 ```
@@ -86,7 +86,7 @@ To generate the API documentation run this command:
 php artisan apidocs
 ```
 
-You can visit the generated API documentation in http://lumen-dingo-boilerplate.test/docs.
+You can visit the generated API documentation in http://lumen-boilerplate.test/docs.
 
 ![screenshot from 2018-12-31 11-09-41](https://user-images.githubusercontent.com/8251344/50553955-a9accc80-0cec-11e9-8fbf-f41cc1e10286.png)
 ![screenshot from 2018-12-31 11-09-56](https://user-images.githubusercontent.com/8251344/50553957-ab769000-0cec-11e9-8b81-e8359f4ef5b1.png)
@@ -96,8 +96,6 @@ or here's the published postman [here](https://documenter.getpostman.com/view/43
 ## PHPUnit
 
 ![](https://user-images.githubusercontent.com/8251344/50570082-4ab38a00-0db6-11e9-83c0-c379c09d14d8.png)
-
-You can view integration [here](https://travis-ci.org/lloricode/lumen-dingo-boilerplate)
 
 In your project directory run this command:
 
