@@ -2,7 +2,7 @@
 
 ![](https://github.com/lloricode/lumen-boilerplate/workflows/Run%20Tests/badge.svg?branch=master)
 
-RESTful API template made from [Lumen 6](https://lumen.laravel.com/) and extended by [dingo/api](https://github.com/dingo/api).
+RESTful API template made from [Lumen 6](https://lumen.laravel.com/)
 
 Join to our [discord](https://discord.gg/9X3Y5pC)
 
@@ -131,7 +131,7 @@ vendor/bin/phpunit
 * [rap2hpoutre/laravel-log-viewer](https://github.com/rap2hpoutre/laravel-log-viewer) - Laravel log viewer.
 * [coderello/laravel-passport-social-grant](https://github.com/coderello/laravel-passport-social-grant) - API authentication via social networks for your Laravel application.
 
-See also the list of [contributors](https://github.com/lloricode/lumen-dingo-boilerplate/graphs/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/lloricode/lumen-boilerplate/graphs/contributors) who participated in this project.
 
 ## License
 
