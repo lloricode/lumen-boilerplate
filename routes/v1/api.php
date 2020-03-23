@@ -22,7 +22,7 @@ $api->group(
         'middleware' => [
             'api.throttle',
             'api.auth',
-            'serializer:json_api',
+//            'serializer:json_api',
         ],
         'limit' => config('setting.api.throttle.limit'), // api.throttle max
         'expires' => config('setting.api.throttle.expires') * 60, // api.throttle minute

@@ -73,13 +73,13 @@ $app->singleton(
 $app->middleware(
     [
         App\Http\Middleware\LocalizationMiddleware::class,
-        Spatie\Cors\Cors::class,
+        Fruitcake\Cors\HandleCors::class,
     ]
 );
 
 $app->routeMiddleware(
     [
-        'serializer' => Liyu\Dingo\SerializerSwitch::class,
+//        'serializer' => Liyu\Dingo\SerializerSwitch::class,
         'permission' => Spatie\Permission\Middlewares\PermissionMiddleware::class,
         'role' => Spatie\Permission\Middlewares\RoleMiddleware::class,
         'client' => Laravel\Passport\Http\Middleware\CheckClientCredentials::class,
@@ -100,6 +100,7 @@ $app->routeMiddleware(
 
 $app->register(App\Providers\AppServiceProvider::class);
 $app->register(App\Providers\RepositoryServiceProvider::class);
+$app->register(Fruitcake\Cors\CorsServiceProvider::class);
 $app->register(Laravel\Passport\PassportServiceProvider::class);
 $app->register(Coderello\SocialGrant\Providers\SocialGrantServiceProvider::class);
 $app->register(Laravel\Socialite\SocialiteServiceProvider::class);
@@ -107,7 +108,6 @@ $app->register(Dusterio\LumenPassport\PassportServiceProvider::class);
 $app->register(Prettus\Repository\Providers\RepositoryServiceProvider::class);
 $app->register(Spatie\Permission\PermissionServiceProvider::class);
 $app->register(Vinkla\Hashids\HashidsServiceProvider::class);
-$app->register(Spatie\Cors\CorsServiceProvider::class);
 $app->register(Dingo\Api\Provider\LumenServiceProvider::class);
 $app->register(Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class);
 

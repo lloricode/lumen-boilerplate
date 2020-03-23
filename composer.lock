@@ -4,8 +4,60 @@
     "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
     "This file is @generated automatically"
   ],
-  "content-hash": "7a44f4d3d0300cd94fe17c8e3e724205",
+  "content-hash": "181fda6bc2e2f6e0c930c462d042e680",
   "packages": [
+    {
+      "name": "asm89/stack-cors",
+      "version": "1.3.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/asm89/stack-cors.git",
+        "reference": "b9c31def6a83f84b4d4a40d35996d375755f0e08"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/asm89/stack-cors/zipball/b9c31def6a83f84b4d4a40d35996d375755f0e08",
+        "reference": "b9c31def6a83f84b4d4a40d35996d375755f0e08",
+        "shasum": ""
+      },
+      "require": {
+        "php": ">=5.5.9",
+        "symfony/http-foundation": "~2.7|~3.0|~4.0|~5.0",
+        "symfony/http-kernel": "~2.7|~3.0|~4.0|~5.0"
+      },
+      "require-dev": {
+        "phpunit/phpunit": "^5.0 || ^4.8.10",
+        "squizlabs/php_codesniffer": "^2.3"
+      },
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-master": "1.2-dev"
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Asm89\\Stack\\": "src/Asm89/Stack/"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "authors": [
+        {
+          "name": "Alexander",
+          "email": "iam.asm89@gmail.com"
+        }
+      ],
+      "description": "Cross-origin resource sharing library and stack middleware",
+      "homepage": "https://github.com/asm89/stack-cors",
+      "keywords": [
+        "cors",
+        "stack"
+      ],
+      "time": "2019-12-24T22:41:47+00:00"
+    },
     {
       "name": "coderello/laravel-passport-social-grant",
       "version": "2.1.0",
@@ -15,16 +67,16 @@
         "reference": "eeecb0ff5ab91cfbd65a6912711f9c25e771bc90"
       },
       "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/coderello/laravel-passport-social-grant/zipball/eeecb0ff5ab91cfbd65a6912711f9c25e771bc90",
-                "reference": "eeecb0ff5ab91cfbd65a6912711f9c25e771bc90",
-                "shasum": ""
-            },
-            "require": {
-                "laravel/passport": "^6.0|^7.0|^8.0",
-                "php": ">=7.1"
-            },
-            "require-dev": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/coderello/laravel-passport-social-grant/zipball/eeecb0ff5ab91cfbd65a6912711f9c25e771bc90",
+        "reference": "eeecb0ff5ab91cfbd65a6912711f9c25e771bc90",
+        "shasum": ""
+      },
+      "require": {
+        "laravel/passport": "^6.0|^7.0|^8.0",
+        "php": ">=7.1"
+      },
+      "require-dev": {
                 "mockery/mockery": "^1.1",
                 "orchestra/testbench": "~3.0"
             },
@@ -115,15 +167,15 @@
                 "aes",
                 "authenticated encryption",
                 "cipher",
-                "crypto",
-                "cryptography",
-                "encrypt",
-                "encryption",
-                "openssl",
-                "security",
-                "symmetric key cryptography"
+              "crypto",
+              "cryptography",
+              "encrypt",
+              "encryption",
+              "openssl",
+              "security",
+              "symmetric key cryptography"
             ],
-            "time": "2018-07-24T23:27:56+00:00"
+          "time": "2018-07-24T23:27:56+00:00"
         },
     {
       "name": "dingo/api",
@@ -163,16 +215,16 @@
         "squizlabs/php_codesniffer": "~2.0",
         "tymon/jwt-auth": "1.0.*"
       },
-            "suggest": {
-                "tymon/jwt-auth": "Protect your API with JSON Web Tokens."
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0-dev"
-                },
-                "laravel": {
-                    "providers": [
+      "suggest": {
+        "tymon/jwt-auth": "Protect your API with JSON Web Tokens."
+      },
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-master": "2.0-dev"
+        },
+        "laravel": {
+          "providers": [
                         "Dingo\\Api\\Provider\\LaravelServiceProvider"
                     ],
                     "aliases": {
@@ -198,15 +250,15 @@
                     "email": "jason.lewis1991@gmail.com"
                 }
             ],
-            "description": "A RESTful API package for the Laravel and Lumen frameworks.",
-            "keywords": [
-                "api",
-                "dingo",
-                "laravel",
-                "restful"
-            ],
+      "description": "A RESTful API package for the Laravel and Lumen frameworks.",
+      "keywords": [
+        "api",
+        "dingo",
+        "laravel",
+        "restful"
+      ],
       "time": "2020-03-23T00:19:41+00:00"
-        },
+    },
     {
       "name": "dingo/blueprint",
       "version": "v0.4.1",
@@ -221,17 +273,17 @@
         "reference": "a84221e01683957d19c9217fb6133f2a039081a3",
         "shasum": ""
       },
-            "require": {
-              "doctrine/annotations": "~1.2",
-              "illuminate/filesystem": "^7.0",
-              "illuminate/support": "^7.0",
-              "php": "^7.2.5",
-              "phpdocumentor/reflection-docblock": "^3.1 || ^4.1 || ^5"
-            },
-            "require-dev": {
-              "phpunit/phpunit": "^6.5",
-              "squizlabs/php_codesniffer": "~2.0"
-            },
+      "require": {
+        "doctrine/annotations": "~1.2",
+        "illuminate/filesystem": "^7.0",
+        "illuminate/support": "^7.0",
+        "php": "^7.2.5",
+        "phpdocumentor/reflection-docblock": "^3.1 || ^4.1 || ^5"
+      },
+      "require-dev": {
+        "phpunit/phpunit": "^6.5",
+        "squizlabs/php_codesniffer": "~2.0"
+      },
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -497,15 +549,15 @@
             ],
             "authors": [
                 {
-                    "name": "Michael Dowling",
-                    "email": "mtdowling@gmail.com",
-                    "homepage": "https://github.com/mtdowling"
+                  "name": "Michael Dowling",
+                  "email": "mtdowling@gmail.com",
+                  "homepage": "https://github.com/mtdowling"
                 },
-                {
-                    "name": "Chris Tankersley",
-                    "email": "chris@ctankersley.com",
-                  "homepage": "https://github.com/dragonmantank"
-                }
+              {
+                "name": "Chris Tankersley",
+                "email": "chris@ctankersley.com",
+                "homepage": "https://github.com/dragonmantank"
+              }
             ],
           "description": "CRON for PHP: Calculate the next or previous run date and determine if a CRON expression is due",
           "keywords": [
@@ -538,16 +590,16 @@
         "codeclimate/php-test-reporter": "dev-master",
         "fzaninotto/faker": "~1.4",
         "phpunit/phpunit": "~5.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Dusterio\\LumenPassport\\": "src/"
-                },
-                "files": [
-                    "src/helpers.php"
-                ]
-            },
+      },
+      "type": "library",
+      "autoload": {
+        "psr-4": {
+          "Dusterio\\LumenPassport\\": "src/"
+        },
+        "files": [
+          "src/helpers.php"
+        ]
+      },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
@@ -663,26 +715,100 @@
                     "role": "Developer"
                 },
                 {
-                    "name": "Anant Narayanan",
-                    "email": "anant@php.net",
-                    "role": "Developer"
+                  "name": "Anant Narayanan",
+                  "email": "anant@php.net",
+                  "role": "Developer"
                 }
             ],
-            "description": "A simple library to encode and decode JSON Web Tokens (JWT) in PHP. Should conform to the current spec.",
-            "homepage": "https://github.com/firebase/php-jwt",
-            "time": "2020-02-24T23:15:03+00:00"
+          "description": "A simple library to encode and decode JSON Web Tokens (JWT) in PHP. Should conform to the current spec.",
+          "homepage": "https://github.com/firebase/php-jwt",
+          "time": "2020-02-24T23:15:03+00:00"
+        },
+    {
+      "name": "fruitcake/laravel-cors",
+      "version": "v1.0.5",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/fruitcake/laravel-cors.git",
+        "reference": "0e0500133dbb6325266133dd72f040617c9cdbd0"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/fruitcake/laravel-cors/zipball/0e0500133dbb6325266133dd72f040617c9cdbd0",
+        "reference": "0e0500133dbb6325266133dd72f040617c9cdbd0",
+        "shasum": ""
+      },
+      "require": {
+        "asm89/stack-cors": "^1.3",
+        "illuminate/contracts": "^5.5|^6.0|^7.0|^8.0",
+        "illuminate/support": "^5.5|^6.0|^7.0|^8.0",
+        "php": ">=7",
+        "symfony/http-foundation": "^3.3|^4.0|^5.0",
+        "symfony/http-kernel": "^3.3|^4.0|^5.0"
+      },
+      "require-dev": {
+        "laravel/framework": "^5.5|^6.0|^7.0|^8.0",
+        "orchestra/testbench": "^3.5|^4.0|^5.0|^6.0",
+        "phpro/grumphp": "^0.16|^0.17",
+        "phpunit/phpunit": "^6.0|^7.0|^8.0",
+        "squizlabs/php_codesniffer": "^3.5"
+      },
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-master": "1.0-dev"
+        },
+        "laravel": {
+          "providers": [
+            "Fruitcake\\Cors\\CorsServiceProvider"
+          ]
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Fruitcake\\Cors\\": "src/"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "authors": [
+        {
+          "name": "Fruitcake",
+          "homepage": "https://fruitcake.nl"
         },
         {
-            "name": "gmsantos/inspiring",
-            "version": "v3.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/gmsantos/inspiring.git",
-                "reference": "b4b562f08fbcee49413a5b1f73f31ba72bbbff0a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/gmsantos/inspiring/zipball/b4b562f08fbcee49413a5b1f73f31ba72bbbff0a",
+          "name": "Barry vd. Heuvel",
+          "email": "barryvdh@gmail.com"
+        }
+      ],
+      "description": "Adds CORS (Cross-Origin Resource Sharing) headers support in your Laravel application",
+      "keywords": [
+        "api",
+        "cors",
+        "crossdomain",
+        "laravel"
+      ],
+      "funding": [
+        {
+          "url": "https://github.com/barryvdh",
+          "type": "github"
+        }
+      ],
+      "time": "2020-03-11T21:05:07+00:00"
+    },
+    {
+      "name": "gmsantos/inspiring",
+      "version": "v3.0.1",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/gmsantos/inspiring.git",
+        "reference": "b4b562f08fbcee49413a5b1f73f31ba72bbbff0a"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/gmsantos/inspiring/zipball/b4b562f08fbcee49413a5b1f73f31ba72bbbff0a",
                 "reference": "b4b562f08fbcee49413a5b1f73f31ba72bbbff0a",
                 "shasum": ""
             },
@@ -1040,8 +1166,8 @@
             "description": "Generate short, unique, non-sequential ids (like YouTube and Bitly) from numbers",
             "homepage": "http://hashids.org/php",
             "keywords": [
-                "bitly",
-                "decode",
+              "bitly",
+              "decode",
               "encode",
               "hash",
               "hashid",
@@ -1078,21 +1204,21 @@
         "illuminate/queue": "Required to fire login / logout events (^7.0).",
         "illuminate/session": "Required to use the session based guard (^7.0)."
       },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                  "dev-master": "7.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Illuminate\\Auth\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-master": "7.x-dev"
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Illuminate\\Auth\\": ""
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
       "authors": [
         {
           "name": "Taylor Otwell",
@@ -1126,24 +1252,24 @@
         "php": "^7.2.5",
         "psr/log": "^1.0"
       },
-            "suggest": {
-                "pusher/pusher-php-server": "Required to use the Pusher broadcast driver (^4.0)."
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                  "dev-master": "7.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Illuminate\\Broadcasting\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
+      "suggest": {
+        "pusher/pusher-php-server": "Required to use the Pusher broadcast driver (^4.0)."
+      },
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-master": "7.x-dev"
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Illuminate\\Broadcasting\\": ""
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
       "authors": [
         {
           "name": "Taylor Otwell",
@@ -1186,12 +1312,12 @@
       "autoload": {
         "psr-4": {
           "Illuminate\\Bus\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
       "authors": [
         {
           "name": "Taylor Otwell",
@@ -1228,21 +1354,21 @@
         "illuminate/redis": "Required to use the redis cache driver (^7.0).",
         "symfony/cache": "Required to PSR-6 cache bridge (^5.0)."
       },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                  "dev-master": "7.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Illuminate\\Cache\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-master": "7.x-dev"
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Illuminate\\Cache\\": ""
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
       "authors": [
         {
           "name": "Taylor Otwell",
@@ -1276,17 +1402,17 @@
       "extra": {
         "branch-alias": {
           "dev-master": "7.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Illuminate\\Config\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Illuminate\\Config\\": ""
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
       "authors": [
         {
           "name": "Taylor Otwell",
@@ -1326,21 +1452,21 @@
         "illuminate/filesystem": "Required to use the generator command (^7.0)",
         "illuminate/queue": "Required to use closures for scheduled jobs (^7.0)"
       },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                  "dev-master": "7.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Illuminate\\Console\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-master": "7.x-dev"
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Illuminate\\Console\\": ""
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
       "authors": [
         {
           "name": "Taylor Otwell",
@@ -1374,17 +1500,17 @@
       "extra": {
         "branch-alias": {
           "dev-master": "7.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Illuminate\\Container\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Illuminate\\Container\\": ""
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
       "authors": [
         {
           "name": "Taylor Otwell",
@@ -1418,17 +1544,17 @@
       "extra": {
         "branch-alias": {
           "dev-master": "7.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Illuminate\\Contracts\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Illuminate\\Contracts\\": ""
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
       "authors": [
         {
           "name": "Taylor Otwell",
@@ -1462,19 +1588,19 @@
       },
       "type": "library",
       "extra": {
-                "branch-alias": {
-                  "dev-master": "7.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Illuminate\\Cookie\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
+        "branch-alias": {
+          "dev-master": "7.x-dev"
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Illuminate\\Cookie\\": ""
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
       "authors": [
         {
           "name": "Taylor Otwell",
@@ -1515,27 +1641,27 @@
         "illuminate/filesystem": "Required to use the migrations (^7.0).",
         "illuminate/pagination": "Required to paginate the result set (^7.0)."
       },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                  "dev-master": "7.x-dev"
-                }
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-master": "7.x-dev"
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Illuminate\\Database\\": ""
+        }
             },
-            "autoload": {
-                "psr-4": {
-                    "Illuminate\\Database\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Taylor Otwell",
-                    "email": "taylor@laravel.com"
-                }
-            ],
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "authors": [
+        {
+          "name": "Taylor Otwell",
+          "email": "taylor@laravel.com"
+        }
+      ],
       "description": "The Illuminate Database package.",
       "homepage": "https://laravel.com",
       "keywords": [
@@ -1569,20 +1695,20 @@
         "php": "^7.2.5"
       },
       "type": "library",
-            "extra": {
-                "branch-alias": {
-                  "dev-master": "7.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Illuminate\\Encryption\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
+      "extra": {
+        "branch-alias": {
+          "dev-master": "7.x-dev"
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Illuminate\\Encryption\\": ""
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
       "authors": [
         {
           "name": "Taylor Otwell",
@@ -1617,17 +1743,17 @@
       "extra": {
         "branch-alias": {
           "dev-master": "7.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Illuminate\\Events\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Illuminate\\Events\\": ""
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
       "authors": [
         {
           "name": "Taylor Otwell",
@@ -1666,21 +1792,21 @@
         "league/flysystem-sftp": "Required to use the Flysystem SFTP driver (^1.0).",
         "psr/http-message": "Required to allow Storage::put to accept a StreamInterface (^1.0)"
       },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                  "dev-master": "7.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Illuminate\\Filesystem\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-master": "7.x-dev"
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Illuminate\\Filesystem\\": ""
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
       "authors": [
         {
           "name": "Taylor Otwell",
@@ -1714,17 +1840,17 @@
       "extra": {
         "branch-alias": {
           "dev-master": "7.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Illuminate\\Hashing\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Illuminate\\Hashing\\": ""
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
       "authors": [
         {
           "name": "Taylor Otwell",
@@ -1758,25 +1884,25 @@
         "symfony/http-kernel": "^5.0",
         "symfony/mime": "^5.0"
       },
-            "suggest": {
-              "ext-gd": "Required to use Illuminate\\Http\\Testing\\FileFactory::image().",
-              "guzzlehttp/guzzle": "Required to use the HTTP Client (^6.3.1|^7.0)."
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                  "dev-master": "7.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Illuminate\\Http\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
+      "suggest": {
+        "ext-gd": "Required to use Illuminate\\Http\\Testing\\FileFactory::image().",
+        "guzzlehttp/guzzle": "Required to use the HTTP Client (^6.3.1|^7.0)."
+      },
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-master": "7.x-dev"
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Illuminate\\Http\\": ""
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
       "authors": [
         {
           "name": "Taylor Otwell",
@@ -1811,17 +1937,17 @@
       "extra": {
         "branch-alias": {
           "dev-master": "7.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Illuminate\\Log\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Illuminate\\Log\\": ""
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
       "authors": [
         {
           "name": "Taylor Otwell",
@@ -1856,17 +1982,17 @@
       "extra": {
         "branch-alias": {
           "dev-master": "7.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Illuminate\\Pagination\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Illuminate\\Pagination\\": ""
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
       "authors": [
         {
           "name": "Taylor Otwell",
@@ -1900,17 +2026,17 @@
       "extra": {
         "branch-alias": {
           "dev-master": "7.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Illuminate\\Pipeline\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Illuminate\\Pipeline\\": ""
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
       "authors": [
         {
           "name": "Taylor Otwell",
@@ -1949,28 +2075,28 @@
         "ramsey/uuid": "^3.7",
         "symfony/process": "^5.0"
       },
-            "suggest": {
-              "aws/aws-sdk-php": "Required to use the SQS queue driver and DynamoDb failed job storage (^3.0).",
-              "ext-pcntl": "Required to use all features of the queue worker.",
-              "ext-posix": "Required to use all features of the queue worker.",
-              "illuminate/redis": "Required to use the Redis queue driver (^7.0).",
-              "pda/pheanstalk": "Required to use the Beanstalk queue driver (^4.0)."
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                  "dev-master": "7.x-dev"
+      "suggest": {
+        "aws/aws-sdk-php": "Required to use the SQS queue driver and DynamoDb failed job storage (^3.0).",
+        "ext-pcntl": "Required to use all features of the queue worker.",
+        "ext-posix": "Required to use all features of the queue worker.",
+        "illuminate/redis": "Required to use the Redis queue driver (^7.0).",
+        "pda/pheanstalk": "Required to use the Beanstalk queue driver (^4.0)."
+      },
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-master": "7.x-dev"
                 }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Illuminate\\Queue\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
+      },
+      "autoload": {
+        "psr-4": {
+          "Illuminate\\Queue\\": ""
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
       "authors": [
         {
           "name": "Taylor Otwell",
@@ -2008,26 +2134,26 @@
         "symfony/http-kernel": "^5.0",
         "symfony/routing": "^5.0"
       },
-            "suggest": {
-              "illuminate/console": "Required to use the make commands (^7.0).",
-              "nyholm/psr7": "Required to use PSR-7 bridging features (^1.2).",
-              "symfony/psr-http-message-bridge": "Required to use PSR-7 bridging features (^2.0)."
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                  "dev-master": "7.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Illuminate\\Routing\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
+      "suggest": {
+        "illuminate/console": "Required to use the make commands (^7.0).",
+        "nyholm/psr7": "Required to use PSR-7 bridging features (^1.2).",
+        "symfony/psr-http-message-bridge": "Required to use PSR-7 bridging features (^2.0)."
+      },
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-master": "7.x-dev"
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Illuminate\\Routing\\": ""
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
       "authors": [
         {
           "name": "Taylor Otwell",
@@ -2061,24 +2187,24 @@
         "symfony/finder": "^5.0",
         "symfony/http-foundation": "^5.0"
       },
-            "suggest": {
-              "illuminate/console": "Required to use the session:table command (^7.0)."
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                  "dev-master": "7.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Illuminate\\Session\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
+      "suggest": {
+        "illuminate/console": "Required to use the session:table command (^7.0)."
+      },
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-master": "7.x-dev"
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Illuminate\\Session\\": ""
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
       "authors": [
         {
           "name": "Taylor Otwell",
@@ -2113,16 +2239,16 @@
         "voku/portable-ascii": "^1.4.8"
       },
       "conflict": {
-                "tightenco/collect": "<5.5.33"
-            },
-            "suggest": {
-              "illuminate/filesystem": "Required to use the composer class (^7.0).",
-              "moontoast/math": "Required to use ordered UUIDs (^1.1).",
-              "ramsey/uuid": "Required to use Str::uuid() (^3.7).",
-              "symfony/process": "Required to use the composer class (^5.0).",
-              "symfony/var-dumper": "Required to use the dd function (^5.0).",
-              "vlucas/phpdotenv": "Required to use the Env class and env helper (^4.0)."
-            },
+        "tightenco/collect": "<5.5.33"
+      },
+      "suggest": {
+        "illuminate/filesystem": "Required to use the composer class (^7.0).",
+        "moontoast/math": "Required to use ordered UUIDs (^1.1).",
+        "ramsey/uuid": "Required to use Str::uuid() (^3.7).",
+        "symfony/process": "Required to use the composer class (^5.0).",
+        "symfony/var-dumper": "Required to use the dd function (^5.0).",
+        "vlucas/phpdotenv": "Required to use the Env class and env helper (^4.0)."
+      },
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -2131,16 +2257,16 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Illuminate\\Support\\": ""
+                  "Illuminate\\Support\\": ""
                 },
-                "files": [
-                    "helpers.php"
-                ]
+              "files": [
+                "helpers.php"
+              ]
             },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-              "MIT"
-            ],
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
       "authors": [
         {
           "name": "Taylor Otwell",
@@ -2225,19 +2351,19 @@
       },
       "type": "library",
       "extra": {
-                "branch-alias": {
-                  "dev-master": "7.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Illuminate\\Translation\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
+        "branch-alias": {
+          "dev-master": "7.x-dev"
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Illuminate\\Translation\\": ""
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
       "authors": [
         {
           "name": "Taylor Otwell",
@@ -2273,24 +2399,24 @@
         "symfony/http-foundation": "^5.0",
         "symfony/mime": "^5.0"
       },
-            "suggest": {
-              "illuminate/database": "Required to use the database presence verifier (^7.0)."
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                  "dev-master": "7.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Illuminate\\Validation\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
+      "suggest": {
+        "illuminate/database": "Required to use the database presence verifier (^7.0)."
+      },
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-master": "7.x-dev"
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Illuminate\\Validation\\": ""
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
       "authors": [
         {
           "name": "Taylor Otwell",
@@ -2324,16 +2450,16 @@
         "illuminate/support": "^7.0",
         "php": "^7.2.5"
       },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                  "dev-master": "7.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Illuminate\\View\\": ""
-                }
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-master": "7.x-dev"
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Illuminate\\View\\": ""
+        }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -2466,16 +2592,16 @@
             },
             "autoload": {
                 "files": [
-                    "src/autoload.php"
+                  "src/autoload.php"
                 ],
-                "psr-4": {
-                    "Laminas\\ZendFrameworkBridge\\": "src//"
-                }
+              "psr-4": {
+                "Laminas\\ZendFrameworkBridge\\": "src//"
+              }
             },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
+          "notification-url": "https://packagist.org/downloads/",
+          "license": [
+            "BSD-3-Clause"
+          ],
           "description": "Alias legacy ZF class names to Laminas Project equivalents.",
           "keywords": [
             "ZendFramework",
@@ -2533,16 +2659,16 @@
         "symfony/var-dumper": "^5.0",
         "vlucas/phpdotenv": "^4.0"
       },
-            "require-dev": {
-                "mockery/mockery": "^1.0",
-              "phpunit/phpunit": "^8.4|^9.0"
-            },
-            "suggest": {
-                "laravel/tinker": "Required to use the tinker console command (^2.0).",
-                "nyholm/psr7": "Required to use PSR-7 bridging features (^1.2).",
-              "symfony/psr-http-message-bridge": "Required to use PSR-7 bridging features (^2.0)."
-            },
-            "type": "library",
+      "require-dev": {
+        "mockery/mockery": "^1.0",
+        "phpunit/phpunit": "^8.4|^9.0"
+      },
+      "suggest": {
+        "laravel/tinker": "Required to use the tinker console command (^2.0).",
+        "nyholm/psr7": "Required to use PSR-7 bridging features (^1.2).",
+        "symfony/psr-http-message-bridge": "Required to use PSR-7 bridging features (^2.0)."
+      },
+      "type": "library",
             "extra": {
                 "branch-alias": {
                   "dev-master": "7.x-dev"
@@ -2809,13 +2935,13 @@
                     "email": "info@frenky.net"
                 }
             ],
-            "description": "Event package",
-            "keywords": [
-                "emitter",
-                "event",
-                "listener"
-            ],
-            "time": "2018-11-26T11:52:41+00:00"
+          "description": "Event package",
+          "keywords": [
+            "emitter",
+            "event",
+            "listener"
+          ],
+          "time": "2018-11-26T11:52:41+00:00"
         },
     {
       "name": "league/fractal",
@@ -2831,18 +2957,18 @@
         "reference": "06dc15f6ba38f2dde2f919d3095d13b571190a7c",
         "shasum": ""
       },
-            "require": {
-                "php": ">=5.4"
-            },
-            "require-dev": {
-              "doctrine/orm": "^2.5",
-              "illuminate/contracts": "~5.0",
-              "mockery/mockery": "~0.9",
-              "pagerfanta/pagerfanta": "~1.0.0",
-              "phpunit/phpunit": "^4.8.35 || ^7.5",
-              "squizlabs/php_codesniffer": "~1.5|~2.0|~3.4",
-              "zendframework/zend-paginator": "~2.3"
-            },
+      "require": {
+        "php": ">=5.4"
+      },
+      "require-dev": {
+        "doctrine/orm": "^2.5",
+        "illuminate/contracts": "~5.0",
+        "mockery/mockery": "~0.9",
+        "pagerfanta/pagerfanta": "~1.0.0",
+        "phpunit/phpunit": "^4.8.35 || ^7.5",
+        "squizlabs/php_codesniffer": "~1.5|~2.0|~3.4",
+        "zendframework/zend-paginator": "~2.3"
+      },
             "suggest": {
                 "illuminate/pagination": "The Illuminate Pagination component.",
                 "pagerfanta/pagerfanta": "Pagerfanta Paginator",
@@ -3488,15 +3614,15 @@
                 }
             ],
             "description": "Common reflection classes used by phpdocumentor to reflect the code structure",
-            "homepage": "http://www.phpdoc.org",
-            "keywords": [
-                "FQSEN",
-                "phpDocumentor",
-                "phpdoc",
-                "reflection",
-                "static analysis"
-            ],
-            "time": "2018-08-07T13:53:10+00:00"
+          "homepage": "http://www.phpdoc.org",
+          "keywords": [
+            "FQSEN",
+            "phpDocumentor",
+            "phpdoc",
+            "reflection",
+            "static analysis"
+          ],
+          "time": "2018-08-07T13:53:10+00:00"
         },
     {
       "name": "phpdocumentor/reflection-docblock",
@@ -3512,17 +3638,17 @@
         "reference": "cd72d394ca794d3466a3b2fc09d5a6c1dc86b47e",
         "shasum": ""
       },
-            "require": {
-              "ext-filter": "^7.1",
-              "php": "^7.2",
-              "phpdocumentor/reflection-common": "^2.0",
-              "phpdocumentor/type-resolver": "^1.0",
-              "webmozart/assert": "^1"
-            },
-            "require-dev": {
-              "doctrine/instantiator": "^1",
-              "mockery/mockery": "^1"
-            },
+      "require": {
+        "ext-filter": "^7.1",
+        "php": "^7.2",
+        "phpdocumentor/reflection-common": "^2.0",
+        "phpdocumentor/type-resolver": "^1.0",
+        "webmozart/assert": "^1"
+      },
+      "require-dev": {
+        "doctrine/instantiator": "^1",
+        "mockery/mockery": "^1"
+      },
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -3579,15 +3705,15 @@
                     "dev-master": "1.x-dev"
                 }
             },
-            "autoload": {
-                "psr-4": {
-                    "phpDocumentor\\Reflection\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
+          "autoload": {
+            "psr-4": {
+              "phpDocumentor\\Reflection\\": "src"
+            }
+          },
+          "notification-url": "https://packagist.org/downloads/",
+          "license": [
+            "MIT"
+          ],
           "authors": [
             {
               "name": "Mike van Riel",
@@ -3621,16 +3747,16 @@
       "type": "library",
       "extra": {
         "branch-alias": {
-                    "dev-master": "1.7-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "PhpOption\\": "src/PhpOption/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
+          "dev-master": "1.7-dev"
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "PhpOption\\": "src/PhpOption/"
+        }
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
                 "Apache-2.0"
             ],
             "authors": [
@@ -3724,16 +3850,16 @@
             "description": "PHP Secure Communications Library - Pure-PHP implementations of RSA, AES, SSH2, SFTP, X.509 etc.",
             "homepage": "http://phpseclib.sourceforge.net",
             "keywords": [
-                "BigInteger",
-                "aes",
-                "asn.1",
-                "asn1",
-                "blowfish",
-                "crypto",
-                "cryptography",
-                "encryption",
-                "rsa",
-                "security",
+              "BigInteger",
+              "aes",
+              "asn.1",
+              "asn1",
+              "blowfish",
+              "crypto",
+              "cryptography",
+              "encryption",
+              "rsa",
+              "security",
               "sftp",
               "signature",
               "signing",
@@ -3769,16 +3895,16 @@
         "illuminate/validation": "~5.0|~6.0|~7.0",
         "prettus/laravel-validation": "~1.1|~1.2"
       },
-            "suggest": {
-                "league/fractal": "Required to use the Fractal Presenter (0.12.*).",
-                "prettus/laravel-validation": "Required to provide easy validation with the repository (1.1.*)",
-                "robclancy/presenter": "Required to use the Presenter Model (1.3.*)"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Prettus\\Repository\\Providers\\RepositoryServiceProvider"
+      "suggest": {
+        "league/fractal": "Required to use the Fractal Presenter (0.12.*).",
+        "prettus/laravel-validation": "Required to provide easy validation with the repository (1.1.*)",
+        "robclancy/presenter": "Required to use the Presenter Model (1.3.*)"
+      },
+      "type": "library",
+      "extra": {
+        "laravel": {
+          "providers": [
+            "Prettus\\Repository\\Providers\\RepositoryServiceProvider"
                     ]
                 }
             },
@@ -3791,15 +3917,15 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                    "name": "Anderson Andrade",
-                    "email": "contato@andersonandra.de",
-                    "homepage": "http://andersonandra.de",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Laravel 5 - Repositories to  the database layer",
+      "authors": [
+        {
+          "name": "Anderson Andrade",
+          "email": "contato@andersonandra.de",
+          "homepage": "http://andersonandra.de",
+          "role": "Developer"
+        }
+      ],
+      "description": "Laravel 5 - Repositories to  the database layer",
       "homepage": "http://andersao.github.io/l5-repository",
       "keywords": [
         "cache",
@@ -3834,16 +3960,16 @@
         "psr-4": {
           "Prettus\\Validator\\": "src/Prettus/Validator/"
         }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "authors": [
-                {
-                    "name": "Anderson Andrade",
-                    "email": "contato@andersonandra.de",
-                    "homepage": "http://andersonandra.de",
-                    "role": "Developer"
-                }
-            ],
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "authors": [
+        {
+          "name": "Anderson Andrade",
+          "email": "contato@andersonandra.de",
+          "homepage": "http://andersonandra.de",
+          "role": "Developer"
+        }
+      ],
             "description": "Laravel Validation Service",
             "homepage": "http://andersao.github.io/laravel-validation",
             "keywords": [
@@ -3883,16 +4009,16 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "MIT"
+              "MIT"
             ],
-            "authors": [
-                {
-                    "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
-                }
-            ],
-            "description": "Common Container Interface (PHP FIG PSR-11)",
-            "homepage": "https://github.com/php-fig/container",
+          "authors": [
+            {
+              "name": "PHP-FIG",
+              "homepage": "http://www.php-fig.org/"
+            }
+          ],
+          "description": "Common Container Interface (PHP FIG PSR-11)",
+          "homepage": "https://github.com/php-fig/container",
           "keywords": [
             "PSR-11",
             "container",
@@ -3959,16 +4085,16 @@
       "dist": {
         "type": "zip",
         "url": "https://api.github.com/repos/php-fig/http-factory/zipball/12ac7fcd07e5b077433f5f2bee95b3a771bf61be",
-                "reference": "12ac7fcd07e5b077433f5f2bee95b3a771bf61be",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.0.0",
-                "psr/http-message": "^1.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
+        "reference": "12ac7fcd07e5b077433f5f2bee95b3a771bf61be",
+        "shasum": ""
+      },
+      "require": {
+        "php": ">=7.0.0",
+        "psr/http-message": "^1.0"
+      },
+      "type": "library",
+      "extra": {
+        "branch-alias": {
                     "dev-master": "1.0.x-dev"
                 }
             },
@@ -4166,16 +4292,16 @@
                 "php-coveralls/php-coveralls": "^2.1",
                 "phpunit/phpunit": "^5 || ^6.5"
             },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "src/getallheaders.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
+          "type": "library",
+          "autoload": {
+            "files": [
+              "src/getallheaders.php"
+            ]
+          },
+          "notification-url": "https://packagist.org/downloads/",
+          "license": [
+            "MIT"
+          ],
           "authors": [
             {
               "name": "Ralph Khattar",
@@ -4283,16 +4409,16 @@
       "dist": {
         "type": "zip",
         "url": "https://api.github.com/repos/rap2hpoutre/laravel-log-viewer/zipball/3506baaddbe5661fc4482b048db2ec5cfc5f9025",
-                "reference": "3506baaddbe5661fc4482b048db2ec5cfc5f9025",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "4.2.*|5.*|^6.0|^7.0",
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "orchestra/testbench": "3.7.*",
-                "phpunit/phpunit": "^7"
+        "reference": "3506baaddbe5661fc4482b048db2ec5cfc5f9025",
+        "shasum": ""
+      },
+      "require": {
+        "illuminate/support": "4.2.*|5.*|^6.0|^7.0",
+        "php": ">=5.4.0"
+      },
+      "require-dev": {
+        "orchestra/testbench": "3.7.*",
+        "phpunit/phpunit": "^7"
             },
             "type": "laravel-package",
             "extra": {
@@ -4395,15 +4521,15 @@
                 "rbac",
                 "roles",
                 "security",
-                "spatie"
+              "spatie"
             ],
-            "funding": [
-                {
-                    "url": "https://spatie.be/open-source/support-us",
-                    "type": "custom"
-                }
-            ],
-            "time": "2020-03-03T21:31:02+00:00"
+          "funding": [
+            {
+              "url": "https://spatie.be/open-source/support-us",
+              "type": "custom"
+            }
+          ],
+          "time": "2020-03-03T21:31:02+00:00"
         },
     {
       "name": "symfony/console",
@@ -4419,18 +4545,18 @@
         "reference": "d29e2d36941de13600c399e393a60b8cfe59ac49",
         "shasum": ""
       },
-            "require": {
-              "php": "^7.2.5",
-              "symfony/polyfill-mbstring": "~1.0",
-              "symfony/polyfill-php73": "^1.8",
-              "symfony/service-contracts": "^1.1|^2"
-            },
-            "conflict": {
-              "symfony/dependency-injection": "<4.4",
-              "symfony/event-dispatcher": "<4.4",
-              "symfony/lock": "<4.4",
-              "symfony/process": "<4.4"
-            },
+      "require": {
+        "php": "^7.2.5",
+        "symfony/polyfill-mbstring": "~1.0",
+        "symfony/polyfill-php73": "^1.8",
+        "symfony/service-contracts": "^1.1|^2"
+      },
+      "conflict": {
+        "symfony/dependency-injection": "<4.4",
+        "symfony/event-dispatcher": "<4.4",
+        "symfony/lock": "<4.4",
+        "symfony/process": "<4.4"
+      },
             "provide": {
                 "psr/log-implementation": "1.0"
             },
@@ -4485,16 +4611,16 @@
                     "type": "custom"
                 },
                 {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
+                  "url": "https://github.com/fabpot",
+                  "type": "github"
                 },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
+              {
+                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                "type": "tidelift"
+              }
             ],
       "time": "2020-02-24T15:05:31+00:00"
-        },
+    },
     {
       "name": "symfony/error-handler",
       "version": "v5.0.5",
@@ -4509,16 +4635,16 @@
         "reference": "24a938d9913f42d006ee1ca0164ea1f29c1067ec",
         "shasum": ""
       },
-            "require": {
-              "php": "^7.2.5",
-              "psr/log": "^1.0",
-              "symfony/var-dumper": "^4.4|^5.0"
-            },
-            "require-dev": {
-                "symfony/http-kernel": "^4.4|^5.0",
-                "symfony/serializer": "^4.4|^5.0"
-            },
-            "type": "library",
+      "require": {
+        "php": "^7.2.5",
+        "psr/log": "^1.0",
+        "symfony/var-dumper": "^4.4|^5.0"
+      },
+      "require-dev": {
+        "symfony/http-kernel": "^4.4|^5.0",
+        "symfony/serializer": "^4.4|^5.0"
+      },
+      "type": "library",
             "extra": {
                 "branch-alias": {
                   "dev-master": "5.0-dev"
@@ -4536,16 +4662,16 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                  "name": "Fabien Potencier",
-                  "email": "fabien@symfony.com"
-                },
-              {
-                "name": "Symfony Community",
-                "homepage": "https://symfony.com/contributors"
-              }
-            ],
+      "authors": [
+        {
+          "name": "Fabien Potencier",
+          "email": "fabien@symfony.com"
+        },
+        {
+          "name": "Symfony Community",
+          "homepage": "https://symfony.com/contributors"
+        }
+      ],
       "description": "Symfony ErrorHandler Component",
       "homepage": "https://symfony.com",
       "funding": [
@@ -4578,16 +4704,16 @@
         "reference": "b45ad88b253c5a9702ce218e201d89c85d148cea",
         "shasum": ""
       },
-            "require": {
-              "php": "^7.2.5",
-              "symfony/event-dispatcher-contracts": "^2"
-            },
-            "conflict": {
-              "symfony/dependency-injection": "<4.4"
-            },
-            "provide": {
-                "psr/event-dispatcher-implementation": "1.0",
-              "symfony/event-dispatcher-implementation": "2.0"
+      "require": {
+        "php": "^7.2.5",
+        "symfony/event-dispatcher-contracts": "^2"
+      },
+      "conflict": {
+        "symfony/dependency-injection": "<4.4"
+      },
+      "provide": {
+        "psr/event-dispatcher-implementation": "1.0",
+        "symfony/event-dispatcher-implementation": "2.0"
             },
             "require-dev": {
               "psr/log": "~1.0",
@@ -4620,16 +4746,16 @@
             "license": [
                 "MIT"
             ],
-            "authors": [
-                {
-                  "name": "Fabien Potencier",
-                  "email": "fabien@symfony.com"
-                },
-              {
-                "name": "Symfony Community",
-                "homepage": "https://symfony.com/contributors"
-              }
-            ],
+      "authors": [
+        {
+          "name": "Fabien Potencier",
+          "email": "fabien@symfony.com"
+        },
+        {
+          "name": "Symfony Community",
+          "homepage": "https://symfony.com/contributors"
+        }
+      ],
       "description": "Symfony EventDispatcher Component",
       "homepage": "https://symfony.com",
       "funding": [
@@ -4662,17 +4788,17 @@
         "reference": "af23c2584d4577d54661c434446fb8fbed6025dd",
         "shasum": ""
       },
-            "require": {
-              "php": "^7.2.5",
-              "psr/event-dispatcher": "^1"
-            },
-            "suggest": {
-                "symfony/event-dispatcher-implementation": ""
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                  "dev-master": "2.0-dev"
+      "require": {
+        "php": "^7.2.5",
+        "psr/event-dispatcher": "^1"
+      },
+      "suggest": {
+        "symfony/event-dispatcher-implementation": ""
+      },
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-master": "2.0-dev"
                 }
             },
             "autoload": {
@@ -4696,16 +4822,16 @@
             ],
             "description": "Generic abstractions related to dispatching event",
             "homepage": "https://symfony.com",
-            "keywords": [
-                "abstractions",
-                "contracts",
-                "decoupling",
-                "interfaces",
-                "interoperability",
-                "standards"
-            ],
+      "keywords": [
+        "abstractions",
+        "contracts",
+        "decoupling",
+        "interfaces",
+        "interoperability",
+        "standards"
+      ],
       "time": "2019-11-18T17:27:11+00:00"
-        },
+    },
     {
       "name": "symfony/finder",
       "version": "v5.0.5",
@@ -4720,16 +4846,16 @@
         "reference": "6251f201187ca9d66f6b099d3de65d279e971138",
         "shasum": ""
       },
-            "require": {
-              "php": "^7.2.5"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                  "dev-master": "5.0-dev"
-                }
-            },
-            "autoload": {
+      "require": {
+        "php": "^7.2.5"
+      },
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-master": "5.0-dev"
+        }
+      },
+      "autoload": {
                 "psr-4": {
                     "Symfony\\Component\\Finder\\": ""
                 },
@@ -4759,16 +4885,16 @@
                     "type": "custom"
                 },
                 {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
+                  "url": "https://github.com/fabpot",
+                  "type": "github"
                 },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
+              {
+                "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                "type": "tidelift"
+              }
             ],
       "time": "2020-02-14T07:43:07+00:00"
-        },
+    },
     {
       "name": "symfony/http-foundation",
       "version": "v5.0.5",
@@ -4783,16 +4909,16 @@
         "reference": "6f9c2ba72f4295d7ce6cf9f79dbb18036291d335",
         "shasum": ""
       },
-            "require": {
-              "php": "^7.2.5",
-              "symfony/mime": "^4.4|^5.0",
-              "symfony/polyfill-mbstring": "~1.1"
-            },
-            "require-dev": {
-                "predis/predis": "~1.0",
-              "symfony/expression-language": "^4.4|^5.0"
-            },
-            "type": "library",
+      "require": {
+        "php": "^7.2.5",
+        "symfony/mime": "^4.4|^5.0",
+        "symfony/polyfill-mbstring": "~1.1"
+      },
+      "require-dev": {
+        "predis/predis": "~1.0",
+        "symfony/expression-language": "^4.4|^5.0"
+      },
+      "type": "library",
             "extra": {
                 "branch-alias": {
                   "dev-master": "5.0-dev"
@@ -4815,15 +4941,15 @@
                     "name": "Fabien Potencier",
                     "email": "fabien@symfony.com"
                 },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
+              {
+                "name": "Symfony Community",
+                "homepage": "https://symfony.com/contributors"
+              }
             ],
-            "description": "Symfony HttpFoundation Component",
-            "homepage": "https://symfony.com",
+      "description": "Symfony HttpFoundation Component",
+      "homepage": "https://symfony.com",
       "time": "2020-02-14T07:43:07+00:00"
-        },
+    },
     {
       "name": "symfony/http-kernel",
       "version": "v5.0.5",
@@ -4838,30 +4964,30 @@
         "reference": "021d7d54e080405678f2d8c54cb31d0bb03b4520",
         "shasum": ""
       },
-            "require": {
-              "php": "^7.2.5",
-              "psr/log": "~1.0",
-              "symfony/error-handler": "^4.4|^5.0",
-              "symfony/event-dispatcher": "^5.0",
-              "symfony/http-foundation": "^4.4|^5.0",
-              "symfony/polyfill-ctype": "^1.8",
-              "symfony/polyfill-php73": "^1.9"
-            },
-            "conflict": {
-              "symfony/browser-kit": "<4.4",
-              "symfony/cache": "<5.0",
-              "symfony/config": "<5.0",
-              "symfony/dependency-injection": "<4.4",
-              "symfony/doctrine-bridge": "<5.0",
-              "symfony/form": "<5.0",
-              "symfony/http-client": "<5.0",
-              "symfony/mailer": "<5.0",
-              "symfony/messenger": "<5.0",
-              "symfony/translation": "<5.0",
-              "symfony/twig-bridge": "<5.0",
-              "symfony/validator": "<5.0",
-              "twig/twig": "<2.4"
-            },
+      "require": {
+        "php": "^7.2.5",
+        "psr/log": "~1.0",
+        "symfony/error-handler": "^4.4|^5.0",
+        "symfony/event-dispatcher": "^5.0",
+        "symfony/http-foundation": "^4.4|^5.0",
+        "symfony/polyfill-ctype": "^1.8",
+        "symfony/polyfill-php73": "^1.9"
+      },
+      "conflict": {
+        "symfony/browser-kit": "<4.4",
+        "symfony/cache": "<5.0",
+        "symfony/config": "<5.0",
+        "symfony/dependency-injection": "<4.4",
+        "symfony/doctrine-bridge": "<5.0",
+        "symfony/form": "<5.0",
+        "symfony/http-client": "<5.0",
+        "symfony/mailer": "<5.0",
+        "symfony/messenger": "<5.0",
+        "symfony/translation": "<5.0",
+        "symfony/twig-bridge": "<5.0",
+        "symfony/validator": "<5.0",
+        "twig/twig": "<2.4"
+      },
             "provide": {
                 "psr/log-implementation": "1.0"
             },
@@ -5292,15 +5418,15 @@
                     "homepage": "https://symfony.com/contributors"
                 }
             ],
-            "description": "Symfony polyfill backporting some PHP 7.3+ features to lower PHP versions",
-            "homepage": "https://symfony.com",
-            "keywords": [
-                "compatibility",
-                "polyfill",
-                "portable",
-                "shim"
-            ],
-            "time": "2020-01-13T11:15:53+00:00"
+          "description": "Symfony polyfill backporting some PHP 7.3+ features to lower PHP versions",
+          "homepage": "https://symfony.com",
+          "keywords": [
+            "compatibility",
+            "polyfill",
+            "portable",
+            "shim"
+          ],
+          "time": "2020-01-13T11:15:53+00:00"
         },
     {
       "name": "symfony/process",
@@ -5316,16 +5442,16 @@
         "reference": "fd4a86dd7e36437f2fc080d8c42c7415d828a0a8",
         "shasum": ""
       },
-            "require": {
-              "php": "^7.2.5"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                  "dev-master": "5.0-dev"
-                }
-            },
-            "autoload": {
+      "require": {
+        "php": "^7.2.5"
+      },
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-master": "5.0-dev"
+        }
+      },
+      "autoload": {
                 "psr-4": {
                     "Symfony\\Component\\Process\\": ""
                 },
@@ -5405,15 +5531,15 @@
                     "homepage": "http://symfony.com/contributors"
                 }
             ],
-            "description": "PSR HTTP message bridge",
-            "homepage": "http://symfony.com",
-            "keywords": [
-                "http",
-                "http-message",
-                "psr-17",
-                "psr-7"
-            ],
-            "time": "2020-01-02T08:07:11+00:00"
+          "description": "PSR HTTP message bridge",
+          "homepage": "http://symfony.com",
+          "keywords": [
+            "http",
+            "http-message",
+            "psr-17",
+            "psr-7"
+          ],
+          "time": "2020-01-02T08:07:11+00:00"
         },
     {
       "name": "symfony/routing",
@@ -5429,23 +5555,23 @@
         "reference": "d6ca39fd05c1902bf34d724ba06fb8044a0b46de",
         "shasum": ""
       },
-            "require": {
-              "php": "^7.2.5"
-            },
-            "conflict": {
-              "symfony/config": "<5.0",
-              "symfony/dependency-injection": "<4.4",
-              "symfony/yaml": "<4.4"
-            },
-            "require-dev": {
-              "doctrine/annotations": "~1.2",
-              "psr/log": "~1.0",
-              "symfony/config": "^5.0",
-              "symfony/dependency-injection": "^4.4|^5.0",
-              "symfony/expression-language": "^4.4|^5.0",
-              "symfony/http-foundation": "^4.4|^5.0",
-              "symfony/yaml": "^4.4|^5.0"
-            },
+      "require": {
+        "php": "^7.2.5"
+      },
+      "conflict": {
+        "symfony/config": "<5.0",
+        "symfony/dependency-injection": "<4.4",
+        "symfony/yaml": "<4.4"
+      },
+      "require-dev": {
+        "doctrine/annotations": "~1.2",
+        "psr/log": "~1.0",
+        "symfony/config": "^5.0",
+        "symfony/dependency-injection": "^4.4|^5.0",
+        "symfony/expression-language": "^4.4|^5.0",
+        "symfony/http-foundation": "^4.4|^5.0",
+        "symfony/yaml": "^4.4|^5.0"
+      },
             "suggest": {
                 "doctrine/annotations": "For using the annotation loader",
                 "symfony/config": "For using the all-in-one router or any loader",
@@ -5553,15 +5679,15 @@
             ],
             "description": "Generic abstractions related to writing services",
             "homepage": "https://symfony.com",
-            "keywords": [
-                "abstractions",
-                "contracts",
-                "decoupling",
-                "interfaces",
-                "interoperability",
-                "standards"
-            ],
-            "time": "2019-11-18T17:27:11+00:00"
+          "keywords": [
+            "abstractions",
+            "contracts",
+            "decoupling",
+            "interfaces",
+            "interoperability",
+            "standards"
+          ],
+          "time": "2019-11-18T17:27:11+00:00"
         },
     {
       "name": "symfony/translation",
@@ -5577,18 +5703,18 @@
         "reference": "e9b93f42a1fd6aec6a0872d59ee5c8219a7d584b",
         "shasum": ""
       },
-            "require": {
-              "php": "^7.2.5",
-              "symfony/polyfill-mbstring": "~1.0",
-              "symfony/translation-contracts": "^2"
-            },
-            "conflict": {
-              "symfony/config": "<4.4",
-              "symfony/dependency-injection": "<5.0",
-              "symfony/http-kernel": "<5.0",
-              "symfony/twig-bundle": "<5.0",
-              "symfony/yaml": "<4.4"
-            },
+      "require": {
+        "php": "^7.2.5",
+        "symfony/polyfill-mbstring": "~1.0",
+        "symfony/translation-contracts": "^2"
+      },
+      "conflict": {
+        "symfony/config": "<4.4",
+        "symfony/dependency-injection": "<5.0",
+        "symfony/http-kernel": "<5.0",
+        "symfony/twig-bundle": "<5.0",
+        "symfony/yaml": "<4.4"
+      },
             "provide": {
               "symfony/translation-implementation": "2.0"
             },
@@ -5701,15 +5827,15 @@
             ],
             "description": "Generic abstractions related to translation",
             "homepage": "https://symfony.com",
-            "keywords": [
-                "abstractions",
-                "contracts",
-                "decoupling",
-                "interfaces",
-                "interoperability",
-                "standards"
-            ],
-            "time": "2019-11-18T17:27:11+00:00"
+          "keywords": [
+            "abstractions",
+            "contracts",
+            "decoupling",
+            "interfaces",
+            "interoperability",
+            "standards"
+          ],
+          "time": "2019-11-18T17:27:11+00:00"
         },
     {
       "name": "symfony/var-dumper",
@@ -5725,20 +5851,20 @@
         "reference": "3a37aeb1132d1035536d3d6aa9cb06c2ff9355e9",
         "shasum": ""
       },
-            "require": {
-              "php": "^7.2.5",
-              "symfony/polyfill-mbstring": "~1.0"
-            },
-            "conflict": {
-              "phpunit/phpunit": "<5.4.3",
-              "symfony/console": "<4.4"
-            },
-            "require-dev": {
-              "ext-iconv": "*",
-              "symfony/console": "^4.4|^5.0",
-              "symfony/process": "^4.4|^5.0",
-              "twig/twig": "^2.4|^3.0"
-            },
+      "require": {
+        "php": "^7.2.5",
+        "symfony/polyfill-mbstring": "~1.0"
+      },
+      "conflict": {
+        "phpunit/phpunit": "<5.4.3",
+        "symfony/console": "<4.4"
+      },
+      "require-dev": {
+        "ext-iconv": "*",
+        "symfony/console": "^4.4|^5.0",
+        "symfony/process": "^4.4|^5.0",
+        "twig/twig": "^2.4|^3.0"
+      },
             "suggest": {
                 "ext-iconv": "To convert non-UTF-8 strings to UTF-8 (or symfony/polyfill-iconv in case ext-iconv cannot be used).",
                 "ext-intl": "To show region name in time zone dump",
@@ -5778,14 +5904,14 @@
                     "homepage": "https://symfony.com/contributors"
                 }
             ],
-            "description": "Symfony mechanism for exploring and dumping PHP variables",
-            "homepage": "https://symfony.com",
-            "keywords": [
-                "debug",
-                "dump"
-            ],
+      "description": "Symfony mechanism for exploring and dumping PHP variables",
+      "homepage": "https://symfony.com",
+      "keywords": [
+        "debug",
+        "dump"
+      ],
       "time": "2020-02-26T22:30:10+00:00"
-        },
+    },
     {
       "name": "vinkla/hashids",
       "version": "8.1.0",
@@ -5800,20 +5926,20 @@
         "reference": "ecf5534731dbd476e52859b3a6ab265f29ebade7",
         "shasum": ""
       },
-            "require": {
-              "graham-campbell/manager": "^4.4",
-              "hashids/hashids": "^4.0",
-              "illuminate/contracts": "^7.0",
-              "illuminate/support": "^7.0",
-              "php": "^7.2.5"
-            },
-            "require-dev": {
-              "graham-campbell/analyzer": "^3.0",
-              "graham-campbell/testbench": "^5.4",
-              "mockery/mockery": "^1.3",
-              "phpunit/phpunit": "^8.5 || ^9.0",
-              "squizlabs/php_codesniffer": "^3.5"
-            },
+      "require": {
+        "graham-campbell/manager": "^4.4",
+        "hashids/hashids": "^4.0",
+        "illuminate/contracts": "^7.0",
+        "illuminate/support": "^7.0",
+        "php": "^7.2.5"
+      },
+      "require-dev": {
+        "graham-campbell/analyzer": "^3.0",
+        "graham-campbell/testbench": "^5.4",
+        "mockery/mockery": "^1.3",
+        "phpunit/phpunit": "^8.5 || ^9.0",
+        "squizlabs/php_codesniffer": "^3.5"
+      },
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -5833,16 +5959,16 @@
                     "Vinkla\\Hashids\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Vincent Klaiber",
-                  "email": "hello@doubledip.se"
-                }
-            ],
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "authors": [
+        {
+          "name": "Vincent Klaiber",
+          "email": "hello@doubledip.se"
+        }
+      ],
       "description": "A Hashids bridge for Laravel",
       "keywords": [
         "hashids",
@@ -5995,16 +6121,16 @@
       },
       "dist": {
         "type": "zip",
-                "url": "https://api.github.com/repos/webmozart/assert/zipball/aed98a490f9a8f78468232db345ab9cf606cf598",
-                "reference": "aed98a490f9a8f78468232db345ab9cf606cf598",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^5.3.3 || ^7.0",
-                "symfony/polyfill-ctype": "^1.8"
-            },
-            "conflict": {
-                "vimeo/psalm": "<3.6.0"
+        "url": "https://api.github.com/repos/webmozart/assert/zipball/aed98a490f9a8f78468232db345ab9cf606cf598",
+        "reference": "aed98a490f9a8f78468232db345ab9cf606cf598",
+        "shasum": ""
+      },
+      "require": {
+        "php": "^5.3.3 || ^7.0",
+        "symfony/polyfill-ctype": "^1.8"
+      },
+      "conflict": {
+        "vimeo/psalm": "<3.6.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "^4.8.36 || ^7.5.13"
@@ -6191,16 +6317,16 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jordi Boggiano",
-                    "email": "j.boggiano@seld.be",
-                    "homepage": "http://seld.be"
-                }
-            ],
+          "license": [
+            "MIT"
+          ],
+          "authors": [
+            {
+              "name": "Jordi Boggiano",
+              "email": "j.boggiano@seld.be",
+              "homepage": "http://seld.be"
+            }
+          ],
           "description": "Lets you find a path to the system CA bundle, and includes a fallback to the Mozilla CA bundle.",
           "keywords": [
             "cabundle",
@@ -6235,16 +6361,16 @@
           "psr/log": "^1.0",
           "seld/jsonlint": "^1.4",
           "seld/phar-utils": "^1.0",
-                "symfony/console": "^2.7 || ^3.0 || ^4.0 || ^5.0",
-                "symfony/filesystem": "^2.7 || ^3.0 || ^4.0 || ^5.0",
-                "symfony/finder": "^2.7 || ^3.0 || ^4.0 || ^5.0",
-                "symfony/process": "^2.7 || ^3.0 || ^4.0 || ^5.0"
-            },
-            "conflict": {
-                "symfony/console": "2.8.38"
-            },
-            "require-dev": {
-                "phpspec/prophecy": "^1.10",
+          "symfony/console": "^2.7 || ^3.0 || ^4.0 || ^5.0",
+          "symfony/filesystem": "^2.7 || ^3.0 || ^4.0 || ^5.0",
+          "symfony/finder": "^2.7 || ^3.0 || ^4.0 || ^5.0",
+          "symfony/process": "^2.7 || ^3.0 || ^4.0 || ^5.0"
+        },
+        "conflict": {
+          "symfony/console": "2.8.38"
+        },
+        "require-dev": {
+          "phpspec/prophecy": "^1.10",
                 "symfony/phpunit-bridge": "^3.4"
             },
             "suggest": {
@@ -6925,14 +7051,14 @@
                     "name": "Justin Rainbow",
                     "email": "justin.rainbow@gmail.com"
                 },
-                {
-                    "name": "Igor Wiedler",
-                    "email": "igor@wiedler.ch"
-                },
-                {
-                    "name": "Robert Schönthal",
-                    "email": "seroscho@googlemail.com"
-                }
+              {
+                "name": "Igor Wiedler",
+                "email": "igor@wiedler.ch"
+              },
+              {
+                "name": "Robert Schönthal",
+                "email": "seroscho@googlemail.com"
+              }
             ],
           "description": "A library to validate a json schema.",
           "homepage": "https://github.com/justinrainbow/json-schema",
@@ -6966,16 +7092,16 @@
         "require-dev": {
           "phpspec/phpspec": "^3.4",
           "phpunit/phpunit": "^5.7.26"
-            },
-            "suggest": {
-                "ext-fileinfo": "Required for MimeType",
-                "ext-ftp": "Allows you to use FTP server storage",
-                "ext-openssl": "Allows you to use FTPS server storage",
-                "league/flysystem-aws-s3-v2": "Allows you to use S3 storage with AWS SDK v2",
-                "league/flysystem-aws-s3-v3": "Allows you to use S3 storage with AWS SDK v3",
-                "league/flysystem-azure": "Allows you to use Windows Azure Blob storage",
-                "league/flysystem-cached-adapter": "Flysystem adapter decorator for metadata caching",
-                "league/flysystem-eventable-filesystem": "Allows you to use EventableFilesystem",
+        },
+        "suggest": {
+          "ext-fileinfo": "Required for MimeType",
+          "ext-ftp": "Allows you to use FTP server storage",
+          "ext-openssl": "Allows you to use FTPS server storage",
+          "league/flysystem-aws-s3-v2": "Allows you to use S3 storage with AWS SDK v2",
+          "league/flysystem-aws-s3-v3": "Allows you to use S3 storage with AWS SDK v3",
+          "league/flysystem-azure": "Allows you to use Windows Azure Blob storage",
+          "league/flysystem-cached-adapter": "Flysystem adapter decorator for metadata caching",
+          "league/flysystem-eventable-filesystem": "Allows you to use EventableFilesystem",
                 "league/flysystem-rackspace": "Allows you to use Rackspace Cloud Files",
                 "league/flysystem-sftp": "Allows you to use SFTP server storage via phpseclib",
                 "league/flysystem-webdav": "Allows you to use WebDAV storage",
