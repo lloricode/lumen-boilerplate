@@ -32,7 +32,7 @@ return [
     |
     */
 
-    'subtype' => env('API_SUBTYPE', 'lumen.dingo.boilerplate'),
+    'subtype' => env('API_SUBTYPE', 'lumen.boilerplate'),
 
     /*
     |--------------------------------------------------------------------------
@@ -69,7 +69,7 @@ return [
     |
     */
 
-    'domain' => env('API_DOMAIN', env('APP_URL', 'http://lumen-dingo-boilerplate.test')),
+    'domain' => env('API_DOMAIN', env('APP_URL', 'http://lumen-boilerplate.test')),
 
     /*
     |--------------------------------------------------------------------------
@@ -82,7 +82,7 @@ return [
     |
     */
 
-    'name' => env('API_NAME', env('APP_NAME', 'Lumen Dingo Boilerplate')),
+    'name' => env('API_NAME', env('APP_NAME', 'Lumen Boilerplate')),
 
     /*
     |--------------------------------------------------------------------------
