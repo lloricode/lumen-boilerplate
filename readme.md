@@ -1,6 +1,8 @@
+# STILL MIGRATING TO LUMEN 7
+
 ![Run Tests](https://github.com/lloricode/lumen-boilerplate/workflows/Run%20Tests/badge.svg?branch=master)
 
-RESTful API template made from [Lumen 6](https://lumen.laravel.com/)
+RESTful API template made from [Lumen 7](https://lumen.laravel.com/)
 
 Join to our [discord](https://discord.gg/9X3Y5pC)
 
@@ -8,6 +10,7 @@ Join to our [discord](https://discord.gg/9X3Y5pC)
 
 | Lumen | 
 | ----- | 
+|[6](https://github.com/lloricode/lumen-boilerplate/tree/framework-6)|
 |[5.8](https://github.com/lloricode/lumen-boilerplate/tree/framework-5.8)|
 |[5.7](https://github.com/lloricode/lumen-boilerplate/tree/framework-5.7)|
 
