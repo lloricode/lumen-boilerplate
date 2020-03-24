@@ -1,4 +1,4 @@
-# STILL MIGRATING TO LUMEN 7
+# STILL UPGRADING TO LUMEN 7
 
 ![Run Tests](https://github.com/lloricode/lumen-boilerplate/workflows/Run%20Tests/badge.svg?branch=master)
 
