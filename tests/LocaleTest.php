@@ -23,7 +23,7 @@ class LocaleTest extends TestCase
         $this->get(
             'localizations',
             [
-                'Accept' => 'application/x.lumen.dingo.boilerplate.v1+json',
+                'Accept' => 'application/x.lumen.boilerplate.v1+json',
                 'Authorization' => 'Bearer xxxxx',
             ]
         )
@@ -42,7 +42,7 @@ class LocaleTest extends TestCase
     public function checkAllLocale(string $locale = null)
     {
         $headers = [
-            'Accept' => 'application/x.lumen.dingo.boilerplate.v1+json',
+            'Accept' => 'application/x.lumen.boilerplate.v1+json',
         ];
 
         if (!is_null($locale)) {

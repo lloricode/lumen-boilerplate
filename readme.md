@@ -1,5 +1,3 @@
-# STILL UPGRADING TO LUMEN 7
-
 ![Run Tests](https://github.com/lloricode/lumen-boilerplate/workflows/Run%20Tests/badge.svg?branch=master)
 
 RESTful API template made from [Lumen 7](https://lumen.laravel.com/)

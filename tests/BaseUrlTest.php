@@ -20,7 +20,7 @@ class BaseUrlTest extends TestCase
         $this->get(
             '/',
             [
-                'Accept' => 'application/x.lumen.dingo.boilerplate.v1+json',
+                'Accept' => 'application/x.lumen.boilerplate.v1+json',
             ]
         );
         $this->assertResponseOk();

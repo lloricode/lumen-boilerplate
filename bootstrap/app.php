@@ -80,6 +80,7 @@ $app->middleware(
 $app->routeMiddleware(
     [
 //        'serializer' => Liyu\Dingo\SerializerSwitch::class,
+        'serializer' => App\Http\Middleware\SerializerSwitch::class,
         'permission' => Spatie\Permission\Middlewares\PermissionMiddleware::class,
         'role' => Spatie\Permission\Middlewares\RoleMiddleware::class,
         'client' => Laravel\Passport\Http\Middleware\CheckClientCredentials::class,

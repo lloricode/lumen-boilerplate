@@ -39,6 +39,7 @@ class ManageTest extends BaseRole
         );
         $this->assertResponseOk();
 
+//        dd(__METHOD__,json_decode($this->response->getContent()));
         // temporary
         // https://github.com/dingo/api/issues/1609
         $this->seeJsonApiRelation($role, 'roles');
