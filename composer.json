@@ -21,7 +21,7 @@
   "license": "MIT",
   "type": "project",
   "require": {
-    "php": "^7.2",
+    "php": "^7.2.5",
     "ext-intl": "*",
     "ext-json": "*",
     "ext-pdo": "*",
@@ -31,6 +31,7 @@
     "fruitcake/laravel-cors": "^1.0",
     "gmsantos/inspiring": "^3.0",
     "laravel/lumen-framework": "^7.0",
+    "laravel/passport": "^8.4.2",
     "laravel/socialite": "^4.3",
     "prettus/l5-repository": "^2.6",
     "rap2hpoutre/laravel-log-viewer": "^1.4",
