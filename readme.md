@@ -138,6 +138,7 @@ This project is licensed under the [MIT License](https://opensource.org/licenses
 
 ## Todo
 
+- [ ] Fix for PHP7.4
 - [x] Log viewer
 - [ ] Documentation private route with permission
 - [x] Localization
