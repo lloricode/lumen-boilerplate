@@ -145,7 +145,7 @@ class GenerateDocumentationCommand extends Command
         $command = "apidoc --config {$this->getJsonConfigurationPath()} $inputs --output $path{$verbose}";
 
         $this->comment("Executing command: [$command]");
-        $process = new Process($command);
+        $process = new Process(explode(' ', $command));
         // execute the command
         $process->run();
 
