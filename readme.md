@@ -68,7 +68,7 @@ Use the `Client ID` and `Client Secret` of password grant for OAuth2 - Login (Pa
 ![](https://user-images.githubusercontent.com/8251344/50570031-d6c4b200-0db4-11e9-8cd0-bd3cb7d3de2a.png)
 
 Do not forget to add **Headers**  
-  - Accept       = `application/x.lumen.dingo.boilerplate.v1+json` *(Depends on your API_SUBTYPE value in your environment if `api strict` mode is **enabled**)*.
+  - Accept       = `application/x.lumen.boilerplate.v1+json` *(Depends on your API_SUBTYPE value in your environment if `api strict` mode is **enabled**)*.
   - Content-Type = `application/x-www-form-urlencoded`.
 
 ![](https://user-images.githubusercontent.com/8251344/50570058-cfea6f00-0db5-11e9-96bb-94143f449145.png)
@@ -120,7 +120,7 @@ vendor/bin/phpunit
 
 * [laravel/lumen-framework](https://github.com/laravel/lumen-framework) - The stunningly fast micro-framework by Laravel.
 * [dingo/api](https://github.com/dingo/api) - A RESTful API package for the Laravel and Lumen frameworks.
-* [spatie/laravel-cors](https://github.com/spatie/laravel-cors) - Send CORS headers in a Laravel application.
+* [fruitcake/laravel-cors](https://github.com/fruitcake/laravel-cors) - Adds CORS (Cross-Origin Resource Sharing) headers support in your Laravel application.
 * [thephpleague/fractal](https://github.com/thephpleague/fractal) - Output complex, flexible, AJAX/RESTful data structures, extended by [dingo/api](https://github.com/dingo/api)
 * [laravel/passport](https://github.com/laravel/passport) - OAuth2 server and API authentication, fix installed by [dusterio/lumen-passport](https://github.com/dusterio/lumen-passport).
 * [andersao/l5-repository](https://github.com/andersao/l5-repository) - Repositories to abstract the database layer.
@@ -138,7 +138,7 @@ This project is licensed under the [MIT License](https://opensource.org/licenses
 
 ## Todo
 
-- [ ] Fix for PHP7.4
+- [x] Fix for PHP7.4
 - [x] Log viewer
 - [ ] Documentation private route with permission
 - [x] Localization
