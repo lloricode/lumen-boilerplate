@@ -24,16 +24,6 @@ Copy `env.example` to `.env` where you prepare your environment.
 
 **Note:** Make sure you do not rename `.env.example`, for team purposes.
 
-### 3. App Key
-Lumen has no `php artisan key:generate`. You can research how to add **APP_KEY** in Lumen. [search here](https://google.com/search?q=how+to+add+APP_KEY+in+lumen)
-
-You can also try to run:
-```bash
-php -a # An interactive php shell
-
-echo substr(md5(rand()), 0, 32); # Generating 32 character string
-```
-
 ### 4. Composer
 Lumen boilerplate dependencies are managed through the [PHP Composer tool](https://getcomposer.org/). Install the depencencies by navigating into your project in terminal and typing this command:
 ```bash
@@ -129,6 +119,7 @@ vendor/bin/phpunit
 * [apidoc/apidoc](https://github.com/apidoc/apidoc) - RESTful web API Documentation Generator.
 * [rap2hpoutre/laravel-log-viewer](https://github.com/rap2hpoutre/laravel-log-viewer) - Laravel log viewer.
 * [coderello/laravel-passport-social-grant](https://github.com/coderello/laravel-passport-social-grant) - API authentication via social networks for your Laravel application.
+* [flipboxstudio/lumen-generator](https://github.com/flipboxstudio/lumen-generator) - Add Lumen missing generator.
 
 See also the list of [contributors](https://github.com/lloricode/lumen-boilerplate/graphs/contributors) who participated in this project.
 
