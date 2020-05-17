@@ -24,7 +24,7 @@ Copy `env.example` to `.env` where you prepare your environment.
 
 **Note:** Make sure you do not rename `.env.example`, for team purposes.
 
-### 4. Composer
+### 3. Composer
 Lumen boilerplate dependencies are managed through the [PHP Composer tool](https://getcomposer.org/). Install the depencencies by navigating into your project in terminal and typing this command:
 ```bash
 composer install
