@@ -43,7 +43,7 @@ class Role extends \Spatie\Permission\Models\Role
      *
      * name => value
      */
-    const PERMISSIONS = [
+    public const PERMISSIONS = [
         'index' => 'role index',
         'create' => 'role store',
         'show' => 'role show',

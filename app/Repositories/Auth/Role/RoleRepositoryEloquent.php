@@ -87,20 +87,6 @@ class RoleRepositoryEloquent extends BaseRepository implements RoleRepository
     }
 
     /**
-     * @param $id
-     *
-     * @return mixed
-     */
-    private function checkDefault($id)
-    {
-        $role = $this->find($id);
-        if (in_array($role->name, config('setting.permission.role_names'))) {
-            abort(403, 'You cannot update/delete default role.');
-        }
-        return $role;
-    }
-
-    /**
      * Specify Model class name
      *
      * @return string
@@ -116,11 +102,6 @@ class RoleRepositoryEloquent extends BaseRepository implements RoleRepository
         return parent::delete($id);
     }
 
-//    /**
-//     * @param  array  $attributes
-//     *
-//     * @return mixed
-//     */
     public function create(array $attributes)
     {
 //        $this->validate($attributes, ValidatorInterface::RULE_CREATE);
@@ -128,6 +109,26 @@ class RoleRepositoryEloquent extends BaseRepository implements RoleRepository
         $role = $this->model()::create($attributes);
         event(new RepositoryEntityUpdated($this, $role));
         return $this->parserResult($role);
+    }
+
+//    /**
+//     * @param  array  $attributes
+//     *
+//     * @return mixed
+//     */
+
+    /**
+     * @param $id
+     *
+     * @return mixed
+     */
+    private function checkDefault($id)
+    {
+        $role = $this->find($id);
+        if (in_array($role->name, config('setting.permission.role_names'))) {
+            abort(403, 'You cannot update/delete default role.');
+        }
+        return $role;
     }
 
 //    private function validate(array $attributes, $rule)

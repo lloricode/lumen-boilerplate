@@ -42,6 +42,6 @@ class LocalizationController extends Controller
             }
         }
 
-        return $this->fractal($localizations, new LocalizationTransformer);
+        return $this->fractal($localizations, new LocalizationTransformer());
     }
 }

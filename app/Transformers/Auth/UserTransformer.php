@@ -58,12 +58,12 @@ class UserTransformer extends BaseTransformer
 
     public function includeRoles(User $user)
     {
-        return $this->collection($user->roles, new RoleTransformer);
+        return $this->collection($user->roles, new RoleTransformer());
     }
 
     public function includePermissions(User $user)
     {
-        return $this->collection($user->permissions, new PermissionTransformer);
+        return $this->collection($user->permissions, new PermissionTransformer());
     }
 
     /**

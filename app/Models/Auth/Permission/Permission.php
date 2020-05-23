@@ -46,7 +46,7 @@ class Permission extends \Spatie\Permission\Models\Permission
      *
      * name => value
      */
-    const PERMISSIONS = [
+    public const PERMISSIONS = [
         'index' => 'permission index',
         'show' => 'permission show',
     ];

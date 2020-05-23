@@ -30,6 +30,6 @@ class UserAccessController extends Controller
      */
     public function profile()
     {
-        return $this->fractal(auth()->user(), new UserTransformer);
+        return $this->fractal(auth()->user(), new UserTransformer());
     }
 }

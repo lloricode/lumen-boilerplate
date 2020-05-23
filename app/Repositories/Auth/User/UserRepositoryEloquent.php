@@ -137,7 +137,7 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
 
             $this->update(
                 [
-                    'avatar_type' => $provider
+                    'avatar_type' => $provider,
                 ],
                 $user->id
             );

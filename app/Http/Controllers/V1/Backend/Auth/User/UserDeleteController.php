@@ -56,7 +56,7 @@ class UserDeleteController extends Controller
     public function restore(string $id)
     {
         $user = $this->userRepository->restore($this->decodeHash($id));
-        return $this->fractal($user, new UserTransformer);
+        return $this->fractal($user, new UserTransformer());
     }
 
     /**
@@ -73,9 +73,9 @@ class UserDeleteController extends Controller
      */
     public function deleted(Request $request)
     {
-        $this->userRepository->pushCriteria(new OnlyTrashedCriteria);
+        $this->userRepository->pushCriteria(new OnlyTrashedCriteria());
         $this->userRepository->pushCriteria(new RequestCriteria($request));
-        return $this->fractal($this->userRepository->paginate(), new UserTransformer);
+        return $this->fractal($this->userRepository->paginate(), new UserTransformer());
     }
 
     /**

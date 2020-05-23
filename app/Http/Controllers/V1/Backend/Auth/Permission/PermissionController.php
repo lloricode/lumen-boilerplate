@@ -53,7 +53,7 @@ class PermissionController extends Controller
     public function index(Request $request)
     {
         $this->permissionRepository->pushCriteria(new RequestCriteria($request));
-        return $this->fractal($this->permissionRepository->paginate(), new PermissionTransformer);
+        return $this->fractal($this->permissionRepository->paginate(), new PermissionTransformer());
     }
 
     /**
@@ -73,7 +73,7 @@ class PermissionController extends Controller
     {
         $this->permissionRepository->pushCriteria(new RequestCriteria($request));
         $p = $this->permissionRepository->find($this->decodeHash($id));
-        return $this->fractal($p, new PermissionTransformer);
+        return $this->fractal($p, new PermissionTransformer());
     }
 
 }

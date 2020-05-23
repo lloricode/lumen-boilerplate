@@ -56,7 +56,7 @@ class RoleController extends Controller
     public function index(Request $request)
     {
         $this->roleRepository->pushCriteria(new RequestCriteria($request));
-        return $this->fractal($this->roleRepository->paginate(), new RoleTransformer);
+        return $this->fractal($this->roleRepository->paginate(), new RoleTransformer());
     }
 
     /**
@@ -88,7 +88,7 @@ class RoleController extends Controller
             ]
         );
 
-        return $this->fractal($role, new RoleTransformer)->respond(201);
+        return $this->fractal($role, new RoleTransformer())->respond(201);
     }
 
     /**
@@ -108,7 +108,7 @@ class RoleController extends Controller
     {
         $this->roleRepository->pushCriteria(new RequestCriteria($request));
         $role = $this->roleRepository->find($this->decodeHash($id));
-        return $this->fractal($role, new RoleTransformer);
+        return $this->fractal($role, new RoleTransformer());
     }
 
     /**
@@ -143,7 +143,7 @@ class RoleController extends Controller
             ],
             $this->decodeHash($id)
         );
-        return $this->fractal($role, new RoleTransformer);
+        return $this->fractal($role, new RoleTransformer());
     }
 
     /**

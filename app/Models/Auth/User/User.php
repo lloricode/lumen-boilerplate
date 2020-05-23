@@ -70,7 +70,7 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      *
      * name => value
      */
-    const PERMISSIONS = [
+    public const PERMISSIONS = [
         // basic
         'index' => 'user index',
         'create' => 'user store',

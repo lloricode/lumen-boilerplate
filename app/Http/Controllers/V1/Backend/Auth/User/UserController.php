@@ -50,7 +50,7 @@ class UserController extends Controller
     public function index(Request $request)
     {
         $this->userRepository->pushCriteria(new RequestCriteria($request));
-        return $this->fractal($this->userRepository->paginate(), new UserTransformer);
+        return $this->fractal($this->userRepository->paginate(), new UserTransformer());
     }
 
     /**
@@ -68,7 +68,7 @@ class UserController extends Controller
     public function show(string $id)
     {
         $user = $this->userRepository->find($this->decodeHash($id));
-        return $this->fractal($user, new UserTransformer);
+        return $this->fractal($user, new UserTransformer());
     }
 
     /**
@@ -102,7 +102,7 @@ class UserController extends Controller
 
         $attributes['password'] = app('hash')->make($attributes['password']);
 
-        return $this->fractal($this->userRepository->create($attributes), new UserTransformer)
+        return $this->fractal($this->userRepository->create($attributes), new UserTransformer())
             ->respond(201);
     }
 
@@ -139,7 +139,7 @@ class UserController extends Controller
         $attributes['password'] = app('hash')->make($attributes['password']);
 
         $user = $this->userRepository->update($attributes, $this->decodeHash($id));
-        return $this->fractal($user, new UserTransformer);
+        return $this->fractal($user, new UserTransformer());
     }
 
 

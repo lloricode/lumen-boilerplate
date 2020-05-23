@@ -59,7 +59,7 @@ class AuthorizationController extends Controller
 
         $this->userRepository->assignRole($userId, $this->decodeHash($request->input('role_id')));
 
-        return $this->fractal($this->userRepository->find($userId), new UserTransformer);
+        return $this->fractal($this->userRepository->find($userId), new UserTransformer());
     }
 
     /**
@@ -83,7 +83,7 @@ class AuthorizationController extends Controller
         $this->userRepository->removeRole($userId, $this->decodeHash($request->input('role_id')));
 
         $user = $this->userRepository->find($userId);
-        return $this->fractal($user, new UserTransformer);
+        return $this->fractal($user, new UserTransformer());
     }
 
     /**
@@ -106,7 +106,7 @@ class AuthorizationController extends Controller
 
         $this->userRepository->givePermissionTo($userId, $this->decodeHash($request->input('permission_id')));
 
-        return $this->fractal($this->userRepository->find($userId), new UserTransformer);
+        return $this->fractal($this->userRepository->find($userId), new UserTransformer());
     }
 
     /**
@@ -129,7 +129,7 @@ class AuthorizationController extends Controller
 
         $this->userRepository->revokePermissionTo($userId, $this->decodeHash($request->input('permission_id')));
 
-        return $this->fractal($this->userRepository->find($userId), new UserTransformer);
+        return $this->fractal($this->userRepository->find($userId), new UserTransformer());
     }
 
     /**
@@ -152,7 +152,7 @@ class AuthorizationController extends Controller
 
         $this->roleRepository->givePermissionTo($roleId, $this->decodeHash($request->input('permission_id')));
 
-        return $this->fractal($this->roleRepository->find($roleId), new RoleTransformer);
+        return $this->fractal($this->roleRepository->find($roleId), new RoleTransformer());
     }
 
     /**
@@ -175,6 +175,6 @@ class AuthorizationController extends Controller
 
         $this->roleRepository->revokePermissionTo($roleId, $this->decodeHash($request->input('permission_id')));
 
-        return $this->fractal($this->roleRepository->find($roleId), new RoleTransformer);
+        return $this->fractal($this->roleRepository->find($roleId), new RoleTransformer());
     }
 }

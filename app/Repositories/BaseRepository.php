@@ -35,34 +35,6 @@ abstract class BaseRepository extends BaseRepo implements CacheableInterface
 
     /**
      * @param  int  $id
-     * @param  string  $method
-     *
-     * @return mixed
-     * @throws \Prettus\Repository\Exceptions\RepositoryException
-     */
-    private function manageDeletes(int $id, string $method)
-    {
-        $this->applyScope();
-
-        $temporarySkipPresenter = $this->skipPresenter;
-        $this->skipPresenter(true);
-
-        $this->pushCriteria(new OnlyTrashedCriteria);
-        $model = $this->find($id);
-        $originalModel = clone $model;
-
-        $this->skipPresenter($temporarySkipPresenter);
-        $this->resetModel();
-
-        $model->{$method}();
-
-        event(new RepositoryEntityUpdated($this, $originalModel));
-
-        return $this->parserResult($model);
-    }
-
-    /**
-     * @param  int  $id
      *
      * @return mixed
      * @throws \Prettus\Repository\Exceptions\RepositoryException
@@ -138,5 +110,33 @@ abstract class BaseRepository extends BaseRepo implements CacheableInterface
                         return true;
                     }
                 )->toArray();
+    }
+
+    /**
+     * @param  int  $id
+     * @param  string  $method
+     *
+     * @return mixed
+     * @throws \Prettus\Repository\Exceptions\RepositoryException
+     */
+    private function manageDeletes(int $id, string $method)
+    {
+        $this->applyScope();
+
+        $temporarySkipPresenter = $this->skipPresenter;
+        $this->skipPresenter(true);
+
+        $this->pushCriteria(new OnlyTrashedCriteria());
+        $model = $this->find($id);
+        $originalModel = clone $model;
+
+        $this->skipPresenter($temporarySkipPresenter);
+        $this->resetModel();
+
+        $model->{$method}();
+
+        event(new RepositoryEntityUpdated($this, $originalModel));
+
+        return $this->parserResult($model);
     }
 }

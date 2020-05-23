@@ -50,15 +50,6 @@ class UserAccessTest extends TestCase
         $this->assertResponseStatus($statusCode);
     }
 
-    private function replaceUserUri($uri, bool $isDeleted = false): string
-    {
-        $user = factory(User::class)->create();
-        if ($isDeleted) {
-            $user->delete();
-        }
-        return str_replace('{id}', $user->getHashedId(), $uri);
-    }
-
     public function dataResources(): array
     {
         return [
@@ -99,5 +90,14 @@ class UserAccessTest extends TestCase
             'restore by guest' => ['put', 'users/{id}/restore', '', 401],
             'purge by guest' => ['delete', 'users/{id}/purge', '', 401],
         ];
+    }
+
+    private function replaceUserUri($uri, bool $isDeleted = false): string
+    {
+        $user = factory(User::class)->create();
+        if ($isDeleted) {
+            $user->delete();
+        }
+        return str_replace('{id}', $user->getHashedId(), $uri);
     }
 }
