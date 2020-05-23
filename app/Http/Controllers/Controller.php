@@ -21,6 +21,6 @@ class Controller extends BaseController
     {
         return fractal($data, $transformer, JsonApiSerializer::class)
             ->withResourceName($transformer->getResourceKey())
-            ->addMeta('include', $transformer->getAvailableIncludes());
+            ->addMeta(['include' => $transformer->getAvailableIncludes()]);
     }
 }
