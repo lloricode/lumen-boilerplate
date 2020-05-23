@@ -19,7 +19,6 @@ abstract class BaseRepository extends BaseRepo implements CacheableInterface
 {
     use CacheableRepository {
         paginate as protected paginateExtend;
-        serializeCriterion as protected serializeCriterionOverRide;
     }
 
     /**
