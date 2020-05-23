@@ -30,7 +30,7 @@
     "flipbox/lumen-generator": "^6.0",
     "fruitcake/laravel-cors": "^1.0",
     "juampi92/api-resources": "^1.5",
-    "laravel/lumen-framework": "^7.0.3",
+    "laravel/lumen-framework": "^7.0.4",
     "laravel/passport": "^8.4.3",
     "laravel/socialite": "^4.3.2",
     "prettus/l5-repository": "^2.6.42",
