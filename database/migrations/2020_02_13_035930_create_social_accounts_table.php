@@ -16,9 +16,9 @@ class CreateSocialAccountsTable extends Migration
         Schema::create(
             'social_accounts',
             function (Blueprint $table) {
-                $table->bigIncrements('id');
+                $table->id('id');
 
-                $table->foreignConstraintBigInteger('user_id', 'users');
+                $table->foreignId('user_id')->constrained();
 
                 $table->string('provider', 32);
                 $table->string('provider_id');
