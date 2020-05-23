@@ -2,6 +2,6 @@
 
 return [
 
-    'welcome' => env('APP_NAME', 'Lumen 5.7 Dingo Boilerplate').'أهلا بك في ',
+    'welcome' => env('APP_NAME', 'Lumen Boilerplate').'أهلا بك في ',
 
 ];

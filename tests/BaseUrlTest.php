@@ -20,14 +20,13 @@ class BaseUrlTest extends TestCase
         $this->get(
             '/',
             [
-                'Accept' => 'application/x.lumen.boilerplate.v1+json',
+                'Accept' => 'application/json',
             ]
         );
         $this->assertResponseOk();
         $this->seeJson(
             [
-                'message' => 'Welcome to Lumen Dingo Boilerplate',
-                'branch' => 'dev-master',
+                'message' => 'Welcome to Lumen Boilerplate',
             ]
         );
     }

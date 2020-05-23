@@ -19,7 +19,7 @@
         </whitelist>
     </filter>
     <php>
-        <env name="APP_NAME" value="Lumen Dingo Boilerplate"/>
+        <env name="APP_NAME" value="Lumen Boilerplate"/>
         <env name="APP_KEY" value="base64:HUmcZPE2aDyqwp4f5C6w1AOkjHSXf5LZKBMUDp8VBA8"/>
         <env name="APP_ENV" value="testing"/>
         <env name="APP_DEBUG" value="false"/>

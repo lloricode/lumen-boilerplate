@@ -62,11 +62,11 @@ class LocaleTest extends TestCase
             return;
         }
 
-        $message = 'Welcome to Lumen Dingo Boilerplate';
+        $message = 'Welcome to Lumen Boilerplate';
         switch ($locale) {
             case'xxx,fr';
                 $locale = 'fr';
-                $message = 'Bienvenue chez Lumen Dingo Boilerplate';
+                $message = 'Bienvenue chez Lumen Boilerplate';
                 break;
             default:
                 $locale = $locale ?: config('app.locale');
@@ -77,7 +77,6 @@ class LocaleTest extends TestCase
         $this->seeJson(
             [
                 'message' => $message,
-                'branch' => 'dev-master',
             ]
         );
     }

@@ -7,7 +7,6 @@ $router->get(
     function () {
         return [
             'message' => trans('messages.welcome'),
-            'branch' => 'dev-master',
         ];
     }
 );
