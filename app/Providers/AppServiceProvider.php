@@ -8,7 +8,7 @@ use App\Providers\Macros\BluePrintMaxin;
 use Coderello\SocialGrant\Resolvers\SocialUserResolverInterface;
 use Dusterio\LumenPassport\LumenPassport;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Date;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Passport\Passport;
 use Schema;
@@ -25,15 +25,14 @@ class AppServiceProvider extends ServiceProvider
         }
 
         Passport::hashClientSecrets();
-
         LumenPassport::routes(
             $this->app->router,
             [
 //            'prefix' => 'v1/oauth',
             ]
         );
-        LumenPassport::tokensExpireIn(Carbon::now()->addMinutes(config('setting.api.token.access_token_expire')));
-        Passport::refreshTokensExpireIn(Carbon::now()->addMinutes(config('setting.api.token.refresh_token_expire')));
+        LumenPassport::tokensExpireIn(Date::now()->addMinutes(config('setting.api.token.access_token_expire')));
+        Passport::refreshTokensExpireIn(Date::now()->addMinutes(config('setting.api.token.refresh_token_expire')));
 
         $this->app->bind(SocialUserResolverInterface::class, PassportSocialResolver::class);
 
