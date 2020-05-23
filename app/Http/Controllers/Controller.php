@@ -7,14 +7,9 @@ use App\Transformers\BaseTransformer;
 use Laravel\Lumen\Routing\Controller as BaseController;
 use Spatie\Fractal\Fractal;
 
-//use Illuminate\Http\Request;
-//use Dingo\Api\Routing\Helpers;
-
 class Controller extends BaseController
 {
     use Hashable;
-
-//    use Helpers;
 
     /**
      * @param $data
@@ -24,40 +19,11 @@ class Controller extends BaseController
      */
     protected function fractal($data, $transformer)
     {
-//        $method = '';
-//        if ($paginatorOrCollection instanceof Paginator) {
-//            $method = 'paginator';
-//        } elseif ($paginatorOrCollection instanceof Collection OR $paginatorOrCollection instanceof SupportCollection) {
-//            $method = 'collection';
-//        }
-
-//        $parameters = $this->addResourceKey($transformer, $parameters);
-
-//        $response = $this->{$method}(
-//            $paginatorOrCollection,
-//            $transformer,
-//            $parameters,
-//            $after
-//        );
-
         $fractal = fractal($data, $transformer)
             ->withResourceName($this->getResourceKey($transformer));
 
         return $this->addAvailableIncludes($fractal, $transformer);
     }
-
-//    /**
-//     * @param $item
-//     * @param $transformer
-//     * @param  array  $parameters
-//     * @param  \Closure|null  $after
-//     *
-//     * @return \Spatie\Fractal\Fractal
-//     */
-//    protected function item($item, $transformer, $parameters = [], Closure $after = null)
-//    {
-//        return fractal($item, $transformer);
-//    }
 
     /**
      * @param $transformer
