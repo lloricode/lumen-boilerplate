@@ -144,4 +144,5 @@ This project is licensed under the [MIT License](https://opensource.org/licenses
 - [ ] Back up
 - [ ] Data transfer objects (DTO) https://github.com/spatie/data-transfer-object
 - [ ] Throttle for lumen
+- [ ] Url versioning
 
