@@ -1,16 +1,15 @@
 {
-  "name": "lloricode/lumen-dingo-boilerplate",
-  "description": "The Lumen dingo boilerplate project.",
+  "name": "lloricode/lumen-boilerplate",
+  "description": "The Lumen Boilerplate Project.",
   "keywords": [
     "framework",
     "laravel",
     "lumen",
-    "boilerplate",
-    "dingo"
+    "boilerplate"
   ],
   "support": {
-    "issues": "https://github.com/lloricode/lumen-dingo-boilerplate/issues",
-    "source": "https://github.com/lloricode/lumen-dingo-boilerplate"
+    "issues": "https://github.com/lloricode/lumen-boilerplate/issues",
+    "source": "https://github.com/lloricode/lumen-boilerplate"
   },
   "authors": [
     {
