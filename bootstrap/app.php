@@ -1,6 +1,5 @@
 <?php
 
-
 require_once __DIR__.'/../vendor/autoload.php';
 
 (new Laravel\Lumen\Bootstrap\LoadEnvironmentVariables(
@@ -85,8 +84,6 @@ $app->middleware(
 $app->routeMiddleware(
     [
         'auth' => App\Http\Middleware\Authenticate::class,
-//        'serializer' => Liyu\Dingo\SerializerSwitch::class,
-//        'serializer' => App\Http\Middleware\SerializerSwitch::class,
         'permission' => Spatie\Permission\Middlewares\PermissionMiddleware::class,
         'role' => Spatie\Permission\Middlewares\RoleMiddleware::class,
         'client' => Laravel\Passport\Http\Middleware\CheckClientCredentials::class,
@@ -121,77 +118,9 @@ $app->register(Vinkla\Hashids\HashidsServiceProvider::class);
 $app->register(Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class);
 $app->register(Juampi92\APIResources\APIResourcesServiceProvider::class);
 
-//$app[Dingo\Api\Auth\Auth::class]->extend(
-//    'passport',
-//    function ($app) {
-//        return $app[App\Auth\GuardServiceProvider::class];
-//    }
-//);
-//
-//$app[Dingo\Api\Exception\Handler::class]
-//    ->register(
-//        function (Illuminate\Auth\AuthenticationException $exception) {
-//            abort(401, $exception->getMessage());
-//        }
-//    );
-//
-//$app[Dingo\Api\Exception\Handler::class]
-//    ->register(
-//        function (Spatie\Permission\Exceptions\RoleAlreadyExists $exception) {
-//            abort(422, $exception->getMessage());
-//        }
-//    );
-//$app[Dingo\Api\Exception\Handler::class]
-//    ->register(
-//        function (Prettus\Validator\Exceptions\ValidatorException $exception) {
-//            throw new Dingo\Api\Exception\ValidationHttpException($exception->getMessageBag(), $exception);
-//        }
-//    );
-//$app[Dingo\Api\Exception\Handler::class]
-//    ->register(
-//        function (Illuminate\Database\Eloquent\ModelNotFoundException $exception) {
-//            throw new Symfony\Component\HttpKernel\Exception\NotFoundHttpException(
-//                $exception->getMessage(), $exception
-//            );
-//        }
-//    );
-//$app[Dingo\Api\Exception\Handler::class]
-//    ->register(
-//        function (PDOException $exception) use ($app) {
-//            abort(
-//                500,
-//                $app->environment('production')
-//                    ? 'server error'
-//                    : $exception->getMessage()
-//            );
-//        }
-//    );
-
-
 if (class_exists('Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider')) {
     $app->register('Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider');
 }
-
-
-/*
-|--------------------------------------------------------------------------
-| Dingo Routes
-|--------------------------------------------------------------------------
-|
-*/
-
-//$api = $app[Dingo\Api\Routing\Router::class];
-//
-//// Version 1
-//$api->version(
-//    'v1',
-//    [
-//        'namespace' => 'App\Http\Controllers\V1',
-//    ],
-//    function ($api) {
-//        require __DIR__.'/../routes/v1/api.php';
-//    }
-//);
 
 /*
 |--------------------------------------------------------------------------
