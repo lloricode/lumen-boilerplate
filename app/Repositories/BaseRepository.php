@@ -9,13 +9,11 @@
 namespace App\Repositories;
 
 use App\Criterion\Eloquent\OnlyTrashedCriteria;
-use Exception;
 use Illuminate\Support\Arr;
 use Prettus\Repository\Contracts\CacheableInterface;
 use Prettus\Repository\Eloquent\BaseRepository as BaseRepo;
 use Prettus\Repository\Events\RepositoryEntityUpdated;
 use Prettus\Repository\Traits\CacheableRepository;
-use ReflectionObject;
 
 abstract class BaseRepository extends BaseRepo implements CacheableInterface
 {
@@ -140,31 +138,5 @@ abstract class BaseRepository extends BaseRepo implements CacheableInterface
                         return true;
                     }
                 )->toArray();
-    }
-
-    /**
-     * @inheritDoc
-     * https://github.com/andersao/l5-repository/pull/705
-     */
-    protected function serializeCriterion($criterion)
-    {
-        try {
-            serialize($criterion);
-
-            return $criterion;
-        } catch (Exception $e) {
-            // We want to take care of the closure serialization errors,
-            // other than that we will simply re-throw the exception.
-            if ($e->getMessage() !== "Serialization of 'Closure' is not allowed") {
-                throw $e;
-            }
-
-            $r = new ReflectionObject($criterion);
-
-            return [
-                'hash' => md5((string)$r),
-//                'properties' => $r->getProperties(),
-            ];
-        }
     }
 }

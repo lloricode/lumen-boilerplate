@@ -32,7 +32,7 @@
     "fruitcake/laravel-cors": "^2.0",
     "laravel/lumen-framework": "^7.0.3",
     "laravel/socialite": "^4.3.2",
-    "prettus/l5-repository": "^2.6.42",
+    "prettus/l5-repository": "^2.6.45",
     "rap2hpoutre/laravel-log-viewer": "^1.4.0",
     "spatie/laravel-permission": "^3.11.0",
     "vinkla/hashids": "^8.1.0"
