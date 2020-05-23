@@ -11,7 +11,7 @@ namespace App\Http\Controllers\V1\Backend\Auth\Permission;
 use App\Http\Controllers\Controller;
 use App\Repositories\Auth\Permission\PermissionRepository;
 use App\Transformers\Auth\PermissionTransformer;
-use Dingo\Api\Http\Request;
+use Illuminate\Http\Request;
 use Prettus\Repository\Criteria\RequestCriteria;
 
 /**
@@ -39,9 +39,9 @@ class PermissionController extends Controller
     }
 
     /**
-     * @param  \Dingo\Api\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $request
      *
-     * @return \Dingo\Api\Http\Response
+     * @return \Spatie\Fractal\Fractal
      * @api                {get} /auth/permissions Get all permissions
      * @apiName            get-all-permissions
      * @apiGroup           Permission
@@ -53,14 +53,14 @@ class PermissionController extends Controller
     public function index(Request $request)
     {
         $this->permissionRepository->pushCriteria(new RequestCriteria($request));
-        return $this->paginatorOrCollection($this->permissionRepository->paginate(), new PermissionTransformer);
+        return $this->fractal($this->permissionRepository->paginate(), new PermissionTransformer);
     }
 
     /**
-     * @param  \Dingo\Api\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $request
      * @param  string  $id
      *
-     * @return \Dingo\Api\Http\Response
+     * @return \Spatie\Fractal\Fractal
      * @api                {get} /auth/permissions/{id} Show permission
      * @apiName            show-permission
      * @apiGroup           Permission
@@ -73,7 +73,7 @@ class PermissionController extends Controller
     {
         $this->permissionRepository->pushCriteria(new RequestCriteria($request));
         $p = $this->permissionRepository->find($this->decodeHash($id));
-        return $this->item($p, new PermissionTransformer);
+        return $this->fractal($p, new PermissionTransformer);
     }
 
 }

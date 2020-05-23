@@ -5,7 +5,7 @@ namespace App\Http\Controllers\V1\Backend\Auth\User;
 use App\Http\Controllers\Controller;
 use App\Repositories\Auth\User\UserRepository;
 use App\Transformers\Auth\UserTransformer;
-use Dingo\Api\Http\Request;
+use Illuminate\Http\Request;
 use Prettus\Repository\Criteria\RequestCriteria;
 
 /**
@@ -36,9 +36,9 @@ class UserController extends Controller
     }
 
     /**
-     * @param  \Dingo\Api\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $request
      *
-     * @return \Dingo\Api\Http\Response
+     * @return \Spatie\Fractal\Fractal
      * @api                {get} /auth/users Get all users
      * @apiName            get-all-users
      * @apiGroup           User
@@ -50,13 +50,13 @@ class UserController extends Controller
     public function index(Request $request)
     {
         $this->userRepository->pushCriteria(new RequestCriteria($request));
-        return $this->paginatorOrCollection($this->userRepository->paginate(), new UserTransformer);
+        return $this->fractal($this->userRepository->paginate(), new UserTransformer);
     }
 
     /**
      * @param  string  $id
      *
-     * @return \Dingo\Api\Http\Response
+     * @return \Spatie\Fractal\Fractal
      * @api                {get} /auth/users/{id} Show user
      * @apiName            show-user
      * @apiGroup           User
@@ -68,13 +68,13 @@ class UserController extends Controller
     public function show(string $id)
     {
         $user = $this->userRepository->find($this->decodeHash($id));
-        return $this->item($user, new UserTransformer);
+        return $this->fractal($user, new UserTransformer);
     }
 
     /**
-     * @param  \Dingo\Api\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $request
      *
-     * @return \Dingo\Api\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      * @throws \Illuminate\Validation\ValidationException
      * @api                {post} /auth/users Store user
      * @apiName            store-user
@@ -102,15 +102,15 @@ class UserController extends Controller
 
         $attributes['password'] = app('hash')->make($attributes['password']);
 
-        return $this->item($this->userRepository->create($attributes), new UserTransformer)
-            ->statusCode(201);
+        return $this->fractal($this->userRepository->create($attributes), new UserTransformer)
+            ->respond(201);
     }
 
     /**
-     * @param  \Dingo\Api\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $request
      * @param  string  $id
      *
-     * @return \Dingo\Api\Http\Response
+     * @return \Spatie\Fractal\Fractal
      * @throws \Illuminate\Validation\ValidationException
      * @api                {put} /auth/users/ Update user
      * @apiName            update-user
@@ -139,14 +139,14 @@ class UserController extends Controller
         $attributes['password'] = app('hash')->make($attributes['password']);
 
         $user = $this->userRepository->update($attributes, $this->decodeHash($id));
-        return $this->item($user, new UserTransformer);
+        return $this->fractal($user, new UserTransformer);
     }
 
 
     /**
      * @param  string  $id
      *
-     * @return \Dingo\Api\Http\Response
+     * @return \Illuminate\Http\Response|\Laravel\Lumen\Http\ResponseFactory
      * @api                {delete} /auth/users/{id} Destroy user
      * @apiName            destroy-user
      * @apiGroup           User
@@ -159,10 +159,10 @@ class UserController extends Controller
     {
         $id = $this->decodeHash($id);
         if (app('auth')->id() == $id) {
-            $this->response->errorForbidden('You cannot delete your self.');
+            return response(['message' => 'You cannot delete your self.'], 403);
         }
 
         $this->userRepository->delete($id);
-        return $this->response->noContent();
+        return response('', 204);
     }
 }

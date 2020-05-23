@@ -11,7 +11,6 @@ namespace App\Repositories\Auth\Role;
 use App\Criterion\Eloquent\ThisWhereEqualsCriteria;
 use App\Repositories\BaseRepository;
 use Prettus\Repository\Events\RepositoryEntityUpdated;
-use Prettus\Validator\Contracts\ValidatorInterface;
 use Spatie\Permission\Guard;
 
 /**
@@ -25,19 +24,19 @@ class RoleRepositoryEloquent extends BaseRepository implements RoleRepository
         'name' => 'like',
     ];
 
-    /**
-     * Specify Validator Rules
-     *
-     * @var array
-     */
-    protected $rules = [
-        ValidatorInterface::RULE_CREATE => [
-            'name' => 'required|string',
-        ],
-        ValidatorInterface::RULE_UPDATE => [
-            'name' => 'required|string',
-        ],
-    ];
+//    /**
+//     * Specify Validator Rules
+//     *
+//     * @var array
+//     */
+//    protected $rules = [
+//        ValidatorInterface::RULE_CREATE => [
+//            'name' => 'required|string',
+//        ],
+//        ValidatorInterface::RULE_UPDATE => [
+//            'name' => 'required|string',
+//        ],
+//    ];
 
     /**
      * @param     $id
@@ -117,24 +116,24 @@ class RoleRepositoryEloquent extends BaseRepository implements RoleRepository
         return parent::delete($id);
     }
 
-    /**
-     * @param  array  $attributes
-     *
-     * @return mixed
-     */
+//    /**
+//     * @param  array  $attributes
+//     *
+//     * @return mixed
+//     */
     public function create(array $attributes)
     {
-        $this->validate($attributes, ValidatorInterface::RULE_CREATE);
+//        $this->validate($attributes, ValidatorInterface::RULE_CREATE);
 
         $role = $this->model()::create($attributes);
         event(new RepositoryEntityUpdated($this, $role));
         return $this->parserResult($role);
     }
 
-    private function validate(array $attributes, $rule)
-    {
-        $attributes = $this->model->newInstance()
-            ->forceFill($attributes)->makeVisible($this->model->getHidden())->toArray();
-        $this->validator->with($attributes)->passesOrFail($rule);
-    }
+//    private function validate(array $attributes, $rule)
+//    {
+//        $attributes = $this->model->newInstance()
+//            ->forceFill($attributes)->makeVisible($this->model->getHidden())->toArray();
+//        $this->validator->with($attributes)->passesOrFail($rule);
+//    }
 }

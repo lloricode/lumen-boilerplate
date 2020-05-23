@@ -7,6 +7,7 @@
 |
 */
 
+/** @var Laravel\Lumen\Routing\Router $api */
 $api->get(
     '/',
     function () {
@@ -19,12 +20,15 @@ $api->get(
 
 $api->group(
     [
-        'middleware' => [
-            'api.throttle',
-            'api.auth',
-            'serializer',
-        ],
-        'limit' => config('setting.api.throttle.limit'), // api.throttle max
+        'middleware' =>
+            [
+                'auth'
+//            'api.throttle',
+//            'api.auth',
+//            'serializer',
+            ]
+        ,
+        'limit' => config('setting.api.throttle.limit'),          // api.throttle max
         'expires' => config('setting.api.throttle.expires') * 60, // api.throttle minute
     ],
     function () use ($api) {

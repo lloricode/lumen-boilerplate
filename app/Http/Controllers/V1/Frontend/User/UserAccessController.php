@@ -19,7 +19,7 @@ use App\Transformers\Auth\UserTransformer;
 class UserAccessController extends Controller
 {
     /**
-     * @return \Dingo\Api\Http\Response
+     * @return \Spatie\Fractal\Fractal
      * @api                {get} /profile Get current authenticated user
      * @apiName            get-authenticated-user
      * @apiGroup           UserAccess
@@ -30,6 +30,6 @@ class UserAccessController extends Controller
      */
     public function profile()
     {
-        return $this->item($this->user(), new UserTransformer);
+        return $this->fractal(auth()->user(), new UserTransformer);
     }
 }

@@ -11,7 +11,7 @@ namespace App\Http\Controllers\V1\Backend\Auth\Role;
 use App\Http\Controllers\Controller;
 use App\Repositories\Auth\Role\RoleRepository;
 use App\Transformers\Auth\RoleTransformer;
-use Dingo\Api\Http\Request;
+use Illuminate\Http\Request;
 use Prettus\Repository\Criteria\RequestCriteria;
 
 /**
@@ -42,9 +42,9 @@ class RoleController extends Controller
     }
 
     /**
-     * @param  \Dingo\Api\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $request
      *
-     * @return \Dingo\Api\Http\Response
+     * @return \Spatie\Fractal\Fractal
      * @api                {get} /auth/roles Get all roles
      * @apiName            get-all-roles
      * @apiGroup           Role
@@ -56,13 +56,14 @@ class RoleController extends Controller
     public function index(Request $request)
     {
         $this->roleRepository->pushCriteria(new RequestCriteria($request));
-        return $this->paginatorOrCollection($this->roleRepository->paginate(), new RoleTransformer);
+        return $this->fractal($this->roleRepository->paginate(), new RoleTransformer);
     }
 
     /**
-     * @param  \Dingo\Api\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $request
      *
-     * @return \Dingo\Api\Http\Response
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Illuminate\Validation\ValidationException
      * @api                {post} /auth/roles Store role
      * @apiName            store-role
      * @apiGroup           Role
@@ -74,19 +75,27 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        $role = $this->roleRepository->create(
+        $attributes = $this->validate(
+            $request,
             [
-                'name' => $request->input('name'),
+                'name' => 'required|string',
             ]
         );
-        return $this->item($role, new RoleTransformer)->statusCode(201);
+
+        $role = $this->roleRepository->create(
+            [
+                'name' => $attributes['name'],
+            ]
+        );
+
+        return $this->fractal($role, new RoleTransformer)->respond(201);
     }
 
     /**
-     * @param  \Dingo\Api\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $request
      * @param  string  $id
      *
-     * @return \Dingo\Api\Http\Response
+     * @return \Spatie\Fractal\Fractal
      * @api                {post} /auth/roles/{id} Show role
      * @apiName            show-role
      * @apiGroup           Role
@@ -99,16 +108,17 @@ class RoleController extends Controller
     {
         $this->roleRepository->pushCriteria(new RequestCriteria($request));
         $role = $this->roleRepository->find($this->decodeHash($id));
-        return $this->item($role, new RoleTransformer);
+        return $this->fractal($role, new RoleTransformer);
     }
 
     /**
-     * @param  \Dingo\Api\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $request
      * @param  string  $id
      *
-     * @return \Dingo\Api\Http\Response
+     * @return \Spatie\Fractal\Fractal
      * @throws \Prettus\Repository\Exceptions\RepositoryException
      * @throws \Prettus\Validator\Exceptions\ValidatorException
+     * @throws \Illuminate\Validation\ValidationException
      * @api                {put} /auth/roles Update role
      * @apiName            update-role
      * @apiGroup           Role
@@ -120,19 +130,26 @@ class RoleController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $attributes = $this->validate(
+            $request,
+            [
+                'name' => 'required|string',
+            ]
+        );
+
         $role = $this->roleRepository->update(
             [
-                'name' => $request->input('name'),
+                'name' => $attributes['name'],
             ],
             $this->decodeHash($id)
         );
-        return $this->item($role, new RoleTransformer);
+        return $this->fractal($role, new RoleTransformer);
     }
 
     /**
      * @param  string  $id
      *
-     * @return \Dingo\Api\Http\Response
+     * @return \Illuminate\Http\Response|\Laravel\Lumen\Http\ResponseFactory
      * @api                {delete} /auth/roles/{id} Destroy role
      * @apiName            destroy-role
      * @apiGroup           Role
@@ -144,6 +161,6 @@ class RoleController extends Controller
     public function destroy(string $id)
     {
         $this->roleRepository->delete($this->decodeHash($id));
-        return $this->response->noContent();
+        return response('', 204);
     }
 }

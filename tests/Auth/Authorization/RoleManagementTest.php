@@ -68,7 +68,7 @@ class RoleManagementTest extends BaseRole
                     'id' => $this->getByRoleName('system')->getHashedId(),
                 ]
             ),
-            [],
+            $verbMethod == 'delete' ? [] : ['name' => $this->getByRoleName('system')->name],
             $this->addHeaders()
         );
         $this->assertResponseStatus(403);

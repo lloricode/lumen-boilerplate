@@ -4,65 +4,69 @@ namespace App\Http\Controllers;
 
 use App\Traits\Hashable;
 use App\Transformers\BaseTransformer;
-use Closure;
-use Dingo\Api\Http\Response;
-use Dingo\Api\Routing\Helpers;
-use Illuminate\Contracts\Pagination\Paginator;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Support\Collection as SupportCollection;
 use Laravel\Lumen\Routing\Controller as BaseController;
+use Spatie\Fractal\Fractal;
+
+//use Illuminate\Http\Request;
+//use Dingo\Api\Routing\Helpers;
 
 class Controller extends BaseController
 {
     use Hashable;
-    use Helpers;
+
+//    use Helpers;
 
     /**
-     * @param               $paginatorOrCollection
-     * @param               $transformer
-     * @param  array  $parameters
-     * @param  \Closure|null  $after
+     * @param $data
+     * @param $transformer
      *
-     * @return \Dingo\Api\Http\Response
+     * @return \Spatie\Fractal\Fractal
      */
-    protected function paginatorOrCollection(
-        $paginatorOrCollection,
-        $transformer,
-        array $parameters = [],
-        Closure $after = null
-    )
+    protected function fractal($data, $transformer)
     {
-        $method = '';
-        if ($paginatorOrCollection instanceof Paginator) {
-            $method = 'paginator';
-        } elseif ($paginatorOrCollection instanceof Collection OR $paginatorOrCollection instanceof SupportCollection) {
-            $method = 'collection';
-        }
+//        $method = '';
+//        if ($paginatorOrCollection instanceof Paginator) {
+//            $method = 'paginator';
+//        } elseif ($paginatorOrCollection instanceof Collection OR $paginatorOrCollection instanceof SupportCollection) {
+//            $method = 'collection';
+//        }
 
-        $parameters = $this->addResourceKey($transformer, $parameters);
+//        $parameters = $this->addResourceKey($transformer, $parameters);
 
-        $response = $this->{$method}(
-            $paginatorOrCollection,
-            $transformer,
-            $parameters,
-            $after
-        );
+//        $response = $this->{$method}(
+//            $paginatorOrCollection,
+//            $transformer,
+//            $parameters,
+//            $after
+//        );
 
-        return $this->addAvailableIncludes($response, $transformer);
+        $fractal = fractal($data, $transformer)
+            ->withResourceName($this->getResourceKey($transformer));
+
+        return $this->addAvailableIncludes($fractal, $transformer);
     }
+
+//    /**
+//     * @param $item
+//     * @param $transformer
+//     * @param  array  $parameters
+//     * @param  \Closure|null  $after
+//     *
+//     * @return \Spatie\Fractal\Fractal
+//     */
+//    protected function item($item, $transformer, $parameters = [], Closure $after = null)
+//    {
+//        return fractal($item, $transformer);
+//    }
 
     /**
      * @param $transformer
-     * @param $parameters
      *
-     * @return array
+     * @return string
      */
-    private function addResourceKey($transformer, $parameters): array
+    private function getResourceKey($transformer): string
     {
-        $parameters += [
-            'key' => $this->checkTransformer($transformer)->getResourceKey(),
-        ];
-        return $parameters;
+        return $this->checkTransformer($transformer)->getResourceKey();
     }
 
     /**
@@ -78,30 +82,8 @@ class Controller extends BaseController
         return $transformer;
     }
 
-    /**
-     * @param  \Dingo\Api\Http\Response  $response
-     * @param                          $transformer
-     *
-     * @return \Dingo\Api\Http\Response
-     */
-    private function addAvailableIncludes(Response $response, $transformer): Response
+    private function addAvailableIncludes(Fractal $response, $transformer): Fractal
     {
         return $response->addMeta('include', $this->checkTransformer($transformer)->getAvailableIncludes());
-    }
-
-    /**
-     * @param                                   $item
-     * @param  \App\Transformers\BaseTransformer  $transformer
-     * @param  array  $parameters
-     * @param  \Closure|null  $after
-     *
-     * @return \Dingo\Api\Http\Response
-     */
-    protected function item($item, $transformer, $parameters = [], Closure $after = null)
-    {
-        $parameters = $this->addResourceKey($transformer, $parameters);
-
-        $response = $this->response->item($item, $transformer, $parameters, $after);
-        return $this->addAvailableIncludes($response, $transformer);
     }
 }

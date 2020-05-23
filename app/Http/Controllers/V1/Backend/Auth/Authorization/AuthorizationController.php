@@ -13,7 +13,7 @@ use App\Repositories\Auth\Role\RoleRepository;
 use App\Repositories\Auth\User\UserRepository;
 use App\Transformers\Auth\RoleTransformer;
 use App\Transformers\Auth\UserTransformer;
-use Dingo\Api\Http\Request;
+use Illuminate\Http\Request;
 
 /**
  * Class AuthorizationController
@@ -40,9 +40,9 @@ class AuthorizationController extends Controller
     }
 
     /**
-     * @param  \Dingo\Api\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $request
      *
-     * @return \Dingo\Api\Http\Response
+     * @return \Spatie\Fractal\Fractal
      * @api                {post} /auth/authorizations/assign-role-to-user Assign role to user
      * @apiName            assign-role-to-user
      * @apiGroup           Authorization
@@ -59,13 +59,13 @@ class AuthorizationController extends Controller
 
         $this->userRepository->assignRole($userId, $this->decodeHash($request->input('role_id')));
 
-        return $this->item($this->userRepository->find($userId), new UserTransformer);
+        return $this->fractal($this->userRepository->find($userId), new UserTransformer);
     }
 
     /**
-     * @param  \Dingo\Api\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $request
      *
-     * @return \Dingo\Api\Http\Response
+     * @return \Spatie\Fractal\Fractal
      * @api                {post} /auth/authorizations/revoke-role-from-user Revoke role form user
      * @apiName            revoke-role-from-user
      * @apiGroup           Authorization
@@ -83,13 +83,13 @@ class AuthorizationController extends Controller
         $this->userRepository->removeRole($userId, $this->decodeHash($request->input('role_id')));
 
         $user = $this->userRepository->find($userId);
-        return $this->item($user, new UserTransformer);
+        return $this->fractal($user, new UserTransformer);
     }
 
     /**
-     * @param  \Dingo\Api\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $request
      *
-     * @return \Dingo\Api\Http\Response
+     * @return \Spatie\Fractal\Fractal
      * @api                {post} /auth/authorizations/assign-permission-to-user Assign permission to user
      * @apiName            assign-permission-to-user
      * @apiGroup           Authorization
@@ -106,13 +106,13 @@ class AuthorizationController extends Controller
 
         $this->userRepository->givePermissionTo($userId, $this->decodeHash($request->input('permission_id')));
 
-        return $this->item($this->userRepository->find($userId), new UserTransformer);
+        return $this->fractal($this->userRepository->find($userId), new UserTransformer);
     }
 
     /**
-     * @param  \Dingo\Api\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $request
      *
-     * @return \Dingo\Api\Http\Response
+     * @return \Spatie\Fractal\Fractal
      * @api                {post} /auth/authorizations/revoke-permission-from-user Revoke permission from user
      * @apiName            revoke-permission-from-user
      * @apiGroup           Authorization
@@ -129,13 +129,13 @@ class AuthorizationController extends Controller
 
         $this->userRepository->revokePermissionTo($userId, $this->decodeHash($request->input('permission_id')));
 
-        return $this->item($this->userRepository->find($userId), new UserTransformer);
+        return $this->fractal($this->userRepository->find($userId), new UserTransformer);
     }
 
     /**
-     * @param  \Dingo\Api\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $request
      *
-     * @return \Dingo\Api\Http\Response
+     * @return \Spatie\Fractal\Fractal
      * @api                {post} /auth/authorizations/attach-permission-to-role Attach permission to role
      * @apiName            attach-permission-to-role
      * @apiGroup           Authorization
@@ -152,13 +152,13 @@ class AuthorizationController extends Controller
 
         $this->roleRepository->givePermissionTo($roleId, $this->decodeHash($request->input('permission_id')));
 
-        return $this->item($this->roleRepository->find($roleId), new RoleTransformer);
+        return $this->fractal($this->roleRepository->find($roleId), new RoleTransformer);
     }
 
     /**
-     * @param  \Dingo\Api\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $request
      *
-     * @return \Dingo\Api\Http\Response
+     * @return \Spatie\Fractal\Fractal
      * @api                {post} /auth/authorizations/revoke-permission-from-role Revoke permission from role
      * @apiName            revoke-permission-from-role
      * @apiGroup           Authorization
@@ -175,6 +175,6 @@ class AuthorizationController extends Controller
 
         $this->roleRepository->revokePermissionTo($roleId, $this->decodeHash($request->input('permission_id')));
 
-        return $this->item($this->roleRepository->find($roleId), new RoleTransformer);
+        return $this->fractal($this->roleRepository->find($roleId), new RoleTransformer);
     }
 }
