@@ -24,6 +24,8 @@ class AppServiceProvider extends ServiceProvider
             Schema::defaultStringLength(191);
         }
 
+        Passport::hashClientSecrets();
+
         LumenPassport::routes(
             $this->app->router,
             [
