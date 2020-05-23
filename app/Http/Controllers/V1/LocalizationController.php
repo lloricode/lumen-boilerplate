@@ -20,7 +20,7 @@ use App\Values\Localizations\Localization;
 class LocalizationController extends Controller
 {
     /**
-     * @return \Dingo\Api\Http\Response
+     * @return \Spatie\Fractal\Fractal
      * @api                {get} /localizations Get all localizations
      * @apiName            get-all-localizations
      * @apiGroup           Localization
@@ -42,6 +42,6 @@ class LocalizationController extends Controller
             }
         }
 
-        return $this->paginatorOrCollection($localizations, LocalizationTransformer::class);
+        return $this->fractal($localizations, new LocalizationTransformer());
     }
 }

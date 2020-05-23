@@ -1,21 +1,23 @@
 <?php
 
-$api->group(
+/** @var Laravel\Lumen\Routing\Router $router */
+
+$router->group(
     [
         'namespace' => 'Auth\Authorization',
         'as' => 'authorizations',
         'prefix' => 'authorizations',
     ],
-    function () use ($api) {
+    function () use ($router) {
         // role - user
-        $api->post(
+        $router->post(
             '/assign-role-to-user',
             [
                 'as' => 'assign-role-to-user',
                 'uses' => 'AuthorizationController@assignRoleToUser',
             ]
         );
-        $api->post(
+        $router->post(
             '/revoke-role-from-user',
             [
                 'as' => 'revoke-role-from-user',
@@ -24,14 +26,14 @@ $api->group(
         );
 
         // permission - user
-        $api->post(
+        $router->post(
             '/assign-permission-to-user',
             [
                 'as' => 'assign-permission-to-user',
                 'uses' => 'AuthorizationController@assignPermissionToUser',
             ]
         );
-        $api->post(
+        $router->post(
             '/revoke-permission-from-user',
             [
                 'as' => 'revoke-permission-from-user',
@@ -40,14 +42,14 @@ $api->group(
         );
 
         // permission - role
-        $api->post(
+        $router->post(
             '/attach-permission-to-role',
             [
                 'as' => 'attach-permission-to-role',
                 'uses' => 'AuthorizationController@attachPermissionToRole',
             ]
         );
-        $api->post(
+        $router->post(
             '/revoke-permission-from-role',
             [
                 'as' => 'revoke-permission-from-role',

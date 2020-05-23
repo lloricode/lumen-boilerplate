@@ -27,7 +27,7 @@ class BasicResourceSuccessTest extends TestCase
         $data = $this->userData();
         unset($data['password']);
 
-        $this->seeInDatabase((new User)->getTable(), $data);
+        $this->seeInDatabase((new User())->getTable(), $data);
         $this->seeJson($data);
     }
 
@@ -50,7 +50,7 @@ class BasicResourceSuccessTest extends TestCase
         $data = $this->userData();
         unset($data['password']);
 
-        $this->seeInDatabase((new User)->getTable(), array_merge($data, ['id' => $user->id]));
+        $this->seeInDatabase((new User())->getTable(), array_merge($data, ['id' => $user->id]));
         $this->seeJson($data);
     }
 
@@ -67,7 +67,7 @@ class BasicResourceSuccessTest extends TestCase
         $this->assertResponseStatus(204);
 
         $this->notSeeInDatabase(
-            (new User)->getTable(),
+            (new User())->getTable(),
             [
                 'id' => $user->id,
                 'deleted_at' => null,

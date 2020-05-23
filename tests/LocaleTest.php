@@ -56,7 +56,7 @@ class LocaleTest extends TestCase
             $this->seeJson(
                 [
                     'message' => 'Unsupported Language.',
-                    'status_code' => 412,
+//                    'status_code' => 412,
                 ]
             );
             return;

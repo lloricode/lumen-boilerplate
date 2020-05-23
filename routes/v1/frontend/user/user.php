@@ -1,13 +1,15 @@
 <?php
 
-$api->group(
+/** @var Laravel\Lumen\Routing\Router $router */
+
+$router->group(
     [
         'namespace' => 'User',
         'as' => 'users',
     ],
-    function () use ($api) {
+    function () use ($router) {
 // Access
-        $api->get(
+        $router->get(
             '/profile',
             [
                 'as' => 'profile',

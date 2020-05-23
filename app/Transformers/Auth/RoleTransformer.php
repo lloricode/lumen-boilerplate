@@ -26,7 +26,7 @@ class RoleTransformer extends BaseTransformer
      * @var array
      */
     protected $defaultIncludes = [
-        'permissions'
+        'permissions',
     ];
 
     /**
@@ -46,7 +46,7 @@ class RoleTransformer extends BaseTransformer
 
     public function includePermissions(Role $role)
     {
-        return $this->collection($role->permissions, new PermissionTransformer);
+        return $this->collection($role->permissions, new PermissionTransformer());
     }
 
     /**

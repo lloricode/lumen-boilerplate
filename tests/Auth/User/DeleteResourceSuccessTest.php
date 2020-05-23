@@ -27,7 +27,7 @@ class DeleteResourceSuccessTest extends TestCase
         $this->assertResponseStatus(200);
 
         $this->seeInDatabase(
-            (new User)->getTable(),
+            (new User())->getTable(),
             [
                 'id' => $user->id,
                 'deleted_at' => null,
@@ -58,7 +58,7 @@ class DeleteResourceSuccessTest extends TestCase
         $this->assertResponseStatus(204);
 
         $this->notSeeInDatabase(
-            (new User)->getTable(),
+            (new User())->getTable(),
             [
                 'id' => $user->id,
             ]

@@ -1,6 +1,8 @@
 <?php
 
-$api->get(
+/** @var Laravel\Lumen\Routing\Router $router */
+
+$router->get(
     '/localizations',
     [
         'uses' => 'LocalizationController@index',

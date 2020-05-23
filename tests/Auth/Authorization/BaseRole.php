@@ -31,8 +31,7 @@ abstract class BaseRole extends TestCase
         Model $modelRelation,
         string $relation,
         string $assert = 'seeJson'
-    )
-    {
+    ) {
         $this->get(
             $this->route(
                 $routeName,
@@ -64,10 +63,10 @@ abstract class BaseRole extends TestCase
                             [
                                 'type' => $relation,
                                 'id' => $modelRelation->getHashedId(),
-                            ]
-                        ]
-                    ]
-                ]
+                            ],
+                        ],
+                    ],
+                ],
             ]
         );
     }

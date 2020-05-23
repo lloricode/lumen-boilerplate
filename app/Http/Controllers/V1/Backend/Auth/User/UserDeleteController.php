@@ -12,7 +12,7 @@ use App\Criterion\Eloquent\OnlyTrashedCriteria;
 use App\Http\Controllers\Controller;
 use App\Repositories\Auth\User\UserRepository;
 use App\Transformers\Auth\UserTransformer;
-use Dingo\Api\Http\Request;
+use Illuminate\Http\Request;
 use Prettus\Repository\Criteria\RequestCriteria;
 
 /**
@@ -43,7 +43,7 @@ class UserDeleteController extends Controller
     /**
      * @param  string  $id
      *
-     * @return \Dingo\Api\Http\Response
+     * @return \Spatie\Fractal\Fractal
      * @throws \Prettus\Repository\Exceptions\RepositoryException
      * @api                {put} /auth/users/{id}/restore Restore user
      * @apiName            restore-user
@@ -56,13 +56,13 @@ class UserDeleteController extends Controller
     public function restore(string $id)
     {
         $user = $this->userRepository->restore($this->decodeHash($id));
-        return $this->item($user, new UserTransformer);
+        return $this->fractal($user, new UserTransformer());
     }
 
     /**
-     * @param  \Dingo\Api\Http\Request  $request
+     * @param  \Illuminate\Http\Request  $request
      *
-     * @return \Dingo\Api\Http\Response
+     * @return \Spatie\Fractal\Fractal
      * @api                {get} /auth/users/deleted Get all deleted users
      * @apiName            get-all-deleted-users
      * @apiGroup           UserDelete
@@ -73,15 +73,15 @@ class UserDeleteController extends Controller
      */
     public function deleted(Request $request)
     {
-        $this->userRepository->pushCriteria(new OnlyTrashedCriteria);
+        $this->userRepository->pushCriteria(new OnlyTrashedCriteria());
         $this->userRepository->pushCriteria(new RequestCriteria($request));
-        return $this->paginatorOrCollection($this->userRepository->paginate(), new UserTransformer);
+        return $this->fractal($this->userRepository->paginate(), new UserTransformer());
     }
 
     /**
      * @param  string  $id
      *
-     * @return \Dingo\Api\Http\Response
+     * @return \Illuminate\Http\Response|\Laravel\Lumen\Http\ResponseFactory
      * @throws \Prettus\Repository\Exceptions\RepositoryException
      * @api                {delete} /auth/users/{id} Purge user
      * @apiName            purge-user
@@ -94,6 +94,6 @@ class UserDeleteController extends Controller
     public function purge(string $id)
     {
         $this->userRepository->forceDelete($this->decodeHash($id));
-        return $this->response->noContent();
+        return response('', 204);
     }
 }
