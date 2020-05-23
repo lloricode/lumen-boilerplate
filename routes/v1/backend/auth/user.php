@@ -1,32 +1,34 @@
 <?php
 
-$api->group(
+/** @var Laravel\Lumen\Routing\Router $router */
+
+$router->group(
     [
         'namespace' => 'Auth\User',
         'as' => 'users',
     ],
-    function () use ($api) {
-        $api->group(
+    function () use ($router) {
+        $router->group(
             [
                 'prefix' => 'users',
             ],
-            function () use ($api) {
+            function () use ($router) {
                 // deletes
-                $api->get(
+                $router->get(
                     '/deleted',
                     [
                         'as' => 'deleted',
                         'uses' => 'UserDeleteController@deleted',
                     ]
                 );
-                $api->put(
+                $router->put(
                     '/{id}/restore',
                     [
                         'as' => 'restore',
                         'uses' => 'UserDeleteController@restore',
                     ]
                 );
-                $api->delete(
+                $router->delete(
                     '/{id}/purge',
                     [
                         'as' => 'purge',
@@ -35,35 +37,35 @@ $api->group(
                 );
 
                 // resources
-                $api->get(
+                $router->get(
                     '/',
                     [
                         'as' => 'index',
                         'uses' => 'UserController@index',
                     ]
                 );
-                $api->post(
+                $router->post(
                     '/',
                     [
                         'as' => 'store',
                         'uses' => 'UserController@store',
                     ]
                 );
-                $api->get(
+                $router->get(
                     '/{id}',
                     [
                         'as' => 'show',
                         'uses' => 'UserController@show',
                     ]
                 );
-                $api->put(
+                $router->put(
                     '/{id}',
                     [
                         'as' => 'update',
                         'uses' => 'UserController@update',
                     ]
                 );
-                $api->delete(
+                $router->delete(
                     '/{id}',
                     [
                         'as' => 'destroy',

@@ -1,42 +1,44 @@
 <?php
 
-$api->group(
+/** @var Laravel\Lumen\Routing\Router $router */
+
+$router->group(
     [
         'namespace' => 'Auth\Role',
         'as' => 'roles',
         'prefix' => 'roles',
     ],
-    function () use ($api) {
+    function () use ($router) {
         // resources
-        $api->get(
+        $router->get(
             '/',
             [
                 'as' => 'index',
                 'uses' => 'RoleController@index',
             ]
         );
-        $api->post(
+        $router->post(
             '/',
             [
                 'as' => 'store',
                 'uses' => 'RoleController@store',
             ]
         );
-        $api->get(
+        $router->get(
             '/{id}',
             [
                 'as' => 'show',
                 'uses' => 'RoleController@show',
             ]
         );
-        $api->put(
+        $router->put(
             '/{id}',
             [
                 'as' => 'update',
                 'uses' => 'RoleController@update',
             ]
         );
-        $api->delete(
+        $router->delete(
             '/{id}',
             [
                 'as' => 'destroy',

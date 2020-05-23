@@ -137,9 +137,8 @@ $app->router->group(
     [
         'namespace' => 'App\Http\Controllers\V1',
     ],
-    function ($api) use ($app) {
-        require __DIR__.'/../routes/v1/api.php';
-//        require __DIR__.'/../routes/web.php';
+    function (Laravel\Lumen\Routing\Router $router) use ($app) {
+        require __DIR__.'/../routes/web.php';
     }
 );
 
