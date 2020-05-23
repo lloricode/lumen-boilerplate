@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests;
+namespace Test;
 
 use App\Models\Auth\User\User;
 use Laravel\Lumen\Testing\TestCase as BaseTestCase;

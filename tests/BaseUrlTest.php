@@ -6,7 +6,7 @@
  * Time: 9:15 AM
  */
 
-namespace Tests;
+namespace Test;
 
 use Laravel\Lumen\Testing\TestCase;
 

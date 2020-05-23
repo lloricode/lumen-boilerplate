@@ -6,9 +6,9 @@
  * Time: 8:39 AM
  */
 
-namespace Tests\Repository;
+namespace Test\Repository;
 
-use Tests\TestCase;
+use Test\TestCase;
 
 class RepositoryTest extends TestCase
 {

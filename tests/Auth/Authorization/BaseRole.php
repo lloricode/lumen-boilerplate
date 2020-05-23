@@ -6,12 +6,12 @@
  * Time: 11:30 AM
  */
 
-namespace Tests\Auth\Authorization;
+namespace Test\Auth\Authorization;
 
 use App\Models\Auth\Permission\Permission;
 use App\Models\Auth\Role\Role;
 use Illuminate\Database\Eloquent\Model;
-use Tests\TestCase;
+use Test\TestCase;
 
 
 abstract class BaseRole extends TestCase

@@ -6,9 +6,9 @@
  * Time: 5:16 PM
  */
 
-namespace Tests\Auth\User;
+namespace Test\Auth\User;
 
-use Tests\TestCase;
+use Test\TestCase;
 
 class UserProfileTest extends TestCase
 {

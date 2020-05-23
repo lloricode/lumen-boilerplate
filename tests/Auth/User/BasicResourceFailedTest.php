@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests\Auth\User;
+namespace Test\Auth\User;
 
 use App\Models\Auth\User\User;
-use Tests\TestCase;
+use Test\TestCase;
 
 class BasicResourceFailedTest extends TestCase
 {

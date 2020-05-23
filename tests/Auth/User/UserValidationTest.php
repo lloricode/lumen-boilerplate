@@ -6,10 +6,10 @@
  * Time: 10:03 PM
  */
 
-namespace Tests\Auth\User;
+namespace Test\Auth\User;
 
 use App\Models\Auth\User\User;
-use Tests\TestCase;
+use Test\TestCase;
 
 class UserValidationTest extends TestCase
 {

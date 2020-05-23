@@ -6,7 +6,7 @@
  * Time: 11:17 AM
  */
 
-namespace Tests\Auth\Authorization;
+namespace Test\Auth\Authorization;
 
 class RoleManagementTest extends BaseRole
 {

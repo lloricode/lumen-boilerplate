@@ -6,7 +6,7 @@
  * Time: 5:19 PM
  */
 
-namespace Tests\Auth\Authorization;
+namespace Test\Auth\Authorization;
 
 use App\Models\Auth\User\User;
 
