@@ -3,15 +3,14 @@
 namespace App\Providers;
 
 use App\Auth\PassportSocialResolver;
+use App\Helper;
 use App\Providers\Macros\BluePrintMaxin;
 use Coderello\SocialGrant\Resolvers\SocialUserResolverInterface;
-use DB;
 use Dusterio\LumenPassport\LumenPassport;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Passport\Passport;
-use PDO;
 use Schema;
 
 class AppServiceProvider extends ServiceProvider
@@ -21,8 +20,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        if (!(DB::connection()->getPdo()->getAttribute(PDO::ATTR_DRIVER_NAME) === 'mysql' &&
-            version_compare(DB::connection()->getPdo()->getAttribute(PDO::ATTR_SERVER_VERSION), '5.7.8', 'ge'))) {
+        if (!Helper::isLatestMysqlVersion()) {
             Schema::defaultStringLength(191);
         }
 
