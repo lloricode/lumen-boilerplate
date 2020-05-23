@@ -101,7 +101,6 @@ $app->routeMiddleware(
 |
 */
 
-
 $app->register(App\Providers\AppServiceProvider::class);
 $app->register(App\Providers\RepositoryServiceProvider::class);
 $app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
@@ -118,8 +117,9 @@ $app->register(Vinkla\Hashids\HashidsServiceProvider::class);
 $app->register(Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class);
 $app->register(Juampi92\APIResources\APIResourcesServiceProvider::class);
 
-if (class_exists('Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider')) {
-    $app->register('Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider');
+if (class_exists($class = 'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider')) {
+    $app->register($class);
+    unset($class);
 }
 
 /*
