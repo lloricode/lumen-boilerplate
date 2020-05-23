@@ -22,7 +22,7 @@ $api->group(
     [
         'middleware' =>
             [
-                'auth'
+                'auth',
 //            'api.throttle',
 //            'api.auth',
 //            'serializer',
