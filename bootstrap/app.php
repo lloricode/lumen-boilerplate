@@ -135,7 +135,7 @@ if (class_exists('Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider')) {
 
 $app->router->group(
     [
-        'namespace' => 'App\Http\Controllers\V1',
+        'namespace' => 'App\Http\Controllers',
     ],
     function (Laravel\Lumen\Routing\Router $router) use ($app) {
         require __DIR__.'/../routes/web.php';

@@ -9,18 +9,9 @@
 
 /** @var Laravel\Lumen\Routing\Router $router */
 
-$router->get(
-    '/',
-    function () {
-        return [
-            'message' => trans('messages.welcome'),
-            'branch' => 'dev-master',
-        ];
-    }
-);
-
 $router->group(
     [
+        'namespace' => 'V1',
         'middleware' =>
             [
                 'auth',
