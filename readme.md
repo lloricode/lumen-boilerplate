@@ -1,5 +1,5 @@
 ![Run Tests](https://github.com/lloricode/lumen-boilerplate/workflows/Run%20Tests/badge.svg?branch=master)
-[![Chat](https://img.shields.io/badge/chat-on%20discord-7289da.svg)](https://discord.gg/9X3Y5pCr)
+[![Chat](https://img.shields.io/badge/chat-on%20discord-7289da.svg)](https://discordapp.com/invite/9X3Y5pC)
 
 RESTful API template made from [Lumen 7](https://lumen.laravel.com/)
 
