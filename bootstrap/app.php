@@ -87,6 +87,7 @@ $app->routeMiddleware(
         'permission' => Spatie\Permission\Middlewares\PermissionMiddleware::class,
         'role' => Spatie\Permission\Middlewares\RoleMiddleware::class,
         'client' => Laravel\Passport\Http\Middleware\CheckClientCredentials::class,
+        'throttle' => GrahamCampbell\Throttle\Http\Middleware\ThrottleMiddleware::class,
     ]
 );
 
@@ -105,6 +106,7 @@ $app->register(App\Providers\AppServiceProvider::class);
 $app->register(App\Providers\RepositoryServiceProvider::class);
 $app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
 $app->register(Fruitcake\Cors\CorsServiceProvider::class);
+$app->register(GrahamCampbell\Throttle\ThrottleServiceProvider::class);
 $app->register(Laravel\Passport\PassportServiceProvider::class);
 $app->register(Coderello\SocialGrant\Providers\SocialGrantServiceProvider::class);
 $app->register(Laravel\Socialite\SocialiteServiceProvider::class);

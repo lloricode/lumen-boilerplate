@@ -28,6 +28,7 @@
     "dusterio/lumen-passport": "^0.2.18",
     "flipbox/lumen-generator": "^6.0",
     "fruitcake/laravel-cors": "^2.0",
+    "graham-campbell/throttle": "^8.0",
     "juampi92/api-resources": "^1.5",
     "laravel/lumen-framework": "^7.0.4",
     "laravel/passport": "^9.0",

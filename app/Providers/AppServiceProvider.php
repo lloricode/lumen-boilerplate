@@ -29,6 +29,7 @@ class AppServiceProvider extends ServiceProvider
             $this->app->router,
             [
 //            'prefix' => 'v1/oauth',
+                'middleware' => 'throttle:30,30',
             ]
         );
         LumenPassport::tokensExpireIn(Date::now()->addMinutes(config('setting.api.token.access_token_expire')));

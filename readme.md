@@ -100,6 +100,7 @@ vendor/bin/phpunit
 ## Built With
 
 * [laravel/lumen-framework](https://github.com/laravel/lumen-framework) - The stunningly fast micro-framework by Laravel.
+* [GrahamCampbell/Laravel-Throttle](https://github.com/GrahamCampbell/Laravel-Throttle) - A rate limiter for Laravel.
 * [spatie/laravel-fractal](https://github.com/spatie/laravel-fractal) - An easy to use Fractal wrapper built for Laravel and Lumen applications.
 * [fruitcake/laravel-cors](https://github.com/fruitcake/laravel-cors) - Adds CORS (Cross-Origin Resource Sharing) headers support in your Laravel application.
 * [thephpleague/fractal](https://github.com/thephpleague/fractal) - Output complex, flexible, AJAX/RESTful data structures, extended by [spatie/laravel-fractal](https://github.com/spatie/laravel-fractal)
@@ -134,6 +135,6 @@ This project is licensed under the [MIT License](https://opensource.org/licenses
 - [x] Social login
 - [ ] Back up
 - [ ] Data transfer objects (DTO) https://github.com/spatie/data-transfer-object
-- [ ] Throttle for lumen
+- [x] Throttle for lumen
 - [ ] Url versioning
 
