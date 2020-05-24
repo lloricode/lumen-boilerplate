@@ -33,7 +33,7 @@ abstract class BaseRole extends TestCase
         string $assert = 'seeJson'
     ) {
         $this->get(
-            $this->route(
+            route(
                 $routeName,
                 [
                     'id' => $modelShow->getHashedId(),

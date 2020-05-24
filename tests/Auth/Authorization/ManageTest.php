@@ -24,8 +24,7 @@ class ManageTest extends BaseRole
         $user = factory(User::class)->create();
         $role = $this->createRole();
 
-        // TODO: check data first
-        // $this->showModelWithRelation('backend.users.show', $user, $role, 'roles', 'dontSeeJson');
+         $this->showModelWithRelation('backend.users.show', $user, $role, 'roles', 'dontSeeJson');
 
         $this->post(
             route('backend.authorizations.assign-role-to-user').'?include=roles',
@@ -37,14 +36,7 @@ class ManageTest extends BaseRole
         );
         $this->assertResponseOk();
 
-//        dd(__METHOD__,json_decode($this->response->getContent()));
-        // temporary
-        // https://github.com/dingo/api/issues/1609
-        $this->seeJsonApiRelation($role, 'roles');
-
-
-        // TODO: check data after
-//        $this->showModelWithRelation('backend.users.show', $user, $role, 'roles');
+        $this->showModelWithRelation('backend.users.show', $user, $role, 'roles');
     }
 
     /** @test */
@@ -76,8 +68,7 @@ class ManageTest extends BaseRole
         $user = factory(User::class)->create();
         $permission = $this->createPermission();
 
-        // TODO: check data first
-        // $this->showModelWithRelation('backend.users.show', $user, $permission, 'permissions', 'dontSeeJson');
+        $this->showModelWithRelation('backend.users.show', $user, $permission, 'permissions', 'dontSeeJson');
 
         $this->post(
             route('backend.authorizations.assign-permission-to-user').'?include=permissions',
@@ -89,13 +80,7 @@ class ManageTest extends BaseRole
         );
         $this->assertResponseOk();
 
-        // temporary
-        // https://github.com/dingo/api/issues/1609
-        $this->seeJsonApiRelation($permission, 'permissions');
-
-
-        // TODO: check data after
-//        $this->showModelWithRelation('backend.users.show', $user, $permission, 'permissions');
+        $this->showModelWithRelation('backend.users.show', $user, $permission, 'permissions');
     }
 
     /** @test */
@@ -128,8 +113,7 @@ class ManageTest extends BaseRole
         $role = $this->createRole();
         $permission = $this->createPermission();
 
-        // TODO: check data first
-        // $this->showModelWithRelation('backend.roles.show', $role, $permission, 'permissions', 'dontSeeJson');
+        $this->showModelWithRelation('backend.roles.show', $role, $permission, 'permissions', 'dontSeeJson');
 
         $this->post(
             route('backend.authorizations.attach-permission-to-role').'?include=permissions',
@@ -141,12 +125,7 @@ class ManageTest extends BaseRole
         );
         $this->assertResponseOk();
 
-        // temporary
-        // https://github.com/dingo/api/issues/1609
-        $this->seeJsonApiRelation($permission, 'permissions');
-
-        // TODO: check data after
-//        $this->showModelWithRelation('backend.roles.show', $role, $permission, 'permissions');
+        $this->showModelWithRelation('backend.roles.show', $role, $permission, 'permissions');
     }
 
     /** @test */
