@@ -11,4 +11,16 @@ $router->get(
     }
 );
 
-require 'v1/v1.php';
+
+$router->group(
+    [
+        'namespace' => 'V1',
+        // TODO: throttle
+        //
+        // 'limit' => config('setting.api.throttle.limit'),          // api.throttle max
+        // 'expires' => config('setting.api.throttle.expires') * 60, // api.throttle minute
+    ],
+    function () use ($router) {
+        require 'v1/v1.php';
+    }
+);
