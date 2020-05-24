@@ -27,11 +27,11 @@ class RoleManagementTest extends BaseRole
         ];
         switch ($routeName) {
             case 'store':
-                $this->post($this->route($route), $paramNoData, $this->addHeaders());
+                $this->post(route($route), $paramNoData, $this->addHeaders());
                 break;
             case 'update':
                 $this->put(
-                    $this->route(
+                    route(
                         $route,
                         [
                             'id' => $this->createRole()->getHashedId(),
@@ -62,7 +62,7 @@ class RoleManagementTest extends BaseRole
     {
         $this->loggedInAs();
         $this->{$verbMethod}(
-            $this->route(
+            route(
                 $routeName,
                 [
                     'id' => $this->getByRoleName('system')->getHashedId(),
@@ -89,7 +89,7 @@ class RoleManagementTest extends BaseRole
         $data = [
             'name' => 'test new role',
         ];
-        $this->post($this->route('backend.roles.store'), $data, $this->addHeaders());
+        $this->post(route('backend.roles.store'), $data, $this->addHeaders());
 
         $this->assertResponseStatus(201);
         $this->seeJson($data);
@@ -110,7 +110,7 @@ class RoleManagementTest extends BaseRole
         ];
 
         $this->put(
-            $this->route(
+            route(
                 'backend.roles.update',
                 [
                     'id' => $role->getHashedId(),
@@ -141,7 +141,7 @@ class RoleManagementTest extends BaseRole
         ];
 
         $this->put(
-            $this->route(
+            route(
                 'backend.roles.update',
                 [
                     'id' => $role->getHashedId(),
@@ -172,7 +172,7 @@ class RoleManagementTest extends BaseRole
         $data = [
             'name' => $roleNameTest,
         ];
-        $this->post($this->route('backend.roles.store'), $data, $this->addHeaders());
+        $this->post(route('backend.roles.store'), $data, $this->addHeaders());
 
         $this->assertResponseStatus(422);
         $this->seeJson(

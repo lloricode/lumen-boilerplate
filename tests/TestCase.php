@@ -43,45 +43,6 @@ abstract class TestCase extends BaseTestCase
         return require __DIR__.'/../bootstrap/app.php';
     }
 
-    protected function route($name, array $parameters = [], $secure = null)
-    {
-        return route($name, $parameters, $secure);
-//        $urls = [
-//            'frontend.users.profile' => '/profile',
-//            'backend.users.deleted' => '/auth/users/deleted',
-//            'backend.users.restore' => '/auth/users/{id}/restore',
-//            'backend.users.purge' => '/auth/users/{id}/purge',
-//            'backend.users.index' => '/auth/users',
-//            'backend.users.store' => '/auth/users',
-//            'backend.users.show' => '/auth/users/{id}',
-//            'backend.users.update' => '/auth/users/{id}',
-//            'backend.users.destroy' => '/auth/users/{id}',
-//            'backend.roles.index' => '/auth/roles',
-//            'backend.roles.store' => '/auth/roles',
-//            'backend.roles.show' => '/auth/roles/{id}',
-//            'backend.roles.update' => '/auth/roles/{id}',
-//            'backend.roles.destroy' => '/auth/roles/{id}',
-//            'backend.permissions.index' => '/auth/permissions',
-//            'backend.permissions.show' => '/auth/permissions/{id}',
-//            'backend.authorizations.assign-role-to-user' => '/auth/authorizations/assign-role-to-user',
-//            'backend.authorizations.revoke-role-from-user' => '/auth/authorizations/revoke-role-from-user',
-//            'backend.authorizations.assign-permission-to-user' => '/auth/authorizations/assign-permission-to-user',
-//            'backend.authorizations.revoke-permission-from-user' => '/auth/authorizations/revoke-permission-from-user',
-//            'backend.authorizations.attach-permission-to-role' => '/auth/authorizations/attach-permission-to-role',
-//            'backend.authorizations.revoke-permission-from-role' => '/auth/authorizations/revoke-permission-from-role',
-//        ];
-//        if (!isset($urls[$name])) {
-//            dd(__METHOD__, "route not found $name");
-//        }
-//        $uri = $urls[$name];
-//
-//        foreach ($parameters as $parameter => $value) {
-//            $uri = str_replace('{'.$parameter.'}', $value, $uri);
-//        }
-//        return $uri;
-//        return app('Dingo\Api\Routing\UrlGenerator')->version('v1')->route($name, $parameters);
-    }
-
     /**
      * @param  array  $headers
      * @param  bool  $isServer

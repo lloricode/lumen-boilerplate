@@ -58,7 +58,7 @@ class RepositoryTest extends TestCase
             );
         }
 
-        $this->get($this->route('backend.roles.index').$queryParamLimit, $this->addHeaders());
+        $this->get(route('backend.roles.index').$queryParamLimit, $this->addHeaders());
 
         $content = ((array)json_decode($this->response->getContent()));
 

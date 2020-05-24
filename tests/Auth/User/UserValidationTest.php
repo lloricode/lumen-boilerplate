@@ -33,7 +33,7 @@ class UserValidationTest extends TestCase
         );
 
         $this->put(
-            $this->route('backend.users.update', ['id' => $user->getHashedId()]),
+            route('backend.users.update', ['id' => $user->getHashedId()]),
             [
                 'email' => $uniqueEmail,
             ],

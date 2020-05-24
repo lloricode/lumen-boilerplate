@@ -33,7 +33,7 @@ class UserProfileTest extends TestCase
                 ]
             )->toArray();
         }
-        $this->get($this->route('frontend.users.profile'), $this->addHeaders());
+        $this->get(route('frontend.users.profile'), $this->addHeaders());
 
         if (!empty($roleName)) {
             $this->seeJson($userData);

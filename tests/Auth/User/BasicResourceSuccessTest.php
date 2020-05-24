@@ -19,7 +19,7 @@ class BasicResourceSuccessTest extends TestCase
     {
         $this->loggedInAs();
 
-        $this->post($this->route('backend.users.store'), $this->userData(), $this->addHeaders());
+        $this->post(route('backend.users.store'), $this->userData(), $this->addHeaders());
         $this->assertResponseStatus(201);
 
         $data = $this->userData();
@@ -37,7 +37,7 @@ class BasicResourceSuccessTest extends TestCase
         $user = factory(User::class)->create();
 
         $this->put(
-            $this->route('backend.users.update', ['id' => $user->getHashedId()]),
+            route('backend.users.update', ['id' => $user->getHashedId()]),
             $this->userData(),
             $this->addHeaders()
         );
@@ -57,7 +57,7 @@ class BasicResourceSuccessTest extends TestCase
 
         $user = factory(User::class)->create();
 
-        $this->delete($this->route('backend.users.destroy', ['id' => $user->getHashedId()]), [], $this->addHeaders());
+        $this->delete(route('backend.users.destroy', ['id' => $user->getHashedId()]), [], $this->addHeaders());
         $this->assertResponseStatus(204);
 
         $this->notSeeInDatabase(
@@ -76,7 +76,7 @@ class BasicResourceSuccessTest extends TestCase
         $user = factory(User::class)->create($this->userData());
 
         $this->get(
-            $this->route(
+            route(
                 'backend.users.show',
                 [
                     'id' => $user->getHashedId(),
