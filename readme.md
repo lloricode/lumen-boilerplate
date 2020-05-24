@@ -87,14 +87,6 @@ or here's the published postman [here](https://documenter.getpostman.com/view/43
 
 In your project directory run this command:
 
-First run this command to create `database.sqlite` in database folder. this make testing database faster
-
-```base
-composer db
-```  
-
-Then run phpunit
-
 ```bash
 vendor/bin/phpunit
 ```
