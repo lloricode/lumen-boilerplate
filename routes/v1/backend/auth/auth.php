@@ -4,6 +4,7 @@
 
 $router->group(
     [
+        'namespace' => 'Auth',
         'prefix' => 'auth',
     ],
     function () use ($router) {

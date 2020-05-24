@@ -4,7 +4,7 @@
 
 $router->group(
     [
-        'namespace' => 'Auth\Role',
+        'namespace' => 'Role',
         'as' => 'roles',
         'prefix' => 'roles',
     ],

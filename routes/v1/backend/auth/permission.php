@@ -4,7 +4,7 @@
 
 $router->group(
     [
-        'namespace' => 'Auth\Permission',
+        'namespace' => 'Permission',
         'as' => 'permissions',
         'prefix' => 'permissions',
     ],

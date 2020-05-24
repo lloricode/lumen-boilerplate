@@ -4,7 +4,7 @@
 
 $router->group(
     [
-        'namespace' => 'Auth\User',
+        'namespace' => 'User',
         'as' => 'users',
     ],
     function () use ($router) {
