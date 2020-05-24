@@ -10,14 +10,13 @@ namespace Test;
 
 use App\Models\Auth\User\User;
 use Laravel\Lumen\Testing\TestCase;
-use Laravel\Passport\Passport;
 
 class LocaleTest extends TestCase
 {
     /** @test */
     public function get_all()
     {
-        Passport::actingAs(factory(User::class)->create());
+        $this->actingAs(factory(User::class)->create());
         $this->get(
             'localizations',
             [

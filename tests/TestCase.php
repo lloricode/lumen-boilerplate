@@ -4,7 +4,6 @@ namespace Test;
 
 use App\Models\Auth\User\User;
 use Laravel\Lumen\Testing\TestCase as BaseTestCase;
-use Laravel\Passport\Passport;
 use Spatie\Permission\PermissionRegistrar;
 
 abstract class TestCase extends BaseTestCase
@@ -69,8 +68,8 @@ abstract class TestCase extends BaseTestCase
         } else {
             $user = User::role(config("setting.permission.role_names.$roleName"))->first();
         }
-        Passport::actingAs($user);
-//        $this->actingAs($user);
+
+        $this->actingAs($user);
 
         return $user;
     }
