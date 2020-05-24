@@ -20,41 +20,14 @@ $router->group(
 //            'serializer',
             ]
         ,
-        'limit' => config('setting.api.throttle.limit'),          // api.throttle max
-        'expires' => config('setting.api.throttle.expires') * 60, // api.throttle minute
+// TODO: throttle
+//
+//        'limit' => config('setting.api.throttle.limit'),          // api.throttle max
+//        'expires' => config('setting.api.throttle.expires') * 60, // api.throttle minute
     ],
     function () use ($router) {
         include 'localization.php';
-
-        $router->group(
-            [
-                'namespace' => 'Frontend',
-                'as' => 'frontend',
-            ],
-            function () use ($router) {
-                include 'frontend/user/user.php';
-            }
-        );
-        $router->group(
-            [
-                'namespace' => 'Backend',
-                'as' => 'backend',
-                'middleware' => 'permission:'.config('setting.permission.permission_names.view_backend'),
-            ],
-            function () use ($router) {
-                $router->group(
-                    [
-                        'prefix' => 'auth',
-                    ],
-                    function () use ($router) {
-                        include 'backend/auth/user.php';
-                        include 'backend/auth/role.php';
-                        include 'backend/auth/permission.php';
-                        include 'backend/auth/authorization.php';
-                        include 'backend/log.php';
-                    }
-                );
-            }
-        );
+        include 'frontend/frontend.php';
+        include 'backend/backend.php';
     }
 );
