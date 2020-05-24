@@ -18,10 +18,8 @@ class ManageTest extends BaseRole
         $this->loggedInAs();
     }
 
-    /**
-     * @test
-     */
-    public function assignRoleToUser()
+    /** @test */
+    public function assign_role_ro_user()
     {
         $user = factory(User::class)->create();
         $role = $this->createRole();
@@ -49,10 +47,8 @@ class ManageTest extends BaseRole
 //        $this->showModelWithRelation('backend.users.show', $user, $role, 'roles');
     }
 
-    /**
-     * @test
-     */
-    public function revokeRoleFromUser()
+    /** @test */
+    public function revoke_role_from_user()
     {
         $user = factory(User::class)->create();
         $role = $this->createRole();
@@ -74,10 +70,8 @@ class ManageTest extends BaseRole
 //        $this->showModelWithRelation('backend.users.show', $user, $role, 'roles', 'dontSeeJson');
     }
 
-    /**
-     * @test
-     */
-    public function assignPermissionToUser()
+    /** @test */
+    public function assign_permission_to_user()
     {
         $user = factory(User::class)->create();
         $permission = $this->createPermission();
@@ -104,10 +98,8 @@ class ManageTest extends BaseRole
 //        $this->showModelWithRelation('backend.users.show', $user, $permission, 'permissions');
     }
 
-    /**
-     * @test
-     */
-    public function revokePermissionToUser()
+    /** @test */
+    public function revoke_permission_to_user()
     {
         $user = factory(User::class)->create();
 
@@ -130,10 +122,8 @@ class ManageTest extends BaseRole
 //        $this->showModelWithRelation('backend.users.show', $user, $permission, 'permissions', 'dontSeeJson');
     }
 
-    /**
-     * @test
-     */
-    public function attachPermissionToRole()
+    /** @test */
+    public function attach_permission_to_role()
     {
         $role = $this->createRole();
         $permission = $this->createPermission();
@@ -159,10 +149,8 @@ class ManageTest extends BaseRole
 //        $this->showModelWithRelation('backend.roles.show', $role, $permission, 'permissions');
     }
 
-    /**
-     * @test
-     */
-    public function revokePermissionFromRole()
+    /** @test */
+    public function revoke_permission_from_role()
     {
         $role = $this->createRole();
         $permission = $this->createPermission();

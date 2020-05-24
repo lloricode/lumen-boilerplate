@@ -22,7 +22,7 @@ class UserProfileTest extends TestCase
      *          ["user", 200]
      *          ["", 401]
      */
-    public function getProfile($roleName, $status)
+    public function get_profile($roleName, $status)
     {
         if (!empty($roleName)) {
             $userData = collect($this->loggedInAs($roleName))->only(

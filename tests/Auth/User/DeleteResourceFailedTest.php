@@ -13,10 +13,8 @@ use Test\TestCase;
 
 class DeleteResourceFailedTest extends TestCase
 {
-    /**
-     * @test
-     */
-    public function purgeNoneDeletedUserWillGive404()
+    /** @test */
+    public function purge_none_deleted_user_will_give_404()
     {
         $this->loggedInAs();
 
@@ -26,10 +24,8 @@ class DeleteResourceFailedTest extends TestCase
         $this->assertResponseStatus(404);
     }
 
-    /**
-     * @test
-     */
-    public function restoreNoneDeletedUserWillGive404()
+    /** @test */
+    public function restore_none_deleted_user_will_give_404()
     {
         $this->loggedInAs();
 

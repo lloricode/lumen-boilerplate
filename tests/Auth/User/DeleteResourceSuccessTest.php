@@ -13,10 +13,8 @@ use Test\TestCase;
 
 class DeleteResourceSuccessTest extends TestCase
 {
-    /**
-     * @test
-     */
-    public function restoreUser()
+    /** @test */
+    public function restore_user()
     {
         $this->loggedInAs();
 
@@ -44,10 +42,8 @@ class DeleteResourceSuccessTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
-    public function purgeUser()
+    /** @test */
+    public function purge_user()
     {
         $this->loggedInAs();
 

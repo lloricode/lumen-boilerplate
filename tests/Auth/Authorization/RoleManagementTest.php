@@ -17,7 +17,7 @@ class RoleManagementTest extends BaseRole
      * @testWith ["store"]
      *          ["update"]
      */
-    public function validationRole($routeName)
+    public function validation_role($routeName)
     {
         $this->loggedInAs();
 
@@ -58,7 +58,7 @@ class RoleManagementTest extends BaseRole
      * @testWith ["delete", "backend.roles.destroy"]
      *          ["put", "backend.roles.update"]
      */
-    public function defaultRoleNotAllowed($verbMethod, $routeName)
+    public function default_role_not_allowed($verbMethod, $routeName)
     {
         $this->loggedInAs();
         $this->{$verbMethod}(
@@ -82,7 +82,7 @@ class RoleManagementTest extends BaseRole
     /**
      * @test
      */
-    public function storeRoleSuccess()
+    public function store_role_success()
     {
         $this->loggedInAs();
 
@@ -98,7 +98,7 @@ class RoleManagementTest extends BaseRole
     /**
      * @test
      */
-    public function updateRoleSuccess()
+    public function update_role_success()
     {
         $this->loggedInAs();
         $roleNameTest = 'im role name';

@@ -14,10 +14,8 @@ use Test\TestCase;
 class BasicResourceSuccessTest extends TestCase
 {
 
-    /**
-     * @test
-     */
-    public function storeUser()
+    /** @test */
+    public function store_user()
     {
         $this->loggedInAs();
 
@@ -31,10 +29,8 @@ class BasicResourceSuccessTest extends TestCase
         $this->seeJson($data);
     }
 
-    /**
-     * @test
-     */
-    public function updateUser()
+    /** @test */
+    public function update_user()
     {
         $this->loggedInAs();
 
@@ -54,10 +50,8 @@ class BasicResourceSuccessTest extends TestCase
         $this->seeJson($data);
     }
 
-    /**
-     * @test
-     */
-    public function destroyUser()
+    /** @test */
+    public function destroy_user()
     {
         $this->loggedInAs();
 
@@ -75,10 +69,8 @@ class BasicResourceSuccessTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
-    public function showUser()
+    /** @test */
+    public function show_user()
     {
         $this->loggedInAs();
         $user = factory(User::class)->create($this->userData());

@@ -13,10 +13,8 @@ use Test\TestCase;
 
 class UserValidationTest extends TestCase
 {
-    /**
-     * @test
-     */
-    public function uniqueEmail()
+    /** @test */
+    public function unique_email()
     {
         $this->loggedInAs();
 

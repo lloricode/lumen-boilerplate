@@ -12,9 +12,7 @@ use Laravel\Lumen\Testing\TestCase;
 
 class BaseUrlTest extends TestCase
 {
-    /**
-     * @test
-     */
+    /** @test */
     public function base()
     {
         $this->get(

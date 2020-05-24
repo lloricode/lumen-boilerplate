@@ -29,7 +29,7 @@ class RepositoryTest extends TestCase
      * @test
      * @dataProvider paginateDataProvider()
      */
-    public function paginationEnableSkipThenLimitZero(
+    public function pagination_enable_skip_then_limit_zero(
         bool $enableSkip,
         int $limitRequest,
         int $limitDefault,

@@ -14,10 +14,8 @@ use Laravel\Passport\Passport;
 
 class LocaleTest extends TestCase
 {
-    /**
-     * @test
-     */
-    public function getAll()
+    /** @test */
+    public function get_all()
     {
         Passport::actingAs(factory(User::class)->create());
         $this->get(
@@ -39,7 +37,7 @@ class LocaleTest extends TestCase
      *           ["xxx"]
      *           ["xxx,fr"]
      */
-    public function checkAllLocale(string $locale = null)
+    public function check_all_locale(string $locale = null)
     {
         $headers = [
             'Accept' => 'application/x.lumen.boilerplate.v1+json',
