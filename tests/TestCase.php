@@ -23,7 +23,9 @@ abstract class TestCase extends BaseTestCase
         app('cache')->flush();
         $this->app->make(PermissionRegistrar::class)->registerPermissions();
         $this->beginDatabaseTransaction();
+        $this->refreshDatabase();
     }
+
 
     /**
      * Creates the application.

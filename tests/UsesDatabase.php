@@ -3,6 +3,7 @@
 namespace Test;
 
 //use Illuminate\Contracts\Console\Kernel;
+use Illuminate\Support\Facades\File;
 
 /**
  * Trait UsesDatabase
@@ -17,6 +18,7 @@ trait UsesDatabase
 
     /** @var string */
     protected $database = __DIR__.'/../database/database.sqlite';
+    protected $databaseCopy = __DIR__.'/../database/database-copy.sqlite';
 
     public function prepareDatabase($force = false)
     {
@@ -27,8 +29,21 @@ trait UsesDatabase
             return;
         }
 
+        @unlink($this->databaseCopy);
         @unlink($this->database);
         touch($this->database);
+    }
+
+    /**
+     * Refresh the database to a clean version.
+     */
+    public function refreshDatabase(): void
+    {
+        if (File::exists($this->databaseCopy)) {
+            File::copy($this->databaseCopy, $this->database);
+        } else {
+            File::copy($this->database, $this->databaseCopy);
+        }
     }
 
     public function setUpDatabase(callable $afterMigrations = null)
