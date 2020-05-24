@@ -26,7 +26,6 @@ abstract class TestCase extends BaseTestCase
         $this->refreshDatabase();
     }
 
-
     /**
      * Creates the application.
      *
