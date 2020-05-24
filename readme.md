@@ -83,7 +83,7 @@ or here's the published postman [here](https://documenter.getpostman.com/view/43
 
 ## PHPUnit
 
-![](https://user-images.githubusercontent.com/8251344/50570082-4ab38a00-0db6-11e9-83c0-c379c09d14d8.png)
+![](https://user-images.githubusercontent.com/8251344/82751581-c6b6d380-9dea-11ea-89ba-eaee58242757.png)
 
 In your project directory run this command:
 
