@@ -39,15 +39,23 @@ class PassportSocialResolver implements SocialUserResolverInterface
 
         $providerUser = null;
         try {
-            $providerUser = Socialite::driver($provider)->stateless()->userFromToken($accessToken);
+            $providerUser = Socialite::driver($provider)
+                ->fields(
+                    [
+                        'name',
+                        'first_name',
+                        'last_name',
+                        'email',
+                    ]
+                )
+                ->stateless()->userFromToken($accessToken);
         } catch (Exception $exception) {
         }
 
-        if (!blank($providerUser)) {
-            // TODO: add interface for core-base
-            return $this->userRepository->findOrCreateProvider($providerUser, $provider);
+        if (blank($providerUser)) {
+            return null;
         }
 
-        return null;
+        return $this->userRepository->findOrCreateProvider($providerUser, $provider);
     }
 }

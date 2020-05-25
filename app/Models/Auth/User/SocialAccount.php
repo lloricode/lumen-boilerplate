@@ -38,4 +38,9 @@ class SocialAccount extends Model
         'token',
         'avatar',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

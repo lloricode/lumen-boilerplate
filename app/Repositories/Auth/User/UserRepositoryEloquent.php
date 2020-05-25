@@ -8,6 +8,8 @@
 
 namespace App\Repositories\Auth\User;
 
+use App\Criterion\Eloquent\ThisEqualThatCriteria;
+use App\Criterion\Eloquent\WithTrashCriteria;
 use App\Models\Auth\User\SocialAccount;
 use App\Models\Auth\User\User;
 use App\Repositories\BaseRepository;
@@ -88,19 +90,33 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
      * @param  string  $provider
      *
      * @return \App\Models\Auth\User\User
+     * @throws \Prettus\Repository\Exceptions\RepositoryException
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
     public function findOrCreateProvider(\Laravel\Socialite\Two\User $data, string $provider): User
     {
+        if ($user = $this->getFromSocialAccount($data->id, $provider)) {
+            return $user;
+        }
+
         // User email may not provided.
         $userEmail = $data->email ?: "{$data->id}@{$provider}.com";
 
+        $this->pushCriteria(new WithTrashCriteria());
+        $this->pushCriteria(new ThisEqualThatCriteria('email', $userEmail));
+
         /** @var User $user */
-        $user = $this->findWhere(['email' => $userEmail])->first();
+        $user = $this->all()->first();
+
+        if (filled($user) && $user->trashed()) {
+            abort(401, 'Invalid credentials');
+        }
+
+        $fresh = false;
 
         if (blank($user)) {
             // Get users first name and last name from their full name
-            $nameParts = $this->getNameParts($data->getName());
+            $nameParts = $this->getNameParts($data);
 
             $user = $this->create(
                 [
@@ -110,11 +126,55 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
                     'avatar_type' => $provider,
                 ]
             );
-
-            event(new Registered($user));
+            $fresh = true;
         }
 
-        if (!$user->hasProvider($provider)) {
+        $this->provider($user, $data, $provider);
+
+        if ($fresh) {
+            event(new Registered($user->refresh()));
+        }
+
+        return $user;
+    }
+
+    private function getFromSocialAccount(string $providerID, string $provider): ?User
+    {
+        return optional(
+            SocialAccount::where(
+                [
+                    'provider' => $provider,
+                    'provider_id' => $providerID,
+                ]
+            )->first()
+        )->user;
+    }
+
+    /**
+     * @param  \App\Models\Auth\User\User  $user
+     * @param  \Laravel\Socialite\Two\User  $data
+     * @param  string  $provider
+     *
+     * @throws \Prettus\Validator\Exceptions\ValidatorException
+     */
+    private function provider(User $user, \Laravel\Socialite\Two\User $data, string $provider)
+    {
+        if ($user->hasProvider($provider, $data->id)) {
+            // Update the users information, token and avatar can be updated.
+            $user->socialAccounts()->update(
+                [
+                    'token' => $data->token,
+                    'avatar' => $data->avatar,
+                ]
+            );
+
+            $this->update(
+                [
+                    'avatar_type' => $provider,
+                ],
+                $user->id
+            );
+        } else {
             $user->socialAccounts()->save(
                 new SocialAccount(
                     [
@@ -125,48 +185,15 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
                     ]
                 )
             );
-        } else {
-            // Update the users information, token and avatar can be updated.
-            $user->socialAccounts()->update(
-                [
-                    'token' => $data->token,
-                    'avatar' => $data->avatar,
-                ]
-            );
-
-
-            $this->update(
-                [
-                    'avatar_type' => $provider,
-                ],
-                $user->id
-            );
         }
-
-        return $user;
     }
 
-    private function getNameParts($fullName)
+    protected function getNameParts(\Laravel\Socialite\Two\User $data)
     {
-        $parts = array_values(array_filter(explode(' ', $fullName)));
-        $size = count($parts);
         $result = [];
 
-        if (empty($parts)) {
-            $result['first_name'] = null;
-            $result['last_name'] = null;
-        }
-
-        if (!empty($parts) && $size == 1) {
-            $result['first_name'] = $parts[0];
-            $result['last_name'] = null;
-        }
-
-        if (!empty($parts) && $size >= 2) {
-            $result['first_name'] = $parts[0];
-            $result['last_name'] = $parts[1];
-        }
-
+        $result['first_name'] = $data->offsetGet('first_name');
+        $result['last_name'] = $data->offsetGet('last_name');
         return $result;
     }
 }

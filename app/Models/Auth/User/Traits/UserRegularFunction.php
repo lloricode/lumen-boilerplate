@@ -2,6 +2,7 @@
 
 namespace App\Models\Auth\User\Traits;
 
+use App\Models\Auth\User\SocialAccount;
 use Illuminate\Http\UploadedFile;
 use InvalidArgumentException;
 
@@ -21,15 +22,29 @@ trait UserRegularFunction
             : $this->first_name;
     }
 
-    public function hasProvider($provider)
+    public function hasProvider(string $provider, string $providerId = null): bool
     {
-        foreach ($this->socialAccounts as $socialAccount) {
-            if ($socialAccount->provider == $provider) {
-                return true;
-            }
-        }
-
-        return false;
+        //        foreach ($this->socialAccounts as $socialAccount) {
+        //            if (
+        //                $socialAccount->provider == $provider &&
+        //                $socialAccount->provider_id == $providerId
+        //            ) {
+        //                return true;
+        //            }
+        //        }
+        //
+        return SocialAccount::where(
+                $providerId
+                    ? [
+                    'user_id' => $this->id,
+                    'provider' => $provider,
+                    'provider_id' => $providerId,
+                ]
+                    : [
+                    'user_id' => $this->id,
+                    'provider' => $provider,
+                ]
+            )->get()->count() > 0;
     }
 
     public function getSocialAccountButtons()
