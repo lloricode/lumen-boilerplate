@@ -103,22 +103,21 @@ $app->routeMiddleware(
 
 $app->register(App\Providers\AppServiceProvider::class);
 $app->register(App\Providers\RepositoryServiceProvider::class);
+$app->register(Coderello\SocialGrant\Providers\SocialGrantServiceProvider::class);
+$app->register(Dusterio\LumenPassport\PassportServiceProvider::class);
 $app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
 $app->register(Fruitcake\Cors\CorsServiceProvider::class);
 $app->register(GrahamCampbell\Throttle\ThrottleServiceProvider::class);
 $app->register(Laravel\Passport\PassportServiceProvider::class);
-$app->register(Coderello\SocialGrant\Providers\SocialGrantServiceProvider::class);
 $app->register(Laravel\Socialite\SocialiteServiceProvider::class);
-$app->register(Dusterio\LumenPassport\PassportServiceProvider::class);
 $app->register(Prettus\Repository\Providers\RepositoryServiceProvider::class);
+$app->register(Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class);
 $app->register(Spatie\Fractal\FractalServiceProvider::class);
 $app->register(Spatie\Permission\PermissionServiceProvider::class);
 $app->register(Vinkla\Hashids\HashidsServiceProvider::class);
-$app->register(Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class);
 
-if (class_exists($class = 'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider')) {
-    $app->register($class);
-    unset($class);
+if (class_exists('Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider')) {
+    $app->register('Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider');
 }
 
 /*
