@@ -24,13 +24,12 @@ $app = new Laravel\Lumen\Application(
 $app->withFacades(
     true,
     [
-        Juampi92\APIResources\Facades\APIResource::class => 'APIResource',
+
     ]
 );
 
 $app->withEloquent();
 
-//$app->configure('api');
 $app->configure('auth');
 $app->configure('cors');
 $app->configure('hashids');
@@ -115,9 +114,7 @@ $app->register(Prettus\Repository\Providers\RepositoryServiceProvider::class);
 $app->register(Spatie\Fractal\FractalServiceProvider::class);
 $app->register(Spatie\Permission\PermissionServiceProvider::class);
 $app->register(Vinkla\Hashids\HashidsServiceProvider::class);
-//$app->register(Dingo\Api\Provider\LumenServiceProvider::class);
 $app->register(Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class);
-$app->register(Juampi92\APIResources\APIResourcesServiceProvider::class);
 
 if (class_exists($class = 'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider')) {
     $app->register($class);
