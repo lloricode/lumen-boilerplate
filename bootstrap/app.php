@@ -6,6 +6,8 @@ require_once __DIR__.'/../vendor/autoload.php';
     dirname(__DIR__)
 ))->bootstrap();
 
+date_default_timezone_set(env('APP_TIMEZONE', 'UTC'));
+
 /*
 |--------------------------------------------------------------------------
 | Create The Application
@@ -30,15 +32,6 @@ $app->withFacades(
 
 $app->withEloquent();
 
-$app->configure('auth');
-$app->configure('cors');
-$app->configure('hashids');
-$app->configure('localization');
-$app->configure('permission');
-$app->configure('repository');
-$app->configure('services');
-$app->configure('setting');
-
 $app->alias('cache', Illuminate\Cache\CacheManager::class);
 
 /*
@@ -61,6 +54,27 @@ $app->singleton(
     Illuminate\Contracts\Console\Kernel::class,
     App\Console\Kernel::class
 );
+
+/*
+|--------------------------------------------------------------------------
+| Register Config Files
+|--------------------------------------------------------------------------
+|
+| Now we will register the "app" configuration file. If the file exists in
+| your configuration directory it will be loaded; otherwise, we'll load
+| the default version. You may register other files below as needed.
+|
+*/
+
+$app->configure('app');
+$app->configure('auth');
+$app->configure('cors');
+$app->configure('hashids');
+$app->configure('localization');
+$app->configure('permission');
+$app->configure('repository');
+$app->configure('services');
+$app->configure('setting');
 
 /*
 |--------------------------------------------------------------------------
