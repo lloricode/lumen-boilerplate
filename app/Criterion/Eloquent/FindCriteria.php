@@ -1,18 +1,20 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Lloric Mayuga Garcia <lloricode@gmail.com>
- * Date: 12/4/18
- * Time: 8:03 PM
- */
 
 namespace App\Criterion\Eloquent;
 
 use Prettus\Repository\Contracts\CriteriaInterface;
 use Prettus\Repository\Contracts\RepositoryInterface;
 
-class OnlyTrashedCriteria implements CriteriaInterface
+class FindCriteria implements CriteriaInterface
 {
+    /** @var string */
+    private $value;
+
+    public function __construct(string $value)
+    {
+        $this->value = $value;
+    }
+
     /**
      * Apply criteria in query repository
      *
@@ -23,7 +25,8 @@ class OnlyTrashedCriteria implements CriteriaInterface
      */
     public function apply($model, RepositoryInterface $repository)
     {
-        /** @var \Illuminate\Database\Eloquent\Model|\Illuminate\Database\Eloquent\SoftDeletes $model */
-        return $model->onlyTrashed();
+        /** @var \Illuminate\Database\Eloquent\Builder $model */
+        return (new ThisEqualThatCriteria($repository->makeModel()->getRouteKeyName(), $this->value))
+            ->apply($model, $repository);
     }
 }

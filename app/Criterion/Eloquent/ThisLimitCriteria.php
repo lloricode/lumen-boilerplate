@@ -1,18 +1,19 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Lloric Mayuga Garcia <lloricode@gmail.com>
- * Date: 12/4/18
- * Time: 8:03 PM
- */
 
 namespace App\Criterion\Eloquent;
 
 use Prettus\Repository\Contracts\CriteriaInterface;
 use Prettus\Repository\Contracts\RepositoryInterface;
 
-class OnlyTrashedCriteria implements CriteriaInterface
+class ThisLimitCriteria implements CriteriaInterface
 {
+    private $limit;
+
+    public function __construct(int $limit = 10)
+    {
+        $this->limit = $limit;
+    }
+
     /**
      * Apply criteria in query repository
      *
@@ -23,7 +24,7 @@ class OnlyTrashedCriteria implements CriteriaInterface
      */
     public function apply($model, RepositoryInterface $repository)
     {
-        /** @var \Illuminate\Database\Eloquent\Model|\Illuminate\Database\Eloquent\SoftDeletes $model */
-        return $model->onlyTrashed();
+        /** @var \Illuminate\Database\Query\Builder $model */
+        return $model->limit($this->limit);
     }
 }

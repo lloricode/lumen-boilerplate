@@ -1,18 +1,13 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Lloric Mayuga Garcia <lloricode@gmail.com>
- * Date: 12/4/18
- * Time: 8:03 PM
- */
 
 namespace App\Criterion\Eloquent;
 
 use Prettus\Repository\Contracts\CriteriaInterface;
 use Prettus\Repository\Contracts\RepositoryInterface;
 
-class OnlyTrashedCriteria implements CriteriaInterface
+class EnabledStatusCriteria implements CriteriaInterface
 {
+
     /**
      * Apply criteria in query repository
      *
@@ -23,7 +18,7 @@ class OnlyTrashedCriteria implements CriteriaInterface
      */
     public function apply($model, RepositoryInterface $repository)
     {
-        /** @var \Illuminate\Database\Eloquent\Model|\Illuminate\Database\Eloquent\SoftDeletes $model */
-        return $model->onlyTrashed();
+        /** @var \Illuminate\Database\Eloquent\Model|\Spatie\ModelStatus\HasStatuses $model */
+        return $model->currentStatus(config('core-base.statuses.default.enable'));
     }
 }
