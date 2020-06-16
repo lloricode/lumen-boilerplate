@@ -1,6 +1,7 @@
 {
   "name": "lloricode/lumen-boilerplate",
   "description": "The Lumen Boilerplate Project.",
+  "homepage": "https://github.com/lloricode/lumen-boilerplate",
   "keywords": [
     "framework",
     "laravel",
