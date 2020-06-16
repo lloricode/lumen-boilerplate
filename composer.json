@@ -14,7 +14,8 @@
   "authors": [
     {
       "name": "Lloric Mayuga Garcia",
-      "email": "lloricode@gmail.com"
+      "email": "lloricode@gmail.com",
+      "role": "Developer"
     }
   ],
   "license": "MIT",
