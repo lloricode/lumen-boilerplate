@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7a4a651edc0d7d17c05d4b752144c4ef",
+    "content-hash": "768af0379e7345d89f53bd498e511720",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -715,23 +715,25 @@
         },
         {
             "name": "flipbox/lumen-generator",
-            "version": "6.0.11",
+            "version": "7.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/flipboxstudio/lumen-generator.git",
-                "reference": "25353bf8dbf76f31026bf85ad220bea8602272c4"
+                "reference": "0986f300383c5f0ef95fbac8d331e6fad1ee6743"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/flipboxstudio/lumen-generator/zipball/25353bf8dbf76f31026bf85ad220bea8602272c4",
-                "reference": "25353bf8dbf76f31026bf85ad220bea8602272c4",
+                "url": "https://api.github.com/repos/flipboxstudio/lumen-generator/zipball/0986f300383c5f0ef95fbac8d331e6fad1ee6743",
+                "reference": "0986f300383c5f0ef95fbac8d331e6fad1ee6743",
                 "shasum": ""
             },
             "require": {
                 "classpreloader/classpreloader": "^3.0|^4.0",
-                "illuminate/support": "^5.4|^6.0|^7.0",
-                "psy/psysh": "0.8.*|0.9.*|0.10.*",
-                "symfony/var-dumper": "^3.1|^4.1|^4.2|^4.3|^5.0"
+                "illuminate/console": "^5.5|^6.0|^7.0",
+                "illuminate/filesystem": "^5.5|^6.0|^7.0",
+                "illuminate/support": "^5.5|^6.0|^7.0",
+                "psy/psysh": "0.9.*|0.10.*",
+                "symfony/var-dumper": "^4.2|^4.3|^5.0"
             },
             "type": "library",
             "autoload": {
@@ -750,7 +752,7 @@
                 }
             ],
             "description": "A Lumen Generator You Are Missing",
-            "time": "2020-05-26T11:52:53+00:00"
+            "time": "2020-07-17T01:38:26+00:00"
         },
         {
             "name": "fruitcake/laravel-cors",

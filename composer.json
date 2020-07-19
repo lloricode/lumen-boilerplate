@@ -28,7 +28,7 @@
     "ext-pdo": "*",
     "coderello/laravel-passport-social-grant": "^3.0",
     "dusterio/lumen-passport": "^0.2.18",
-    "flipbox/lumen-generator": "^6.0",
+    "flipbox/lumen-generator": "^7.0",
     "fruitcake/laravel-cors": "^2.0",
     "graham-campbell/throttle": "^8.0",
     "laravel/lumen-framework": "^7.0.4",
