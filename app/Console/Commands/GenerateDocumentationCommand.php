@@ -14,23 +14,15 @@ use Symfony\Component\Process\Process;
 
 class GenerateDocumentationCommand extends Command
 {
-    /**
-     *
-     */
+
     protected const APIDOCS_FILENAME = 'apidoc.json';
 
-    /**
-     * @var array
-     */
-    protected $docInputs = [
+    protected array $docInputs = [
         'app/Http/Controllers',
         'resources/documentation/responses',
     ];
 
-    /**
-     * @var array
-     */
-    protected $config;
+    protected array $config;
     /**
      * The console command name.
      *

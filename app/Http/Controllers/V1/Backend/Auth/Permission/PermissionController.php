@@ -21,7 +21,7 @@ use Prettus\Repository\Criteria\RequestCriteria;
  */
 class PermissionController extends Controller
 {
-    protected $permissionRepository;
+    protected PermissionRepository $permissionRepository;
 
     /**
      * PermissionController constructor.

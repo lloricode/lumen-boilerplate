@@ -15,7 +15,7 @@ use Prettus\Repository\Criteria\RequestCriteria;
  */
 class UserController extends Controller
 {
-    protected $userRepository;
+    protected UserRepository $userRepository;
 
     /**
      * UserController constructor.

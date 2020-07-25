@@ -10,6 +10,12 @@ namespace App\Traits;
 
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
+/**
+ * Trait Hashable
+ *
+ * @package App\Traits
+ * @deprecated
+ */
 trait Hashable
 {
     /**

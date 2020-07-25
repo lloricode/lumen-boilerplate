@@ -11,10 +11,7 @@ use League\OAuth2\Server\Exception\OAuthServerException;
 
 class PassportSocialResolver implements SocialUserResolverInterface
 {
-    /**
-     * @var \App\Repositories\Auth\User\UserRepository
-     */
-    private $userRepository;
+    private UserRepository $userRepository;
 
     public function __construct(UserRepository $userRepository)
     {

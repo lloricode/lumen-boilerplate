@@ -21,7 +21,7 @@ use Prettus\Repository\Criteria\RequestCriteria;
  */
 class RoleController extends Controller
 {
-    protected $roleRepository;
+    protected RoleRepository $roleRepository;
 
     /**
      * RoleController constructor.

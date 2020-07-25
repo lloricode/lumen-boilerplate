@@ -22,7 +22,7 @@ use Prettus\Repository\Criteria\RequestCriteria;
  */
 class UserDeleteController extends Controller
 {
-    protected $userRepository;
+    protected UserRepository $userRepository;
 
     /**
      * UserDeleteController constructor.

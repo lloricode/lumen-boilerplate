@@ -13,10 +13,7 @@ use Locale;
 
 class Region extends Value
 {
-    /**
-     * @var null
-     */
-    private $region = null;
+    private ?string $region = null;
 
     /**
      * Region constructor.

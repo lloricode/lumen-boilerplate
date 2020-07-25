@@ -22,8 +22,8 @@ use Illuminate\Http\Request;
  */
 class AuthorizationController extends Controller
 {
-    protected $userRepository;
-    protected $roleRepository;
+    protected UserRepository $userRepository;
+    protected RoleRepository $roleRepository;
 
     /**
      * AuthorizationController constructor.

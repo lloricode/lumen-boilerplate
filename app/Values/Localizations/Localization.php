@@ -13,15 +13,9 @@ use Locale;
 
 class Localization extends Value
 {
-    /**
-     * @var null
-     */
-    private $language = null;
+    private ?string $language = null;
 
-    /**
-     * @var array
-     */
-    private $regions = [];
+    private array $regions = [];
 
     /**
      * Localization constructor.
