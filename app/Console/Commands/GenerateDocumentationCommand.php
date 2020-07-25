@@ -85,12 +85,10 @@ class GenerateDocumentationCommand extends Command
                 str_replace($templateKey, $value, $this->config['headerTemplateContent']);
         };
 
-        $apiConfig = config('api');
-
         $replacer('{{api.domain.dev}}', config('app.url'));
         $replacer(
             '{{accept-header}}',
-            "application/{$apiConfig['standardsTree']}.{$apiConfig['subtype']}.{$apiConfig['version']}+json"
+            "application/json"
         );
         $replacer('{{rate-limit-expires}}', config('setting.api.throttle.expires'));
         $replacer('{{rate-limit-attempts}}', config('setting.api.throttle.limit'));

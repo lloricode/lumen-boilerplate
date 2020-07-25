@@ -2,7 +2,7 @@
 
 | Header          | Value Sample                        | When to send it                                              |
 |-----------------|-------------------------------------|--------------------------------------------------------------|
-| Accept          | `{{accept-header}}`                 | Required when `API_STRICT` is `enabled`.                     |
+| Accept          | `{{accept-header}}`                 |                     |
 | Content-Type    | `application/x-www-form-urlencoded` | When passing form body.                                      |
 | Authorization   | `Bearer {access_token}`             | Requires on private resources.                               |
 | Accept-Language |  `en`                               | Optional: default is `en` or value of `config('app.locale')` | 
