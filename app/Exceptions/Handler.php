@@ -4,9 +4,11 @@ namespace App\Exceptions;
 
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Database\QueryException;
 use Illuminate\Validation\ValidationException;
 use Laravel\Lumen\Exceptions\Handler as ExceptionHandler;
 use Spatie\Permission\Exceptions\RoleAlreadyExists;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Throwable;
 
@@ -51,13 +53,13 @@ class Handler extends ExceptionHandler
     public function render($request, Throwable $exception)
     {
         if ($exception instanceof RoleAlreadyExists) {
-            return response()->json(
-                [
-                    'message' => $exception->getMessage(),
-                    'status' => 422,
-                ],
-                422
+            $exception = new HttpException(
+                Response::HTTP_UNPROCESSABLE_ENTITY,
+                $exception->getMessage(),
+                $exception
             );
+        } elseif ($exception instanceof QueryException) {
+            $exception = new HttpException(Response::HTTP_UNPROCESSABLE_ENTITY, 'Something wrong with your query');
         }
 
         return parent::render($request, $exception);
