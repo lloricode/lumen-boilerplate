@@ -37,7 +37,7 @@ This will migrate tables, seed fake data to your database, and install [laravel 
 
 See  `composer.json` > `scripts index`. 
 
-![](https://user-images.githubusercontent.com/8251344/50570069-01fbd100-0db6-11e9-9080-a65bfee70f1d.png)
+![](https://user-images.githubusercontent.com/8251344/92990723-32938800-f511-11ea-8291-59753090cd15.png)
 
 
 ## Login using OAuth2 by [laravel/passport](https://github.com/laravel/passport)
@@ -54,30 +54,13 @@ This will generate Client ID and Client Secret.
 ### 2. Access Tokens
 Use the `Client ID` and `Client Secret` of password grant for OAuth2 - Login (Password grant) endpoint.
 
-![](https://user-images.githubusercontent.com/8251344/50570031-d6c4b200-0db4-11e9-8cd0-bd3cb7d3de2a.png)
+![](https://user-images.githubusercontent.com/8251344/92990536-e09e3280-f50f-11ea-9565-00277319abcc.png)
 
-Do not forget to add **Headers**  
-  - Accept       = `application/x.lumen.boilerplate.v1+json` *(Depends on your API_SUBTYPE value in your environment if `api strict` mode is **enabled**)*.
-  - Content-Type = `application/x-www-form-urlencoded`.
+## API Documentation (Swagger)
 
-![](https://user-images.githubusercontent.com/8251344/50570058-cfea6f00-0db5-11e9-96bb-94143f449145.png)
+You can visit the generated API documentation in http://lumen-boilerplate.test/documentation in your local machine. (working in progress)
 
-## API Documentation
-
-You should run this command in your project directory first:
-```bash
-npm install apidoc -g
-```
-
-To generate the API documentation run this command:
-```bash
-php artisan apidocs
-```
-
-You can visit the generated API documentation in http://lumen-boilerplate.test/docs.
-
-![screenshot from 2018-12-31 11-09-41](https://user-images.githubusercontent.com/8251344/50553955-a9accc80-0cec-11e9-8fbf-f41cc1e10286.png)
-![screenshot from 2018-12-31 11-09-56](https://user-images.githubusercontent.com/8251344/50553957-ab769000-0cec-11e9-8b81-e8359f4ef5b1.png)
+![](https://user-images.githubusercontent.com/8251344/92990619-6de18700-f510-11ea-9e05-e6062b709bc4.png)
 
 or here's the published postman [here](https://documenter.getpostman.com/view/4366674/SWEDzudy)
 
@@ -108,7 +91,7 @@ vendor/bin/phpunit
 * [andersao/l5-repository](https://github.com/andersao/l5-repository) - Repositories to abstract the database layer.
 * [spatie/laravel-permission](https://github.com/spatie/laravel-permission) - Associate users with roles and permissions.
 * [vinkla/laravel-hashids](https://github.com/vinkla/laravel-hashids) - A Hashids bridge for Laravel.
-* [apidoc/apidoc](https://github.com/apidoc/apidoc) - RESTful web API Documentation Generator.
+* [DarkaOnLine/SwaggerLume](https://github.com/DarkaOnLine/SwaggerLume) - Lumen swagger.
 * [rap2hpoutre/laravel-log-viewer](https://github.com/rap2hpoutre/laravel-log-viewer) - Laravel log viewer.
 * [coderello/laravel-passport-social-grant](https://github.com/coderello/laravel-passport-social-grant) - API authentication via social networks for your Laravel application.
 * [flipboxstudio/lumen-generator](https://github.com/flipboxstudio/lumen-generator) - Add Lumen missing generator.
@@ -137,6 +120,7 @@ This project is licensed under the [MIT License](https://opensource.org/licenses
 - [ ] Data transfer objects (DTO) https://github.com/spatie/data-transfer-object
 - [x] Throttle for lumen
 - [ ] Url versioning
+- [ ] Finishing swagger
 
 ## Support Us
 
