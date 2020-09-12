@@ -26,8 +26,9 @@ class PermissionAccessTest extends BaseRole
         }
 
         if ($uri == 'permissions/{id}') {
+            /** @var \App\Models\Auth\Permission\Permission $p */
             $p = app(config('permission.models.permission'))->first();
-            $uri = str_replace('{id}', $p->getHashedId(), $uri);
+            $uri = str_replace('{id}', self::forId($p), $uri);
         }
 
         $this->call($method, '/auth/'.$uri, [], [], [], $this->addHeaders([], true));

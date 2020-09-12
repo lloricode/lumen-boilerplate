@@ -25,6 +25,35 @@ class UserDeleteController extends Controller
     protected UserRepository $userRepository;
 
     /**
+     * @OA\Get(
+     *     path="/sampxccle/{category}/things",
+     *     operationId="/sambvbvple/category/things",
+     *     tags={"yourtag"},
+     *     @OA\Parameter(
+     *         name="category",
+     *         in="path",
+     *         description="The category parameter in path",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="criteria",
+     *         in="query",
+     *         description="Some optional other parameter",
+     *         required=false,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(
+     *         response="200",
+     *         description="Returns some sample category things",
+     *         @OA\JsonContent()
+     *     ),
+     *     @OA\Response(
+     *         response="400",
+     *         description="Error: Bad request. When required parameters were not supplied.",
+     *     ),
+     * )
+     *
      * UserDeleteController constructor.
      *
      * @param  \App\Repositories\Auth\User\UserRepository  $userRepository
@@ -44,7 +73,6 @@ class UserDeleteController extends Controller
      * @param  string  $id
      *
      * @return \Spatie\Fractal\Fractal
-     * @throws \Prettus\Repository\Exceptions\RepositoryException
      * @api                {put} /auth/users/{id}/restore Restore user
      * @apiName            restore-user
      * @apiGroup           UserDelete
@@ -55,7 +83,14 @@ class UserDeleteController extends Controller
      */
     public function restore(string $id)
     {
-        $user = $this->userRepository->restore($this->decodeHash($id));
+        $this->userRepository->pushCriteria(new OnlyTrashedCriteria());
+        $user = $this->userRepository->findByRouteKeyName($id);
+
+        if (blank($user)) {
+            abort(404);
+        }
+
+        $user = $this->userRepository->restore($user->getKey());
         return $this->fractal($user, new UserTransformer());
     }
 
@@ -82,7 +117,6 @@ class UserDeleteController extends Controller
      * @param  string  $id
      *
      * @return \Illuminate\Http\Response|\Laravel\Lumen\Http\ResponseFactory
-     * @throws \Prettus\Repository\Exceptions\RepositoryException
      * @api                {delete} /auth/users/{id} Purge user
      * @apiName            purge-user
      * @apiGroup           UserDelete
@@ -93,7 +127,14 @@ class UserDeleteController extends Controller
      */
     public function purge(string $id)
     {
-        $this->userRepository->forceDelete($this->decodeHash($id));
+        $this->userRepository->pushCriteria(new OnlyTrashedCriteria());
+        $user = $this->userRepository->findByRouteKeyName($id);
+
+        if (blank($user)) {
+            abort(404);
+        }
+
+        $this->userRepository->forceDelete($user->getKey());
         return response('', 204);
     }
 }

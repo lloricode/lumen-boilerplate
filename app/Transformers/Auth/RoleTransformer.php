@@ -39,7 +39,7 @@ class RoleTransformer extends BaseTransformer
     public function transform(Role $role)
     {
         return [
-            'id' => $role->getHashedId(),
+            'id' => self::forId($role),
             'name' => $role->name,
         ];
     }

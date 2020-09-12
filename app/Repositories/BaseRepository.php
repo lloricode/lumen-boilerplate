@@ -9,16 +9,27 @@
 namespace App\Repositories;
 
 use App\Criterion\Eloquent\OnlyTrashedCriteria;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Prettus\Repository\Contracts\CacheableInterface;
 use Prettus\Repository\Eloquent\BaseRepository as BaseRepo;
 use Prettus\Repository\Events\RepositoryEntityUpdated;
 use Prettus\Repository\Traits\CacheableRepository;
 
-abstract class BaseRepository extends BaseRepo implements CacheableInterface
+abstract class BaseRepository extends BaseRepo implements BaseRepositoryInterface, CacheableInterface
 {
     use CacheableRepository {
         paginate as protected paginateExtend;
+    }
+
+    public function getRouteKeyName(): string
+    {
+        return $this->makeModel()->getRouteKeyName();
+    }
+
+    public function findByRouteKeyName(string $key): ?Model
+    {
+        return $this->findByField($this->getRouteKeyName(), $key)->first();
     }
 
     /**
@@ -88,9 +99,7 @@ abstract class BaseRepository extends BaseRepo implements CacheableInterface
             ->getColumnListing($model->getTable());
 
         $fieldSearchable = array_map(
-            function () {
-                return 'like';
-            },
+            fn() => 'like',
             array_flip($tableColumns)
         );
 

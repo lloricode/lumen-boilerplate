@@ -3,6 +3,7 @@
 namespace Test;
 
 use App\Models\Auth\User\User;
+use Illuminate\Database\Eloquent\Model;
 use Laravel\Lumen\Testing\TestCase as BaseTestCase;
 use Spatie\Permission\PermissionRegistrar;
 
@@ -68,7 +69,7 @@ abstract class TestCase extends BaseTestCase
         return $user;
     }
 
-    protected function userData(): array
+    protected static function userData(): array
     {
         return [
             'first_name' => 'Lloric',
@@ -76,5 +77,10 @@ abstract class TestCase extends BaseTestCase
             'email' => 'lloricode@gmail.com',
             'password' => app('hash')->make('secret'),
         ];
+    }
+
+    protected static function forId(Model $model): string
+    {
+        return $model->{$model->getRouteKeyName()};
     }
 }

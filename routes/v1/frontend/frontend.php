@@ -6,6 +6,13 @@ $router->group(
     [
         'namespace' => 'Frontend',
         'as' => 'frontend',
+        'middleware' =>
+            [
+                'auth',
+//            'api.throttle',
+//            'api.auth',
+//            'serializer',
+            ],
     ],
     function () use ($router) {
         include 'user/user.php';

@@ -37,7 +37,7 @@ class BasicResourceSuccessTest extends TestCase
         $user = factory(User::class)->create();
 
         $this->put(
-            route('backend.users.update', ['id' => $user->getHashedId()]),
+            route('backend.users.update', ['id' => self::forId($user)]),
             $this->userData(),
             $this->addHeaders()
         );
@@ -46,7 +46,7 @@ class BasicResourceSuccessTest extends TestCase
         $data = $this->userData();
         unset($data['password']);
 
-        $this->seeInDatabase((new User())->getTable(), array_merge($data, ['id' => $user->id]));
+        $this->seeInDatabase((new User())->getTable(), array_merge($data, ['id' => $user->getKey()]));
         $this->seeJson($data);
     }
 
@@ -57,7 +57,7 @@ class BasicResourceSuccessTest extends TestCase
 
         $user = factory(User::class)->create();
 
-        $this->delete(route('backend.users.destroy', ['id' => $user->getHashedId()]), [], $this->addHeaders());
+        $this->delete(route('backend.users.destroy', ['id' => self::forId($user)]), [], $this->addHeaders());
         $this->assertResponseStatus(204);
 
         $this->notSeeInDatabase(
@@ -79,7 +79,7 @@ class BasicResourceSuccessTest extends TestCase
             route(
                 'backend.users.show',
                 [
-                    'id' => $user->getHashedId(),
+                    'id' => self::forId($user),
                 ]
             ),
             $this->addHeaders()

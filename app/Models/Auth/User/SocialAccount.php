@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $avatar
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Auth\User\User $user
  * @method static Builder|SocialAccount newModelQuery()
  * @method static Builder|SocialAccount newQuery()
  * @method static Builder|SocialAccount query()

@@ -36,7 +36,7 @@ abstract class BaseRole extends TestCase
             route(
                 $routeName,
                 [
-                    'id' => $modelShow->getHashedId(),
+                    'id' => self::forId($modelShow),
                 ]
             )."?include=$relation",
             $this->addHeaders()
@@ -62,7 +62,7 @@ abstract class BaseRole extends TestCase
                         'data' => [
                             [
                                 'type' => $relation,
-                                'id' => $modelRelation->getHashedId(),
+                                'id' => self::forId($modelRelation),
                             ],
                         ],
                     ],
@@ -81,7 +81,7 @@ abstract class BaseRole extends TestCase
     {
         $role = is_null($role) ? app(config('permission.models.role'))->first() : $role;
 
-        return str_replace('{id}', $role->getHashedId(), $uri);
+        return str_replace('{id}', self::forId($role), $uri);
     }
 
     protected function createRole($name = 'test role name'): Role

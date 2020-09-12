@@ -22,19 +22,11 @@ use Prettus\Repository\Contracts\RepositoryInterface;
  */
 interface BaseRepositoryInterface extends RepositoryInterface
 {
-    /**
-     * @param $id
-     *
-     * @return mixed
-     * @throws \Prettus\Repository\Exceptions\RepositoryException
-     */
+    public function getRouteKeyName(): string;
+
+    public function findByRouteKeyName(string $key): ?Model;
+
     public function restore($id);
 
-    /**
-     * @param  int  $id
-     *
-     * @return mixed
-     * @throws \Prettus\Repository\Exceptions\RepositoryException
-     */
     public function forceDelete(int $id);
 }

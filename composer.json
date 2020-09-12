@@ -27,6 +27,7 @@
     "ext-json": "*",
     "ext-pdo": "*",
     "coderello/laravel-passport-social-grant": "^3.0",
+    "darkaonline/swagger-lume": "7.*",
     "dusterio/lumen-passport": "^0.2.18",
     "flipbox/lumen-generator": "^7.0",
     "fruitcake/laravel-cors": "^2.0",
@@ -38,10 +39,10 @@
     "rap2hpoutre/laravel-log-viewer": "^1.4.0",
     "spatie/laravel-fractal": "^5.7",
     "spatie/laravel-permission": "^3.11.0",
-    "vinkla/hashids": "^8.1.0"
+    "spatie/laravel-sluggable": "^2.5"
   },
   "require-dev": {
-    "barryvdh/laravel-ide-helper": "^2.6.7",
+    "barryvdh/laravel-ide-helper": "2.8.0",
     "fzaninotto/faker": "^1.9.1",
     "gmsantos/inspiring": "^3.0",
     "league/flysystem": "^1.0.66",

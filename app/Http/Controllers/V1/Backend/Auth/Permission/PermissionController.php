@@ -24,6 +24,35 @@ class PermissionController extends Controller
     protected PermissionRepository $permissionRepository;
 
     /**
+     *
+     * @OA\Get(
+     *     path="/samplesss/{category}/things",
+     *     operationId="/samplesss/category/things",
+     *     tags={"yourtag"},
+     *     @OA\Parameter(
+     *         name="category",
+     *         in="path",
+     *         description="The category parameter in path",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="criteria",
+     *         in="query",
+     *         description="Some optional other parameter",
+     *         required=false,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(
+     *         response="200",
+     *         description="Returns some sample category things",
+     *         @OA\JsonContent()
+     *     ),
+     *     @OA\Response(
+     *         response="400",
+     *         description="Error: Bad request. When required parameters were not supplied.",
+     *     ),
+     * )
      * PermissionController constructor.
      *
      * @param  \App\Repositories\Auth\Permission\PermissionRepository  $permissionRepository
@@ -72,7 +101,7 @@ class PermissionController extends Controller
     public function show(Request $request, string $id)
     {
         $this->permissionRepository->pushCriteria(new RequestCriteria($request));
-        $p = $this->permissionRepository->find($this->decodeHash($id));
+        $p = $this->permissionRepository->findByRouteKeyName($id);
         return $this->fractal($p, new PermissionTransformer());
     }
 

@@ -20,6 +20,16 @@ use App\Values\Localizations\Localization;
 class LocalizationController extends Controller
 {
     /**
+     * @OA\Get(
+     *     path="/localizations",
+     *     tags={"Localizations"},
+     *     @OA\Response(
+     *         response="200",
+     *         description="Returns some sample category things",
+     *         @OA\JsonContent()
+     *     ),
+     * )
+     *
      * @return \Spatie\Fractal\Fractal
      * @api                {get} /localizations Get all localizations
      * @apiName            get-all-localizations

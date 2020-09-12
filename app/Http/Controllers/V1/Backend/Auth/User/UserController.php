@@ -67,7 +67,12 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        $user = $this->userRepository->find($this->decodeHash($id));
+        $user = $this->userRepository->findByRouteKeyName($id);
+
+        if (blank($user)) {
+            abort(404);
+        }
+
         return $this->fractal($user, new UserTransformer());
     }
 
@@ -107,6 +112,35 @@ class UserController extends Controller
     }
 
     /**
+     * @OA\Get(
+     *     path="/sampzzle/{category}/things",
+     *     operationId="/samxxxple/category/things",
+     *     tags={"yourtag"},
+     *     @OA\Parameter(
+     *         name="category",
+     *         in="path",
+     *         description="The category parameter in path",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="criteria",
+     *         in="query",
+     *         description="Some optional other parameter",
+     *         required=false,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(
+     *         response="200",
+     *         description="Returns some sample category things",
+     *         @OA\JsonContent()
+     *     ),
+     *     @OA\Response(
+     *         response="400",
+     *         description="Error: Bad request. When required parameters were not supplied.",
+     *     ),
+     * )
+     *
      * @param  \Illuminate\Http\Request  $request
      * @param  string  $id
      *
@@ -138,7 +172,7 @@ class UserController extends Controller
 
         $attributes['password'] = app('hash')->make($attributes['password']);
 
-        $user = $this->userRepository->update($attributes, $this->decodeHash($id));
+        $user = $this->userRepository->update($attributes, $this->userRepository->findByRouteKeyName($id)->getKey());
         return $this->fractal($user, new UserTransformer());
     }
 
@@ -157,7 +191,7 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        $id = $this->decodeHash($id);
+        $id = $this->userRepository->findByRouteKeyName($id)->getKey();
         if (app('auth')->id() == $id) {
             return response(['message' => 'You cannot delete your self.'], 403);
         }

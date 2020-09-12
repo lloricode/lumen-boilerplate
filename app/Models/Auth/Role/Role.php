@@ -8,7 +8,6 @@
 
 namespace App\Models\Auth\Role;
 
-use App\Traits\Hashable;
 use Illuminate\Database\Eloquent\Builder;
 
 /**
@@ -25,7 +24,7 @@ use Illuminate\Database\Eloquent\Builder;
  * @property-read int|null $users_count
  * @method static Builder|Role newModelQuery()
  * @method static Builder|Role newQuery()
- * @method static Builder|\Spatie\Permission\Models\Role permission($permissions)
+ * @method static Builder|Role permission($permissions)
  * @method static Builder|Role query()
  * @method static Builder|Role whereCreatedAt($value)
  * @method static Builder|Role whereGuardName($value)
@@ -36,7 +35,6 @@ use Illuminate\Database\Eloquent\Builder;
  */
 class Role extends \Spatie\Permission\Models\Role
 {
-    use Hashable;
 
     /**
      * all permissions

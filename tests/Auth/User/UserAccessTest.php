@@ -98,6 +98,6 @@ class UserAccessTest extends TestCase
         if ($isDeleted) {
             $user->delete();
         }
-        return str_replace('{id}', $user->getHashedId(), $uri);
+        return str_replace('{id}', self::forId($user), $uri);
     }
 }

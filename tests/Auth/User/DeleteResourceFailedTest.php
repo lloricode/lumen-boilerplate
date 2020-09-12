@@ -20,7 +20,7 @@ class DeleteResourceFailedTest extends TestCase
 
         $user = factory(User::class)->create();
 
-        $this->delete(route('backend.users.purge', ['id' => $user->getHashedId()]), [], $this->addHeaders());
+        $this->delete(route('backend.users.purge', ['id' => self::forId($user)]), [], $this->addHeaders());
         $this->assertResponseStatus(404);
     }
 
@@ -31,7 +31,7 @@ class DeleteResourceFailedTest extends TestCase
 
         $user = factory(User::class)->create();
 
-        $this->put(route('backend.users.restore', ['id' => $user->getHashedId()]), [], $this->addHeaders());
+        $this->put(route('backend.users.restore', ['id' => self::forId($user)]), [], $this->addHeaders());
         $this->assertResponseStatus(404);
     }
 }

@@ -49,7 +49,7 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
      */
     public function assignRole($id, int $roleId)
     {
-        $user = $this->find($id);
+        $user = $this->findByRouteKeyName($id);
         event(new RepositoryEntityUpdated($this, $user->assignRole($roleId)));
         return $user;
     }
@@ -60,7 +60,7 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
      */
     public function givePermissionTo($id, int $permissionId)
     {
-        event(new RepositoryEntityUpdated($this, $this->find($id)->givePermissionTo($permissionId)));
+        event(new RepositoryEntityUpdated($this, $this->findByRouteKeyName($id)->givePermissionTo($permissionId)));
     }
 
     /**
@@ -69,7 +69,7 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
      */
     public function removeRole($id, int $roleId)
     {
-        $user = $this->find($id);
+        $user = $this->findByRouteKeyName($id);
         $user->removeRole($roleId);
         event(new RepositoryEntityUpdated($this, $user));
     }
@@ -80,7 +80,7 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
      */
     public function revokePermissionTo($id, int $permissionId)
     {
-        $user = $this->find($id);
+        $user = $this->findByRouteKeyName($id);
         $user->revokePermissionTo($permissionId);
         event(new RepositoryEntityUpdated($this, $user));
     }

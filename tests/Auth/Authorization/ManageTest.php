@@ -19,18 +19,18 @@ class ManageTest extends BaseRole
     }
 
     /** @test */
-    public function assign_role_ro_user()
+    public function assign_role_to_user()
     {
         $user = factory(User::class)->create();
         $role = $this->createRole();
 
-         $this->showModelWithRelation('backend.users.show', $user, $role, 'roles', 'dontSeeJson');
+        $this->showModelWithRelation('backend.users.show', $user, $role, 'roles', 'dontSeeJson');
 
         $this->post(
             route('backend.authorizations.assign-role-to-user').'?include=roles',
             [
-                'role_id' => $role->getHashedId(),
-                'user_id' => $user->getHashedId(),
+                'role_id' => self::forId($role),
+                'user_id' => self::forId($user),
             ],
             $this->addHeaders()
         );
@@ -51,8 +51,8 @@ class ManageTest extends BaseRole
         $this->post(
             route('backend.authorizations.revoke-role-from-user').'?include=roles',
             [
-                'role_id' => $role->getHashedId(),
-                'user_id' => $user->getHashedId(),
+                'role_id' => self::forId($role),
+                'user_id' => self::forId($user),
             ],
             $this->addHeaders()
         );
@@ -73,8 +73,8 @@ class ManageTest extends BaseRole
         $this->post(
             route('backend.authorizations.assign-permission-to-user').'?include=permissions',
             [
-                'permission_id' => $permission->getHashedId(),
-                'user_id' => $user->getHashedId(),
+                'permission_id' => self::forId($permission),
+                'user_id' => self::forId($user),
             ],
             $this->addHeaders()
         );
@@ -96,8 +96,8 @@ class ManageTest extends BaseRole
         $this->post(
             route('backend.authorizations.revoke-permission-from-user').'?include=permissions',
             [
-                'permission_id' => $permission->getHashedId(),
-                'user_id' => $user->getHashedId(),
+                'permission_id' => self::forId($permission),
+                'user_id' => self::forId($user),
             ],
             $this->addHeaders()
         );
@@ -118,8 +118,8 @@ class ManageTest extends BaseRole
         $this->post(
             route('backend.authorizations.attach-permission-to-role').'?include=permissions',
             [
-                'permission_id' => $permission->getHashedId(),
-                'role_id' => $role->getHashedId(),
+                'permission_id' => self::forId($permission),
+                'role_id' => self::forId($role),
             ],
             $this->addHeaders()
         );
@@ -140,8 +140,8 @@ class ManageTest extends BaseRole
         $this->post(
             route('backend.authorizations.revoke-permission-from-role').'?include=permissions',
             [
-                'permission_id' => $permission->getHashedId(),
-                'role_id' => $role->getHashedId(),
+                'permission_id' => self::forId($permission),
+                'role_id' => self::forId($role),
             ],
             $this->addHeaders()
         );

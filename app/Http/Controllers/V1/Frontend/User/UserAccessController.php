@@ -19,6 +19,17 @@ use App\Transformers\Auth\UserTransformer;
 class UserAccessController extends Controller
 {
     /**
+     * @OA\Get(
+     *     path="/profile",
+     *     tags={"Authorization"},
+     *     summary="Get current logged in user profile",
+     *     security={{"passport":{}}},
+     *     @OA\Response(
+     *         response="200",
+     *         description="Returns some sample category things",
+     *         @OA\JsonContent()
+     *     )
+     * )
      * @return \Spatie\Fractal\Fractal
      * @api                {get} /profile Get current authenticated user
      * @apiName            get-authenticated-user

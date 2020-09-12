@@ -58,7 +58,7 @@ class Handler extends ExceptionHandler
                 $exception->getMessage(),
                 $exception
             );
-        } elseif ($exception instanceof QueryException) {
+        } elseif (!config('app.debug') && $exception instanceof QueryException) {
             $exception = new HttpException(Response::HTTP_UNPROCESSABLE_ENTITY, 'Something wrong with your query');
         }
 

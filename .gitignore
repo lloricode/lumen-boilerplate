@@ -14,3 +14,4 @@ phpunit.txt
 public/docs/*
 composer.phar
 .phpunit.result.cache
+/storage/api-docs

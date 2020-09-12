@@ -38,7 +38,7 @@ class PermissionTransformer extends BaseTransformer
     public function transform(Permission $permission)
     {
         return [
-            'id' => $permission->getHashedId(),
+            'id' => self::forId($permission),
             'name' => $permission->name,
         ];
     }

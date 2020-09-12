@@ -34,7 +34,7 @@ class RoleManagementTest extends BaseRole
                     route(
                         $route,
                         [
-                            'id' => $this->createRole()->getHashedId(),
+                            'id' => self::forId($this->createRole()),
                         ]
                     ),
                     $paramNoData,
@@ -65,7 +65,7 @@ class RoleManagementTest extends BaseRole
             route(
                 $routeName,
                 [
-                    'id' => $this->getByRoleName('system')->getHashedId(),
+                    'id' => self::forId($this->getByRoleName('system')),
                 ]
             ),
             $verbMethod == 'delete' ? [] : ['name' => $this->getByRoleName('system')->name],
@@ -113,7 +113,7 @@ class RoleManagementTest extends BaseRole
             route(
                 'backend.roles.update',
                 [
-                    'id' => $role->getHashedId(),
+                    'id' => self::forId($role),
                 ]
             ),
             $data,
@@ -144,7 +144,7 @@ class RoleManagementTest extends BaseRole
             route(
                 'backend.roles.update',
                 [
-                    'id' => $role->getHashedId(),
+                    'id' => self::forId($role),
                 ]
             ),
             $data,

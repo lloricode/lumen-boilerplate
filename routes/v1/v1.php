@@ -4,13 +4,6 @@
 
 $router->group(
     [
-        'middleware' =>
-            [
-                'auth',
-//            'api.throttle',
-//            'api.auth',
-//            'serializer',
-            ],
     ],
     function () use ($router) {
         include 'localization.php';

@@ -4,7 +4,6 @@ namespace App\Models\Auth\User;
 
 use App\Models\Auth\User\Traits\UserRegularFunction;
 use App\Models\Auth\User\Traits\UserRelationships;
-use App\Traits\Hashable;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
@@ -14,6 +13,8 @@ use Illuminate\Database\Query\Builder;
 use Laravel\Lumen\Auth\Authorizable;
 use Laravel\Passport\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 /**
  * App\Models\Auth\User\User
@@ -23,6 +24,7 @@ use Spatie\Permission\Traits\HasRoles;
  * @property string $last_name
  * @property string $email
  * @property string|null $password
+ * @property string $slug
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
@@ -49,6 +51,7 @@ use Spatie\Permission\Traits\HasRoles;
  * @method static \Illuminate\Database\Eloquent\Builder|User whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereLastName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User wherePassword($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
  * @method static Builder|User withTrashed()
  * @method static Builder|User withoutTrashed()
@@ -61,9 +64,9 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     use HasApiTokens;
     use HasRoles;
     use SoftDeletes;
-    use Hashable;
     use UserRelationships;
     use UserRegularFunction;
+    use HasSlug;
 
     /**
      * all permissions
@@ -106,4 +109,16 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     protected $hidden = [
         'password',
     ];
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('email')
+            ->saveSlugsTo($this->getRouteKeyName());
+    }
 }

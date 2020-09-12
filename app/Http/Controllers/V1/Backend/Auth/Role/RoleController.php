@@ -24,6 +24,36 @@ class RoleController extends Controller
     protected RoleRepository $roleRepository;
 
     /**
+     *
+     * @OA\Get(
+     *     path="/sampsdfle/{category}/things",
+     *     operationId="/sdf/category/things",
+     *     tags={"yourtag"},
+     *     @OA\Parameter(
+     *         name="category",
+     *         in="path",
+     *         description="The category parameter in path",
+     *         required=true,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Parameter(
+     *         name="criteria",
+     *         in="query",
+     *         description="Some optional other parameter",
+     *         required=false,
+     *         @OA\Schema(type="string")
+     *     ),
+     *     @OA\Response(
+     *         response="200",
+     *         description="Returns some sample category things",
+     *         @OA\JsonContent()
+     *     ),
+     *     @OA\Response(
+     *         response="400",
+     *         description="Error: Bad request. When required parameters were not supplied.",
+     *     ),
+     * )
+     *
      * RoleController constructor.
      *
      * @param  \App\Repositories\Auth\Role\RoleRepository  $roleRepository
@@ -107,7 +137,7 @@ class RoleController extends Controller
     public function show(Request $request, string $id)
     {
         $this->roleRepository->pushCriteria(new RequestCriteria($request));
-        $role = $this->roleRepository->find($this->decodeHash($id));
+        $role = $this->roleRepository->findByRouteKeyName($id);
         return $this->fractal($role, new RoleTransformer());
     }
 
@@ -141,7 +171,7 @@ class RoleController extends Controller
             [
                 'name' => $attributes['name'],
             ],
-            $this->decodeHash($id)
+            $this->roleRepository->findByRouteKeyName($id)->getKey()
         );
         return $this->fractal($role, new RoleTransformer());
     }
@@ -160,7 +190,7 @@ class RoleController extends Controller
      */
     public function destroy(string $id)
     {
-        $this->roleRepository->delete($this->decodeHash($id));
+        $this->roleRepository->delete($this->roleRepository->findByRouteKeyName($id)->getKey());
         return response('', 204);
     }
 }
