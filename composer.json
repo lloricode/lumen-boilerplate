@@ -91,14 +91,6 @@
       "@php artisan ide-helper:models --reset --write --ansi",
       "@php artisan inspire --ansi"
     ],
-    "coverage": [
-      "./vendor/bin/phpunit --coverage-html ./coverage",
-      "@php artisan inspire --ansi"
-    ],
-    "coverage-txt": [
-      "./vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover",
-      "@php artisan inspire --ansi"
-    ],
     "phpunit": [
       "./vendor/bin/phpunit --verbose > phpunit.txt -d memory_limit=2048M",
       "@php artisan inspire --ansi"

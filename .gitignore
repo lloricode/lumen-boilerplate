@@ -7,11 +7,9 @@ _ide_helper.php
 _ide_helper_models.php
 .phpstorm.meta.php
 /storage/*.key
-coverage.xml
-coverage.clover
-/coverage
 phpunit.txt
 public/docs/*
 composer.phar
 .phpunit.result.cache
 /storage/api-docs
+build

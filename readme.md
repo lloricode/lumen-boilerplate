@@ -75,9 +75,8 @@ vendor/bin/phpunit
 ```
 
 **Notes:** 
-- If you running this via [Homestead's](https://laravel.com/docs/5.7/homestead) ssh, you can this command: `phpunit` (in your project directory).
-- Run `composer coverage` to see code coverage via `html`.
-- Run `composer coverage-txt` to see code coverage via `terminal`.
+- If you run this via [Homestead's](https://laravel.com/docs/5.7/homestead) ssh, you can this command: `phpunit` (in your project directory).
+- After running testing, you can check generated code coverage from `build` folder.
 
 
 ## Built With
@@ -90,7 +89,6 @@ vendor/bin/phpunit
 * [laravel/passport](https://github.com/laravel/passport) - OAuth2 server and API authentication, fix installed by [dusterio/lumen-passport](https://github.com/dusterio/lumen-passport).
 * [andersao/l5-repository](https://github.com/andersao/l5-repository) - Repositories to abstract the database layer.
 * [spatie/laravel-permission](https://github.com/spatie/laravel-permission) - Associate users with roles and permissions.
-* [vinkla/laravel-hashids](https://github.com/vinkla/laravel-hashids) - A Hashids bridge for Laravel.
 * [DarkaOnLine/SwaggerLume](https://github.com/DarkaOnLine/SwaggerLume) - Lumen swagger.
 * [rap2hpoutre/laravel-log-viewer](https://github.com/rap2hpoutre/laravel-log-viewer) - Laravel log viewer.
 * [coderello/laravel-passport-social-grant](https://github.com/coderello/laravel-passport-social-grant) - API authentication via social networks for your Laravel application.
