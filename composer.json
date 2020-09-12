@@ -70,7 +70,6 @@
     "fresh": [
       "@php artisan migrate:fresh --seed --ansi",
       "@php artisan passport:install --force --ansi",
-      "@php artisan apidocs --ansi",
       "@php artisan inspire --ansi"
     ],
     "clear-all": [
