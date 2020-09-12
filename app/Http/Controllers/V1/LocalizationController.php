@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Lloric Mayuga Garcia <lloricode@gmail.com>
- * Date: 2/3/19
- * Time: 5:22 AM
- */
 
 namespace App\Http\Controllers\V1;
 
@@ -12,11 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Transformers\LocalizationTransformer;
 use App\Values\Localizations\Localization;
 
-/**
- * Class LocalizationController
- *
- * @package App\Http\Controllers\V1
- */
 class LocalizationController extends Controller
 {
     /**

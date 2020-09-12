@@ -48,7 +48,7 @@ class ManageTest extends BaseRole
 
 //        $this->showModelWithRelation('backend.users.show', $user, $role, 'roles');
 
-        $this->post(
+        $this->delete(
             route('backend.authorizations.revoke-role-from-user').'?include=roles',
             [
                 'role_id' => self::forId($role),
@@ -56,9 +56,10 @@ class ManageTest extends BaseRole
             ],
             $this->addHeaders()
         );
-        $this->assertResponseOk();
+        $this->assertResponseStatus(204);
 
-        $this->seeJsonApiRelation($role, 'roles', 'dontSeeJson');
+        $this->assertFalse($user->refresh()->hasRole($role));
+//        $this->seeJsonApiRelation($role, 'roles', 'dontSeeJson');
 //        $this->showModelWithRelation('backend.users.show', $user, $role, 'roles', 'dontSeeJson');
     }
 
@@ -93,7 +94,7 @@ class ManageTest extends BaseRole
 
 //        $this->showModelWithRelation('backend.users.show', $user, $permission, 'permissions');
 
-        $this->post(
+        $this->delete(
             route('backend.authorizations.revoke-permission-from-user').'?include=permissions',
             [
                 'permission_id' => self::forId($permission),
@@ -101,9 +102,10 @@ class ManageTest extends BaseRole
             ],
             $this->addHeaders()
         );
-        $this->assertResponseOk();
+        $this->assertResponseStatus(204);
 
-        $this->seeJsonApiRelation($permission, 'permissions', 'dontSeeJson');
+        $this->assertFalse($user->refresh()->hasPermissionTo($permission));
+//        $this->seeJsonApiRelation($permission, 'permissions', 'dontSeeJson');
 //        $this->showModelWithRelation('backend.users.show', $user, $permission, 'permissions', 'dontSeeJson');
     }
 
@@ -137,7 +139,7 @@ class ManageTest extends BaseRole
 
 //        $this->showModelWithRelation('backend.roles.show', $role, $permission, 'permissions');
 
-        $this->post(
+        $this->delete(
             route('backend.authorizations.revoke-permission-from-role').'?include=permissions',
             [
                 'permission_id' => self::forId($permission),
@@ -145,9 +147,10 @@ class ManageTest extends BaseRole
             ],
             $this->addHeaders()
         );
-        $this->assertResponseOk();
+        $this->assertResponseStatus(204);
 
-        $this->seeJsonApiRelation($permission, 'permissions', 'dontSeeJson');
+        $this->assertFalse($role->refresh()->hasPermissionTo($permission));
+//        $this->seeJsonApiRelation($permission, 'permissions', 'dontSeeJson');
 //        $this->showModelWithRelation('backend.roles.show', $role, $permission, 'permissions', 'dontSeeJson');
     }
 }

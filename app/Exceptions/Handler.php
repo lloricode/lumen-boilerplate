@@ -7,9 +7,12 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
 use Illuminate\Validation\ValidationException;
 use Laravel\Lumen\Exceptions\Handler as ExceptionHandler;
+use Laravel\Passport\Exceptions\OAuthServerException as LaravelOAuthServerException;
+use League\OAuth2\Server\Exception\OAuthServerException as LeagueOAuthServerException;
 use Spatie\Permission\Exceptions\RoleAlreadyExists;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\HttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -24,6 +27,8 @@ class Handler extends ExceptionHandler
         HttpException::class,
         ModelNotFoundException::class,
         ValidationException::class,
+        LeagueOAuthServerException::class,
+        LaravelOAuthServerException::class,
     ];
 
     /**
@@ -52,7 +57,13 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
-        if ($exception instanceof RoleAlreadyExists) {
+        if (method_exists($exception, 'getStatusCode') && blank($exception->getMessage())) {
+            if ($exception->getStatusCode() == Response::HTTP_NOT_FOUND) {
+                $exception = new NotFoundHttpException('404 Not Found', $exception);
+            } else {
+                $exception = new HttpException($exception->getStatusCode(), 'Error '.$exception->getStatusCode());
+            }
+        } elseif ($exception instanceof RoleAlreadyExists) {
             $exception = new HttpException(
                 Response::HTTP_UNPROCESSABLE_ENTITY,
                 $exception->getMessage(),

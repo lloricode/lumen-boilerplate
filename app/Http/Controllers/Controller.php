@@ -30,7 +30,7 @@ class Controller extends BaseController
      * @OA\Post(
      *     path="/oauth/token",
      *     summary="Generate access token",
-     *     tags={"Authorization"},
+     *     tags={"Authentication"},
      *     @OA\RequestBody(
      *         @OA\MediaType(
      *             mediaType="application/json",
@@ -106,6 +106,10 @@ class Controller extends BaseController
      * )
      *
      * @OA\Tag(
+     *     name="Authentication",
+     *     description="API Endpoints of Authentication"
+     * )
+     * @OA\Tag(
      *     name="Authorization",
      *     description="API Endpoints of Authorization"
      * )
@@ -113,7 +117,19 @@ class Controller extends BaseController
      *     name="Localizations",
      *     description="API Endpoints of Localizations"
      * )
+     * @OA\Tag(
+     *     name="Access",
+     *     description="API Endpoints of Access"
+     * )
      *
+     * @OA\Schema(
+     *      schema="Error",
+     *      required={"message"},
+     *      @OA\Property(
+     *          property="message",
+     *          type="string"
+     *      )
+     *  ),
      */
 
 

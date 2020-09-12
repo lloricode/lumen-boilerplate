@@ -17,7 +17,7 @@ $router->group(
                 'uses' => 'AuthorizationController@assignRoleToUser',
             ]
         );
-        $router->post(
+        $router->delete(
             '/revoke-role-from-user',
             [
                 'as' => 'revoke-role-from-user',
@@ -33,7 +33,7 @@ $router->group(
                 'uses' => 'AuthorizationController@assignPermissionToUser',
             ]
         );
-        $router->post(
+        $router->delete(
             '/revoke-permission-from-user',
             [
                 'as' => 'revoke-permission-from-user',
@@ -49,7 +49,7 @@ $router->group(
                 'uses' => 'AuthorizationController@attachPermissionToRole',
             ]
         );
-        $router->post(
+        $router->delete(
             '/revoke-permission-from-role',
             [
                 'as' => 'revoke-permission-from-role',

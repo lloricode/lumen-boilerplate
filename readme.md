@@ -60,7 +60,7 @@ Use the `Client ID` and `Client Secret` of password grant for OAuth2 - Login (Pa
 
 You can visit the generated API documentation in http://lumen-boilerplate.test/documentation in your local machine. (working in progress)
 
-![](https://user-images.githubusercontent.com/8251344/92990619-6de18700-f510-11ea-9e05-e6062b709bc4.png)
+![Screenshot from 2020-09-13 00-36-59](https://user-images.githubusercontent.com/8251344/93000197-44991900-f559-11ea-8c0d-6e076d4ceb41.png)
 
 or here's the published postman [here](https://documenter.getpostman.com/view/4366674/SWEDzudy)
 
@@ -75,8 +75,8 @@ vendor/bin/phpunit
 ```
 
 **Notes:** 
-- If you run this via [Homestead's](https://laravel.com/docs/5.7/homestead) ssh, you can this command: `phpunit` (in your project directory).
-- After running testing, you can check generated code coverage from `build` folder.
+- If you run this via [Homestead's](https://laravel.com/docs/homestead) ssh, you can this command: `phpunit` (in your project directory).
+- After running testing, you can check generated code coverage from `.build` folder.
 
 
 ## Built With

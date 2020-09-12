@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Lloric Mayuga Garcia <lloricode@gmail.com>
- * Date: 12/16/18
- * Time: 11:25 AM
- */
 
 namespace App\Http\Controllers\V1\Backend\Auth\Role;
 
@@ -14,50 +8,10 @@ use App\Transformers\Auth\RoleTransformer;
 use Illuminate\Http\Request;
 use Prettus\Repository\Criteria\RequestCriteria;
 
-/**
- * Class RoleController
- *
- * @package App\Http\Controllers\V1\Backend\Auth\Role
- */
 class RoleController extends Controller
 {
     protected RoleRepository $roleRepository;
 
-    /**
-     *
-     * @OA\Get(
-     *     path="/sampsdfle/{category}/things",
-     *     operationId="/sdf/category/things",
-     *     tags={"yourtag"},
-     *     @OA\Parameter(
-     *         name="category",
-     *         in="path",
-     *         description="The category parameter in path",
-     *         required=true,
-     *         @OA\Schema(type="string")
-     *     ),
-     *     @OA\Parameter(
-     *         name="criteria",
-     *         in="query",
-     *         description="Some optional other parameter",
-     *         required=false,
-     *         @OA\Schema(type="string")
-     *     ),
-     *     @OA\Response(
-     *         response="200",
-     *         description="Returns some sample category things",
-     *         @OA\JsonContent()
-     *     ),
-     *     @OA\Response(
-     *         response="400",
-     *         description="Error: Bad request. When required parameters were not supplied.",
-     *     ),
-     * )
-     *
-     * RoleController constructor.
-     *
-     * @param  \App\Repositories\Auth\Role\RoleRepository  $roleRepository
-     */
     public function __construct(RoleRepository $roleRepository)
     {
         $permissions = $roleRepository->makeModel()::PERMISSIONS;

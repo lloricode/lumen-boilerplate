@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Lloric Mayuga Garcia <lloricode@gmail.com>
- * Date: 12/26/18
- * Time: 4:43 PM
- */
 
 namespace App\Http\Controllers\V1\Backend\Auth\Authorization;
 
@@ -16,22 +10,11 @@ use App\Transformers\Auth\RoleTransformer;
 use App\Transformers\Auth\UserTransformer;
 use Illuminate\Http\Request;
 
-/**
- * Class AuthorizationController
- *
- * @package App\Http\Controllers\V1\Backend\Auth\Authorization
- */
 class AuthorizationController extends Controller
 {
     protected UserRepository $userRepository;
     protected RoleRepository $roleRepository;
 
-    /**
-     * AuthorizationController constructor.
-     *
-     * @param  \App\Repositories\Auth\User\UserRepository  $userRepository
-     * @param  \App\Repositories\Auth\Role\RoleRepository  $roleRepository
-     */
     public function __construct(UserRepository $userRepository, RoleRepository $roleRepository)
     {
         $this->middleware('permission:'.config('setting.permission.permission_names.manage_authorization'));
@@ -47,17 +30,29 @@ class AuthorizationController extends Controller
      *     summary="Assign role to user",
      *     tags={"Authorization"},
      *     security={{"passport":{}}},
+     *     @OA\Parameter(
+     *         name="include",
+     *         in="query",
+     *         required=false,
+     *         @OA\Schema(
+     *             type="array",
+     *             @OA\Items(
+     *                 type="string",
+     *                 enum = {"roles", "permissions"},
+     *             )
+     *         )
+     *     ),
      *     @OA\RequestBody(
      *         @OA\MediaType(
      *             mediaType="application/json",
      *             @OA\Schema(
      *                 @OA\Property(
-     *                     description="User hashed id",
+     *                     description="User key",
      *                     property="user_id",
      *                     type="int",
      *                 ),
      *                 @OA\Property(
-     *                     description="Role hashed id",
+     *                     description="Role key",
      *                     property="role_id",
      *                     type="int",
      *                 ),
@@ -68,41 +63,21 @@ class AuthorizationController extends Controller
      *             )
      *         )
      *     ),
-     *  @OA\Response(
-     *         response="200",
-     *         description="ok",
-     *         content={
-     *             @OA\MediaType(
-     *                 mediaType="application/json",
-     *                 @OA\Schema(
-     *                     @OA\Property(
-     *                         property="access_token",
-     *                         type="string",
-     *                         description="JWT access token"
-     *                     ),
-     *                     @OA\Property(
-     *                         property="token_type",
-     *                         type="string",
-     *                         description="Token type"
-     *                     ),
-     *                     @OA\Property(
-     *                         property="expires_in",
-     *                         type="integer",
-     *                         description="Token expiration in miliseconds",
-     *                         @OA\Items
-     *                     ),
-     *                     example={
-     *                         "access_token": "eyJ0eXAiOiJKV1QiLCJhbGc...",
-     *                         "token_type": "bearer",
-     *                         "expires_in": 3600
-     *                     }
-     *                 )
-     *             )
-     *         }
+     *     @OA\Response(
+     *         response=200,
+     *         description="OK",
+     *         @OA\JsonContent(
+     *             type="array",
+     *             @OA\Items(ref="#/components/schemas/UserTransformer")
+     *         ),
      *     ),
      *     @OA\Response(
      *         response="401",
-     *         description="Unauthorized"
+     *         description="Unauthorized",
+     *         @OA\JsonContent(
+     *             type="array",
+     *             @OA\Items(ref="#/components/schemas/Error")
+     *         ),
      *     ),
      * )
      *
@@ -136,11 +111,50 @@ class AuthorizationController extends Controller
     }
 
     /**
+     * @OA\Delete(
+     *     path="/auth/authorizations/revoke-role-from-user",
+     *     summary="Revoke role from user",
+     *     tags={"Authorization"},
+     *     security={{"passport":{}}},
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     description="User key",
+     *                     property="user_id",
+     *                     type="int",
+     *                 ),
+     *                 @OA\Property(
+     *                     description="Role keyd",
+     *                     property="role_id",
+     *                     type="int",
+     *                 ),
+     *                 example={
+     *                  "user_id": "user-at-usercom",
+     *                   "role_id": 1
+     *                  }
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=204,
+     *         description="The resource was revoked successfully.",
+     *     ),
+     *     @OA\Response(
+     *         response="401",
+     *         description="Unauthorized",
+     *         @OA\JsonContent(
+     *             type="array",
+     *             @OA\Items(ref="#/components/schemas/Error")
+     *         ),
+     *     ),
+     * )
      * @param  \Illuminate\Http\Request  $request
      *
-     * @return \Spatie\Fractal\Fractal
+     * @return \Illuminate\Http\Response|\Laravel\Lumen\Http\ResponseFactory
      * @throws \Illuminate\Validation\ValidationException
-     * @api                {post} /auth/authorizations/revoke-role-from-user Revoke role form user
+     * @api                {delete} /auth/authorizations/revoke-role-from-user Revoke role form user
      * @apiName            revoke-role-from-user
      * @apiGroup           Authorization
      * @apiVersion         1.0.0
@@ -162,11 +176,65 @@ class AuthorizationController extends Controller
 
         $this->userRepository->removeRole($attributes['user_id'], $attributes['role_id']);
 
-        $user = $this->userRepository->findByRouteKeyName($attributes['user_id']);
-        return $this->fractal($user, new UserTransformer());
+        return response('', 204);
     }
 
     /**
+     * @OA\Post(
+     *     path="/auth/authorizations/assign-permission-to-user",
+     *     summary="Assign permission to user",
+     *     tags={"Authorization"},
+     *     security={{"passport":{}}},
+     *     @OA\Parameter(
+     *         name="include",
+     *         in="query",
+     *         required=false,
+     *         @OA\Schema(
+     *             type="array",
+     *             @OA\Items(
+     *                 type="string",
+     *                 enum = {"roles", "permissions"},
+     *             )
+     *         )
+     *     ),
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     description="User key",
+     *                     property="user_id",
+     *                     type="int",
+     *                 ),
+     *                 @OA\Property(
+     *                     description="Permission key",
+     *                     property="permission_id",
+     *                     type="int",
+     *                 ),
+     *                 example={
+     *                  "user_id": "user-at-usercom",
+     *                   "permission_id": 1
+     *                  }
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="OK",
+     *         @OA\JsonContent(
+     *             type="array",
+     *             @OA\Items(ref="#/components/schemas/UserTransformer")
+     *         ),
+     *     ),
+     *     @OA\Response(
+     *         response="401",
+     *         description="Unauthorized",
+     *         @OA\JsonContent(
+     *             type="array",
+     *             @OA\Items(ref="#/components/schemas/Error")
+     *         ),
+     *     ),
+     * )
      * @param  \Illuminate\Http\Request  $request
      *
      * @return \Spatie\Fractal\Fractal
@@ -197,11 +265,50 @@ class AuthorizationController extends Controller
     }
 
     /**
+     * @OA\Delete(
+     *     path="/auth/authorizations/revoke-permission-from-user",
+     *     summary="Revoke permission from user",
+     *     tags={"Authorization"},
+     *     security={{"passport":{}}},
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     description="User key",
+     *                     property="user_id",
+     *                     type="int",
+     *                 ),
+     *                 @OA\Property(
+     *                     description="Permission key",
+     *                     property="permission_id",
+     *                     type="int",
+     *                 ),
+     *                 example={
+     *                  "user_id": "user-at-usercom",
+     *                   "permission_id": 1
+     *                  }
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=204,
+     *         description="The resource was revoked successfully.",
+     *     ),
+     *     @OA\Response(
+     *         response="401",
+     *         description="Unauthorized",
+     *         @OA\JsonContent(
+     *             type="array",
+     *             @OA\Items(ref="#/components/schemas/Error")
+     *         ),
+     *     ),
+     * )
      * @param  \Illuminate\Http\Request  $request
      *
-     * @return \Spatie\Fractal\Fractal
+     * @return \Illuminate\Http\Response|\Laravel\Lumen\Http\ResponseFactory
      * @throws \Illuminate\Validation\ValidationException
-     * @api                {post} /auth/authorizations/revoke-permission-from-user Revoke permission from user
+     * @api                {delete} /auth/authorizations/revoke-permission-from-user Revoke permission from user
      * @apiName            revoke-permission-from-user
      * @apiGroup           Authorization
      * @apiVersion         1.0.0
@@ -223,10 +330,65 @@ class AuthorizationController extends Controller
 
         $this->userRepository->revokePermissionTo($attributes['user_id'], $attributes['permission_id']);
 
-        return $this->fractal($this->userRepository->findByRouteKeyName($attributes['user_id']), new UserTransformer());
+        return response('', 204);
     }
 
     /**
+     * @OA\Post(
+     *     path="/auth/authorizations/attach-permission-to-role",
+     *     summary="Attach permission to role",
+     *     tags={"Authorization"},
+     *     security={{"passport":{}}},
+     *     @OA\Parameter(
+     *         name="include",
+     *         in="query",
+     *         required=false,
+     *         @OA\Schema(
+     *             type="array",
+     *             @OA\Items(
+     *                 type="string",
+     *                 enum = {"roles", "permissions"},
+     *             )
+     *         )
+     *     ),
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     description="Role key",
+     *                     property="role_id",
+     *                     type="int",
+     *                 ),
+     *                 @OA\Property(
+     *                     description="Permission key",
+     *                     property="permission_id",
+     *                     type="int",
+     *                 ),
+     *                 example={
+     *                  "role_id": 1,
+     *                   "permission_id": 1
+     *                  }
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="OK",
+     *         @OA\JsonContent(
+     *             type="array",
+     *             @OA\Items(ref="#/components/schemas/UserTransformer")
+     *         ),
+     *     ),
+     *     @OA\Response(
+     *         response="401",
+     *         description="Unauthorized",
+     *         @OA\JsonContent(
+     *             type="array",
+     *             @OA\Items(ref="#/components/schemas/Error")
+     *         ),
+     *     ),
+     * )
      * @param  \Illuminate\Http\Request  $request
      *
      * @return \Spatie\Fractal\Fractal
@@ -257,11 +419,50 @@ class AuthorizationController extends Controller
     }
 
     /**
+     * @OA\Delete(
+     *     path="/auth/authorizations/revoke-permission-from-role",
+     *     summary="Revoke permission from role",
+     *     tags={"Authorization"},
+     *     security={{"passport":{}}},
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     description="Role key",
+     *                     property="role_id",
+     *                     type="int",
+     *                 ),
+     *                 @OA\Property(
+     *                     description="Permission key",
+     *                     property="permission_id",
+     *                     type="int",
+     *                 ),
+     *                 example={
+     *                  "role_id": 1,
+     *                   "permission_id": 1
+     *                  }
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=204,
+     *         description="The resource was revoked successfully.",
+     *     ),
+     *     @OA\Response(
+     *         response="401",
+     *         description="Unauthorized",
+     *         @OA\JsonContent(
+     *             type="array",
+     *             @OA\Items(ref="#/components/schemas/Error")
+     *         ),
+     *     ),
+     * )
      * @param  \Illuminate\Http\Request  $request
      *
-     * @return \Spatie\Fractal\Fractal
+     * @return \Illuminate\Http\Response|\Laravel\Lumen\Http\ResponseFactory
      * @throws \Illuminate\Validation\ValidationException
-     * @api                {post} /auth/authorizations/revoke-permission-from-role Revoke permission from role
+     * @api                {delete} /auth/authorizations/revoke-permission-from-role Revoke permission from role
      * @apiName            revoke-permission-from-role
      * @apiGroup           Authorization
      * @apiVersion         1.0.0
@@ -283,7 +484,7 @@ class AuthorizationController extends Controller
 
         $this->roleRepository->revokePermissionTo($attributes['role_id'], $attributes['permission_id']);
 
-        return $this->fractal($this->roleRepository->findByRouteKeyName($attributes['role_id']), new RoleTransformer());
+        return response('', 204);
     }
 
 

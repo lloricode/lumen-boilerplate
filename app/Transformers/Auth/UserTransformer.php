@@ -11,6 +11,34 @@ namespace App\Transformers\Auth;
 use App\Models\Auth\User\User;
 use App\Transformers\BaseTransformer;
 
+/**
+ * @OA\Schema(
+ *     schema="UserTransformer",
+ *     type="object",
+ *     properties={
+ *         @OA\Property(property="id", type="string"),
+ *         @OA\Property(property="attributes", type="object", properties={
+ *
+ *             @OA\Property(property="first_name", type="string"),
+ *             @OA\Property(property="last_name", type="string"),
+ *             @OA\Property(property="email", type="string"),
+ *             @OA\Property(property="created_at", type="string"),
+ *             @OA\Property(property="created_at_readable", type="string"),
+ *             @OA\Property(property="updated_at", type="string"),
+ *             @OA\Property(property="updated_at_readable", type="string")
+ *
+ *         }),
+ *         @OA\Property(property="relationships", type="array", @OA\Items({
+ *
+ *         })),
+ *         @OA\Property(property="meta", type="array", @OA\Items({
+ *
+ *             @OA\Property(property="include", type="array", @OA\Items({
+ *             })),
+ *         })),
+ *     }
+ * )
+ */
 class UserTransformer extends BaseTransformer
 {
     /**
