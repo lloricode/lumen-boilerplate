@@ -31,14 +31,8 @@ composer install
 
 After that run :
 ```bash
-composer fresh
+php artisan migrate:fresh --seed
 ```
-This will migrate tables, seed fake data to your database, and install [laravel passport](https://github.com/laravel/passport).
-
-See  `composer.json` > `scripts index`. 
-
-![](https://user-images.githubusercontent.com/8251344/92990723-32938800-f511-11ea-8291-59753090cd15.png)
-
 
 ## Login using OAuth2 by [laravel/passport](https://github.com/laravel/passport)
 

@@ -67,11 +67,6 @@
     "post-root-package-install": [
       "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
     ],
-    "fresh": [
-      "@php artisan migrate:fresh --seed --ansi",
-      "@php artisan passport:install --force --ansi",
-      "@php artisan inspire --ansi"
-    ],
     "clear-all": [
       "@php artisan clear-compiled --ansi",
       "@php artisan permission:cache-reset --ansi",
