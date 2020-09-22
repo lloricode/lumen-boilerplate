@@ -75,7 +75,7 @@ $app->configure('permission');
 $app->configure('repository');
 $app->configure('services');
 $app->configure('setting');
-$app->configure('swagger-lume');
+//$app->configure('swagger-lume');
 
 /*
 |--------------------------------------------------------------------------
@@ -130,7 +130,8 @@ $app->register(Prettus\Repository\Providers\RepositoryServiceProvider::class);
 $app->register(Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class);
 $app->register(Spatie\Fractal\FractalServiceProvider::class);
 $app->register(Spatie\Permission\PermissionServiceProvider::class);
-$app->register(SwaggerLume\ServiceProvider::class);
+//$app->register(SwaggerLume\ServiceProvider::class);
+$app->register(Illuminate\Database\Eloquent\LegacyFactoryServiceProvider::class);
 
 if (class_exists('Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider')) {
     $app->register('Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider');
