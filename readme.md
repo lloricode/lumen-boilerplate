@@ -3,11 +3,10 @@
 ![Run Tests](https://github.com/lloricode/lumen-boilerplate/workflows/Run%20Tests/badge.svg?branch=master)
 [![Chat](https://img.shields.io/badge/chat-on%20discord-7289da.svg)](https://discordapp.com/invite/9X3Y5pC)
 
-RESTful API template made from [Lumen 8](https://lumen.laravel.com/)
+RESTful API template made from [Lumen 7](https://lumen.laravel.com/)
 
 | Previous Lumen Version | 
 | ----- | 
-|[7](https://github.com/lloricode/lumen-boilerplate/tree/framework-7)|
 |[6](https://github.com/lloricode/lumen-boilerplate/tree/framework-6)|
 |[5.8](https://github.com/lloricode/lumen-boilerplate/tree/framework-5.8)|
 |[5.7](https://github.com/lloricode/lumen-boilerplate/tree/framework-5.7)|
