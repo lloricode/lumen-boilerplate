@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders\Traits;
+
 trait SeederHelper
 {
     public function seederPermission(array $permissionNames, bool $isAddToAdminRole = true, array $except = [])

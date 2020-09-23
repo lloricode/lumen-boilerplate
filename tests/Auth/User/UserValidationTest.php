@@ -8,7 +8,7 @@
 
 namespace Test\Auth\User;
 
-use App\Models\Auth\User\User;
+use Database\Factories\Auth\User\UserFactory;
 use Test\TestCase;
 
 class UserValidationTest extends TestCase
@@ -20,13 +20,13 @@ class UserValidationTest extends TestCase
 
         $uniqueEmail = 'my@email.com';
 
-        factory(User::class)->create(
+        UserFactory::new()->create(
             [
                 'email' => $uniqueEmail,
             ]
         );
 
-        $user = factory(User::class)->create(
+        $user = UserFactory::new()->create(
             [
                 'email' => 'xx'.$uniqueEmail,
             ]

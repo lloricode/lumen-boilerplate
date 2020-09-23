@@ -9,6 +9,7 @@
 namespace Test\Auth\User;
 
 use App\Models\Auth\User\User;
+use Database\Factories\Auth\User\UserFactory;
 use Test\TestCase;
 
 class DeleteResourceSuccessTest extends TestCase
@@ -18,7 +19,7 @@ class DeleteResourceSuccessTest extends TestCase
     {
         $this->loggedInAs();
 
-        $user = factory(User::class)->create();
+        $user = UserFactory::new()->create();
         $user->delete();
 
         $this->put(route('backend.users.restore', ['id' => self::forId($user)]), [], $this->addHeaders());
@@ -47,7 +48,7 @@ class DeleteResourceSuccessTest extends TestCase
     {
         $this->loggedInAs();
 
-        $user = factory(User::class)->create();
+        $user = UserFactory::new()->create();
         $user->delete();
 
         $this->delete(route('backend.users.purge', ['id' => self::forId($user)]), [], $this->addHeaders());

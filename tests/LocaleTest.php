@@ -8,7 +8,7 @@
 
 namespace Test;
 
-use App\Models\Auth\User\User;
+use Database\Factories\Auth\User\UserFactory;
 use Laravel\Lumen\Testing\TestCase;
 
 class LocaleTest extends TestCase
@@ -16,7 +16,7 @@ class LocaleTest extends TestCase
     /** @test */
     public function get_all()
     {
-        $this->actingAs(factory(User::class)->create());
+        $this->actingAs(UserFactory::new()->create());
         $this->get(
             'localizations',
             [

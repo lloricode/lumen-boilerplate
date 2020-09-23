@@ -9,6 +9,7 @@
 namespace Test\Auth\User;
 
 use App\Models\Auth\User\User;
+use Database\Factories\Auth\User\UserFactory;
 use Test\TestCase;
 
 class BasicResourceSuccessTest extends TestCase
@@ -34,7 +35,7 @@ class BasicResourceSuccessTest extends TestCase
     {
         $this->loggedInAs();
 
-        $user = factory(User::class)->create();
+        $user = UserFactory::new()->create();
 
         $this->put(
             route('backend.users.update', ['id' => self::forId($user)]),
@@ -55,7 +56,7 @@ class BasicResourceSuccessTest extends TestCase
     {
         $this->loggedInAs();
 
-        $user = factory(User::class)->create();
+        $user = UserFactory::new()->create();
 
         $this->delete(route('backend.users.destroy', ['id' => self::forId($user)]), [], $this->addHeaders());
         $this->assertResponseStatus(204);
@@ -73,7 +74,7 @@ class BasicResourceSuccessTest extends TestCase
     public function show_user()
     {
         $this->loggedInAs();
-        $user = factory(User::class)->create($this->userData());
+        $user = UserFactory::new()->create($this->userData());
 
         $this->get(
             route(

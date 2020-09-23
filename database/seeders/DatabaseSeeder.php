@@ -1,5 +1,9 @@
 <?php
 
+namespace Database\Seeders;
+
+use Database\Seeders\Auth\AuthSeeder;
+use DB;
 use Illuminate\Database\Seeder;
 use Prettus\Repository\Helpers\CacheKeys;
 
@@ -12,7 +16,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call('AuthSeeder');
+        $this->call(AuthSeeder::class);
 
         shell_exec('php artisan passport:install --force');
 

@@ -8,7 +8,7 @@
 
 namespace Test\Auth\User;
 
-use App\Models\Auth\User\User;
+use Database\Factories\Auth\User\UserFactory;
 use Test\TestCase;
 
 class UserAccessTest extends TestCase
@@ -94,7 +94,7 @@ class UserAccessTest extends TestCase
 
     private function replaceUserUri($uri, bool $isDeleted = false): string
     {
-        $user = factory(User::class)->create();
+        $user = UserFactory::new()->create();
         if ($isDeleted) {
             $user->delete();
         }

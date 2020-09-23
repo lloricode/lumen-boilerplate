@@ -3,6 +3,7 @@
 namespace Test;
 
 use App\Models\Auth\User\User;
+use Database\Factories\Auth\User\UserFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Lumen\Testing\TestCase as BaseTestCase;
 use Spatie\Permission\PermissionRegistrar;
@@ -59,7 +60,7 @@ abstract class TestCase extends BaseTestCase
     protected function loggedInAs(string $roleName = 'system'): User
     {
         if ($roleName == 'user') {
-            $user = factory(User::class)->create();
+            $user = UserFactory::new()->create();
         } else {
             $user = User::role(config("setting.permission.role_names.$roleName"))->first();
         }

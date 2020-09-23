@@ -131,7 +131,6 @@ $app->register(Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::cla
 $app->register(Spatie\Fractal\FractalServiceProvider::class);
 $app->register(Spatie\Permission\PermissionServiceProvider::class);
 //$app->register(SwaggerLume\ServiceProvider::class);
-$app->register(Illuminate\Database\Eloquent\LegacyFactoryServiceProvider::class);
 
 if (class_exists('Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider')) {
     $app->register('Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider');

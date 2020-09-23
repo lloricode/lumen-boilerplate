@@ -8,7 +8,7 @@
 
 namespace Test\Auth\Authorization;
 
-use App\Models\Auth\User\User;
+use Database\Factories\Auth\User\UserFactory;
 
 class ManageTest extends BaseRole
 {
@@ -21,7 +21,7 @@ class ManageTest extends BaseRole
     /** @test */
     public function assign_role_to_user()
     {
-        $user = factory(User::class)->create();
+        $user = UserFactory::new()->create();
         $role = $this->createRole();
 
         $this->showModelWithRelation('backend.users.show', $user, $role, 'roles', 'dontSeeJson');
@@ -42,7 +42,7 @@ class ManageTest extends BaseRole
     /** @test */
     public function revoke_role_from_user()
     {
-        $user = factory(User::class)->create();
+        $user = UserFactory::new()->create();
         $role = $this->createRole();
         $user->assignRole($role);
 
@@ -66,7 +66,7 @@ class ManageTest extends BaseRole
     /** @test */
     public function assign_permission_to_user()
     {
-        $user = factory(User::class)->create();
+        $user = UserFactory::new()->create();
         $permission = $this->createPermission();
 
         $this->showModelWithRelation('backend.users.show', $user, $permission, 'permissions', 'dontSeeJson');
@@ -87,7 +87,7 @@ class ManageTest extends BaseRole
     /** @test */
     public function revoke_permission_to_user()
     {
-        $user = factory(User::class)->create();
+        $user = UserFactory::new()->create();
 
         $permission = $this->createPermission();
         $user->givePermissionTo($permission);

@@ -1,6 +1,10 @@
 <?php
 
+namespace Database\Seeders\Auth;
+
 use App\Models\Auth\User\User;
+use Database\Factories\Auth\User\UserFactory;
+use Database\Seeders\Traits\SeederHelper;
 use Illuminate\Database\Seeder;
 
 class UsersTableSeeder extends Seeder
@@ -14,7 +18,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $system = factory(User::class)->create(
+        $system = UserFactory::new()->create(
             [
                 'first_name' => 'System',
                 'last_name' => 'Root',
@@ -23,14 +27,14 @@ class UsersTableSeeder extends Seeder
             ]
         );
 
-        $admin = factory(User::class)->create(
+        $admin = UserFactory::new()->create(
             [
                 'email' => 'admin@admin.com',
                 'password' => app('hash')->make('secret'),
             ]
         );
 
-        $user = factory(User::class)->create(
+        $user = UserFactory::new()->create(
             [
                 'email' => 'user@user.com',
                 'password' => app('hash')->make('secret'),
@@ -40,7 +44,7 @@ class UsersTableSeeder extends Seeder
         $system->assignRole(config('setting.permission.role_names.system'));
         $admin->assignRole(config('setting.permission.role_names.admin'));
 
-        factory(User::class, 50)->create();
+        UserFactory::new()->count(50)->create();
 
         $this->seederPermission(User::PERMISSIONS);
     }

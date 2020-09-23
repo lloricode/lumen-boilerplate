@@ -2,7 +2,7 @@
 
 namespace Test\Auth\User;
 
-use App\Models\Auth\User\User;
+use Database\Factories\Auth\User\UserFactory;
 use Test\TestCase;
 
 class BasicResourceFailedTest extends TestCase
@@ -34,7 +34,7 @@ class BasicResourceFailedTest extends TestCase
 //        putenv("APP_ENV=$environment");
 //        $this->loggedInAs();
 //
-//        $hashedId = self::forId(factory(User::class)->create());
+//        $hashedId = self::forId(UserFactory::new()->create());
 //
 //        // remove last char
 //        $id = substr($hashedId, 0, strlen($hashedId) - 1);
@@ -59,7 +59,7 @@ class BasicResourceFailedTest extends TestCase
     {
         $this->loggedInAs();
 
-        $user = factory(User::class)->create();
+        $user = UserFactory::new()->create();
 
         $hashedId = self::forId($user);
 
