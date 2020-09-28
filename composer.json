@@ -27,6 +27,7 @@
     "ext-json": "*",
     "ext-pdo": "*",
     "coderello/laravel-passport-social-grant": "^3.0",
+    "darkaonline/swagger-lume": "^8.0",
     "dusterio/lumen-passport": "^0.2.18",
     "flipbox/lumen-generator": "^8.0",
     "fruitcake/laravel-cors": "^2.0",
