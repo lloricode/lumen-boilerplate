@@ -117,4 +117,4 @@ This project is licensed under the [MIT License](https://opensource.org/licenses
 
 ## Support Us
 
-[![Paypal](https://user-images.githubusercontent.com/8251344/82770823-839d4480-9e6c-11ea-9d35-921a32a04f8f.png)](https://www.paypal.me/lloricode)
+[![Paypal](https://user-images.githubusercontent.com/8251344/82770823-839d4480-9e6c-11ea-9d35-921a32a04f8f.png)](https://www.paypal.com/donate?hosted_button_id=V8PYXUNG6QP44)
