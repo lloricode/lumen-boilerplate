@@ -28,7 +28,7 @@
     "ext-pdo": "*",
     "coderello/laravel-passport-social-grant": "^3.0",
     "darkaonline/swagger-lume": "^8.0",
-    "dusterio/lumen-passport": "^0.2.18",
+    "dusterio/lumen-passport": "^0.3.2",
     "flipbox/lumen-generator": "^8.0",
     "fruitcake/laravel-cors": "^2.0",
     "graham-campbell/throttle": "^8.0",
@@ -43,9 +43,9 @@
   },
   "require-dev": {
     "barryvdh/laravel-ide-helper": "^2.8.1",
-    "fzaninotto/faker": "^1.9.1",
+    "fakerphp/faker": "^1.12",
     "gmsantos/inspiring": "^3.0",
-    "league/flysystem": "^1.0.66",
+    "league/flysystem": "^2.0",
     "mockery/mockery": "^1.3.1",
     "phpunit/phpunit": "^9.3.10"
   },
