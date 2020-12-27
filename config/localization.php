@@ -12,5 +12,9 @@ return [
         ],
         'es',
         'fr',
+        'sr' => [
+            'sr-Cyrl-RS',
+            'sr-Latn-RS',
+        ]
     ],
 ];
