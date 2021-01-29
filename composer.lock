@@ -1,20 +1,20 @@
 {
-    "_readme": [
-        "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
-        "This file is @generated automatically"
-    ],
-    "content-hash": "b64ed9aad731473b8af94e151876cb4c",
-    "packages": [
-        {
-            "name": "asm89/stack-cors",
-            "version": "v2.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/asm89/stack-cors.git",
-                "reference": "8d8f88b3b3830916be94292c1fbce84433efb1aa"
-            },
-            "dist": {
+  "_readme": [
+    "This file locks the dependencies of your project to a known state",
+    "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+    "This file is @generated automatically"
+  ],
+  "content-hash": "b4af64b91f8cfa2a0a81def3e785b3cd",
+  "packages": [
+    {
+      "name": "asm89/stack-cors",
+      "version": "v2.0.2",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/asm89/stack-cors.git",
+        "reference": "8d8f88b3b3830916be94292c1fbce84433efb1aa"
+      },
+      "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/asm89/stack-cors/zipball/8d8f88b3b3830916be94292c1fbce84433efb1aa",
                 "reference": "8d8f88b3b3830916be94292c1fbce84433efb1aa",
@@ -3353,45 +3353,43 @@
             ],
             "time": "2020-08-27T18:56:02+00:00"
         },
-        {
-            "name": "lcobucci/jwt",
-            "version": "4.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/lcobucci/jwt.git",
-                "reference": "b80c4876a010cd8bfa9c78de64c930bb2fc8fb9a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/lcobucci/jwt/zipball/b80c4876a010cd8bfa9c78de64c930bb2fc8fb9a",
-                "reference": "b80c4876a010cd8bfa9c78de64c930bb2fc8fb9a",
-                "shasum": ""
-            },
+    {
+      "name": "lcobucci/jwt",
+      "version": "4.1.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/lcobucci/jwt.git",
+        "reference": "2f533837091d0b76a89a059e7ed2b2732b2f459e"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/lcobucci/jwt/zipball/2f533837091d0b76a89a059e7ed2b2732b2f459e",
+        "reference": "2f533837091d0b76a89a059e7ed2b2732b2f459e",
+        "shasum": ""
+      },
             "require": {
-                "ext-mbstring": "*",
-                "ext-openssl": "*",
-                "lcobucci/clock": "^2.0",
-                "php": "^7.4 || ^8.0"
+              "ext-hash": "*",
+              "ext-json": "*",
+              "ext-mbstring": "*",
+              "ext-openssl": "*",
+              "ext-sodium": "*",
+              "lcobucci/clock": "^2.0",
+              "php": "^7.4 || ^8.0"
             },
             "require-dev": {
-                "infection/infection": "^0.20",
-                "lcobucci/coding-standard": "^6.0",
-                "mikey179/vfsstream": "^1.6",
-                "phpbench/phpbench": "^0.17",
-                "phpstan/extension-installer": "^1.0",
-                "phpstan/phpstan": "^0.12",
-                "phpstan/phpstan-deprecation-rules": "^0.12",
-                "phpstan/phpstan-phpunit": "^0.12",
-                "phpstan/phpstan-strict-rules": "^0.12",
-                "phpunit/php-invoker": "^3.1",
-                "phpunit/phpunit": "^9.4"
+              "infection/infection": "^0.21",
+              "lcobucci/coding-standard": "^6.0",
+              "mikey179/vfsstream": "^1.6.7",
+              "phpbench/phpbench": "^1.0@alpha",
+              "phpstan/extension-installer": "^1.0",
+              "phpstan/phpstan": "^0.12",
+              "phpstan/phpstan-deprecation-rules": "^0.12",
+              "phpstan/phpstan-phpunit": "^0.12",
+              "phpstan/phpstan-strict-rules": "^0.12",
+              "phpunit/php-invoker": "^3.1",
+              "phpunit/phpunit": "^9.5"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "4.0-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Lcobucci\\JWT\\": "src"
@@ -3415,7 +3413,7 @@
             ],
             "support": {
                 "issues": "https://github.com/lcobucci/jwt/issues",
-                "source": "https://github.com/lcobucci/jwt/tree/4.0.1"
+              "source": "https://github.com/lcobucci/jwt/tree/4.1.0"
             },
             "funding": [
                 {
@@ -3427,7 +3425,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2021-01-28T00:13:50+00:00"
+      "time": "2021-01-28T00:57:26+00:00"
         },
         {
             "name": "league/event",
@@ -5410,31 +5408,31 @@
             ],
             "time": "2020-11-12T18:46:53+00:00"
         },
-        {
-            "name": "spatie/laravel-permission",
-            "version": "3.18.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spatie/laravel-permission.git",
-                "reference": "1c51a5fa12131565fe3860705163e53d7a26258a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/1c51a5fa12131565fe3860705163e53d7a26258a",
-                "reference": "1c51a5fa12131565fe3860705163e53d7a26258a",
-                "shasum": ""
-            },
+    {
+      "name": "spatie/laravel-permission",
+      "version": "4.0.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/spatie/laravel-permission.git",
+        "reference": "7936ea9ebbd0d91877109dfeda1659fc4570a6cc"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/7936ea9ebbd0d91877109dfeda1659fc4570a6cc",
+        "reference": "7936ea9ebbd0d91877109dfeda1659fc4570a6cc",
+        "shasum": ""
+      },
             "require": {
-                "illuminate/auth": "^5.8|^6.0|^7.0|^8.0",
-                "illuminate/container": "^5.8|^6.0|^7.0|^8.0",
-                "illuminate/contracts": "^5.8|^6.0|^7.0|^8.0",
-                "illuminate/database": "^5.8|^6.0|^7.0|^8.0",
-                "php": "^7.2.5|^8.0"
+              "illuminate/auth": "^6.0|^7.0|^8.0",
+              "illuminate/container": "^6.0|^7.0|^8.0",
+              "illuminate/contracts": "^6.0|^7.0|^8.0",
+              "illuminate/database": "^6.0|^7.0|^8.0",
+              "php": "^7.2.5|^8.0"
             },
             "require-dev": {
-                "orchestra/testbench": "^3.8|^4.0|^5.0|^6.0",
-                "phpunit/phpunit": "^8.0|^9.0",
-                "predis/predis": "^1.1"
+              "orchestra/testbench": "^4.0|^5.0|^6.0",
+              "phpunit/phpunit": "^8.0|^9.0",
+              "predis/predis": "^1.1"
             },
             "type": "library",
             "extra": {
@@ -5454,31 +5452,31 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "MIT"
+              "MIT"
             ],
-            "authors": [
-                {
-                    "name": "Freek Van der Herten",
-                    "email": "freek@spatie.be",
-                    "homepage": "https://spatie.be",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Permission handling for Laravel 5.8 and up",
-            "homepage": "https://github.com/spatie/laravel-permission",
-            "keywords": [
-                "acl",
-                "laravel",
-                "permission",
-                "permissions",
-                "rbac",
-                "roles",
-                "security",
-                "spatie"
+      "authors": [
+        {
+          "name": "Freek Van der Herten",
+          "email": "freek@spatie.be",
+          "homepage": "https://spatie.be",
+          "role": "Developer"
+        }
+      ],
+      "description": "Permission handling for Laravel 6.0 and up",
+      "homepage": "https://github.com/spatie/laravel-permission",
+      "keywords": [
+        "acl",
+        "laravel",
+        "permission",
+        "permissions",
+        "rbac",
+        "roles",
+        "security",
+        "spatie"
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-permission/issues",
-                "source": "https://github.com/spatie/laravel-permission/tree/3.18.0"
+              "source": "https://github.com/spatie/laravel-permission/tree/4.0.0"
             },
             "funding": [
                 {
@@ -5486,7 +5484,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-11-09T14:08:36+00:00"
+      "time": "2021-01-27T23:03:34+00:00"
         },
         {
             "name": "spatie/laravel-sluggable",
