@@ -38,7 +38,7 @@
     "prettus/l5-repository": "^2.6.45",
     "rap2hpoutre/laravel-log-viewer": "^1.4.0",
     "spatie/laravel-fractal": "^5.7",
-    "spatie/laravel-permission": "^3.11.0",
+    "spatie/laravel-permission": "^4.0",
     "spatie/laravel-sluggable": "^2.5.1"
   },
   "require-dev": {
