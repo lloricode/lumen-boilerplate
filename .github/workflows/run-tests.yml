@@ -28,7 +28,7 @@ jobs:
           coverage: xdebug
 
       - name: Update Composer to v2
-        run: composer u self-update --2
+        run: composer self-update --2
 
       - name: Install Dependencies
         run: composer u --${{ matrix.dependency-version }} --ansi --no-interaction --no-suggest --prefer-dist
