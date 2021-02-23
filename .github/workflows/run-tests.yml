@@ -27,8 +27,8 @@ jobs:
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick
           coverage: xdebug
 
-      - name: Update Composer to v2
-        run: composer self-update --2
+      - name: Update Composer to latest stable version
+        run: composer self-update --stable
 
       - name: Install Dependencies
         run: composer u --${{ matrix.dependency-version }} --ansi --no-interaction --no-suggest --prefer-dist
