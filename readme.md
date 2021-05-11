@@ -114,6 +114,7 @@ This project is licensed under the [MIT License](https://opensource.org/licenses
 - [x] Throttle for lumen
 - [ ] Url versioning
 - [ ] Finishing swagger
+- [ ]  spatie/laravel-query-builder
 
 ## Support Us
 
