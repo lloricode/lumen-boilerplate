@@ -11,10 +11,8 @@ namespace Test\Auth\Authorization;
 use App\Models\Auth\Permission\Permission;
 use App\Models\Auth\Role\Role;
 use Illuminate\Database\Eloquent\Model;
-use Test\TestCase;
 
-
-abstract class BaseRole extends TestCase
+trait BaseRole
 {
     /**
      * checking multiple time, to make sure caching is properly manage.

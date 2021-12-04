@@ -25,7 +25,7 @@ trait UsesDatabase
         // The database needs to be deleted before the application gets boted
         // to avoid having the database in a weird read-only state.
 
-        if (!$force && static::$migrated) {
+        if (! $force && static::$migrated) {
             return;
         }
 

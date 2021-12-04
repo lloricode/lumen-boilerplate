@@ -6,45 +6,37 @@
  * Time: 10:03 PM
  */
 
-namespace Test\Auth\User;
-
 use Database\Factories\Auth\User\UserFactory;
-use Test\TestCase;
 
-class UserValidationTest extends TestCase
-{
-    /** @test */
-    public function unique_email()
-    {
-        $this->loggedInAs();
+test('unique email', function () {
+    $this->loggedInAs();
 
-        $uniqueEmail = 'my@email.com';
+    $uniqueEmail = 'my@email.com';
 
-        UserFactory::new()->create(
-            [
-                'email' => $uniqueEmail,
-            ]
-        );
+    UserFactory::new()->create(
+        [
+            'email' => $uniqueEmail,
+        ]
+    );
 
-        $user = UserFactory::new()->create(
-            [
-                'email' => 'xx'.$uniqueEmail,
-            ]
-        );
+    $user = UserFactory::new()->create(
+        [
+            'email' => 'xx'.$uniqueEmail,
+        ]
+    );
 
-        $this->put(
-            route('backend.users.update', ['id' => self::forId($user)]),
-            [
-                'email' => $uniqueEmail,
-            ],
-            $this->addHeaders()
-        );
+    put(
+        route('backend.users.update', ['id' => self::forId($user)]),
+        [
+            'email' => $uniqueEmail,
+        ],
+        $this->addHeaders()
+    );
 
-        $this->assertResponseStatus(422);
-        $this->seeJson(
-            [
-                'email' => ['The email has already been taken.'],
-            ]
-        );
-    }
-}
+    assertResponseStatus(422);
+    seeJson(
+        [
+            'email' => ['The email has already been taken.'],
+        ]
+    );
+});

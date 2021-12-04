@@ -6,179 +6,151 @@
  * Time: 11:17 AM
  */
 
-namespace Test\Auth\Authorization;
+uses(Test\Auth\Authorization\BaseRole::class);
 
-class RoleManagementTest extends BaseRole
-{
-    /**
-     * @param $routeName
-     *
-     * @test
-     * @testWith ["store"]
-     *          ["update"]
-     */
-    public function validation_role($routeName)
-    {
-        $this->loggedInAs();
+it('validation role', function ($routeName) {
+    $this->loggedInAs();
 
-        $route = "backend.roles.$routeName";
-        $paramNoData = [
-            'name' => '',
-        ];
-        switch ($routeName) {
-            case 'store':
-                $this->post(route($route), $paramNoData, $this->addHeaders());
-                break;
-            case 'update':
-                $this->put(
-                    route(
-                        $route,
-                        [
-                            'id' => self::forId($this->createRole()),
-                        ]
-                    ),
-                    $paramNoData,
-                    $this->addHeaders()
-                );
-                break;
-        }
-        $this->assertResponseStatus(422);
-        $this->seeJson(
+    $route = "backend.roles.$routeName";
+    $paramNoData = [
+        'name' => '',
+    ];
+    switch ($routeName) {
+        case 'store':
+            post(route($route), $paramNoData, $this->addHeaders());
+            break;
+        case 'update':
+            put(
+                route(
+                    $route,
+                    [
+                        'id' => self::forId($this->createRole()),
+                    ]
+                ),
+                $paramNoData,
+                $this->addHeaders()
+            );
+            break;
+    }
+    assertResponseStatus(422);
+    seeJson(
+        [
+            'name' => ['The name field is required.'],
+        ]
+    );
+})
+    ->with([
+        ["store"],
+        ["update"],
+    ]);
+
+it('default role not allowed', function ($verbMethod, $routeName) {
+    $this->loggedInAs();
+    $this->{$verbMethod}(
+        route(
+            $routeName,
             [
-                'name' => ['The name field is required.'],
+                'id' => self::forId($this->getByRoleName('system')),
             ]
-        );
-    }
+        ),
+        $verbMethod == 'delete' ? [] : ['name' => $this->getByRoleName('system')->name],
+        $this->addHeaders()
+    );
+    assertResponseStatus(403);
+    seeJson(
+        [
+            'message' => 'You cannot update/delete default role.',
+        ]
+    );
+})
+    ->with([
+        ["delete", "backend.roles.destroy"],
+        ["put", "backend.roles.update"],
+    ]);
 
-    /**
-     * @param $verbMethod
-     * @param $routeName
-     *
-     * @test
-     * @testWith ["delete", "backend.roles.destroy"]
-     *          ["put", "backend.roles.update"]
-     */
-    public function default_role_not_allowed($verbMethod, $routeName)
-    {
-        $this->loggedInAs();
-        $this->{$verbMethod}(
-            route(
-                $routeName,
-                [
-                    'id' => self::forId($this->getByRoleName('system')),
-                ]
-            ),
-            $verbMethod == 'delete' ? [] : ['name' => $this->getByRoleName('system')->name],
-            $this->addHeaders()
-        );
-        $this->assertResponseStatus(403);
-        $this->seeJson(
+it('store role success', function () {
+    $this->loggedInAs();
+
+    $data = [
+        'name' => 'test new role',
+    ];
+    post(route('backend.roles.store'), $data, $this->addHeaders());
+
+    assertResponseStatus(201);
+    seeJson($data);
+});
+
+it('update role success', function () {
+    $this->loggedInAs();
+    $roleNameTest = 'im role name';
+
+    $role = $this->createRole($roleNameTest);
+
+    $data = [
+        'name' => $roleNameTest.' new',
+    ];
+
+    put(
+        route(
+            'backend.roles.update',
             [
-                'message' => 'You cannot update/delete default role.',
+                'id' => self::forId($role),
             ]
-        );
-    }
+        ),
+        $data,
+        $this->addHeaders()
+    );
 
-    /**
-     * @test
-     */
-    public function store_role_success()
-    {
-        $this->loggedInAs();
+    assertResponseStatus(200);
+    seeJson($data);
+});
 
-        $data = [
-            'name' => 'test new role',
-        ];
-        $this->post(route('backend.roles.store'), $data, $this->addHeaders());
+it('update duplicate role', function () {
+    $this->loggedInAs();
+    $duplicateNameTest = 'im duplicate role name';
 
-        $this->assertResponseStatus(201);
-        $this->seeJson($data);
-    }
+    $this->createRole($duplicateNameTest);
 
-    /**
-     * @test
-     */
-    public function update_role_success()
-    {
-        $this->loggedInAs();
-        $roleNameTest = 'im role name';
+    $role = $this->createRole('another role name');
 
-        $role = $this->createRole($roleNameTest);
+    $data = [
+        'name' => $duplicateNameTest,
+    ];
 
-        $data = [
-            'name' => $roleNameTest.' new',
-        ];
-
-        $this->put(
-            route(
-                'backend.roles.update',
-                [
-                    'id' => self::forId($role),
-                ]
-            ),
-            $data,
-            $this->addHeaders()
-        );
-
-        $this->assertResponseStatus(200);
-        $this->seeJson($data);
-    }
-
-    /**
-     * @test
-     */
-    public function updateDuplicateRole()
-    {
-        $this->loggedInAs();
-        $duplicateNameTest = 'im duplicate role name';
-
-        $this->createRole($duplicateNameTest);
-
-        $role = $this->createRole('another role name');
-
-        $data = [
-            'name' => $duplicateNameTest,
-        ];
-
-        $this->put(
-            route(
-                'backend.roles.update',
-                [
-                    'id' => self::forId($role),
-                ]
-            ),
-            $data,
-            $this->addHeaders()
-        );
-
-        $this->assertResponseStatus(422);
-        $this->seeJson(
+    put(
+        route(
+            'backend.roles.update',
             [
-                'message' => "A role `{$duplicateNameTest}` already exists for guard `api`.",
+                'id' => self::forId($role),
             ]
-        );
-    }
+        ),
+        $data,
+        $this->addHeaders()
+    );
 
-    /**
-     * @test
-     */
-    public function storeDuplicateRole()
-    {
-        $this->loggedInAs();
-        $roleNameTest = 'im duplicate role name';
+    assertResponseStatus(422);
+    seeJson(
+        [
+            'message' => "A role `{$duplicateNameTest}` already exists for guard `api`.",
+        ]
+    );
+});
 
-        $this->createRole($roleNameTest);
+it('store duplicate role', function () {
+    $this->loggedInAs();
+    $roleNameTest = 'im duplicate role name';
 
-        $data = [
-            'name' => $roleNameTest,
-        ];
-        $this->post(route('backend.roles.store'), $data, $this->addHeaders());
+    $this->createRole($roleNameTest);
 
-        $this->assertResponseStatus(422);
-        $this->seeJson(
-            [
-                'message' => "A role `$roleNameTest` already exists for guard `api`.",
-            ]
-        );
-    }
-}
+    $data = [
+        'name' => $roleNameTest,
+    ];
+    post(route('backend.roles.store'), $data, $this->addHeaders());
+
+    assertResponseStatus(422);
+    seeJson(
+        [
+            'message' => "A role `$roleNameTest` already exists for guard `api`.",
+        ]
+    );
+});

@@ -59,20 +59,13 @@ You can visit the generated API documentation in http://lumen-boilerplate.test/d
 
 or here's the published postman [here](https://documenter.getpostman.com/view/4366674/SWEDzudy)
 
-## PHPUnit
-
-![](https://user-images.githubusercontent.com/8251344/82751581-c6b6d380-9dea-11ea-89ba-eaee58242757.png)
+## Testing (Pest)
 
 In your project directory run this command:
 
 ```bash
-vendor/bin/phpunit
+composer pest
 ```
-
-**Notes:** 
-- If you run this via [Homestead's](https://laravel.com/docs/homestead) ssh, you can this command: `phpunit` (in your project directory).
-- After running testing, you can check generated code coverage from `.build` folder.
-
 
 ## Built With
 

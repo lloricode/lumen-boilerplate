@@ -1,71 +1,30 @@
 <?php
 
-namespace Test\Auth\User;
-
 use Database\Factories\Auth\User\UserFactory;
-use Test\TestCase;
 
-class BasicResourceFailedTest extends TestCase
-{
-    /** @test */
-    public function cannot_delete_self()
-    {
-        $user = $this->loggedInAs();
+/** @test */
+it('cannot_delete_self', function () {
+    $user = $this->loggedInAs();
 
-        $this->delete(route('backend.users.destroy', ['id' => self::forId($user)]), [], $this->addHeaders());
+    $this->delete(route('backend.users.destroy', ['id' => self::forId($user)]), [], $this->addHeaders());
 
-        $this->assertResponseStatus(403);
-        $this->seeJson(
-            [
-                'message' => 'You cannot delete your self.',
-            ]
-        );
-    }
+    assertResponseStatus(403);
+    seeJson(
+        [
+            'message' => 'You cannot delete your self.',
+        ]
+    );
+});
 
-//    /**
-//     * @param $environment
-//     *
-//     * @test
-//     * @testWith ["production"]
-//     *      ["local"]
-//     */
-//    public function get_user_with_wrong_hashed_dd($environment)
-//    {
-//        putenv("APP_ENV=$environment");
-//        $this->loggedInAs();
-//
-//        $hashedId = self::forId(UserFactory::new()->create());
-//
-//        // remove last char
-//        $id = substr($hashedId, 0, strlen($hashedId) - 1);
-//
-//        $this->get(route('backend.users.show', ['id' => $id]), $this->addHeaders());
-//        $this->assertResponseStatus(400);
-//        $this->seeJson(
-//            [
-//                'message' =>
-////                $environment == 'production'
-////                ? Response::$statusTexts[Response::HTTP_NOT_FOUND]
-////                :
-//                    'Invalid hashed id.',
-//            ]
-//        );
-//    }
+it('get none existed user', function () {
+    $this->loggedInAs();
 
-    /** @test
-     * @throws \Exception
-     */
-    public function get_none_existed_user()
-    {
-        $this->loggedInAs();
+    $user = UserFactory::new()->create();
 
-        $user = UserFactory::new()->create();
+    $hashedId = self::forId($user);
 
-        $hashedId = self::forId($user);
+    $user->delete();
 
-        $user->delete();
-
-        $this->get(route('backend.users.show', ['id' => $hashedId]), $this->addHeaders());
-        $this->assertResponseStatus(404);
-    }
-}
+    get(route('backend.users.show', ['id' => $hashedId]), $this->addHeaders());
+    assertResponseStatus(404);
+});

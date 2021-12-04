@@ -50,7 +50,7 @@
     "fakerphp/faker": "^1.13",
     "league/flysystem": "^2.3.2",
     "mockery/mockery": "^1.4.4",
-    "phpunit/phpunit": "^9.5.10",
+    "pestphp/pest": "^1.21.1",
     "spatie/laravel-ray": "^1.26.3",
     "spatie/x-ray": "^1.1"
   },
@@ -89,10 +89,8 @@
       "@php artisan ide-helper:models --reset --write --ansi",
       "@php artisan inspire --ansi"
     ],
-    "phpunit": [
-      "./vendor/bin/phpunit --verbose > phpunit.txt -d memory_limit=2048M",
-      "@php artisan inspire --ansi"
-    ],
+    "pest": "./vendor/bin/pest",
+    "pest-coverage": "./vendor/bin/pest --coverage",
     "x-ray": "vendor/bin/x-ray app database resources routes tests"
   },
   "config": {

@@ -6,89 +6,74 @@
  * Time: 12:11 PM
  */
 
-namespace Test\Auth\User;
-
 use App\Models\Auth\User\User;
 use Database\Factories\Auth\User\UserFactory;
-use Test\TestCase;
 
-class BasicResourceSuccessTest extends TestCase
-{
+it('store user', function () {
+    $this->loggedInAs();
 
-    /** @test */
-    public function store_user()
-    {
-        $this->loggedInAs();
+    post(route('backend.users.store'), $this->userData(), $this->addHeaders());
+    assertResponseStatus(201);
 
-        $this->post(route('backend.users.store'), $this->userData(), $this->addHeaders());
-        $this->assertResponseStatus(201);
+    $data = $this->userData();
+    unset($data['password']);
 
-        $data = $this->userData();
-        unset($data['password']);
+    seeInDatabase((new User())->getTable(), $data);
+    seeJson($data);
+});
 
-        $this->seeInDatabase((new User())->getTable(), $data);
-        $this->seeJson($data);
-    }
+it('update user', function () {
+    $this->loggedInAs();
 
-    /** @test */
-    public function update_user()
-    {
-        $this->loggedInAs();
+    $user = UserFactory::new()->create();
 
-        $user = UserFactory::new()->create();
+    put(
+        route('backend.users.update', ['id' => self::forId($user)]),
+        $this->userData(),
+        $this->addHeaders()
+    );
+    assertResponseOk();
 
-        $this->put(
-            route('backend.users.update', ['id' => self::forId($user)]),
-            $this->userData(),
-            $this->addHeaders()
-        );
-        $this->assertResponseOk();
+    $data = $this->userData();
+    unset($data['password']);
 
-        $data = $this->userData();
-        unset($data['password']);
+    seeInDatabase((new User())->getTable(), array_merge($data, ['id' => $user->getKey()]));
+    seeJson($data);
+});
 
-        $this->seeInDatabase((new User())->getTable(), array_merge($data, ['id' => $user->getKey()]));
-        $this->seeJson($data);
-    }
+it('destroy user', function () {
+    $this->loggedInAs();
 
-    /** @test */
-    public function destroy_user()
-    {
-        $this->loggedInAs();
+    $user = UserFactory::new()->create();
 
-        $user = UserFactory::new()->create();
+    delete(route('backend.users.destroy', ['id' => self::forId($user)]), [], $this->addHeaders());
+    assertResponseStatus(204);
 
-        $this->delete(route('backend.users.destroy', ['id' => self::forId($user)]), [], $this->addHeaders());
-        $this->assertResponseStatus(204);
+    notSeeInDatabase(
+        (new User())->getTable(),
+        [
+            'id' => $user->id,
+            'deleted_at' => null,
+        ]
+    );
+});
 
-        $this->notSeeInDatabase(
-            (new User())->getTable(),
+it('show user', function () {
+    $this->loggedInAs();
+    $user = UserFactory::new()->create($this->userData());
+
+    get(
+        route(
+            'backend.users.show',
             [
-                'id' => $user->id,
-                'deleted_at' => null,
+                'id' => self::forId($user),
             ]
-        );
-    }
+        ),
+        $this->addHeaders()
+    );
 
-    /** @test */
-    public function show_user()
-    {
-        $this->loggedInAs();
-        $user = UserFactory::new()->create($this->userData());
-
-        $this->get(
-            route(
-                'backend.users.show',
-                [
-                    'id' => self::forId($user),
-                ]
-            ),
-            $this->addHeaders()
-        );
-
-        $this->assertResponseOk();
-        $data = $this->userData();
-        unset($data['password']);
-        $this->seeJson($data);
-    }
-}
+    assertResponseOk();
+    $data = $this->userData();
+    unset($data['password']);
+    seeJson($data);
+});

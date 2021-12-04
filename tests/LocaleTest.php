@@ -6,87 +6,63 @@
  * Time: 4:03 PM
  */
 
-namespace Test;
+use function PHPUnit\Framework\assertEquals;
 
-use Database\Factories\Auth\User\UserFactory;
-use Laravel\Lumen\Testing\TestCase;
+test('get all', function () {
+//   login();
+    get(
+        'localizations',
+        [
+            'Accept' => 'application/x.lumen.boilerplate.v1+json',
+            'Authorization' => 'Bearer xxxxx',
+        ]
+    )
+        ->assertResponseOk();
+});
 
-class LocaleTest extends TestCase
-{
-    /** @test */
-    public function get_all()
-    {
-        $this->actingAs(UserFactory::new()->create());
-        $this->get(
-            'localizations',
-            [
-                'Accept' => 'application/x.lumen.boilerplate.v1+json',
-                'Authorization' => 'Bearer xxxxx',
-            ]
-        )
-            ->assertResponseOk();
+it('check all locale', function (string $locale = null) {
+    $headers = [
+        'Accept' => 'application/x.lumen.boilerplate.v1+json',
+    ];
+
+    if (! is_null($locale)) {
+        $headers['Accept-Language'] = $locale;
     }
 
-    /**
-     * @param  string|null  $locale
-     *
-     * @test
-     * @testWith ["en"]
-     *           [null]
-     *           ["xxx"]
-     *           ["xxx,fr"]
-     */
-    public function check_all_locale(string $locale = null)
-    {
-        $headers = [
-            'Accept' => 'application/x.lumen.boilerplate.v1+json',
-        ];
+    get('/', $headers);
 
-        if (!is_null($locale)) {
-            $headers['Accept-Language'] = $locale;
-        }
-
-        $this->get('/', $headers);
-
-        if ($locale == 'xxx') {
-            $this->assertResponseStatus(412);
-            $this->seeJson(
-                [
-                    'message' => 'Unsupported Language.',
-//                    'status_code' => 412,
-                ]
-            );
-            return;
-        }
-
-        $message = 'Welcome to Lumen Boilerplate';
-        switch ($locale) {
-            case'xxx,fr';
-                $locale = 'fr';
-                $message = 'Bienvenue chez Lumen Boilerplate';
-                break;
-            default:
-                $locale = $locale ?: config('app.locale');
-                break;
-        }
-        $this->assertResponseOk();
-        $this->assertEquals(app('translator')->getLocale(), $locale);
-        $this->seeJson(
+    if ($locale == 'xxx') {
+        assertResponseStatus(412);
+        seeJson(
             [
-                'message' => $message,
+                'message' => 'Unsupported Language.',
+//                    'status_code' => 412,
             ]
         );
+        return;
     }
 
-    /**
-     * Creates the application.
-     *
-     * Needs to be implemented by subclasses.
-     *
-     * @return \Symfony\Component\HttpKernel\HttpKernelInterface
-     */
-    public function createApplication()
-    {
-        return require __DIR__.'/../bootstrap/app.php';
+    $message = 'Welcome to Lumen Boilerplate';
+    switch ($locale) {
+        case'xxx,fr';
+            $locale = 'fr';
+            $message = 'Bienvenue chez Lumen Boilerplate';
+            break;
+        default:
+            $locale = $locale ?: config('app.locale');
+            break;
     }
-}
+    assertResponseOk();
+    assertEquals(app('translator')->getLocale(), $locale);
+    seeJson(
+        [
+            'message' => $message,
+        ]
+    );
+})
+    ->with([
+        ["en"],
+        [null],
+        ["xxx"],
+        ["xxx,fr"],
+    ]);

@@ -12,7 +12,22 @@ abstract class TestCase extends BaseTestCase
 {
     use UsesDatabase;
 
-    public function setUp(): void
+    protected static function userData(): array
+    {
+        return [
+            'first_name' => 'Lloric',
+            'last_name' => 'Garcia',
+            'email' => 'lloricode@gmail.com',
+            'password' => app('hash')->make('secret'),
+        ];
+    }
+
+    protected static function forId(Model $model): string
+    {
+        return $model->{$model->getRouteKeyName()};
+    }
+
+    protected function setUp(): void
     {
         $this->prepareDatabase();
         parent::setUp();
@@ -68,20 +83,5 @@ abstract class TestCase extends BaseTestCase
         $this->actingAs($user);
 
         return $user;
-    }
-
-    protected static function userData(): array
-    {
-        return [
-            'first_name' => 'Lloric',
-            'last_name' => 'Garcia',
-            'email' => 'lloricode@gmail.com',
-            'password' => app('hash')->make('secret'),
-        ];
-    }
-
-    protected static function forId(Model $model): string
-    {
-        return $model->{$model->getRouteKeyName()};
     }
 }

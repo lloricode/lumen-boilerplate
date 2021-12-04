@@ -6,151 +6,135 @@
  * Time: 5:19 PM
  */
 
-namespace Test\Auth\Authorization;
-
 use Database\Factories\Auth\User\UserFactory;
 
-class ManageTest extends BaseRole
-{
-    public function setUp(): void
-    {
-        parent::setUp();
-        $this->loggedInAs();
-    }
+use function PHPUnit\Framework\assertFalse;
 
-    /** @test */
-    public function assign_role_to_user()
-    {
-        $user = UserFactory::new()->create();
-        $role = $this->createRole();
+uses(Test\Auth\Authorization\BaseRole::class);
 
-        $this->showModelWithRelation('backend.users.show', $user, $role, 'roles', 'dontSeeJson');
+beforeEach(fn() => $this->loggedInAs());
 
-        $this->post(
-            route('backend.authorizations.assign-role-to-user').'?include=roles',
-            [
-                'role_id' => self::forId($role),
-                'user_id' => self::forId($user),
-            ],
-            $this->addHeaders()
-        );
-        $this->assertResponseOk();
+it('assign role to user', function () {
+    $user = UserFactory::new()->create();
+    $role = $this->createRole();
 
-        $this->showModelWithRelation('backend.users.show', $user, $role, 'roles');
-    }
+    $this->showModelWithRelation('backend.users.show', $user, $role, 'roles', 'dontSeeJson');
 
-    /** @test */
-    public function revoke_role_from_user()
-    {
-        $user = UserFactory::new()->create();
-        $role = $this->createRole();
-        $user->assignRole($role);
+    post(
+        route('backend.authorizations.assign-role-to-user').'?include=roles',
+        [
+            'role_id' => self::forId($role),
+            'user_id' => self::forId($user),
+        ],
+        $this->addHeaders()
+    );
+    assertResponseOk();
+
+    $this->showModelWithRelation('backend.users.show', $user, $role, 'roles');
+});
+
+it('revoke role from user', function () {
+    $user = UserFactory::new()->create();
+    $role = $this->createRole();
+    $user->assignRole($role);
 
 //        $this->showModelWithRelation('backend.users.show', $user, $role, 'roles');
 
-        $this->delete(
-            route('backend.authorizations.revoke-role-from-user').'?include=roles',
-            [
-                'role_id' => self::forId($role),
-                'user_id' => self::forId($user),
-            ],
-            $this->addHeaders()
-        );
-        $this->assertResponseStatus(204);
+    delete(
+        route('backend.authorizations.revoke-role-from-user').'?include=roles',
+        [
+            'role_id' => self::forId($role),
+            'user_id' => self::forId($user),
+        ],
+        $this->addHeaders()
+    );
+    assertResponseStatus(204);
 
-        $this->assertFalse($user->refresh()->hasRole($role));
+    assertFalse($user->refresh()->hasRole($role));
 //        $this->seeJsonApiRelation($role, 'roles', 'dontSeeJson');
 //        $this->showModelWithRelation('backend.users.show', $user, $role, 'roles', 'dontSeeJson');
-    }
+});
 
-    /** @test */
-    public function assign_permission_to_user()
-    {
-        $user = UserFactory::new()->create();
-        $permission = $this->createPermission();
+it('assign permission to user', function () {
+    $user = UserFactory::new()->create();
+    $permission = $this->createPermission();
 
-        $this->showModelWithRelation('backend.users.show', $user, $permission, 'permissions', 'dontSeeJson');
+    $this->showModelWithRelation('backend.users.show', $user, $permission, 'permissions', 'dontSeeJson');
 
-        $this->post(
-            route('backend.authorizations.assign-permission-to-user').'?include=permissions',
-            [
-                'permission_id' => self::forId($permission),
-                'user_id' => self::forId($user),
-            ],
-            $this->addHeaders()
-        );
-        $this->assertResponseOk();
+    post(
+        route('backend.authorizations.assign-permission-to-user').'?include=permissions',
+        [
+            'permission_id' => self::forId($permission),
+            'user_id' => self::forId($user),
+        ],
+        $this->addHeaders()
+    );
+    assertResponseOk();
 
-        $this->showModelWithRelation('backend.users.show', $user, $permission, 'permissions');
-    }
+    $this->showModelWithRelation('backend.users.show', $user, $permission, 'permissions');
+});
 
-    /** @test */
-    public function revoke_permission_to_user()
-    {
-        $user = UserFactory::new()->create();
+it('revoke permission to user', function () {
+    /** @var \App\Models\Auth\User\User $user */
+    $user = UserFactory::new()->create();
 
-        $permission = $this->createPermission();
-        $user->givePermissionTo($permission);
+    $permission = $this->createPermission();
+    $user->givePermissionTo($permission);
 
 //        $this->showModelWithRelation('backend.users.show', $user, $permission, 'permissions');
 
-        $this->delete(
-            route('backend.authorizations.revoke-permission-from-user').'?include=permissions',
-            [
-                'permission_id' => self::forId($permission),
-                'user_id' => self::forId($user),
-            ],
-            $this->addHeaders()
-        );
-        $this->assertResponseStatus(204);
+    delete(
+        route('backend.authorizations.revoke-permission-from-user').'?include=permissions',
+        [
+            'permission_id' => self::forId($permission),
+            'user_id' => self::forId($user),
+        ],
+        $this->addHeaders()
+    );
+    assertResponseStatus(204);
 
-        $this->assertFalse($user->refresh()->hasPermissionTo($permission));
+    assertFalse($user->refresh()->hasPermissionTo($permission));
 //        $this->seeJsonApiRelation($permission, 'permissions', 'dontSeeJson');
 //        $this->showModelWithRelation('backend.users.show', $user, $permission, 'permissions', 'dontSeeJson');
-    }
+});
 
-    /** @test */
-    public function attach_permission_to_role()
-    {
-        $role = $this->createRole();
-        $permission = $this->createPermission();
+it('attach permission to role', function () {
+    $role = $this->createRole();
+    $permission = $this->createPermission();
 
-        $this->showModelWithRelation('backend.roles.show', $role, $permission, 'permissions', 'dontSeeJson');
+    $this->showModelWithRelation('backend.roles.show', $role, $permission, 'permissions', 'dontSeeJson');
 
-        $this->post(
-            route('backend.authorizations.attach-permission-to-role').'?include=permissions',
-            [
-                'permission_id' => self::forId($permission),
-                'role_id' => self::forId($role),
-            ],
-            $this->addHeaders()
-        );
-        $this->assertResponseOk();
+    post(
+        route('backend.authorizations.attach-permission-to-role').'?include=permissions',
+        [
+            'permission_id' => self::forId($permission),
+            'role_id' => self::forId($role),
+        ],
+        $this->addHeaders()
+    );
+    assertResponseOk();
 
-        $this->showModelWithRelation('backend.roles.show', $role, $permission, 'permissions');
-    }
+    $this->showModelWithRelation('backend.roles.show', $role, $permission, 'permissions');
+});
 
-    /** @test */
-    public function revoke_permission_from_role()
-    {
-        $role = $this->createRole();
-        $permission = $this->createPermission();
-        $role->givePermissionTo($permission);
+it('revoke permission from role', function () {
+    $role = $this->createRole();
+    $permission = $this->createPermission();
+    $role->givePermissionTo($permission);
 
 //        $this->showModelWithRelation('backend.roles.show', $role, $permission, 'permissions');
 
-        $this->delete(
-            route('backend.authorizations.revoke-permission-from-role').'?include=permissions',
-            [
-                'permission_id' => self::forId($permission),
-                'role_id' => self::forId($role),
-            ],
-            $this->addHeaders()
-        );
-        $this->assertResponseStatus(204);
+    delete(
+        route('backend.authorizations.revoke-permission-from-role').'?include=permissions',
+        [
+            'permission_id' => self::forId($permission),
+            'role_id' => self::forId($role),
+        ],
+        $this->addHeaders()
+    );
+    assertResponseStatus(204);
 
-        $this->assertFalse($role->refresh()->hasPermissionTo($permission));
+    assertFalse($role->refresh()->hasPermissionTo($permission));
 //        $this->seeJsonApiRelation($permission, 'permissions', 'dontSeeJson');
 //        $this->showModelWithRelation('backend.roles.show', $role, $permission, 'permissions', 'dontSeeJson');
-    }
-}
+});

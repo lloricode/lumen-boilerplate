@@ -6,60 +6,49 @@
  * Time: 12:15 PM
  */
 
-namespace Test\Auth\User;
-
 use App\Models\Auth\User\User;
 use Database\Factories\Auth\User\UserFactory;
-use Test\TestCase;
 
-class DeleteResourceSuccessTest extends TestCase
-{
-    /** @test */
-    public function restore_user()
-    {
-        $this->loggedInAs();
+it('restore user', function () {
+    $this->loggedInAs();
 
-        $user = UserFactory::new()->create();
-        $user->delete();
+    $user = UserFactory::new()->create();
+    $user->delete();
 
-        $this->put(route('backend.users.restore', ['id' => self::forId($user)]), [], $this->addHeaders());
-        $this->assertResponseStatus(200);
+    put(route('backend.users.restore', ['id' => self::forId($user)]), [], $this->addHeaders());
+    assertResponseStatus(200);
 
-        $this->seeInDatabase(
-            (new User())->getTable(),
-            [
-                'id' => $user->id,
-                'deleted_at' => null,
-            ]
-        );
+    seeInDatabase(
+        (new User())->getTable(),
+        [
+            'id' => $user->id,
+            'deleted_at' => null,
+        ]
+    );
 
-        $data = $user->fresh()->toArray();
-        $this->seeJson(
-            [
-                'first_name' => $data['first_name'],
-                'last_name' => $data['last_name'],
-                'email' => $data['email'],
-            ]
-        );
-    }
+    $data = $user->fresh()->toArray();
+    seeJson(
+        [
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
+            'email' => $data['email'],
+        ]
+    );
+});
 
-    /** @test */
-    public function purge_user()
-    {
-        $this->loggedInAs();
+it('purge user', function () {
+    $this->loggedInAs();
 
-        $user = UserFactory::new()->create();
-        $user->delete();
+    $user = UserFactory::new()->create();
+    $user->delete();
 
-        $this->delete(route('backend.users.purge', ['id' => self::forId($user)]), [], $this->addHeaders());
-        $this->assertResponseStatus(204);
+    delete(route('backend.users.purge', ['id' => self::forId($user)]), [], $this->addHeaders());
+    assertResponseStatus(204);
 
-        $this->notSeeInDatabase(
-            (new User())->getTable(),
-            [
-                'id' => $user->id,
-            ]
-        );
-    }
-
-}
+    notSeeInDatabase(
+        (new User())->getTable(),
+        [
+            'id' => $user->id,
+        ]
+    );
+});

@@ -6,85 +6,62 @@
  * Time: 8:39 AM
  */
 
-namespace Test\Repository;
+use function PHPUnit\Framework\assertCount;
+use function PHPUnit\Framework\assertTrue;
 
-use Test\TestCase;
+beforeEach(fn() => $this->loggedInAs());
 
-class RepositoryTest extends TestCase
-{
-    public function setUp(): void
-    {
-        parent::setUp();
-        $this->loggedInAs();
-    }
+test('pagination enable skip then limit zero', function (
+    bool $enableSkip,
+    int $limitRequest,
+    int $limitDefault,
+    int $addRoleCount,
+    int $expectedCount,
+    string $queryParamLimit = null
+) {
+    $queryParamLimit = is_null($queryParamLimit) ? '' : "?limit=$queryParamLimit";
 
-    /**
-     * @param  bool  $enableSkip
-     * @param  int  $limitRequest
-     * @param  int  $limitDefault
-     * @param  int  $addRoleCount
-     * @param  int  $expectedCount
-     * @param  string|null  $queryParamLimit
-     *
-     * @test
-     * @dataProvider paginateDataProvider()
-     */
-    public function pagination_enable_skip_then_limit_zero(
-        bool $enableSkip,
-        int $limitRequest,
-        int $limitDefault,
-        int $addRoleCount,
-        int $expectedCount,
-        string $queryParamLimit = null
-    ) {
-        $queryParamLimit = is_null($queryParamLimit) ? '' : "?limit=$queryParamLimit";
+    config(
+        [
+            'setting.repository.skip_pagination' => $enableSkip,
+            'setting.repository.limit_pagination' => $limitRequest,
+            'repository.pagination.limit' => $limitDefault,
+        ]
+    );
 
-        config(
+    $roleModel = app(config('permission.models.role'));
+    $addRoleCount -= $roleModel::count();// exclude count seeded role
+
+    foreach (range(1, $addRoleCount) as $i) {
+        $roleModel::create(
             [
-                'setting.repository.skip_pagination' => $enableSkip,
-                'setting.repository.limit_pagination' => $limitRequest,
-                'repository.pagination.limit' => $limitDefault,
+                'name' => 'role test '.$i,
             ]
         );
-
-        $roleModel = app(config('permission.models.role'));
-        $addRoleCount -= $roleModel::count();// exclude count seeded role
-
-        foreach (range(1, $addRoleCount) as $i) {
-            $roleModel::create(
-                [
-                    'name' => 'role test '.$i,
-                ]
-            );
-        }
-
-        $this->get(route('backend.roles.index').$queryParamLimit, $this->addHeaders());
-
-        $content = ((array)json_decode($this->response->getContent()));
-
-        $isContentHasData = isset($content['data']);
-
-        $this->assertTrue($isContentHasData);
-
-        if ($isContentHasData) {
-            $this->assertCount($expectedCount, $content['data']);
-        }
     }
 
+    $response = get(route('backend.roles.index').$queryParamLimit, $this->addHeaders());
+
+    $content = ((array)json_decode($response->response->getContent()));
+
+    $isContentHasData = isset($content['data']);
+
+    assertTrue($isContentHasData);
+
+    if ($isContentHasData) {
+        assertCount($expectedCount, $content['data']);
+    }
+})
+    ->with(
     /**
-     * @return array
+     * 1 bool $enableSkip,
+     * 2 int $limitRequest,
+     * 3 int $limitDefault,
+     * 4 int $addRoleCount,
+     * 5 int $expectedCount,
+     * 6 string $queryParamLimit = null
      */
-    public function paginateDataProvider()
-    {
-        /**
-         * 1 bool $enableSkip,
-         * 2 int $limitRequest,
-         * 3 int $limitDefault,
-         * 4 int $addRoleCount,
-         * 5 int $expectedCount,
-         * 6 string $queryParamLimit = null
-         */
-        return [
+        [
             'default behavior' => [true, 100, 15, 20, 15],
             'default behavior with disable skip' => [false, 100, 15, 20, 15],
             '.' => [true, 100, 15, 100, 50, '50'],
@@ -101,6 +78,5 @@ class RepositoryTest extends TestCase
             // invalid request limit
             'negative request limit' => [true, 100, 20, 100, 20, '-1'],
             'exceed max request limit' => [true, 50, 20, 100, 20, '60'],
-        ];
-    }
-}
+        ]
+    );
