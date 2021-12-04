@@ -52,7 +52,7 @@ return [
          | Enable or disable cache
          |
          */
-        'enabled' => true,
+        'enabled' => env('REPOSITORY_CACHE_ENABLED', false),
 
         /*
          |--------------------------------------------------------------------------

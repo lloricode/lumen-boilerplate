@@ -70,6 +70,7 @@ $app->configure('app');
 $app->configure('auth');
 $app->configure('cors');
 $app->configure('hashids');
+$app->configure('helo');
 $app->configure('localization');
 $app->configure('permission');
 $app->configure('repository');
@@ -134,6 +135,12 @@ $app->register(SwaggerLume\ServiceProvider::class);
 
 if (class_exists('Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider')) {
     $app->register('Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider');
+}
+if (class_exists('Spatie\LaravelRay\RayServiceProvider')) {
+    $app->register('Spatie\LaravelRay\RayServiceProvider');
+}
+if (class_exists('BeyondCode\HeloLaravel\HeloLaravelServiceProvider')) {
+    $app->register('BeyondCode\HeloLaravel\HeloLaravelServiceProvider');
 }
 
 /*

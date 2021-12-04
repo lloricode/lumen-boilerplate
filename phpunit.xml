@@ -30,5 +30,6 @@
         <env name="DB_CONNECTION" value="sqlite"/>
         <env name="DB_PREFIX" value=""/>
         <env name="LOG_CHANNEL" value="single"/>
+        <env name="REPOSITORY_CACHE_ENABLED" value="false"/>
     </php>
 </phpunit>
