@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6b2df6f687e55c93e417c4da295dcc68",
+    "content-hash": "696cc9f72cc5e56dd5f4e56cb42624bb",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3122,16 +3122,16 @@
         },
         {
             "name": "laravel/passport",
-            "version": "v10.2.0",
+            "version": "10.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/passport.git",
-                "reference": "1c69a010930a3ce8db348967d8ad9585be4d7d4d"
+                "reference": "9e1bbadc7474744f64a606c2696fabd64194ab6a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/passport/zipball/1c69a010930a3ce8db348967d8ad9585be4d7d4d",
-                "reference": "1c69a010930a3ce8db348967d8ad9585be4d7d4d",
+                "url": "https://api.github.com/repos/laravel/passport/zipball/9e1bbadc7474744f64a606c2696fabd64194ab6a",
+                "reference": "9e1bbadc7474744f64a606c2696fabd64194ab6a",
                 "shasum": ""
             },
             "require": {
@@ -3158,6 +3158,7 @@
                 "orchestra/testbench": "^6.0",
                 "phpunit/phpunit": "^9.3"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -3195,7 +3196,7 @@
                 "issues": "https://github.com/laravel/passport/issues",
                 "source": "https://github.com/laravel/passport"
             },
-            "time": "2021-11-02T16:45:51+00:00"
+            "time": "2021-12-01T13:53:00+00:00"
         },
         {
             "name": "laravel/serializable-closure",
