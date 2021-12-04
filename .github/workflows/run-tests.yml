@@ -15,13 +15,14 @@ jobs:
     name: P${{ matrix.php }} - ${{ matrix.dependency-version }}
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
       - name: Copy .env
         run: php -r "file_exists('.env') || copy('.env.testing', '.env');"
 
       - name: Setup PHP Action
-        uses: shivammathur/setup-php@2.1.1
+        uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick
