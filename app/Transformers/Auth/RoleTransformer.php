@@ -13,19 +13,7 @@ use App\Transformers\BaseTransformer;
 
 class RoleTransformer extends BaseTransformer
 {
-    /**
-     * List of resources possible to include
-     *
-     * @var array
-     */
-    protected $availableIncludes = [
-    ];
-    /**
-     * List of resources to automatically include
-     *
-     * @var array
-     */
-    protected $defaultIncludes = [
+    protected array $defaultIncludes = [
         'permissions',
     ];
 

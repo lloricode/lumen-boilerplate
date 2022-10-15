@@ -1,0 +1,16 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="test all" type="PestRunConfigurationType">
+    <CommandLine>
+      <PhpTestInterpreterSettings>
+        <option name="interpreterName" value="Remote PHP 8.1" />
+      </PhpTestInterpreterSettings>
+    </CommandLine>
+    <option name="pestRunnerSettings">
+      <PestRunner directory="$PROJECT_DIR$/tests" method="" />
+    </option>
+    <option name="runnerSettings">
+      <PhpTestRunnerSettings directory="$PROJECT_DIR$/tests" method="" />
+    </option>
+    <method v="2" />
+  </configuration>
+</component>

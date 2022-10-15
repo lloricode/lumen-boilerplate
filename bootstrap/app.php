@@ -72,11 +72,20 @@ $app->configure('cors');
 $app->configure('hashids');
 $app->configure('helo');
 $app->configure('localization');
+$app->configure('mail');
 $app->configure('permission');
 $app->configure('repository');
 $app->configure('services');
 $app->configure('setting');
 $app->configure('swagger-lume');
+
+
+$app->alias('mail.manager', Illuminate\Mail\MailManager::class);
+$app->alias('mail.manager', Illuminate\Contracts\Mail\Factory::class);
+
+$app->alias('mailer', Illuminate\Mail\Mailer::class);
+$app->alias('mailer', Illuminate\Contracts\Mail\Mailer::class);
+$app->alias('mailer', Illuminate\Contracts\Mail\MailQueue::class);
 
 /*
 |--------------------------------------------------------------------------
@@ -92,7 +101,6 @@ $app->configure('swagger-lume');
 $app->middleware(
     [
         App\Http\Middleware\LocalizationMiddleware::class,
-        Fruitcake\Cors\HandleCors::class,
     ]
 );
 
@@ -117,13 +125,13 @@ $app->routeMiddleware(
 |
 */
 
+$app->register(Illuminate\Mail\MailServiceProvider::class);
 $app->register(App\Providers\AuthServiceProvider::class);
 $app->register(App\Providers\AppServiceProvider::class);
 $app->register(App\Providers\RepositoryServiceProvider::class);
 $app->register(Coderello\SocialGrant\Providers\SocialGrantServiceProvider::class);
 $app->register(Dusterio\LumenPassport\PassportServiceProvider::class);
 $app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
-$app->register(Fruitcake\Cors\CorsServiceProvider::class);
 $app->register(GrahamCampbell\Throttle\ThrottleServiceProvider::class);
 $app->register(Laravel\Passport\PassportServiceProvider::class);
 $app->register(Laravel\Socialite\SocialiteServiceProvider::class);

@@ -10,6 +10,7 @@ class Authenticate
     /**
      * The authentication guard factory instance.
      *
+     * @var \Illuminate\Contracts\Auth\Factory
      */
     protected Auth $auth;
 
@@ -17,7 +18,6 @@ class Authenticate
      * Create a new middleware instance.
      *
      * @param  \Illuminate\Contracts\Auth\Factory  $auth
-     *
      * @return void
      */
     public function __construct(Auth $auth)
@@ -31,13 +31,12 @@ class Authenticate
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next
      * @param  string|null  $guard
-     *
      * @return mixed
      */
     public function handle($request, Closure $next, $guard = null)
     {
         if ($this->auth->guard($guard)->guest()) {
-            abort(401, 'Unauthorized');
+            return response('Unauthorized.', 401);
         }
 
         return $next($request);

@@ -41,21 +41,9 @@ use App\Transformers\BaseTransformer;
  */
 class UserTransformer extends BaseTransformer
 {
-    /**
-     * List of resources possible to include
-     *
-     * @var array
-     */
-    protected $availableIncludes = [
+    protected array $availableIncludes = [
         'roles',
         'permissions',
-    ];
-    /**
-     * List of resources to automatically include
-     *
-     * @var array
-     */
-    protected $defaultIncludes = [
     ];
 
     /**

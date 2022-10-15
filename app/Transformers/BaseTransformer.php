@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Date;
 use InvalidArgumentException;
+use League\Fractal\Resource\Collection;
 use League\Fractal\TransformerAbstract;
 
 abstract class BaseTransformer extends TransformerAbstract
@@ -102,7 +103,7 @@ abstract class BaseTransformer extends TransformerAbstract
         ];
     }
 
-    protected function collection($data, $transformer, $resourceKey = null)
+    protected function collection($data, $transformer, ?string $resourceKey = null): Collection
     {
         return parent::collection($data, $transformer, $resourceKey ?: $transformer->getResourceKey());
     }

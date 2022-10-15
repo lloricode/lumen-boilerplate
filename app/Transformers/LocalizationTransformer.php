@@ -13,20 +13,6 @@ use App\Values\Localizations\Localization;
 class LocalizationTransformer extends BaseTransformer
 {
     /**
-     * @var  array
-     */
-    protected $defaultIncludes = [
-
-    ];
-
-    /**
-     * @var  array
-     */
-    protected $availableIncludes = [
-
-    ];
-
-    /**
      * @param  Localization  $entity
      *
      * @return array

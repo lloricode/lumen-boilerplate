@@ -32,4 +32,4 @@ $kernel = $app->make(
     'Illuminate\Contracts\Console\Kernel'
 );
 
-exit($kernel->handle(new ArgvInput(), new ConsoleOutput()));
+exit($kernel->handle(new ArgvInput, new ConsoleOutput));
