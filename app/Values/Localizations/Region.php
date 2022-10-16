@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: Lloric Mayuga Garcia <lloricode@gmail.com>
@@ -25,25 +27,19 @@ class Region extends Value
         $this->region = $region;
     }
 
-    /**
-     * @return string
-     */
+    /** @return string */
     public function getDefaultName()
     {
         return Locale::getDisplayRegion($this->region, config('app.locale'));
     }
 
-    /**
-     * @return string
-     */
+    /** @return string */
     public function getLocaleName()
     {
         return Locale::getDisplayRegion($this->region, $this->region);
     }
 
-    /**
-     * @return string|null
-     */
+    /** @return string|null */
     public function getRegion()
     {
         return $this->region;

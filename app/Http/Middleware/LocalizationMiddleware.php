@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: Lloric Mayuga Garcia <lloricode@gmail.com>
@@ -24,7 +26,7 @@ class LocalizationMiddleware
 {
     /**
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param  Closure  $next
      *
      * @return mixed
      */
@@ -89,9 +91,7 @@ class LocalizationMiddleware
         return null;
     }
 
-    /**
-     * @return array
-     */
+    /** @return array */
     private function getSupportedLanguages()
     {
         $supported_locales = [];
@@ -100,7 +100,7 @@ class LocalizationMiddleware
 
         foreach ($locales as $key => $value) {
             // it is a "simple" language code (e.g., "en")!
-            if (!is_array($value)) {
+            if ( ! is_array($value)) {
                 $supported_locales[] = $value;
             }
 

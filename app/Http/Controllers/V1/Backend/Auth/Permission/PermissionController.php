@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\V1\Backend\Auth\Permission;
 
 use App\Http\Controllers\Controller;
@@ -11,7 +13,6 @@ use Spatie\QueryBuilder\QueryBuilder;
 
 class PermissionController extends Controller
 {
-
     public function __construct()
     {
         $permissions = Permission::PERMISSIONS;
@@ -62,5 +63,4 @@ class PermissionController extends Controller
             new PermissionTransformer()
         );
     }
-
 }

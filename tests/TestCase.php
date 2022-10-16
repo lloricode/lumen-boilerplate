@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Test;
 
 use App\Models\Auth\User\User;
@@ -24,7 +26,7 @@ abstract class TestCase extends BaseTestCase
 
     protected static function forId(Model $model): string
     {
-        return $model->{$model->getRouteKeyName()};
+        return (string) $model->{$model->getRouteKeyName()};
     }
 
     protected function setUp(): void
@@ -64,7 +66,7 @@ abstract class TestCase extends BaseTestCase
         $headers += [
             'Accept' => 'application/x.lumen.boilerplate.v1+json',
             'Authorization' => 'Bearer xxxxx',
-//            'Accept-Language' =>'en',
+            //            'Accept-Language' =>'en',
         ];
 
         return $isServer

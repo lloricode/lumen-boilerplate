@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: Lloric Mayuga Garcia <lloricode@gmail.com>
@@ -12,7 +14,7 @@ use function PHPUnit\Framework\assertFalse;
 
 uses(Test\Auth\Authorization\BaseRole::class);
 
-beforeEach(fn() => $this->loggedInAs());
+beforeEach(fn () => $this->loggedInAs());
 
 it('assign role to user', function () {
     $user = UserFactory::new()->create();

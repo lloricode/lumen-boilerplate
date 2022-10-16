@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models\Auth\User;
 
 use App\Models\Auth\User\Traits\UserRegularFunction;
@@ -85,8 +87,8 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'purge' => 'user purge',
         'restore' => 'user restore',
         // status
-//        'update status' => 'user update status',
-//        'deactivated list' => 'user deactivated list',
+        //        'update status' => 'user update status',
+        //        'deactivated list' => 'user deactivated list',
     ];
 
     /**

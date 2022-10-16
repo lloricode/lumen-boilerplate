@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\V1\Backend\Auth\User;
 
 use App\Http\Controllers\Controller;
@@ -12,7 +14,6 @@ use Spatie\QueryBuilder\QueryBuilder;
 
 class UserController extends Controller
 {
-
     public function __construct()
     {
         $permissions = User::PERMISSIONS;
@@ -42,7 +43,8 @@ class UserController extends Controller
             QueryBuilder::for(User::class)
                 ->allowedFilters(['first_name', 'last_name', 'email'])
                 ->paginate(),
-            new UserTransformer());
+            new UserTransformer()
+        );
     }
 
     /**
@@ -61,7 +63,8 @@ class UserController extends Controller
     {
         return $this->fractal(
             app(FindUserByRouteKeyAction::class)->execute($id, throw404: true),
-            new UserTransformer());
+            new UserTransformer()
+        );
     }
 
     /**
@@ -95,7 +98,8 @@ class UserController extends Controller
 
         return $this->fractal(
             app(CreateUserAction::class)->execute($attributes),
-            new UserTransformer())
+            new UserTransformer()
+        )
             ->respond(201);
     }
 
@@ -139,7 +143,6 @@ class UserController extends Controller
 
         return $this->fractal($user->refresh(), new UserTransformer());
     }
-
 
     /**
      * @param  string  $id

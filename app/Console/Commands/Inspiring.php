@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
@@ -7,7 +9,7 @@ use Illuminate\Support\Collection;
 
 class Inspiring extends Command
 {
-    protected $signature = "inspire";
+    protected $signature = 'inspire';
 
     private static function quote()
     {

@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: Lloric Mayuga Garcia <lloricode@gmail.com>
@@ -28,9 +30,7 @@ class PermissionTransformer extends BaseTransformer
         ];
     }
 
-    /**
-     * @return string
-     */
+    /** @return string */
     public function getResourceKey(): string
     {
         return 'permissions';

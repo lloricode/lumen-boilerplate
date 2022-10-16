@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use App\Transformers\BaseTransformer;
@@ -8,24 +10,23 @@ use League\Fractal\Serializer\JsonApiSerializer;
 
 class Controller extends BaseController
 {
-
     /**
      * @OA\Info(
-     *   title=SWAGGER_LUME_TITLE,
-     *   description="RESTful API template made from lumen",
-     *   version="1.0",
-     *   @OA\Contact(
-     *     email="lloricode@gmail.com",
-     *     name="Lloric Mayuga Garcia"
-     *   ),
-     *      @OA\License(
-     *          name="MIT",
-     *          url="https://opensource.org/licenses/MIT"
-     *      )
+     *     title=SWAGGER_LUME_TITLE,
+     *     description="RESTful API template made from lumen",
+     *     version="1.0",
+     *     @OA\Contact(
+     *         email="lloricode@gmail.com",
+     *         name="Lloric Mayuga Garcia"
+     *     ),
+     *     @OA\License(
+     *         name="MIT",
+     *         url="https://opensource.org/licenses/MIT"
+     *     )
      * )
      * @OA\Server(
-     *      url=SWAGGER_LUME_CONST_HOST,
-     *      description="API Server"
+     *     url=SWAGGER_LUME_CONST_HOST,
+     *     description="API Server"
      * )
      * @OA\Post(
      *     path="/oauth/token",
@@ -56,16 +57,16 @@ class Controller extends BaseController
      *                     type="string"
      *                 ),
      *                 example={
-     *     "grant_type": "password",
-     *     "client_id": "2",
-     *     "client_secret": "BZnwQmjc0LEi40jVKoW2ICX2LC1K4mG0NKfWBl8Z",
-     *     "username": "system@system.com",
-     *     "password": "secret"
-     *      }
+     *                     "grant_type" : "password",
+     *                     "client_id" : "2",
+     *                     "client_secret" : "BZnwQmjc0LEi40jVKoW2ICX2LC1K4mG0NKfWBl8Z",
+     *                     "username" : "system@system.com",
+     *                     "password" : "secret"
+     *                 }
      *             )
      *         )
      *     ),
-     *  @OA\Response(
+     *     @OA\Response(
      *         response="200",
      *         description="ok",
      *         content={
@@ -94,10 +95,10 @@ class Controller extends BaseController
      *                         description="Token type"
      *                     ),
      *                     example={
-     *                         "token_type": "bearer",
-     *                         "expires_in": 3600,
-     *                         "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJ...",
-     *                         "refresh_token": "def50200b10ed22a1dab8bb0d18..."
+     *                         "token_type" : "bearer",
+     *                         "expires_in" : 3600,
+     *                         "access_token" : "eyJ0eXAiOiJKV1QiLCJhbGciOiJ...",
+     *                         "refresh_token" : "def50200b10ed22a1dab8bb0d18..."
      *                     }
      *                 )
      *             )
@@ -123,15 +124,14 @@ class Controller extends BaseController
      * )
      *
      * @OA\Schema(
-     *      schema="Error",
-     *      required={"message"},
-     *      @OA\Property(
-     *          property="message",
-     *          type="string"
-     *      )
-     *  ),
+     *     schema="Error",
+     *     required={"message"},
+     *     @OA\Property(
+     *         property="message",
+     *         type="string"
+     *     )
+     * ),
      */
-
 
     /**
      * @param $data

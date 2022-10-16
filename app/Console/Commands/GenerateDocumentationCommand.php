@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: Lloric Mayuga Garcia <lloricode@gmail.com>
@@ -14,7 +16,6 @@ use Symfony\Component\Process\Process;
 
 class GenerateDocumentationCommand extends Command
 {
-
     protected const APIDOCS_FILENAME = 'apidoc.json';
 
     protected array $docInputs = [
@@ -28,14 +29,14 @@ class GenerateDocumentationCommand extends Command
      *
      * @var string
      */
-    protected $signature = "apidocs {--vrbs : Verbose of apidoc}";
+    protected $signature = 'apidocs {--vrbs : Verbose of apidoc}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = "Generate API Blueprint Documentation.";
+    protected $description = 'Generate API Blueprint Documentation.';
 
     public function __construct()
     {
@@ -49,16 +50,13 @@ class GenerateDocumentationCommand extends Command
         ];
     }
 
-    /**
-     * Execute the console command.
-     *
-     */
+    /** Execute the console command. */
     public function handle()
     {
         $this->info('Generating API Blueprint Documentation ...');
 
         $path = $this->config['output'].$this->config['url'].'/generated-markdown';
-        if (!file_exists($path)) {
+        if ( ! file_exists($path)) {
             app('files')->makeDirectory($path, $mode = 0777, true, true);
         }
 
@@ -80,7 +78,7 @@ class GenerateDocumentationCommand extends Command
         $replacer('{{api.domain.dev}}', config('app.url'));
         $replacer(
             '{{accept-header}}',
-            "application/json"
+            'application/json'
         );
         $replacer('{{rate-limit-expires}}', config('setting.api.throttle.expires'));
         $replacer('{{rate-limit-attempts}}', config('setting.api.throttle.limit'));
@@ -139,7 +137,7 @@ class GenerateDocumentationCommand extends Command
         // execute the command
         $process->run();
 
-        if (!$process->isSuccessful()) {
+        if ( ! $process->isSuccessful()) {
             throw new ProcessFailedException($process);
         }
 //        $this->info('Result: ' . $process->getOutput());

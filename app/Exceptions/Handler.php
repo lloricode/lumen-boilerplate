@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Exceptions;
 
 use Illuminate\Auth\Access\AuthorizationException;
@@ -14,6 +16,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
+use Exception;
 
 class Handler extends ExceptionHandler
 {
@@ -36,10 +39,10 @@ class Handler extends ExceptionHandler
      *
      * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
      *
-     * @param  \Throwable  $exception
+     * @param  Throwable  $exception
      * @return void
      *
-     * @throws \Exception
+     * @throws Exception
      */
     public function report(Throwable $exception)
     {
@@ -50,10 +53,10 @@ class Handler extends ExceptionHandler
      * Render an exception into an HTTP response.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Throwable  $exception
+     * @param  Throwable  $exception
      * @return \Illuminate\Http\Response|\Illuminate\Http\JsonResponse
      *
-     * @throws \Throwable
+     * @throws Throwable
      */
     public function render($request, Throwable $exception)
     {
@@ -69,7 +72,7 @@ class Handler extends ExceptionHandler
                 $exception->getMessage(),
                 $exception
             );
-        } elseif (!config('app.debug') && $exception instanceof QueryException) {
+        } elseif ( ! config('app.debug') && $exception instanceof QueryException) {
             $exception = new HttpException(Response::HTTP_UNPROCESSABLE_ENTITY, 'Something wrong with your query');
         }
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Domain\User\Actions;
 
 use App\Models\Auth\User\User;

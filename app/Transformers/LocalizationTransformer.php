@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: Lloric Mayuga Garcia <lloricode@gmail.com>
@@ -59,9 +61,7 @@ class LocalizationTransformer extends BaseTransformer
         return $response;
     }
 
-    /**
-     * @return string
-     */
+    /** @return string */
     public function getResourceKey(): string
     {
         return 'localizations';

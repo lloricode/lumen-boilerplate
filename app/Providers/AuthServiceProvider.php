@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Providers;
 
 use App\Auth\PassportSocialResolver;
@@ -22,7 +24,7 @@ class AuthServiceProvider extends ServiceProvider
         LumenPassport::routes(
             $this->app->router,
             [
-//            'prefix' => 'v1/oauth',
+                //            'prefix' => 'v1/oauth',
                 'middleware' => 'throttle:30,30',
             ]
         );

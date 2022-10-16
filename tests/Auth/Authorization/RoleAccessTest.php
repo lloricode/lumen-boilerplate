@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: Lloric Mayuga Garcia <lloricode@gmail.com>
@@ -9,7 +11,7 @@
 uses(Test\Auth\Authorization\BaseRole::class);
 
 it('access', function ($method, $uri, $roleName, $statusCode) {
-    if (! empty($roleName)) {
+    if ( ! empty($roleName)) {
         $this->loggedInAs($roleName);
     }
 

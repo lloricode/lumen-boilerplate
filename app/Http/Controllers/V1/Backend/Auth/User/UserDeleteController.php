@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\V1\Backend\Auth\User;
 
-use App\Criterion\Eloquent\OnlyTrashedCriteria;
 use App\Http\Controllers\Controller;
 use App\Models\Auth\User\User;
 use App\Transformers\Auth\UserTransformer;
@@ -12,7 +13,6 @@ use Spatie\QueryBuilder\QueryBuilder;
 
 class UserDeleteController extends Controller
 {
-
     public function __construct()
     {
         $permissions = User::PERMISSIONS;
@@ -62,7 +62,8 @@ class UserDeleteController extends Controller
             QueryBuilder::for(User::onlyTrashed())
                 ->allowedFilters(['first_name', 'last_name', 'email'])
                 ->paginate(),
-             new UserTransformer());
+            new UserTransformer()
+        );
     }
 
     /**

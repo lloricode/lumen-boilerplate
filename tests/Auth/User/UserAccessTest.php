@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: Lloric Mayuga Garcia <lloricode@gmail.com>
@@ -9,7 +11,7 @@
 use Database\Factories\Auth\User\UserFactory;
 
 it('access', function ($method, $uri, $roleName, $statusCode) {
-    if (! empty($roleName)) {
+    if ( ! empty($roleName)) {
         $this->loggedInAs($roleName);
     }
 

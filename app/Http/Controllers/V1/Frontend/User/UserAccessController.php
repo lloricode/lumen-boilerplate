@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\V1\Frontend\User;
 
 use App\Http\Controllers\Controller;
@@ -12,7 +14,7 @@ class UserAccessController extends Controller
      *     path="/profile",
      *     tags={"Access"},
      *     summary="Get current logged in user profile",
-     *     security={{"passport":{}}},
+     *     security={{"passport" : {}}},
      *     @OA\Response(
      *         response="200",
      *         description="Returns some sample category things",

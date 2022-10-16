@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\V1;
 
 use App\Http\Controllers\Controller;
@@ -34,7 +36,7 @@ class LocalizationController extends Controller
 
         foreach (config('localization.supported_languages') as $key => $value) {
             // it is a simple key
-            if (!is_array($value)) {
+            if ( ! is_array($value)) {
                 $localizations->push(new Localization($value));
             } else { // it is a composite key
                 $localizations->push(new Localization($key, $value));

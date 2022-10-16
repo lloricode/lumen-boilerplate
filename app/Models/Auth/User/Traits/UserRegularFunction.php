@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models\Auth\User\Traits;
 
 use App\Models\Auth\User\SocialAccount;
@@ -34,17 +36,17 @@ trait UserRegularFunction
         //        }
         //
         return SocialAccount::where(
-                $providerId
-                    ? [
+            $providerId
+                ? [
                     'user_id' => $this->id,
                     'provider' => $provider,
                     'provider_id' => $providerId,
                 ]
-                    : [
+                : [
                     'user_id' => $this->id,
                     'provider' => $provider,
                 ]
-            )->get()->count() > 0;
+        )->get()->count() > 0;
     }
 
     public function getSocialAccountButtons()
@@ -111,7 +113,7 @@ trait UserRegularFunction
             case 'social':
                 /** @var \App\Models\Auth\SocialAccount $social */
                 $social = $this->socialAccounts->first();
-                if (!blank($social)) {
+                if ( ! blank($social)) {
                     $this->update(
                         [
                             'avatar_type' => $social->provider,

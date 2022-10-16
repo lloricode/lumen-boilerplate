@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: Lloric Mayuga Garcia <lloricode@gmail.com>
@@ -7,7 +9,7 @@
  */
 
 test('get profile', function ($roleName, $status) {
-    if (! empty($roleName)) {
+    if ( ! empty($roleName)) {
         $userData = collect($this->loggedInAs($roleName))->only(
             [
                 'first_name',
@@ -18,14 +20,14 @@ test('get profile', function ($roleName, $status) {
     }
     get(route('frontend.users.profile'), $this->addHeaders());
 
-    if (! empty($roleName)) {
+    if ( ! empty($roleName)) {
         seeJson($userData);
     }
     assertResponseStatus($status);
 })
     ->with([
-        ["system", 200],
-        ["admin", 200],
-        ["user", 200],
-        ["", 401],
+        ['system', 200],
+        ['admin', 200],
+        ['user', 200],
+        ['', 401],
     ]);

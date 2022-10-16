@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Domain\Auth\Actions;
 
 use App\Models\Auth\Role\Role;
@@ -11,7 +13,8 @@ class FindRoleByRouteKeyAction
         $role = config('permission.models.role');
 
         return $role::where(
-            app($role)->getRouteKeyName(), $routeKey
+            app($role)->getRouteKeyName(),
+            $routeKey
         )->first();
     }
 }

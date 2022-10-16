@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\V1\Backend\Auth\Authorization;
 
 use App\Http\Controllers\Controller;
@@ -24,7 +26,7 @@ class AuthorizationController extends Controller
      *     path="/auth/authorizations/assign-role-to-user",
      *     summary="Assign role to user",
      *     tags={"Authorization"},
-     *     security={{"passport":{}}},
+     *     security={{"passport" : {}}},
      *     @OA\Parameter(
      *         name="include",
      *         in="query",
@@ -33,7 +35,7 @@ class AuthorizationController extends Controller
      *             type="array",
      *             @OA\Items(
      *                 type="string",
-     *                 enum = {"roles", "permissions"},
+     *                 enum={"roles", "permissions"},
      *             )
      *         )
      *     ),
@@ -52,9 +54,9 @@ class AuthorizationController extends Controller
      *                     type="int",
      *                 ),
      *                 example={
-     *                  "user_id": "user-at-usercom",
-     *                   "role_id": 1
-     *                  }
+     *                     "user_id" : "user-at-usercom",
+     *                     "role_id" : 1
+     *                 }
      *             )
      *         )
      *     ),
@@ -113,7 +115,7 @@ class AuthorizationController extends Controller
      *     path="/auth/authorizations/revoke-role-from-user",
      *     summary="Revoke role from user",
      *     tags={"Authorization"},
-     *     security={{"passport":{}}},
+     *     security={{"passport" : {}}},
      *     @OA\RequestBody(
      *         @OA\MediaType(
      *             mediaType="application/json",
@@ -129,9 +131,9 @@ class AuthorizationController extends Controller
      *                     type="int",
      *                 ),
      *                 example={
-     *                  "user_id": "user-at-usercom",
-     *                   "role_id": 1
-     *                  }
+     *                     "user_id" : "user-at-usercom",
+     *                     "role_id" : 1
+     *                 }
      *             )
      *         )
      *     ),
@@ -184,7 +186,7 @@ class AuthorizationController extends Controller
      *     path="/auth/authorizations/assign-permission-to-user",
      *     summary="Assign permission to user",
      *     tags={"Authorization"},
-     *     security={{"passport":{}}},
+     *     security={{"passport" : {}}},
      *     @OA\Parameter(
      *         name="include",
      *         in="query",
@@ -193,7 +195,7 @@ class AuthorizationController extends Controller
      *             type="array",
      *             @OA\Items(
      *                 type="string",
-     *                 enum = {"roles", "permissions"},
+     *                 enum={"roles", "permissions"},
      *             )
      *         )
      *     ),
@@ -212,9 +214,9 @@ class AuthorizationController extends Controller
      *                     type="int",
      *                 ),
      *                 example={
-     *                  "user_id": "user-at-usercom",
-     *                   "permission_id": 1
-     *                  }
+     *                     "user_id" : "user-at-usercom",
+     *                     "permission_id" : 1
+     *                 }
      *             )
      *         )
      *     ),
@@ -272,7 +274,7 @@ class AuthorizationController extends Controller
      *     path="/auth/authorizations/revoke-permission-from-user",
      *     summary="Revoke permission from user",
      *     tags={"Authorization"},
-     *     security={{"passport":{}}},
+     *     security={{"passport" : {}}},
      *     @OA\RequestBody(
      *         @OA\MediaType(
      *             mediaType="application/json",
@@ -288,9 +290,9 @@ class AuthorizationController extends Controller
      *                     type="int",
      *                 ),
      *                 example={
-     *                  "user_id": "user-at-usercom",
-     *                   "permission_id": 1
-     *                  }
+     *                     "user_id" : "user-at-usercom",
+     *                     "permission_id" : 1
+     *                 }
      *             )
      *         )
      *     ),
@@ -343,7 +345,7 @@ class AuthorizationController extends Controller
      *     path="/auth/authorizations/attach-permission-to-role",
      *     summary="Attach permission to role",
      *     tags={"Authorization"},
-     *     security={{"passport":{}}},
+     *     security={{"passport" : {}}},
      *     @OA\Parameter(
      *         name="include",
      *         in="query",
@@ -352,7 +354,7 @@ class AuthorizationController extends Controller
      *             type="array",
      *             @OA\Items(
      *                 type="string",
-     *                 enum = {"roles", "permissions"},
+     *                 enum={"roles", "permissions"},
      *             )
      *         )
      *     ),
@@ -371,9 +373,9 @@ class AuthorizationController extends Controller
      *                     type="int",
      *                 ),
      *                 example={
-     *                  "role_id": 1,
-     *                   "permission_id": 1
-     *                  }
+     *                     "role_id" : 1,
+     *                     "permission_id" : 1
+     *                 }
      *             )
      *         )
      *     ),
@@ -431,7 +433,7 @@ class AuthorizationController extends Controller
      *     path="/auth/authorizations/revoke-permission-from-role",
      *     summary="Revoke permission from role",
      *     tags={"Authorization"},
-     *     security={{"passport":{}}},
+     *     security={{"passport" : {}}},
      *     @OA\RequestBody(
      *         @OA\MediaType(
      *             mediaType="application/json",
@@ -447,9 +449,9 @@ class AuthorizationController extends Controller
      *                     type="int",
      *                 ),
      *                 example={
-     *                  "role_id": 1,
-     *                   "permission_id": 1
-     *                  }
+     *                     "role_id" : 1,
+     *                     "permission_id" : 1
+     *                 }
      *             )
      *         )
      *     ),
@@ -497,19 +499,18 @@ class AuthorizationController extends Controller
         return response('', 204);
     }
 
-
     private function roleRules(): array
     {
         return [
             'required',
-            Rule::exists(config('permission.models.role'),app(config('permission.models.role'))->getRouteKeyName())
+            Rule::exists(config('permission.models.role'), app(config('permission.models.role'))->getRouteKeyName())
         ];
     }
 
     private function userRules(): array
     {
         return [
-            'required', Rule::exists(User::class,(new User())->getRouteKeyName())
+            'required', Rule::exists(User::class, (new User())->getRouteKeyName())
         ];
     }
 
@@ -517,7 +518,7 @@ class AuthorizationController extends Controller
     {
         return [
             'required',
-            Rule::exists(config('permission.models.permission'),app(config('permission.models.permission'))->getRouteKeyName())
+            Rule::exists(config('permission.models.permission'), app(config('permission.models.permission'))->getRouteKeyName())
         ];
     }
 }

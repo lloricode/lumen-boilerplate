@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database\Seeders\Traits;
 
 trait SeederHelper
@@ -17,7 +19,7 @@ trait SeederHelper
             );
             $roleModel::findByName(config('setting.permission.role_names.system'))->givePermissionTo($permission);
             if ($isAddToAdminRole) {
-                if (!in_array($permissionName, $except)) {
+                if ( ! in_array($permissionName, $except)) {
                     $roleModel::findByName(config('setting.permission.role_names.admin'))->givePermissionTo(
                         $permission
                     );

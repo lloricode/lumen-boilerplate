@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: Lloric Mayuga Garcia <lloricode@gmail.com>
@@ -37,9 +39,7 @@ class RoleTransformer extends BaseTransformer
         return $this->collection($role->permissions, new PermissionTransformer());
     }
 
-    /**
-     * @return string
-     */
+    /** @return string */
     public function getResourceKey(): string
     {
         return 'roles';

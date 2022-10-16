@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: Lloric Mayuga Garcia <lloricode@gmail.com>
@@ -40,8 +42,8 @@ it('validation role', function ($routeName) {
     );
 })
     ->with([
-        ["store"],
-        ["update"],
+        ['store'],
+        ['update'],
     ]);
 
 it('default role not allowed', function ($verbMethod, $routeName) {
@@ -64,8 +66,8 @@ it('default role not allowed', function ($verbMethod, $routeName) {
     );
 })
     ->with([
-        ["delete", "backend.roles.destroy"],
-        ["put", "backend.roles.update"],
+        ['delete', 'backend.roles.destroy'],
+        ['put', 'backend.roles.update'],
     ]);
 
 it('store role success', function () {

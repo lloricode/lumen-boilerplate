@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: Lloric Mayuga Garcia <lloricode@gmail.com>
@@ -21,14 +23,14 @@ abstract class BaseTransformer extends TransformerAbstract
 
     protected static function forId(Model $model): string
     {
-        return $model->{$model->getRouteKeyName()};
+        return (string) $model->{$model->getRouteKeyName()};
     }
 
     protected static function filterData(array $response, array $data, array $roleNames = null): array
     {
         if (app('auth')->check() && app('auth')->user()->hasAnyRole(
-                is_null($roleNames) ? config('setting.permission.role_names.system') : $roleNames
-            )) {
+            is_null($roleNames) ? config('setting.permission.role_names.system') : $roleNames
+        )) {
             return array_merge($response, $data);
         }
 
@@ -43,11 +45,11 @@ abstract class BaseTransformer extends TransformerAbstract
     ): array {
         $auth = app('auth');
 
-        if (!$auth->check()) {
+        if ( ! $auth->check()) {
             return $responseData;
         }
 
-        if (!$auth->user()->hasAnyRole(config('setting.permission.role_names'))) {
+        if ( ! $auth->user()->hasAnyRole(config('setting.permission.role_names'))) {
             return $responseData;
         }
 
@@ -56,7 +58,7 @@ abstract class BaseTransformer extends TransformerAbstract
         $defaults = ['created_at', 'updated_at', 'deleted_at'];
 
         // only custom
-        if ($isHasCustom && !$isIncludeDefault) {
+        if ($isHasCustom && ! $isIncludeDefault) {
             $toBeConvert = $columns;
         }  // custom and defaults
         elseif ($isHasCustom && $isIncludeDefault) {
@@ -70,7 +72,7 @@ abstract class BaseTransformer extends TransformerAbstract
         foreach ($toBeConvert as $column) {
             $return = array_merge(
                 $return,
-                (!is_null($entity->{$column})) ? array_merge($return, self::readableTimestamp($column, $entity)) : []
+                ( ! is_null($entity->{$column})) ? array_merge($return, self::readableTimestamp($column, $entity)) : []
             );
         }
 

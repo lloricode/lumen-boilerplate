@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: Lloric Mayuga Garcia <lloricode@gmail.com>
@@ -35,7 +37,6 @@ use Illuminate\Database\Eloquent\Builder;
  */
 class Role extends \Spatie\Permission\Models\Role
 {
-
     /**
      * all permissions
      *

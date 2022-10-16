@@ -1,4 +1,6 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: Lloric Mayuga Garcia <lloricode@gmail.com>
@@ -32,33 +34,25 @@ class Localization extends Value
         }
     }
 
-    /**
-     * @return string
-     */
+    /** @return string */
     public function getDefaultName()
     {
         return Locale::getDisplayLanguage($this->language, config('app.locale'));
     }
 
-    /**
-     * @return string
-     */
+    /** @return string */
     public function getLocaleName()
     {
         return Locale::getDisplayLanguage($this->language, $this->language);
     }
 
-    /**
-     * @return string|null
-     */
+    /** @return string|null */
     public function getLanguage()
     {
         return $this->language;
     }
 
-    /**
-     * @return array
-     */
+    /** @return array */
     public function getRegions()
     {
         return $this->regions;

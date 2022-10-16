@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\V1\Backend\Auth\Role;
 
 use App\Http\Controllers\Controller;
@@ -12,7 +14,6 @@ use Spatie\QueryBuilder\QueryBuilder;
 
 class RoleController extends Controller
 {
-
     public function __construct()
     {
         $permissions = Role::PERMISSIONS;
@@ -22,7 +23,6 @@ class RoleController extends Controller
         $this->middleware('permission:'.$permissions['show'], ['only' => 'show']);
         $this->middleware('permission:'.$permissions['update'], ['only' => 'update']);
         $this->middleware('permission:'.$permissions['destroy'], ['only' => 'destroy']);
-
     }
 
     /**
@@ -43,7 +43,8 @@ class RoleController extends Controller
             QueryBuilder::for(config('permission.models.role'))
                 ->allowedFilters('name')
                 ->paginate(),
-            new RoleTransformer());
+            new RoleTransformer()
+        );
     }
 
     /**
@@ -91,7 +92,8 @@ class RoleController extends Controller
     {
         return $this->fractal(
             app(FindRoleByRouteKeyAction::class)->execute($id),
-            new RoleTransformer());
+            new RoleTransformer()
+        );
     }
 
     /**

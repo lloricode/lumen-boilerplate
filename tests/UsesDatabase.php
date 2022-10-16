@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Test;
 
 //use Illuminate\Contracts\Console\Kernel;
@@ -25,7 +27,7 @@ trait UsesDatabase
         // The database needs to be deleted before the application gets boted
         // to avoid having the database in a weird read-only state.
 
-        if (! $force && static::$migrated) {
+        if ( ! $force && static::$migrated) {
             return;
         }
 
@@ -34,9 +36,7 @@ trait UsesDatabase
         touch($this->database);
     }
 
-    /**
-     * Refresh the database to a clean version.
-     */
+    /** Refresh the database to a clean version. */
     public function refreshDatabase(): void
     {
         if (File::exists($this->databaseCopy)) {
