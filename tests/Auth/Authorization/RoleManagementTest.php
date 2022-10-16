@@ -131,7 +131,7 @@ it('update duplicate role', function () {
     assertResponseStatus(422);
     seeJson(
         [
-            'message' => "A role `{$duplicateNameTest}` already exists for guard `api`.",
+            'name' => ['The name has already been taken.'],
         ]
     );
 });

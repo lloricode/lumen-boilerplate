@@ -3,24 +3,19 @@
 namespace App\Http\Controllers\V1\Backend\Auth\Authorization;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\Auth\Permission\PermissionRepository;
-use App\Repositories\Auth\Role\RoleRepository;
-use App\Repositories\Auth\User\UserRepository;
+use App\Models\Auth\User\User;
 use App\Transformers\Auth\RoleTransformer;
 use App\Transformers\Auth\UserTransformer;
+use Domain\Auth\Actions\FindRoleByRouteKeyAction;
+use Domain\User\Actions\FindUserByRouteKeyAction;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class AuthorizationController extends Controller
 {
-    protected UserRepository $userRepository;
-    protected RoleRepository $roleRepository;
-
-    public function __construct(UserRepository $userRepository, RoleRepository $roleRepository)
+    public function __construct()
     {
         $this->middleware('permission:'.config('setting.permission.permission_names.manage_authorization'));
-
-        $this->userRepository = $userRepository;
-        $this->roleRepository = $roleRepository;
     }
 
     /**
@@ -105,9 +100,12 @@ class AuthorizationController extends Controller
             ]
         );
 
-        $this->userRepository->assignRole($attributes['user_id'], $attributes['role_id']);
+        $user = app(FindUserByRouteKeyAction::class)
+            ->execute($attributes['user_id']);
 
-        return $this->fractal($this->userRepository->findByRouteKeyName($attributes['user_id']), new UserTransformer());
+        $user->assignRole($attributes['role_id']);
+
+        return $this->fractal($user->refresh(), new UserTransformer());
     }
 
     /**
@@ -174,7 +172,9 @@ class AuthorizationController extends Controller
             ]
         );
 
-        $this->userRepository->removeRole($attributes['user_id'], $attributes['role_id']);
+        app(FindUserByRouteKeyAction::class)
+            ->execute($attributes['user_id'])
+            ->removeRole($attributes['role_id']);
 
         return response('', 204);
     }
@@ -259,9 +259,12 @@ class AuthorizationController extends Controller
             ]
         );
 
-        $this->userRepository->givePermissionTo($attributes['user_id'], $attributes['permission_id']);
+        $user = app(FindUserByRouteKeyAction::class)
+            ->execute($attributes['user_id']);
 
-        return $this->fractal($this->userRepository->findByRouteKeyName($attributes['user_id']), new UserTransformer());
+        $user->givePermissionTo($attributes['permission_id']);
+
+        return $this->fractal($user->refresh(), new UserTransformer());
     }
 
     /**
@@ -328,7 +331,9 @@ class AuthorizationController extends Controller
             ]
         );
 
-        $this->userRepository->revokePermissionTo($attributes['user_id'], $attributes['permission_id']);
+        app(FindUserByRouteKeyAction::class)
+            ->execute($attributes['user_id'])
+            ->revokePermissionTo($attributes['permission_id']);
 
         return response('', 204);
     }
@@ -413,9 +418,12 @@ class AuthorizationController extends Controller
             ]
         );
 
-        $this->roleRepository->givePermissionTo($attributes['role_id'], $attributes['permission_id']);
+        $user = app(FindRoleByRouteKeyAction::class)
+            ->execute($attributes['role_id']);
 
-        return $this->fractal($this->roleRepository->findByRouteKeyName($attributes['role_id']), new RoleTransformer());
+        $user->givePermissionTo($attributes['permission_id']);
+
+        return $this->fractal($user->refresh(), new RoleTransformer());
     }
 
     /**
@@ -482,33 +490,34 @@ class AuthorizationController extends Controller
             ]
         );
 
-        $this->roleRepository->revokePermissionTo($attributes['role_id'], $attributes['permission_id']);
+        app(FindRoleByRouteKeyAction::class)
+            ->execute($attributes['role_id'])
+            ->revokePermissionTo($attributes['permission_id']);
 
         return response('', 204);
     }
 
 
-    private function roleRules(): string
+    private function roleRules(): array
     {
-        return sprintf(
-            'required|exists:%s,%s',
-            $this->roleRepository->model(),
-            $this->roleRepository->getRouteKeyName()
-        );
+        return [
+            'required',
+            Rule::exists(config('permission.models.role'),app(config('permission.models.role'))->getRouteKeyName())
+        ];
     }
 
-    private function userRules(): string
+    private function userRules(): array
     {
-        return sprintf(
-            'required|exists:%s,%s',
-            $this->userRepository->model(),
-            $this->userRepository->getRouteKeyName()
-        );
+        return [
+            'required', Rule::exists(User::class,(new User())->getRouteKeyName())
+        ];
     }
 
-    private function permissionRules(): string
+    private function permissionRules(): array
     {
-        $repo = app(PermissionRepository::class);
-        return sprintf('required|exists:%s,%s', $repo->model(), $repo->getRouteKeyName());
+        return [
+            'required',
+            Rule::exists(config('permission.models.permission'),app(config('permission.models.permission'))->getRouteKeyName())
+        ];
     }
 }

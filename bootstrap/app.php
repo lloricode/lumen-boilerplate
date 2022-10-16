@@ -74,6 +74,7 @@ $app->configure('helo');
 $app->configure('localization');
 $app->configure('mail');
 $app->configure('permission');
+$app->configure('query-builder');
 $app->configure('repository');
 $app->configure('services');
 $app->configure('setting');
@@ -128,18 +129,17 @@ $app->routeMiddleware(
 $app->register(Illuminate\Mail\MailServiceProvider::class);
 $app->register(App\Providers\AuthServiceProvider::class);
 $app->register(App\Providers\AppServiceProvider::class);
-$app->register(App\Providers\RepositoryServiceProvider::class);
 $app->register(Coderello\SocialGrant\Providers\SocialGrantServiceProvider::class);
 $app->register(Dusterio\LumenPassport\PassportServiceProvider::class);
 $app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
 $app->register(GrahamCampbell\Throttle\ThrottleServiceProvider::class);
 $app->register(Laravel\Passport\PassportServiceProvider::class);
 $app->register(Laravel\Socialite\SocialiteServiceProvider::class);
-$app->register(Prettus\Repository\Providers\RepositoryServiceProvider::class);
 $app->register(Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class);
 $app->register(Spatie\Fractal\FractalServiceProvider::class);
 $app->register(Spatie\Permission\PermissionServiceProvider::class);
 $app->register(SwaggerLume\ServiceProvider::class);
+$app->register(Spatie\QueryBuilder\QueryBuilderServiceProvider::class);
 
 if (class_exists('Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider')) {
     $app->register('Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider');

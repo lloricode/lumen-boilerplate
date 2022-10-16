@@ -3,18 +3,12 @@
 namespace Database\Seeders;
 
 use Database\Seeders\Auth\AuthSeeder;
-use DB;
 use Illuminate\Database\Seeder;
-use Prettus\Repository\Helpers\CacheKeys;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
+    public function run(): void
     {
         $this->call(AuthSeeder::class);
 
@@ -25,6 +19,5 @@ class DatabaseSeeder extends Seeder
             ->update(['secret' => password_hash('BZnwQmjc0LEi40jVKoW2ICX2LC1K4mG0NKfWBl8Z', PASSWORD_BCRYPT)]);
 
         app('cache')->flush();
-        @unlink(CacheKeys::getFileKeys());
     }
 }

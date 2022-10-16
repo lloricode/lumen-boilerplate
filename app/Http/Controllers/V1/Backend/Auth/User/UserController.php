@@ -3,26 +3,25 @@
 namespace App\Http\Controllers\V1\Backend\Auth\User;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\Auth\User\UserRepository;
+use App\Models\Auth\User\User;
 use App\Transformers\Auth\UserTransformer;
+use Domain\User\Actions\CreateUserAction;
+use Domain\User\Actions\FindUserByRouteKeyAction;
 use Illuminate\Http\Request;
-use Prettus\Repository\Criteria\RequestCriteria;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class UserController extends Controller
 {
-    protected UserRepository $userRepository;
 
-    public function __construct(UserRepository $userRepository)
+    public function __construct()
     {
-        $permissions = $userRepository->makeModel()::PERMISSIONS;
+        $permissions = User::PERMISSIONS;
 
         $this->middleware('permission:'.$permissions['index'], ['only' => 'index']);
         $this->middleware('permission:'.$permissions['create'], ['only' => 'store']);
         $this->middleware('permission:'.$permissions['show'], ['only' => 'show']);
         $this->middleware('permission:'.$permissions['update'], ['only' => 'update']);
         $this->middleware('permission:'.$permissions['destroy'], ['only' => 'destroy']);
-
-        $this->userRepository = $userRepository;
     }
 
     /**
@@ -37,10 +36,13 @@ class UserController extends Controller
      * @apiUse             UsersResponse
      *
      */
-    public function index(Request $request)
+    public function index()
     {
-        $this->userRepository->pushCriteria(new RequestCriteria($request));
-        return $this->fractal($this->userRepository->paginate(), new UserTransformer());
+        return $this->fractal(
+            QueryBuilder::for(User::class)
+                ->allowedFilters(['first_name', 'last_name', 'email'])
+                ->paginate(),
+            new UserTransformer());
     }
 
     /**
@@ -57,13 +59,9 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        $user = $this->userRepository->findByRouteKeyName($id);
-
-        if (blank($user)) {
-            abort(404);
-        }
-
-        return $this->fractal($user, new UserTransformer());
+        return $this->fractal(
+            app(FindUserByRouteKeyAction::class)->execute($id, throw404: true),
+            new UserTransformer());
     }
 
     /**
@@ -95,9 +93,9 @@ class UserController extends Controller
             ]
         );
 
-        $attributes['password'] = app('hash')->make($attributes['password']);
-
-        return $this->fractal($this->userRepository->create($attributes), new UserTransformer())
+        return $this->fractal(
+            app(CreateUserAction::class)->execute($attributes),
+            new UserTransformer())
             ->respond(201);
     }
 
@@ -134,8 +132,12 @@ class UserController extends Controller
 
         $attributes['password'] = app('hash')->make($attributes['password']);
 
-        $user = $this->userRepository->update($attributes, $this->userRepository->findByRouteKeyName($id)->getKey());
-        return $this->fractal($user, new UserTransformer());
+        $user = app(FindUserByRouteKeyAction::class)
+            ->execute($id);
+
+        $user->update($attributes);
+
+        return $this->fractal($user->refresh(), new UserTransformer());
     }
 
 
@@ -153,12 +155,15 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        $id = $this->userRepository->findByRouteKeyName($id)->getKey();
-        if (app('auth')->id() == $id) {
+        $user = app(FindUserByRouteKeyAction::class)
+            ->execute($id);
+
+        if (app('auth')->id() == $user->getKey()) {
             return response(['message' => 'You cannot delete your self.'], 403);
         }
 
-        $this->userRepository->delete($id);
+        $user->delete();
+
         return response('', 204);
     }
 }

@@ -23,11 +23,6 @@ return [
         ]
     ],
 
-    'repository' => [
-        'skip_pagination' => true,
-        'limit_pagination' => 100,
-    ],
-
     'formats' => [
         'date' => 'd/m/Y',
         'time_12' => 'h:i:s A',

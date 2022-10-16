@@ -3,23 +3,21 @@
 namespace App\Http\Controllers\V1\Backend\Auth\Permission;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\Auth\Permission\PermissionRepository;
+use App\Models\Auth\Permission\Permission;
 use App\Transformers\Auth\PermissionTransformer;
+use Domain\Auth\Actions\FindPermissionByRouteKeyAction;
 use Illuminate\Http\Request;
-use Prettus\Repository\Criteria\RequestCriteria;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class PermissionController extends Controller
 {
-    protected PermissionRepository $permissionRepository;
 
-    public function __construct(PermissionRepository $permissionRepository)
+    public function __construct()
     {
-        $permissions = $permissionRepository->makeModel()::PERMISSIONS;
+        $permissions = Permission::PERMISSIONS;
 
         $this->middleware('permission:'.$permissions['index'], ['only' => 'index']);
         $this->middleware('permission:'.$permissions['show'], ['only' => 'show']);
-
-        $this->permissionRepository = $permissionRepository;
     }
 
     /**
@@ -36,8 +34,12 @@ class PermissionController extends Controller
      */
     public function index(Request $request)
     {
-        $this->permissionRepository->pushCriteria(new RequestCriteria($request));
-        return $this->fractal($this->permissionRepository->paginate(), new PermissionTransformer());
+        return $this->fractal(
+            QueryBuilder::for(config('permission.models.permission'))
+                ->allowedFilters('name')
+                ->paginate(),
+            new PermissionTransformer()
+        );
     }
 
     /**
@@ -55,9 +57,10 @@ class PermissionController extends Controller
      */
     public function show(Request $request, string $id)
     {
-        $this->permissionRepository->pushCriteria(new RequestCriteria($request));
-        $p = $this->permissionRepository->findByRouteKeyName($id);
-        return $this->fractal($p, new PermissionTransformer());
+        return $this->fractal(
+            app(FindPermissionByRouteKeyAction::class)->execute($id),
+            new PermissionTransformer()
+        );
     }
 
 }

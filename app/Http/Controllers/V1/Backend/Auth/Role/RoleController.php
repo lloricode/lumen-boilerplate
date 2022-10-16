@@ -3,18 +3,19 @@
 namespace App\Http\Controllers\V1\Backend\Auth\Role;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\Auth\Role\RoleRepository;
+use App\Models\Auth\Role\Role;
 use App\Transformers\Auth\RoleTransformer;
+use Domain\Auth\Actions\FindRoleByRouteKeyAction;
 use Illuminate\Http\Request;
-use Prettus\Repository\Criteria\RequestCriteria;
+use Illuminate\Validation\Rule;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class RoleController extends Controller
 {
-    protected RoleRepository $roleRepository;
 
-    public function __construct(RoleRepository $roleRepository)
+    public function __construct()
     {
-        $permissions = $roleRepository->makeModel()::PERMISSIONS;
+        $permissions = Role::PERMISSIONS;
 
         $this->middleware('permission:'.$permissions['index'], ['only' => 'index']);
         $this->middleware('permission:'.$permissions['create'], ['only' => 'store']);
@@ -22,7 +23,6 @@ class RoleController extends Controller
         $this->middleware('permission:'.$permissions['update'], ['only' => 'update']);
         $this->middleware('permission:'.$permissions['destroy'], ['only' => 'destroy']);
 
-        $this->roleRepository = $roleRepository;
     }
 
     /**
@@ -39,8 +39,11 @@ class RoleController extends Controller
      */
     public function index(Request $request)
     {
-        $this->roleRepository->pushCriteria(new RequestCriteria($request));
-        return $this->fractal($this->roleRepository->paginate(), new RoleTransformer());
+        return $this->fractal(
+            QueryBuilder::for(config('permission.models.role'))
+                ->allowedFilters('name')
+                ->paginate(),
+            new RoleTransformer());
     }
 
     /**
@@ -66,11 +69,7 @@ class RoleController extends Controller
             ]
         );
 
-        $role = $this->roleRepository->create(
-            [
-                'name' => $attributes['name'],
-            ]
-        );
+        $role = Role::create(['name' => $attributes['name']]);
 
         return $this->fractal($role, new RoleTransformer())->respond(201);
     }
@@ -90,9 +89,9 @@ class RoleController extends Controller
      */
     public function show(Request $request, string $id)
     {
-        $this->roleRepository->pushCriteria(new RequestCriteria($request));
-        $role = $this->roleRepository->findByRouteKeyName($id);
-        return $this->fractal($role, new RoleTransformer());
+        return $this->fractal(
+            app(FindRoleByRouteKeyAction::class)->execute($id),
+            new RoleTransformer());
     }
 
     /**
@@ -114,20 +113,25 @@ class RoleController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $role = app(FindRoleByRouteKeyAction::class)
+            ->execute($id);
+
+        if (in_array($role->name, config('setting.permission.role_names'))) {
+            abort(403, 'You cannot update/delete default role.');
+        }
+
         $attributes = $this->validate(
             $request,
             [
-                'name' => 'required|string',
+                'name' => ['required', 'string', Rule::unique(config('permission.models.role'))],
             ]
         );
 
-        $role = $this->roleRepository->update(
-            [
-                'name' => $attributes['name'],
-            ],
-            $this->roleRepository->findByRouteKeyName($id)->getKey()
-        );
-        return $this->fractal($role, new RoleTransformer());
+        $role->update([
+            'name' => $attributes['name'],
+        ]);
+
+        return $this->fractal($role->refresh(), new RoleTransformer());
     }
 
     /**
@@ -144,7 +148,15 @@ class RoleController extends Controller
      */
     public function destroy(string $id)
     {
-        $this->roleRepository->delete($this->roleRepository->findByRouteKeyName($id)->getKey());
+        $role = app(FindRoleByRouteKeyAction::class)
+            ->execute($id);
+
+        if (in_array($role->name, config('setting.permission.role_names'))) {
+            abort(403, 'You cannot update/delete default role.');
+        }
+
+        $role->delete();
+
         return response('', 204);
     }
 }
