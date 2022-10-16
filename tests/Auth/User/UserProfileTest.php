@@ -18,7 +18,7 @@ test('get profile', function ($roleName, $status) {
             ]
         )->toArray();
     }
-    get(route('frontend.users.profile'), $this->addHeaders());
+    get('profile', $this->addHeaders());
 
     if ( ! empty($roleName)) {
         seeJson($userData);

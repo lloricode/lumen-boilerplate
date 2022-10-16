@@ -19,11 +19,10 @@ beforeEach(fn () => $this->loggedInAs());
 it('assign role to user', function () {
     $user = UserFactory::new()->create();
     $role = $this->createRole();
-
-    $this->showModelWithRelation('backend.users.show', $user, $role, 'roles', 'dontSeeJson');
+    $this->showModelWithRelation('auth/users/'.  self::forId($user), $role, 'roles', 'dontSeeJson');
 
     post(
-        route('backend.authorizations.assign-role-to-user').'?include=roles',
+        'auth/authorizations/assign-role-to-user?include=roles',
         [
             'role_id' => self::forId($role),
             'user_id' => self::forId($user),
@@ -32,7 +31,7 @@ it('assign role to user', function () {
     );
     assertResponseOk();
 
-    $this->showModelWithRelation('backend.users.show', $user, $role, 'roles');
+    $this->showModelWithRelation('auth/users/'.  self::forId($user), $role, 'roles');
 });
 
 it('revoke role from user', function () {
@@ -43,7 +42,7 @@ it('revoke role from user', function () {
 //        $this->showModelWithRelation('backend.users.show', $user, $role, 'roles');
 
     delete(
-        route('backend.authorizations.revoke-role-from-user').'?include=roles',
+        'auth/authorizations/revoke-role-from-user?include=roles',
         [
             'role_id' => self::forId($role),
             'user_id' => self::forId($user),
@@ -61,10 +60,10 @@ it('assign permission to user', function () {
     $user = UserFactory::new()->create();
     $permission = $this->createPermission();
 
-    $this->showModelWithRelation('backend.users.show', $user, $permission, 'permissions', 'dontSeeJson');
+    $this->showModelWithRelation('auth/users/'. self::forId($user), $permission, 'permissions', 'dontSeeJson');
 
     post(
-        route('backend.authorizations.assign-permission-to-user').'?include=permissions',
+        'auth/authorizations/assign-permission-to-user?include=permissions',
         [
             'permission_id' => self::forId($permission),
             'user_id' => self::forId($user),
@@ -73,7 +72,7 @@ it('assign permission to user', function () {
     );
     assertResponseOk();
 
-    $this->showModelWithRelation('backend.users.show', $user, $permission, 'permissions');
+    $this->showModelWithRelation('auth/users/'. self::forId($user), $permission, 'permissions');
 });
 
 it('revoke permission to user', function () {
@@ -86,7 +85,7 @@ it('revoke permission to user', function () {
 //        $this->showModelWithRelation('backend.users.show', $user, $permission, 'permissions');
 
     delete(
-        route('backend.authorizations.revoke-permission-from-user').'?include=permissions',
+        'auth/authorizations/revoke-permission-from-user?include=permissions',
         [
             'permission_id' => self::forId($permission),
             'user_id' => self::forId($user),
@@ -104,10 +103,10 @@ it('attach permission to role', function () {
     $role = $this->createRole();
     $permission = $this->createPermission();
 
-    $this->showModelWithRelation('backend.roles.show', $role, $permission, 'permissions', 'dontSeeJson');
+    $this->showModelWithRelation('auth/roles/'.self::forId($role), $permission, 'permissions', 'dontSeeJson');
 
     post(
-        route('backend.authorizations.attach-permission-to-role').'?include=permissions',
+        'auth/authorizations/attach-permission-to-role?include=permissions',
         [
             'permission_id' => self::forId($permission),
             'role_id' => self::forId($role),
@@ -116,7 +115,7 @@ it('attach permission to role', function () {
     );
     assertResponseOk();
 
-    $this->showModelWithRelation('backend.roles.show', $role, $permission, 'permissions');
+    $this->showModelWithRelation('auth/roles/'.self::forId($role), $permission, 'permissions');
 });
 
 it('revoke permission from role', function () {
@@ -127,7 +126,7 @@ it('revoke permission from role', function () {
 //        $this->showModelWithRelation('backend.roles.show', $role, $permission, 'permissions');
 
     delete(
-        route('backend.authorizations.revoke-permission-from-role').'?include=permissions',
+        'auth/authorizations/revoke-permission-from-role?include=permissions',
         [
             'permission_id' => self::forId($permission),
             'role_id' => self::forId($role),

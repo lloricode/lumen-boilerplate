@@ -8,7 +8,11 @@ use Database\Factories\Auth\User\UserFactory;
 it('cannot_delete_self', function () {
     $user = $this->loggedInAs();
 
-    $this->delete(route('backend.users.destroy', ['id' => self::forId($user)]), [], $this->addHeaders());
+    $this->delete(
+        'auth/users/'. self::forId($user),
+        [],
+        $this->addHeaders()
+    );
 
     assertResponseStatus(403);
     seeJson(
@@ -27,6 +31,6 @@ it('get none existed user', function () {
 
     $user->delete();
 
-    get(route('backend.users.show', ['id' => $hashedId]), $this->addHeaders());
+    get('auth/users/'.$hashedId, $this->addHeaders());
     assertResponseStatus(404);
 });

@@ -14,7 +14,7 @@ use Database\Factories\Auth\User\UserFactory;
 it('store user', function () {
     $this->loggedInAs();
 
-    post(route('backend.users.store'), $this->userData(), $this->addHeaders());
+    post('auth/users', $this->userData(), $this->addHeaders());
     assertResponseStatus(201);
 
     $data = $this->userData();
@@ -30,7 +30,7 @@ it('update user', function () {
     $user = UserFactory::new()->create();
 
     put(
-        route('backend.users.update', ['id' => self::forId($user)]),
+        'auth/users/'.self::forId($user),
         $this->userData(),
         $this->addHeaders()
     );
@@ -48,7 +48,11 @@ it('destroy user', function () {
 
     $user = UserFactory::new()->create();
 
-    delete(route('backend.users.destroy', ['id' => self::forId($user)]), [], $this->addHeaders());
+    delete(
+        'auth/users/'.self::forId($user),
+        [],
+        $this->addHeaders()
+    );
     assertResponseStatus(204);
 
     notSeeInDatabase(
@@ -65,12 +69,7 @@ it('show user', function () {
     $user = UserFactory::new()->create($this->userData());
 
     get(
-        route(
-            'backend.users.show',
-            [
-                'id' => self::forId($user),
-            ]
-        ),
+        'auth/users/'.self::forId($user),
         $this->addHeaders()
     );
 

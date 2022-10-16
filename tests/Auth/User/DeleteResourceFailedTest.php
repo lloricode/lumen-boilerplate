@@ -15,7 +15,11 @@ test('purge none deleted user will give 404', function () {
 
     $user = UserFactory::new()->create();
 
-    delete(route('backend.users.purge', ['id' => self::forId($user)]), [], $this->addHeaders());
+    delete(
+        'auth/users/'.self::forId($user).'/purge',
+        [],
+        $this->addHeaders()
+    );
     assertResponseStatus(404);
 });
 
@@ -25,6 +29,10 @@ test('restore none deleted user will give 404', function () {
 
     $user = UserFactory::new()->create();
 
-    put(route('backend.users.restore', ['id' => self::forId($user)]), [], $this->addHeaders());
+    put(
+        'auth/users/'.self::forId($user).'/restore',
+        [],
+        $this->addHeaders()
+    );
     assertResponseStatus(404);
 });

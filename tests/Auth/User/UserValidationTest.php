@@ -28,7 +28,7 @@ test('unique email', function () {
     );
 
     put(
-        route('backend.users.update', ['id' => self::forId($user)]),
+        'auth/users/'.self::forId($user),
         [
             'email' => $uniqueEmail,
         ],

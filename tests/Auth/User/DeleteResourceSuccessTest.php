@@ -17,7 +17,11 @@ it('restore user', function () {
     $user = UserFactory::new()->create();
     $user->delete();
 
-    put(route('backend.users.restore', ['id' => self::forId($user)]), [], $this->addHeaders());
+    put(
+        'auth/users/'.self::forId($user).'/restore',
+        [],
+        $this->addHeaders()
+    );
     assertResponseStatus(200);
 
     seeInDatabase(
@@ -44,7 +48,11 @@ it('purge user', function () {
     $user = UserFactory::new()->create();
     $user->delete();
 
-    delete(route('backend.users.purge', ['id' => self::forId($user)]), [], $this->addHeaders());
+    delete(
+        'auth/users/'.self::forId($user).'/purge',
+        [],
+        $this->addHeaders()
+    );
     assertResponseStatus(204);
 
     notSeeInDatabase(

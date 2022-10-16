@@ -26,19 +26,13 @@ trait BaseRole
      * @param  string  $assert
      */
     protected function showModelWithRelation(
-        string $routeName,
-        Model $modelShow,
+        string $url,
         Model $modelRelation,
         string $relation,
         string $assert = 'seeJson'
     ) {
         $this->get(
-            route(
-                $routeName,
-                [
-                    'id' => self::forId($modelShow),
-                ]
-            )."?include=$relation",
+            $url."?include=$relation",
             $this->addHeaders()
         );
         $this->assertResponseOk();

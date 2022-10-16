@@ -19,16 +19,11 @@ it('validation role', function ($routeName) {
     ];
     switch ($routeName) {
         case 'store':
-            post(route($route), $paramNoData, $this->addHeaders());
+            post('auth/roles', $paramNoData, $this->addHeaders());
             break;
         case 'update':
             put(
-                route(
-                    $route,
-                    [
-                        'id' => self::forId($this->createRole()),
-                    ]
-                ),
+                'auth/roles/'.self::forId($this->createRole()),
                 $paramNoData,
                 $this->addHeaders()
             );
@@ -49,12 +44,7 @@ it('validation role', function ($routeName) {
 it('default role not allowed', function ($verbMethod, $routeName) {
     $this->loggedInAs();
     $this->{$verbMethod}(
-        route(
-            $routeName,
-            [
-                'id' => self::forId($this->getByRoleName('system')),
-            ]
-        ),
+        'auth/roles/'.self::forId($this->getByRoleName('system')),
         $verbMethod == 'delete' ? [] : ['name' => $this->getByRoleName('system')->name],
         $this->addHeaders()
     );
@@ -76,7 +66,7 @@ it('store role success', function () {
     $data = [
         'name' => 'test new role',
     ];
-    post(route('backend.roles.store'), $data, $this->addHeaders());
+    post('auth/roles', $data, $this->addHeaders());
 
     assertResponseStatus(201);
     seeJson($data);
@@ -93,12 +83,7 @@ it('update role success', function () {
     ];
 
     put(
-        route(
-            'backend.roles.update',
-            [
-                'id' => self::forId($role),
-            ]
-        ),
+        'auth/roles/'.self::forId($role),
         $data,
         $this->addHeaders()
     );
@@ -120,12 +105,7 @@ it('update duplicate role', function () {
     ];
 
     put(
-        route(
-            'backend.roles.update',
-            [
-                'id' => self::forId($role),
-            ]
-        ),
+        'auth/roles/'.self::forId($role),
         $data,
         $this->addHeaders()
     );
@@ -147,7 +127,7 @@ it('store duplicate role', function () {
     $data = [
         'name' => $roleNameTest,
     ];
-    post(route('backend.roles.store'), $data, $this->addHeaders());
+    post('auth/roles', $data, $this->addHeaders());
 
     assertResponseStatus(422);
     seeJson(
