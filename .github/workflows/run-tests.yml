@@ -35,7 +35,7 @@ jobs:
         run: composer u --${{ matrix.dependency-version }} --ansi --no-interaction --no-suggest --prefer-dist
 
       - name: Execute tests (Unit and Feature tests) via Pest
-        run: composer pest-coverage
+        run: composer test-coverage
 
       - name: Check logs
         run: |

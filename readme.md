@@ -1,4 +1,4 @@
-# Will stop maintening this when laravel 10 release. see [notice](https://lumen.laravel.com/docs/9.x#installation).
+# Will stop maintening this when laravel 10 release. see [laravel lumen note](https://lumen.laravel.com/docs/9.x#installation).
 
 # Lumen Boilerplate
 
