@@ -6,6 +6,7 @@
 
 ![Run Tests](https://github.com/lloricode/lumen-boilerplate/workflows/Run%20Tests/badge.svg?branch=master)
 [![Chat](https://img.shields.io/badge/chat-on%20discord-7289da.svg)](https://discordapp.com/invite/9X3Y5pC)
+[![Laravel Forge Site Deployment Status](https://img.shields.io/endpoint?url=https%3A%2F%2Fforge.laravel.com%2Fsite-badges%2Ff5da6a8d-d83c-46cd-9074-f5e7a71bdd9e%3Fdate%3D1&style=plastic)](https://forge.laravel.com)
 
 RESTful API template made from [Lumen 9](https://lumen.laravel.com/)
 
